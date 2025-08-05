@@ -1,5 +1,5 @@
 require "test_helper"
-require 'support/capybara'
+require "support/capybara"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   driven_by :chrome

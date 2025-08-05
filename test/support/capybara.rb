@@ -1,12 +1,12 @@
 def chrome_options
   options = Selenium::WebDriver::Chrome::Options.new
-  options.add_argument('--no-default-browser-check')
-  options.add_argument('--start-maximized')
-  options.add_argument('--no-sandbox')
-  options.add_argument('--disable-dev-shm-usage')
-  options.add_argument('--disable-gpu')
-  options.add_argument('--window-size=1366,768')
-  options.add_argument('--headless') unless ENV['LAUNCH_BROWSER']
+  options.add_argument("--no-default-browser-check")
+  options.add_argument("--start-maximized")
+  options.add_argument("--no-sandbox")
+  options.add_argument("--disable-dev-shm-usage")
+  options.add_argument("--disable-gpu")
+  options.add_argument("--window-size=1366,768")
+  options.add_argument("--headless") unless ENV["LAUNCH_BROWSER"]
   options
 end
 
@@ -18,7 +18,7 @@ end
 
 Capybara.register_driver :chrome do |app|
   host = "http://#{ENV.fetch('SELENIUM_HOST', nil)}"
-  port = ENV.fetch('SELENIUM_PORT', nil)
+  port = ENV.fetch("SELENIUM_PORT", nil)
 
   Capybara::Selenium::Driver.new(app,
                                  browser: :remote,
