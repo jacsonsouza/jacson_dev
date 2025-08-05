@@ -1,0 +1,74 @@
+x-app: &app
+  build:
+    context: .
+    dockerfile: Dockerfile.development
+  volumes:
+    - .:/var/www/jacson_dev
+    - bundle_path:/bundle
+    - /dev/shm:/dev/shm
+  depends_on:
+    - db
+  networks:
+    - jacson-network
+  stdin_open: true
+  tty: true
+
+services:
+  web:
+    <<: *app
+    command: >
+      bash -c "
+        rm -f tmp/pids/server.pid && cron &&
+        bundle exec rails s -p 3000 -b '0.0.0.0'
+        " # Removing server.pid is technically a cleanup script
+    ports:
+      - 3000:3000
+    environment:
+      RAILS_ENV: development
+
+  db:
+    image: postgres:17.5
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - jacson-network
+
+  tests:
+    <<: *app
+    environment:
+      RAILS_ENV: test
+      DATABASE_URL: postgres://postgres@db
+      SELENIUM_HOST: chrome-server
+      SELENIUM_PORT: 4444
+      TEST_APP_HOST: tests
+      DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: true
+    shm_size: '2gb' #set shared memory
+    depends_on:
+      - db
+      - chrome-server
+
+  chrome-server:
+    image: selenium/standalone-chrome:latest
+    volumes:
+      - ./test/samples:/var/www/jacson_dev/test/samples
+      - /dev/shm:/dev/shm
+    ports:
+      - 4444:4444
+      - 5900:5900
+    networks:
+      - jacson-network
+
+volumes:
+  pgdata:
+    driver: local
+  bundle_path:
+
+networks:
+  jacson-network:
+    driver: bridge
