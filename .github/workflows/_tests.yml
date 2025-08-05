@@ -1,0 +1,86 @@
+name: Tests
+
+on:
+  workflow_call:
+    secrets:
+      RAILS_MASTER_KEY_TEST:
+        required: true
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    container:
+      image: ruby:3.3.4
+      options: --network-alias testHost
+      volumes:
+        - /var/www/jacson_dev/test/assets/images:/var/www/jacson_dev/test/assets/images
+    services:
+      db:
+        image: postgres
+        ports: ["5432:5432"]
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_HOST_AUTH_METHOD: trust
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      chrome-server:
+        image: selenium/standalone-chrome:latest
+        ports: ["4444:4444"]
+        volumes:
+          - /var/www/jacson_dev/test/assets/images:/var/www/jacson_dev/test/assets/images
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Install libpq-dev for postgres
+        run: apt-get -yqq install libpq-dev
+
+      - name: Cache bundle gems
+        uses: actions/cache@v4
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      - name: Install bundle gems
+        run: |
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      - name: Compile assets
+        env:
+          RAILS_ENV: test
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY_TEST }}
+          SECRET_KEY_BASE_DUMMY: 1
+        run: |
+          bundle exec rails assets:precompile
+
+      - name: Prepare database
+        env:
+          RAILS_ENV: test
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY_TEST }}
+          DATABASE_URL: postgres://postgres:@db
+        run: |
+          bundle exec rails db:create
+          bundle exec rails db:migrate
+
+      - name: Run tests
+        env:
+          RAILS_ENV: test
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY_TEST }}
+          DATABASE_URL: postgres://postgres:@db
+          SELENIUM_HOST: chrome-server
+          SELENIUM_PORT: 4444
+          TEST_APP_HOST: testHost
+          COVERAGE: true
+        run: |
+          bundle exec rails test:all
