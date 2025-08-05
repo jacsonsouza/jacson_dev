@@ -1,0 +1,132 @@
+#!/usr/bin/env bash
+# https://github.com/nickjj/docker-rails-example/blob/main/run
+
+set -o errexit
+set -o pipefail
+
+DC="${DC:-exec}"
+
+# If we're running in CI we need to disable TTY allocation for docker compose
+TTY=""
+if [[ ! -t 1 ]]; then
+  TTY="-T"
+fi
+
+# -----------------------------------------------------------------------------
+# Helper functions start with _ and aren't listed in this script's help menu.
+# -----------------------------------------------------------------------------
+
+function _dc {
+  docker compose "${@}"
+}
+
+function _dc_ {
+  docker compose "${DC}" ${TTY} "${@}"
+}
+
+# -----------------------------------------------------------------------------
+# Docker functions
+# -----------------------------------------------------------------------------
+function ps {
+  _dc ps
+}
+
+function up {
+  _dc up -d
+}
+
+function down {
+  _dc down
+}
+
+function dcr {
+  # Run any command you want in the web container
+  _dc run --rm "${@}"
+}
+
+function dc {
+  # Run any command you want in the web container
+  _dc_ web "${@}"
+}
+
+# -----------------------------------------------------------------------------
+# Rails functions
+# -----------------------------------------------------------------------------
+function bundle {
+  dc bundle "${@}"
+}
+
+function rails {
+  dc rails "${@}"
+}
+
+function rubocop {
+  dc bundle exec rubocop --parallel "${@}"
+}
+
+function brakeman {
+  dc bundle exec brakeman --ignore-config config/brakeman.ignore
+}
+
+function linters {
+  rubocop
+  brakeman
+}
+
+function edit:credentials {
+  docker compose run --rm -e EDITOR=vim web rails credentials:edit --environment "${1:-development}"
+}
+
+# -----------------------------------------------------------------------------
+# Test functions
+# -----------------------------------------------------------------------------
+function test {
+  docker compose exec tests rails test "${@}"
+}
+
+function test:all {
+  _dc_ tests rails test:all
+}
+
+function test:coverage {
+  docker compose exec -e COVERAGE=true tests rails test:all "${@}"
+}
+
+# Access remmina VNC:
+# url: localhost:5900
+# password: secret
+function test:browser {
+  docker compose exec -e LAUNCH_BROWSER=TRUE tests bundle exec rails test:system "${@}"
+}
+
+# -----------------------------------------------------------------------------
+# Shell functions
+# -----------------------------------------------------------------------------
+function shell {
+  # Start a shell session in the api container
+  dc bash "${@}"
+}
+
+# -----------------------------------------------------------------------------
+# Database functions
+# -----------------------------------------------------------------------------
+function psql {
+  # Connect to PostgreSQL with psql
+  # shellcheck disable=SC1091
+  _dc_ db psql -U postgres "${@}"
+}
+
+# -----------------------------------------------------------------------------
+# Help
+# -----------------------------------------------------------------------------
+function help {
+  printf "%s <task> [args]\n\nTasks:\n" "${0}"
+
+  compgen -A function | grep -v "^_" | cat -n
+
+  printf "\nExtended help:\n  Each task has comments for general usage\n"
+}
+
+# This idea is heavily inspired by: https://github.com/adriancooney/Taskfile
+TIMEFORMAT=$'\nTask completed in %3lR'
+time "${@:-help}"
