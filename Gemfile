@@ -61,3 +61,7 @@ group :test do
   gem "capybara-screenshot"
   gem "simplecov", require: false
 end
+
+gem "tailwindcss-ruby", "~> 4.1"
+
+gem "tailwindcss-rails", "~> 4.3"

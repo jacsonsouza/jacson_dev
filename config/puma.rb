@@ -41,3 +41,5 @@ plugin :solid_queue if ENV["SOLID_QUEUE_IN_PUMA"]
 pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
 
 plugin :tmp_restart
+
+plugin :tailwindcss if ENV.fetch("RAILS_ENV", "development") == "development"
