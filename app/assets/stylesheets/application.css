@@ -9,13 +9,13 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
- * {
+ /* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+} */
 
-body {
+/* body {
   font-family: 'Inter', sans-serif;
   background-color: #f4f4f4;
   color: #333;
@@ -24,11 +24,11 @@ body {
   justify-content: center;
   align-items: center;
   padding: 20px;
-}
-
+} */
+/* 
 .container {
   text-align: center;
-  /* background-color: white; */
+  background-color: white;
   padding: 40px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -50,4 +50,4 @@ h1 {
 p {
   font-size: 16px;
   color: #555;
-}
+} */
