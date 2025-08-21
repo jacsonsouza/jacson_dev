@@ -27,7 +27,7 @@
 
    <body class="bg-gradient-to-br from-slate-900 to-slate-800 min-h-screen perspective-distant">
       <%= render 'home/partials/side_menu' %>
-      <main class="container mx-auto flex">
+      <main class="min-h-screen flex-1 ml-20 relative transition [transform-style:preserve-3d]">
          <%= yield %>
       </main>
    </body>

@@ -1,1 +1,29 @@
 @import "tailwindcss";
+
+@layer components {
+  .btn-primary {
+    @apply inline-block w-fit px-10 py-3.5
+           bg-gradient-to-tr from-indigo-500 to-rose-400
+           text-white no-underline rounded-[2rem]
+           font-semibold text-lg border-none cursor-pointer
+           shadow-lg shadow-indigo-500/40 relative overflow-hidden;
+  }
+
+  .btn-animation {
+    @apply transition-all duration-500 hover:-translate-y-1.5 hover:shadow-indigo-500/60;
+  }
+}
+
+.btn-before::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none;
+}
+
+.btn-before:hover::before {
+  transform: translateX(100%);
+}

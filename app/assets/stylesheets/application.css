@@ -1,53 +1,57 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+/* 3D animations */
 
- /* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
-
-/* body {
-  font-family: 'Inter', sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-} */
-/* 
-.container {
-  text-align: center;
-  background-color: white;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  width: 100%;
+:root {
+    --primary: #6C63FF;
+    --secondary: #FF6584;
+    --accent: #36D1DC;
+    --dark: #1A1A2E;
+    --light: #F0F0F0;
+    --transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.icon {
-  font-size: 64px;
-  margin-bottom: 20px;
+.hero-image {
+    flex: 1;
+    position: relative;
+    transform-style: preserve-3d;
 }
 
-h1 {
-  font-size: 28px;
-  margin-bottom: 12px;
-  color: #222;
+.hero-image .floating {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    animation: float 8s infinite ease-in-out;
 }
 
-p {
-  font-size: 16px;
-  color: #555;
-} */
+.floating:nth-child(1) {
+    width: 200px;
+    height: 200px;
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.floating:nth-child(2) {
+    width: 150px;
+    height: 150px;
+    top: 60%;
+    left: 70%;
+    animation-delay: 1s;
+}
+
+.floating:nth-child(3) {
+    width: 100px;
+    height: 100px;
+    top: 80%;
+    left: 30%;
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+.floating {
+    animation: float 6s ease-in-out infinite;
+}
