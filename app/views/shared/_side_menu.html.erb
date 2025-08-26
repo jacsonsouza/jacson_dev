@@ -1,27 +1,24 @@
-<% items = [
-    { name: 'Início', icon: 'fas fa-home', target: 'home' },
-    { name: 'Sobre', icon: 'fas fa-user', target: 'about' },
-    { name: 'Habilidades', icon: 'fas fa-code', target: 'skills' },
-    { name: 'Portfólio', icon: 'fas fa-briefcase', target: 'portfolio' },
-    { name: 'Contato', icon: 'fas fa-envelope', target: 'contact' }
-] %>
-
-<nav class="bg-gray-900/90 flex flex-col w-20 items-center py-8 z-[100] fixed h-full backdrop-blur-md shadow-2xl transition-all duration-500 hover:w-56 group">
+<!-- Menu para desktop -->
+<nav class="bg-gray-900/90 hidden md:flex flex-col w-20 items-center py-8 z-[100] fixed h-full backdrop-blur-md shadow-2xl transition-all duration-500 hover:w-56 group">
+   <% items = [
+            { name: 'Início', icon: 'fas fa-home', target: 'home' },
+            { name: 'Sobre', icon: 'fas fa-user', target: 'about' },
+            { name: 'Habilidades', icon: 'fas fa-code', target: 'skills' },
+            { name: 'Portfólio', icon: 'fas fa-briefcase', target: 'portfolio' },
+            { name: 'Contato', icon: 'fas fa-envelope', target: 'contact' }
+        ] %>
 
    <% items.each do |item| %>
-
       <div class="w-full text-center py-5 my-2.5 cursor-pointer transition-all relative overflow-hidden hover:bg-indigo-900/50 active" data-target="<%= item[:target] %>">
          <div class="flex flex-col items-center justify-center gap-5">
-
             <i class="<%= item[:icon] %> text-3xl text-zinc-100 transition-all group-hover:text-primary group-hover:scale-125"></i>
-
             <span class="text-zinc-100 text-base font-medium opacity-0 -translate-y-1/2 whitespace-nowrap transition-all duration-300 transform -translate-x-5 group-hover:opacity-100 group-hover:translate-x-0">
                <%= item[:name] %>
             </span>
-
          </div>
       </div>
-
    <% end %>
-
 </nav>
+
+<!-- Menu para mobile -->
+<%= render 'shared/mobile_menu' %>
