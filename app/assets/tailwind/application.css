@@ -1,29 +1,55 @@
 @import "tailwindcss";
 
 @layer components {
-  .btn-primary {
-    @apply inline-block w-fit px-10 py-3.5
-           bg-gradient-to-tr from-indigo-500 to-rose-400
+   .btn-primary {
+      @apply inline-block w-fit px-10 py-3.5
+             bg-gradient-to-tr from-indigo-500 to-rose-400
            text-white no-underline rounded-[2rem]
-           font-semibold text-lg border-none cursor-pointer
-           shadow-lg shadow-indigo-500/40 relative overflow-hidden;
-  }
+             font-semibold text-lg border-none cursor-pointer
+             shadow-lg shadow-indigo-500/40 relative overflow-hidden
+             transition-all duration-500 hover:-translate-y-1.5 hover:shadow-indigo-500/60;
+   }
 
-  .btn-animation {
-    @apply transition-all duration-500 hover:-translate-y-1.5 hover:shadow-indigo-500/60;
-  }
+   .btn-primary::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+         90deg,
+         transparent,
+         rgba(255, 255, 255, 0.2),
+         transparent
+      );
+      transform: translateX(-100%);
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
+   }
+
+   .btn-primary:hover::before {
+      transform: translateX(100%);
+   }
+
+   .bubble {
+      @apply absolute bg-gradient-to-tr from-indigo-500 to-rose-400 rounded-full animate-float;
+   }
 }
 
-.btn-before::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  pointer-events: none;
+@utility animation-delay-* {
+   animation-delay: --value([ *]);
 }
 
-.btn-before:hover::before {
-  transform: translateX(100%);
+@theme {
+   --animate-float: float 8s ease-in-out infinite;
+
+   @keyframes float {
+      0% {
+         transform: translateY(0) rotate(0deg);
+      }
+      50% {
+         transform: translateY(-20px) rotate(10deg);
+      }
+      100% {
+         transform: translateY(0) rotate(0deg);
+      }
+   }
 }
