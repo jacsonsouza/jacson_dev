@@ -2,18 +2,17 @@
    <div class="max-w-5xl w-full p-6 sm:p-8 md:p-10 bg-gray-900/70 backdrop-blur-md border border-white/10 rounded-3xl shadow-2xl translate-z-12 flex flex-col-reverse md:flex-row items-center gap-8 md:gap-16 text-white">
 
       <!-- Text -->
-      <div class="flex-1 flex flex-col gap-4 items-center md:items-start">
+      <div class="flex-1 flex flex-col gap-4 items-center text-center md:text-start md:items-start">
          <h1 class="font-semibold text-[clamp(1.25rem,4vw,2.25rem)]">
-            Hi, I’m <span class="font-bold">Jacson</span>
+            <%= t('.greeting') %> <span class="font-bold">Jacson</span>
          </h1>
          <h2 class="font-semibold text-[clamp(1rem,2.6vw,1.5rem)]">
-            Full Stack Developer
+            <%= t('.occupation') %>
          </h2>
          <p class="text-[clamp(.9rem,1.8vw,1rem)] leading-relaxed">
-            I turn ideas into exceptional digital experiences 
-            with a strong focus on performance and innovative design.
+            <%= t('.introduction')%>
          </p>
-         <a href="#portfolio" class="btn-primary">Explore Projects</a>
+         <a href="#portfolio" class="btn-primary"><%= t('.projects') %></a>
       </div>
 
       <!-- Bubbles -->

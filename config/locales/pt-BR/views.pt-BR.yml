@@ -1,0 +1,13 @@
+pt-BR:
+  links:
+    about: "Sobre"
+    contact: "Contato"
+    home: "Início"
+    portfolio: "Portifólio"
+    skills: "Habilidades"
+  home:
+    index:
+      greeting: "Olá, eu sou "
+      occupation: "Desenvolvedor Full Stack"
+      intruction: "Transformo ideias em experiências digitais excepcionais com foco em desempenho e design inovador."
+      projects: "Explorar Projetos"

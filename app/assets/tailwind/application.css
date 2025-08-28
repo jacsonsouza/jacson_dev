@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@theme {
+   --animate-float: float 8s ease-in-out infinite;
+
+   @keyframes float {
+      0% {
+         transform: translateY(0) rotate(0deg);
+      }
+      50% {
+         transform: translateY(-20px) rotate(10deg);
+      }
+      100% {
+         transform: translateY(0) rotate(0deg);
+      }
+   }
+}
+
 @layer components {
    .btn-primary {
       @apply inline-block w-fit px-10 py-3.5
@@ -29,6 +45,12 @@
       transform: translateX(100%);
    }
 
+   .btn-rounded {
+      @apply w-16 h-16 rounded-full shadow-lg shadow-indigo-500/40
+             bg-gradient-to-br from-indigo-500 to-rose-400 cursor-pointer 
+             flex items-center justify-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-indigo-500/60;
+   }
+
    .bubble {
       @apply absolute bg-gradient-to-tr from-indigo-500 to-rose-400 rounded-full animate-float;
    }
@@ -36,20 +58,4 @@
 
 @utility animation-delay-* {
    animation-delay: --value([ *]);
-}
-
-@theme {
-   --animate-float: float 8s ease-in-out infinite;
-
-   @keyframes float {
-      0% {
-         transform: translateY(0) rotate(0deg);
-      }
-      50% {
-         transform: translateY(-20px) rotate(10deg);
-      }
-      100% {
-         transform: translateY(0) rotate(0deg);
-      }
-   }
 }
