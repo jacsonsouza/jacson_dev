@@ -2,7 +2,7 @@
 service: jacson_dev
 
 # Name of the container image.
-image: jacson/jacson_dev
+image: jacsonss/jacson_dev
 
 # Deploy to these servers.
 servers:
