@@ -102,7 +102,7 @@ accessories:
     env:
       clear:
         POSTGRES_USER: 'postgres'
-        POSTGRES_DB: 'jacson_dev'
+        POSTGRES_DB: 'jacson_dev_production'
       secret:
         - POSTGRES_PASSWORD
         - POSTGRES_USER
