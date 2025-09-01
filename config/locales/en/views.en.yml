@@ -1,0 +1,13 @@
+en:
+  links:
+    about: "About"
+    contact: "Contact"
+    home: "Home"
+    portfolio: "Portfolio"
+    skills: "Skills"
+  home:
+    index:
+      greeting: "Hi, I'm "
+      occupation: "Full Stack Developer"
+      introduction: "I turn ideas into exceptional digital experiences with a strong focus on performance and innovative design."
+      projects: "Explore Projects"
