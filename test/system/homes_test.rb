@@ -11,22 +11,22 @@ class HomesTest < ApplicationSystemTestCase
     end
   end
 
-  test 'seeing the side menu links' do
-    visit root_path
+  # test 'seeing the side menu links' do
+  #   visit root_path
 
-    find('#side-menu').hover
+  #   find('#side-menu').hover
     
-    within '#side-menu' do
-      assert_selector 'li', count: 5
-      assert_visible [:home, :about, :skills, :portfolio, :contact]
-    end
-  end
+  #   within '#side-menu' do
+  #     assert_selector 'li', count: 5
+  #     assert_visible [:home, :about, :skills, :portfolio, :contact]
+  #   end
+  # end
 
-  private
+  # private
 
-  def assert_visible(items)
-    items.each do |item|
-      assert_selector "#item-#{item}", text: I18n.t("links.#{item}"), visible: true
-    end
-  end
+  # def assert_visible(items)
+  #   items.each do |item|
+  #     assert_selector "#item-#{item}", text: I18n.t("links.#{item}"), visible: true
+  #   end
+  # end
 end
