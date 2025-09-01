@@ -106,8 +106,8 @@ accessories:
       secret:
         - POSTGRES_PASSWORD
         - POSTGRES_USER
-    # files:
-    #   - config/deploy.db.sql:/docker-entrypoint-initdb.d/setup.sql
+    files:
+      - config/deploy.db.sql:/docker-entrypoint-initdb.d/setup.sql
     directories:
       - data:/var/lib/postgresql/data
 
