@@ -4,6 +4,10 @@ service: jacson_dev
 # Name of the container image.
 image: jacsonss/jacson_dev
 
+deploy_timeout: 60
+drain_timeout: 60
+readiness_delay: 10
+
 # Deploy to these servers.
 servers:
   web:
