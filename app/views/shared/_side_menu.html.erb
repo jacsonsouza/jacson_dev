@@ -1,4 +1,4 @@
-<nav class="bg-gray-900/90 hidden md:flex flex-col w-20 items-center py-8 z-[100] fixed h-full backdrop-blur-md shadow-2xl transition-all duration-500 hover:w-56 group">
+<nav id="side-menu" class="bg-gray-900/90 hidden md:flex flex-col w-20 items-center py-8 z-[100] fixed h-full backdrop-blur-md shadow-2xl transition-all duration-500 hover:w-56 group">
    <ul class="w-full contents">
 
       <% items = [
@@ -10,7 +10,7 @@
       ] %>
 
       <% items.each do |item| %>
-         <li class="w-full text-center py-5 my-2.5 cursor-pointer transition-all relative overflow-hidden hover:bg-indigo-900/50 active" data-target="<%= item[:target] %>">
+         <li id="item-<%= item[:target] %>" class="w-full text-center py-5 my-2.5 cursor-pointer transition-all relative overflow-hidden hover:bg-indigo-900/50 active" data-target="<%= item[:target] %>">
             <div class="flex flex-col items-center justify-center gap-5">
 
                <i class="<%= item[:icon] %> text-3xl text-zinc-100 transition-all group-hover:text-primary group-hover:scale-125"></i>
