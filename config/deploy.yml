@@ -25,7 +25,7 @@ proxy:
   healthcheck:
     path: /up
     interval: 3
-    timeout: 30
+    timeout: 60
 
 # Credentials for your image host.
 registry:
