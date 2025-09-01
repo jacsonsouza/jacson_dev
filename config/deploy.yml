@@ -22,10 +22,10 @@ proxy:
   ssl: true
   host: jacson.dev.br
   app_port: 3000
-  healthcheck:
-    path: /up
-    interval: 3
-    timeout: 60
+  # healthcheck:
+  #   path: /up
+  #   interval: 3
+  #   timeout: 60
 
 # Credentials for your image host.
 registry:
