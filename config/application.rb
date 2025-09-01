@@ -25,6 +25,6 @@ module JacsonDev
     # config.eager_load_paths << Rails.root.join("extras")
 
     # i18n Configuration
-    config.i18n.available_locales = [:en, :"pt-BR"]
+    config.i18n.available_locales = [ :en, :"pt-BR" ]
   end
 end
