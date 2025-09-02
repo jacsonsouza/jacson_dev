@@ -8,7 +8,7 @@ image: jacsonss/jacson_dev
 servers:
   web:
     hosts:
-      - 3.12.102.235
+      - 3.135.224.37
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -60,7 +60,7 @@ proxy:
 accessories:
   db:
     image: postgres:17.5
-    host: 3.12.102.235
+    host: 3.135.224.37
     env:
       clear:
         POSTGRES_USER: 'postgres'
