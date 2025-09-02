@@ -4,15 +4,11 @@ service: jacson_dev
 # Name of the container image.
 image: jacsonss/jacson_dev
 
-deploy_timeout: 60
-drain_timeout: 60
-readiness_delay: 10
-
 # Deploy to these servers.
 servers:
   web:
     hosts:
-      - 18.218.17.72
+      - 3.12.102.235
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -59,12 +55,12 @@ proxy:
   healthcheck:
     path: /up
     interval: 3
-    timeout: 60
+    timeout: 30
 
 accessories:
   db:
     image: postgres:17.5
-    host: 18.218.17.72
+    host: 3.12.102.235
     env:
       clear:
         POSTGRES_USER: 'postgres'
