@@ -45,13 +45,13 @@ gem "thruster", require: false
 gem "tailwindcss-rails", "~> 4.3"
 
 group :development, :test do
+  gem "bullet", group: "development"
   gem "brakeman", require: false
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "rubocop-rails-omakase", require: false
 end
 
 group :development do
-  gem "bullet"
   gem "rubocop", require: false
   gem "rubocop-capybara", require: false
   gem "rubocop-minitest", require: false
