@@ -26,9 +26,9 @@ gem "rails-i18n", "~> 8.0.0"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
+gem "solid_cable"
 gem "solid_cache"
 gem "solid_queue"
-gem "solid_cable"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -42,28 +42,26 @@ gem "thruster", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+gem "tailwindcss-rails", "~> 4.3"
+
 group :development, :test do
-  gem "brakeman", require: false
   gem "bullet", group: "development"
+  gem "brakeman", require: false
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "rubocop-rails-omakase", require: false
 end
 
 group :development do
-  gem "web-console"
   gem "rubocop", require: false
   gem "rubocop-capybara", require: false
   gem "rubocop-minitest", require: false
   gem "rubocop-rails", require: false
+  gem "web-console"
 end
 
 group :test do
   gem "capybara"
-  gem "selenium-webdriver"
   gem "capybara-screenshot"
+  gem "selenium-webdriver"
   gem "simplecov", require: false
 end
-
-gem "tailwindcss-ruby", "~> 4.1"
-
-gem "tailwindcss-rails", "~> 4.3"

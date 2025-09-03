@@ -70,7 +70,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter = :resque
-  # config.active_job.queue_name_prefix = "maxiambiental_production"
+  # config.active_job.queue_name_prefix = "jacson_dev_production"
 
   config.action_mailer.perform_caching = false
   # config.action_mailer.default_url_options = { host: ENV.fetch('APP_HOST', 'jacson.dev.br') }
@@ -99,7 +99,4 @@ Rails.application.configure do
   config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
   # Skip http-to-https redirect for the default health check endpoint.
   config.ssl_options = { redirect: { exclude: ->(request) { request.path == "/up" } } }
-
-  config.action_cable.url = nil
-  config.action_cable.mount_path = nil
 end
