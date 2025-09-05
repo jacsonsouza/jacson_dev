@@ -65,7 +65,7 @@ SimpleForm.setup do |config|
   end
 
   # The default wrapper to be used by the FormBuilder.
-  config.default_wrapper = :default
+  # config.default_wrapper = :default
 
   # Define the way to render check boxes / radio buttons with labels.
   # Defaults to :nested for bootstrap config.
@@ -74,7 +74,7 @@ SimpleForm.setup do |config|
   config.boolean_style = :nested
 
   # Default class for buttons
-  config.button_class = 'btn'
+  # config.button_class = 'btn'
 
   # Method used to tidy up errors. Specify any Rails Array method.
   # :first lists the first message for each field.
@@ -173,4 +173,28 @@ SimpleForm.setup do |config|
   # Defines validation classes to the input_field. By default it's nil.
   # config.input_field_valid_class = 'is-valid'
   # config.input_field_error_class = 'is-invalid'
+
+  # Default style
+  config.wrappers :tailwind, tag: 'div', class: 'mb-6', error_class: :field_with_errors do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :minlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+
+    b.use :label, class: 'block text-sm font-medium text-gray-300 mb-2'
+
+    b.wrapper tag: 'div', class: 'relative' do |ba|
+      ba.use :input, class: 'w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent'
+      
+      ba.use :error, wrap_with: { tag: 'p', class: 'mt-1 text-sm text-red-500' }
+      ba.use :hint, wrap_with: { tag: 'p', class: 'mt-1 text-sm text-gray-400' }
+    end
+
+  end
+
+  config.default_wrapper = :tailwind
+  config.button_class = 'btn-primary w-full'
 end
