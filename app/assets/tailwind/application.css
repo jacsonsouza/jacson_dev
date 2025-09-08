@@ -2,6 +2,7 @@
 
 @theme {
    --animate-float: float 8s ease-in-out infinite;
+   --animate-card: cardAppear 1s ease-in-out;
 
    @keyframes float {
       0% {
@@ -12,6 +13,17 @@
       }
       100% {
          transform: translateY(0) rotate(0deg);
+      }
+   }
+
+   @keyframes cardAppear {
+      0% {
+         opacity: 0;
+         transform: translateY(50px) rotateX(30deg);
+      }
+      100% {
+         opacity: 1;
+         transform: translateY(0) rotateX(0);
       }
    }
 }

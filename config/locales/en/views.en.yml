@@ -11,3 +11,11 @@ en:
       occupation: "Full Stack Developer"
       introduction: "I turn ideas into exceptional digital experiences with a strong focus on performance and innovative design."
       projects: "Explore Projects"
+  users:
+    devise:
+      sessions:
+        new:
+          welcome: "Welcome"
+          sign_in: "Sign in to your account"
+          remember_me: "Remember me"
+          forgot_password: "Forgot your password?"
