@@ -66,6 +66,14 @@
    .bubble {
       @apply absolute bg-gradient-to-tr from-indigo-500 to-rose-400 rounded-full animate-float;
    }
+
+   .scroll-thin {
+      @apply overflow-y-auto [&::-webkit-scrollbar]:w-1
+             [&::-webkit-scrollbar-track]:rounded-full
+             [&::-webkit-scrollbar-track]:bg-indigo-900
+             [&::-webkit-scrollbar-thumb]:rounded-full
+             [&::-webkit-scrollbar-thumb]:bg-indigo-500;
+   }
 }
 
 @utility animation-delay-* {

@@ -12,6 +12,19 @@ en:
       introduction: "I turn ideas into exceptional digital experiences with a strong focus on performance and innovative design."
       projects: "Explore Projects"
   users:
+    menu:
+      admin: "Admin"
+      dashboard: "Dashboard"
+      profile: "Profile"
+      projects: "Projects"
+      skills: "Skills"
+      blog: "Blog"
+      settings: "Settings"
+      sign_out: "Sign out"
+      sections:
+        main: "Main"
+        content: "Content"
+        settings: "Settings"
     devise:
       sessions:
         new:

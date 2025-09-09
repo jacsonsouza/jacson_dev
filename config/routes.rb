@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   root "home#index"
+  
+  get "/dashboard", to: "users/dashboard#index", as: :dashboard
 end
