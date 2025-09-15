@@ -9,6 +9,7 @@
 #   end
 
 User.create_with(
+  name: 'Jacson Souza',
   email: 'jacsonsavio7@gmail.com', 
   password: 'password', 
   confirmed_at: Time.now
