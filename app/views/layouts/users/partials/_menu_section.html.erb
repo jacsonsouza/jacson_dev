@@ -1,9 +1,9 @@
 <div class="menu-section pt-3.5 px-6 pb-1 text-slate-400 text-sm uppercase tracking-[1px] mt-3.5">
-   <%= section_name %>
+   <%= section[:name] %>
 </div>
 
 <ul>
-   <% menu_items.each do |item| %>
+   <% section[:items].each do |item| %>
       <li class="w-full text-left px-6 py-4 cursor-pointer transition relative flex items-center gap-4 hover:bg-indigo-500/20">
          <%= link_to item[:url],
                      data: (item[:method] ? { turbo_method: item[:method] } : {}),

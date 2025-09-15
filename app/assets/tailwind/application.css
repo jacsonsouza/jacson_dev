@@ -31,11 +31,11 @@
 @layer components {
    .btn-primary {
       @apply inline-block w-fit px-10 py-3.5
-             bg-gradient-to-tr from-indigo-500 to-rose-400
+           bg-gradient-to-tr from-indigo-500 to-rose-400
            text-white no-underline rounded-[2rem]
-             font-semibold text-lg border-none cursor-pointer
-             shadow-lg shadow-indigo-500/40 relative overflow-hidden
-             transition-all duration-500 hover:-translate-y-1.5 hover:shadow-indigo-500/60;
+           font-semibold text-lg border-none cursor-pointer
+           shadow-lg shadow-indigo-500/40 relative overflow-hidden
+           transition-all duration-500 hover:-translate-y-1.5 hover:shadow-indigo-500/60;
    }
 
    .btn-primary::before {
@@ -59,8 +59,9 @@
 
    .btn-rounded {
       @apply w-16 h-16 rounded-full shadow-lg shadow-indigo-500/40
-             bg-gradient-to-br from-indigo-500 to-rose-400 cursor-pointer 
-             flex items-center justify-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-indigo-500/60;
+           bg-gradient-to-br from-indigo-500 to-rose-400 cursor-pointer
+           flex items-center justify-center transition-all duration-300
+           hover:-translate-y-1.5 hover:shadow-indigo-500/60;
    }
 
    .bubble {
@@ -68,11 +69,10 @@
    }
 
    .scroll-thin {
-      @apply overflow-y-auto [&::-webkit-scrollbar]:w-1
-             [&::-webkit-scrollbar-track]:rounded-full
-             [&::-webkit-scrollbar-track]:bg-indigo-900
-             [&::-webkit-scrollbar-thumb]:rounded-full
-             [&::-webkit-scrollbar-thumb]:bg-indigo-500;
+      @apply overflow-y-auto scrollbar-thin
+           scrollbar-thumb-indigo-500 scrollbar-track-indigo-900
+           scrollbar-track-rounded-full scrollbar-thumb-rounded-full
+           transition-all duration-300 ease-in-out;
    }
 }
 
