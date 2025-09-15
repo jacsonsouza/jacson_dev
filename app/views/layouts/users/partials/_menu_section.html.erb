@@ -5,8 +5,8 @@
 <ul>
    <% section[:items].each do |item| %>
       <li class="w-full text-left px-6 py-4 cursor-pointer transition relative flex items-center gap-4 hover:bg-indigo-500/20">
-         <%= link_to item[:url],
-                     data: (item[:method] ? { turbo_method: item[:method] } : {}),
+         <%= link_to item[:path],
+                     data: (item[:method] ? { turbo_method: item[:method].to_sym } : {}),
                      class: "flex items-center gap-4 w-full" do %>
 
             <i class="<%= item[:icon] %> text-lg text-zinc-100 transition-all duration-100" aria-hidden="true"></i>

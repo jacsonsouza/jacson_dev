@@ -26,6 +26,7 @@
    </head>
 
    <body class="bg-gradient-to-br from-slate-900 to-slate-800 min-h-screen perspective-distant">
+      <%= rc 'flash/message' %>
       <%= render 'shared/side_menu' %>
       <main class="min-h-screen flex-1 md:ml-20 relative transition [transform-style:preserve-3d]">
          <%= yield %>

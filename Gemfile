@@ -45,6 +45,7 @@ gem "thruster", require: false
 gem "devise", "~> 4.9"
 gem 'simple_form'
 gem "tailwindcss-rails", "~> 4.3"
+gem "view_component"
 
 group :development, :test do
   gem "bullet", group: "development"

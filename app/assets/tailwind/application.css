@@ -3,6 +3,9 @@
 @theme {
    --animate-float: float 8s ease-in-out infinite;
    --animate-card: cardAppear 1s ease-in-out;
+   --animate-slide-in: slideIn 0.5s forwards;
+   --animate-slide-out: slideOut 0.5s forwards;
+   --animate-progress: progress 5s linear forwards;
 
    @keyframes float {
       0% {
@@ -24,6 +27,33 @@
       100% {
          opacity: 1;
          transform: translateY(0) rotateX(0);
+      }
+   }
+
+   @keyframes slideIn {
+      from {
+         transform: translateX(100%);
+         opacity: 0;
+      }
+      to {
+         transform: translateX(0);
+         opacity: 1;
+      }
+   }
+
+   @keyframes slideOut {
+      to {
+         transform: translateX(100%);
+         opacity: 0;
+      }
+   }
+
+   @keyframes progress {
+      from {
+         transform: scaleX(1);
+      }
+      to {
+         transform: scaleX(0);
       }
    }
 }
@@ -69,10 +99,8 @@
    }
 
    .scroll-thin {
-      @apply overflow-y-auto scrollbar-thin
-           scrollbar-thumb-indigo-500 scrollbar-track-indigo-900
-           scrollbar-track-rounded-full scrollbar-thumb-rounded-full
-           transition-all duration-300 ease-in-out;
+      @apply overflow-y-auto [&::-webkit-scrollbar]:hidden hover:[&::-webkit-scrollbar]:block
+           [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar]:bg-gray-700/50 [&::-webkit-scrollbar]:rounded-3xl;
    }
 }
 
