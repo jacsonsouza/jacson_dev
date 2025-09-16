@@ -1,25 +1,30 @@
-<% messages.each do |type, message| %>
-   <div data-controller="flash-message" class="fixed top-5 right-5 z-[10000] flex flex-col gap-4 max-w-[400px] w-full">
-      <div
-      class="flash-item flex items-center gap-4 py-4 px-5 rounded-xl shadow-2xl backdrop-blur-md bg-gray-900/90 border-l-5 transition-all <%= class_type(type) %> animate-slide-in"
-      data-duration="5000"
-    >
+<div data-controller="flash-message" 
+     class="fixed top-5 right-5 z-[10000] flex flex-col gap-4 max-w-[400px] w-full">
+
+   <% messages.each do |type, message| %>
+
+      <div data-duration="5000"
+         class="flash-item flex items-center gap-4 py-4 px-5 rounded-xl shadow-2xl backdrop-blur-md bg-gray-900/90 border-l-5 transition-all <%= class_type(type) %> animate-slide-in"
+         data-flash-type="<%= type %>">
+
          <div class="text-2xl shrink-0">
             <i class="fas fa-<%= icon(type) %>"></i>
          </div>
 
          <div class="flex-1 text-left">
             <div class="font-bold mb-1.5 text-lg text-white"><%= flash_title(type) %></div>
-            <div class="text-white/90"><%= message.html_safe %></div>
-
+            <div class="text-white/90"><%= sanitize(message) %></div>
             <div class="h-1 w-full bg-white/20 rounded-xs overflow-hidden mt-2.5">
                <div class="h-full w-full rounded-xs origin-left animate-progress <%= progress(type) %>"></div>
             </div>
          </div>
 
-         <button data-close class="bg-none border-none text-white/70 hover:text-white hover:bg-white/10 cursor-pointer text-xl transition-all w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full">
+         <button data-action="click->flash-message#dismiss" 
+            class="bg-none border-none text-white/70 hover:text-white hover:bg-white/10 cursor-pointer text-xl transition-all w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full">
             <i class="fas fa-times"></i>
          </button>
       </div>
-   </div>
-<% end %>
+
+   <% end %>
+
+</div>

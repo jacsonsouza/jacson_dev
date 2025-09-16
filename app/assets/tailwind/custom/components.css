@@ -77,11 +77,10 @@
    }
 
    .scroll-thin {
-      @apply overflow-y-auto hover:[&::-webkit-scrollbar]:block [&::-webkit-scrollbar]:hidden 
-             [&::-webkit-scrollbar]:w-1
+      @apply overflow-y-auto [&::-webkit-scrollbar]:w-0.5
              [&::-webkit-scrollbar-track]:rounded-full
-           [&::-webkit-scrollbar-track]:bg-indigo-100
+           [&::-webkit-scrollbar-track]:bg-indigo-500
              [&::-webkit-scrollbar-thumb]:rounded-full
-           [&::-webkit-scrollbar-thumb]:bg-indigo-300;
+           [&::-webkit-scrollbar-thumb]:bg-indigo-900;
    }
 }
