@@ -5,9 +5,33 @@ pt-BR:
     home: "Início"
     portfolio: "Portifólio"
     skills: "Habilidades"
+    back_to_home: "Voltar para Início"
+  shared:
+    under_construction:
+      title: "Em Construção"
+      description: "Esta página está em construção."
   home:
     index:
       greeting: "Olá, eu sou "
       occupation: "Desenvolvedor Full Stack"
       intruction: "Transformo ideias em experiências digitais excepcionais com foco em desempenho e design inovador."
       projects: "Explorar Projetos"
+  users:
+    menu:
+      admin: "Admin"
+      dashboard: "Painel"
+      profile: "Perfil"
+      projects: "Projetos"
+      skills: "Habilidades"
+      blog: "Blog"
+      settings: "Configurações"
+      sign_out: "Sair"
+      sections:
+        main: "Principal"
+        content: "Conteúdo"
+        settings: "Configurações"
+    devise:
+      welcome: "Bem-vindo"
+      sign_in: "Entre com sua conta"
+      remember_me: "Lembrar-me"
+      forgot_password: "Esqueci minha senha"

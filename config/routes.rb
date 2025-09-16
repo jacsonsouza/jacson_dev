@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   root "home#index"
+  get "about" => "home#about", as: :about
+  get "skills" => "home#skills", as: :skills
+  get "portfolio" => "home#portfolio", as: :portfolio
+  get "contact" => "home#contact", as: :contact
 
   devise_for :users, controllers: { sessions: "users/devise/sessions" }
 

@@ -2,16 +2,16 @@
    <ul class="w-full contents">
 
       <% items = [
-         { name: t('links.home'), icon: 'fas fa-home', target: 'home' },
-         { name: t('links.about'), icon: 'fas fa-user', target: 'about' },
-         { name: t('links.skills'), icon: 'fas fa-code', target: 'skills' },
-         { name: t('links.portfolio'), icon: 'fas fa-briefcase', target: 'portfolio' },
-         { name: t('links.contact'), icon: 'fas fa-envelope', target: 'contact' }
+         { name: t('links.home'), icon: 'fas fa-home', target: 'home', path: root_path },
+         { name: t('links.about'), icon: 'fas fa-user', target: 'about', path: about_path },
+         { name: t('links.skills'), icon: 'fas fa-code', target: 'skills', path: skills_path },
+         { name: t('links.portfolio'), icon: 'fas fa-briefcase', target: 'portfolio', path: portfolio_path },
+         { name: t('links.contact'), icon: 'fas fa-envelope', target: 'contact', path: contact_path },
       ] %>
 
       <% items.each do |item| %>
          <li id="item-<%= item[:target] %>" class="w-full text-center py-5 my-2.5 cursor-pointer transition-all relative overflow-hidden hover:bg-indigo-900/50 active" data-target="<%= item[:target] %>">
-            <div class="flex flex-col items-center justify-center gap-5">
+            <%= link_to item[:path] || '#', class: "flex flex-col items-center justify-center gap-5" do %>
 
                <i class="<%= item[:icon] %> text-3xl text-zinc-100 transition-all group-hover:text-primary group-hover:scale-125"></i>
 
@@ -19,7 +19,7 @@
                   <%= item[:name] %>
                </span>
 
-            </div>
+            <% end %>
          </li>
       <% end %>
 

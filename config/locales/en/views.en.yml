@@ -5,6 +5,11 @@ en:
     home: "Home"
     portfolio: "Portfolio"
     skills: "Skills"
+    back_to_home: "Back to Home"
+  shared:
+    under_construction:
+      title: "Under Construction"
+      description: "This page is under construction."
   home:
     index:
       greeting: "Hi, I'm "
