@@ -11,8 +11,8 @@ Rails.application.routes.draw do
 
   root "home#index"
 
-  devise_for :users, controllers: { sessions: 'users/devise/sessions' }
-  
+  devise_for :users, controllers: { sessions: "users/devise/sessions" }
+
   authenticate :user do
     namespace :users do
       root "dashboard#index"

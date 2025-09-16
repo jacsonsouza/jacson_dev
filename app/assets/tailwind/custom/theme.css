@@ -1,0 +1,75 @@
+@theme {
+   --animate-float: float 8s ease-in-out infinite;
+   --animate-card: cardAppear 1s ease-in-out;
+   --animate-slide-in: slideIn 0.5s forwards;
+   --animate-slide-out: slideOut 0.5s forwards;
+   --animate-progress: progress 5s linear forwards;
+   --animate-bounce-in-right: bounceInRight 2s ease;
+
+   @keyframes float {
+      0% {
+         transform: translateY(0) rotate(0deg);
+      }
+      50% {
+         transform: translateY(-20px) rotate(10deg);
+      }
+      100% {
+         transform: translateY(0) rotate(0deg);
+      }
+   }
+
+   @keyframes cardAppear {
+      0% {
+         opacity: 0;
+         transform: translateY(50px) rotateX(30deg);
+      }
+      100% {
+         opacity: 1;
+         transform: translateY(0) rotateX(0);
+      }
+   }
+
+   @keyframes slideIn {
+      from {
+         transform: translateX(100%);
+         opacity: 0;
+      }
+      to {
+         transform: translateX(0);
+         opacity: 1;
+      }
+   }
+
+   @keyframes slideOut {
+      to {
+         transform: translateX(100%);
+         opacity: 0;
+      }
+   }
+
+   @keyframes progress {
+      from {
+         transform: scaleX(1);
+      }
+      to {
+         transform: scaleX(0);
+      }
+   }
+
+   @keyframes bounceInRight {
+      0% {
+         opacity: 0;
+         transform: translateX(2000px);
+      }
+      60% {
+         opacity: 1;
+         transform: translateX(-30px);
+      }
+      80% {
+         transform: translateX(10px);
+      }
+      100% {
+         transform: translateX(0);
+      }
+   }
+}

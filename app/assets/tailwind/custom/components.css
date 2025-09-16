@@ -1,0 +1,87 @@
+@layer components {
+   .heading-1 {
+      @apply text-4xl font-bold bg-gradient-to-br from-indigo-500 to-rose-400 bg-clip-text text-transparent;
+   }
+
+   .heading-2 {
+      @apply text-2xl font-semibold bg-gradient-to-br from-indigo-500 to-pink-500 bg-clip-text text-transparent;
+   }
+
+   .badge {
+      @apply inline-block px-3 py-1 text-sm text-slate-300 bg-indigo-500/20 rounded-full;
+   }
+
+   .avatar {
+      @apply object-cover w-28 h-28 mb-4 border-4 border-indigo-500 rounded-full shadow-lg;
+   }
+
+   .page-section {
+      @apply relative flex items-center justify-center w-full h-screen px-6 py-12 sm:px-8 sm:py-16 lg:px-12 overflow-hidden;
+   }
+
+   .panel {
+      @apply flex flex-col-reverse items-center w-full max-w-5xl gap-8 p-6 text-white 
+             border border-white/10 bg-gray-900/70 backdrop-blur-md rounded-3xl 
+             shadow-2xl translate-z-12 md:flex-row md:gap-16 md:p-10 sm:p-8 animate-bounce-in-right;
+   }
+
+   .text-fluid-xl {
+      @apply text-2xl md:text-3xl lg:text-4xl;
+   }
+
+   .text-fluid-lg {
+      @apply text-lg md:text-xl lg:text-2xl;
+   }
+
+   .text-fluid-md {
+      @apply md:text-base lg:text-lg;
+   }
+
+   .btn-primary {
+      @apply inline-block w-fit px-10 py-3.5
+             bg-gradient-to-tr from-indigo-500 to-rose-400
+             text-white no-underline rounded-[2rem]
+             font-semibold text-lg border-none cursor-pointer
+             shadow-lg shadow-indigo-500/40 relative overflow-hidden
+             transition-all duration-500 hover:-translate-y-1.5 hover:shadow-indigo-500/60;
+   }
+
+   .btn-primary::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+         90deg,
+         transparent,
+         rgba(255, 255, 255, 0.2),
+         transparent
+      );
+      transform: translateX(-100%);
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
+   }
+
+   .btn-primary:hover::before {
+      transform: translateX(100%);
+   }
+
+   .btn-rounded {
+      @apply w-16 h-16 rounded-full shadow-lg shadow-indigo-500/40
+           bg-gradient-to-br from-indigo-500 to-rose-400 cursor-pointer
+           flex items-center justify-center transition-all duration-300
+           hover:-translate-y-1.5 hover:shadow-indigo-500/60;
+   }
+
+   .bubble {
+      @apply absolute bg-gradient-to-tr from-indigo-500 to-rose-400 rounded-full animate-float;
+   }
+
+   .scroll-thin {
+      @apply overflow-y-auto hover:[&::-webkit-scrollbar]:block [&::-webkit-scrollbar]:hidden 
+             [&::-webkit-scrollbar]:w-1
+             [&::-webkit-scrollbar-track]:rounded-full
+           [&::-webkit-scrollbar-track]:bg-indigo-100
+             [&::-webkit-scrollbar-thumb]:rounded-full
+           [&::-webkit-scrollbar-thumb]:bg-indigo-300;
+   }
+}

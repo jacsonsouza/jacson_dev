@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #
 # Uncomment this and change the path if necessary to include your own
 # components.
@@ -85,7 +86,7 @@ SimpleForm.setup do |config|
   config.error_notification_tag = :div
 
   # CSS class to add for error notification helper.
-  config.error_notification_class = 'error_notification'
+  config.error_notification_class = "error_notification"
 
   # Series of attempts to detect a default label method for collection.
   # config.collection_label_methods = [ :to_label, :name, :title, :to_s ]
@@ -161,7 +162,7 @@ SimpleForm.setup do |config|
   # config.input_class = nil
 
   # Define the default class of the input wrapper of the boolean input.
-  config.boolean_label_class = 'checkbox'
+  config.boolean_label_class = "checkbox"
 
   # Defines if the default input wrapper class should be included in radio
   # collection wrappers.
@@ -175,7 +176,7 @@ SimpleForm.setup do |config|
   # config.input_field_error_class = 'is-invalid'
 
   # Default style
-  config.wrappers :tailwind, tag: 'div', class: 'mb-6', error_class: :field_with_errors do |b|
+  config.wrappers :tailwind, tag: "div", class: "mb-6", error_class: :field_with_errors do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
@@ -184,17 +185,16 @@ SimpleForm.setup do |config|
     b.optional :min_max
     b.optional :readonly
 
-    b.use :label, class: 'block text-sm font-medium text-gray-300 mb-2'
+    b.use :label, class: "block text-sm font-medium text-gray-300 mb-2"
 
-    b.wrapper tag: 'div', class: 'relative' do |ba|
-      ba.use :input, class: 'w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent'
-      
-      ba.use :error, wrap_with: { tag: 'p', class: 'mt-1 text-sm text-red-500' }
-      ba.use :hint, wrap_with: { tag: 'p', class: 'mt-1 text-sm text-gray-400' }
+    b.wrapper tag: "div", class: "relative" do |ba|
+      ba.use :input, class: "w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+
+      ba.use :error, wrap_with: { tag: "p", class: "mt-1 text-sm text-red-500" }
+      ba.use :hint, wrap_with: { tag: "p", class: "mt-1 text-sm text-gray-400" }
     end
-
   end
 
   config.default_wrapper = :tailwind
-  config.button_class = 'btn-primary w-full'
+  config.button_class = "btn-primary w-full"
 end

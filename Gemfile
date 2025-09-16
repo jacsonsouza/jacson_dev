@@ -43,7 +43,7 @@ gem "thruster", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "devise", "~> 4.9"
-gem 'simple_form'
+gem "simple_form"
 gem "tailwindcss-rails", "~> 4.3"
 gem "view_component"
 
