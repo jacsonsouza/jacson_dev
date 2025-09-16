@@ -1,23 +1,27 @@
 <nav id="side-menu" class="bg-gray-900/90 hidden md:flex flex-col w-20 items-center py-8 z-[100] fixed h-full backdrop-blur-md shadow-2xl transition-all duration-500 hover:w-56 group">
-   <ul class="w-full contents">
+   <ul class="w-full grid grid-rows-5 h-full">
 
       <% items = [
-         { name: t('links.home'), icon: 'fas fa-home', target: 'home', path: root_path },
-         { name: t('links.about'), icon: 'fas fa-user', target: 'about', path: about_path },
-         { name: t('links.skills'), icon: 'fas fa-code', target: 'skills', path: skills_path },
-         { name: t('links.portfolio'), icon: 'fas fa-briefcase', target: 'portfolio', path: portfolio_path },
-         { name: t('links.contact'), icon: 'fas fa-envelope', target: 'contact', path: contact_path },
-      ] %>
+      { name: t('links.home'), icon: 'fas fa-home', target: 'home', path: root_path },
+      { name: t('links.about'), icon: 'fas fa-user', target: 'about', path: about_path },
+      { name: t('links.skills'), icon: 'fas fa-code', target: 'skills', path: skills_path },
+      { name: t('links.portfolio'), icon: 'fas fa-briefcase', target: 'portfolio', path: portfolio_path },
+      { name: t('links.contact'), icon: 'fas fa-envelope', target: 'contact', path: contact_path },
+    ] %>
 
       <% items.each do |item| %>
-         <li id="item-<%= item[:target] %>" class="w-full text-center py-5 my-2.5 cursor-pointer transition-all relative overflow-hidden hover:bg-indigo-900/50 active" data-target="<%= item[:target] %>">
-            <%= link_to item[:path] || '#', class: "flex flex-col items-center justify-center gap-5" do %>
+         <li id="item-<%= item[:target] %>" class="w-full overflow-hidden flex items-center justify-center" data-target="<%= item[:target] %>">
+            <%= active_link_to item[:path] || '#', 
+                          class: "w-full h-full transition-all relative flex items-center justify-center text-zinc-100 hover:bg-indigo-900/50 px-2", 
+                          class_active: "bg-indigo-900 text-white",
+                          active: :exclusive do %>
 
-               <i class="<%= item[:icon] %> text-3xl text-zinc-100 transition-all group-hover:text-primary group-hover:scale-125"></i>
-
-               <span class="text-zinc-100 text-base font-medium opacity-0 -translate-y-1/2 whitespace-nowrap transition-all duration-300 transform -translate-x-5 group-hover:opacity-100 group-hover:translate-x-0">
-                  <%= item[:name] %>
-               </span>
+               <div class="flex flex-col items-center justify-center gap-2 w-full">
+                  <i class="<%= item[:icon] %> text-3xl transition-all group-hover:text-primary group-hover:scale-125"></i>
+                  <span class="text-base font-medium hidden whitespace-nowrap group-hover:block animate-slide-in">
+                     <%= item[:name] %>
+                  </span>
+               </div>
 
             <% end %>
          </li>
