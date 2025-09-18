@@ -1,6 +1,5 @@
 <div class="text-center mb-8">
-   <h1 class="heading-1"><%= t('.welcome') %></h1>
-   <p class="text-lg text-slate-300"><%= t('.sign_in') %></p>
+   <h1 class="heading-1"><%= t('.links.sign_in') %></h1>
 </div>
 
 <%= simple_form_for @user, url: user_session_path do |f| %>
@@ -18,5 +17,5 @@
       <%= link_to t('.forgot_password'), new_user_password_path, class: 'text-indigo-500 hover:underline' %>
    </div>
 
-   <%= f.button :submit %>
+   <%= f.button :submit, t('links.sign_in') %>
 <% end %>

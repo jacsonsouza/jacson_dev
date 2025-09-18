@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   get "portfolio" => "home#portfolio", as: :portfolio
   get "contact" => "home#contact", as: :contact
 
-  devise_for :users, controllers: { sessions: "users/devise/sessions" }
+  devise_for :users, controllers: { sessions: "users/devise/sessions",
+                                    registrations: "users/devise/registrations", }
 
   authenticate :user do
     namespace :users do

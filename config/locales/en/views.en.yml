@@ -1,11 +1,13 @@
 en:
   links:
     about: "About"
+    back_to_home: "Back to Home"
     contact: "Contact"
     home: "Home"
     portfolio: "Portfolio"
     skills: "Skills"
-    back_to_home: "Back to Home"
+    sign_in: "Sign in"
+    sign_up: "Sign up"
   shared:
     under_construction:
       title: "Under Construction"
@@ -37,3 +39,6 @@ en:
           sign_in: "Sign in to your account"
           remember_me: "Remember me"
           forgot_password: "Forgot your password?"
+        registrations:
+          new:
+            sign_up: "Sign up"

@@ -23,14 +23,21 @@
       <%# Includes all stylesheet files in app/assets/stylesheets %>
       <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
       <%= javascript_importmap_tags %>
+
+      <%= favicon_link_tag %>
    </head>
 
-   <body class="flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 min-h-screen perspective-distant">
+   <body class="page-container flex items-center justify-center">
+
       <%= rc 'flash/message' %>
-      <div class="w-full max-w-md p-7 relative z-10">
+
+      <div class="w-full max-w-2xl p-7 relative z-10">
          <div class="w-full p-10 bg-gray-900/70 backdrop-blur-md border border-white/10 rounded-3xl shadow-2xl animate-card transform-3d">
+
             <%= yield %>
+
          </div>
       </div>
+
    </body>
 </html>

@@ -4,14 +4,18 @@ en:
     "no": 'No'
     labels:
       defaults: &defaults
+        name: 'Name'
         email: 'E-mail'
         password: 'Password'
+        password_confirmation: 'Password confirmation'
       user:
         <<: *defaults
     placeholders:
       defaults: &defaults
+        name: 'Name'
         email: 'E-mail'
         password: 'Password'
+        password_confirmation: 'Password confirmation'
       user:
         <<: *defaults
     required:
