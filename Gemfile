@@ -61,6 +61,7 @@ group :development do
   gem "rubocop-minitest", require: false
   gem "rubocop-rails", require: false
   gem "web-console"
+  gem 'mailtrap'
 end
 
 group :test do
