@@ -1,0 +1,11 @@
+<div class="text-center mb-8">
+   <h1 class="heading-1"><%= t('links.send_unlock_instructions') %></h1>
+</div>
+
+<%= simple_form_for @user, url: user_unlock_path do |f| %>
+
+   <%= f.input :email %>
+
+   <%= f.button :submit, t('links.send_unlock_instructions') %>
+
+<% end %>

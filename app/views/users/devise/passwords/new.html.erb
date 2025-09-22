@@ -1,0 +1,11 @@
+<div class="text-center mb-8">
+   <h1 class="heading-1"><%= t('links.send_me_reset_password_instructions') %></h1>
+</div>
+
+<%= simple_form_for @user, url: user_password_path do |f| %>
+
+   <%= f.input :email %>
+
+   <%= f.button :submit, t('links.send_me_reset_password_instructions') %>
+
+<% end %>

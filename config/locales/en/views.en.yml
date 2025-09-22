@@ -2,9 +2,13 @@ en:
   links:
     about: "About"
     back_to_home: "Back to Home"
+    confirm_your_email: "Confirm your email"
     contact: "Contact"
     home: "Home"
     portfolio: "Portfolio"
+    reset_password: "Reset password"
+    send_me_reset_password_instructions: "Send me reset password instructions"
+    send_unlock_instructions: "Send unlock instructions"
     skills: "Skills"
     sign_in: "Sign in"
     sign_up: "Sign up"

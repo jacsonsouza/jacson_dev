@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   get "contact" => "home#contact", as: :contact
 
   devise_for :users, controllers: { sessions: "users/devise/sessions",
-                                    registrations: "users/devise/registrations", }
+                                    registrations: "users/devise/registrations",
+                                    passwords: "users/devise/passwords",
+                                    confirmations: "users/devise/confirmations",
+                                    unlocks: "users/devise/unlocks" }
 
   authenticate :user do
     namespace :users do
