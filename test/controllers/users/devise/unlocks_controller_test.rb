@@ -2,7 +2,7 @@ require "test_helper"
 
 class Users::Devise::UnlocksControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:admin)
+    @user = FactoryBot.create(:user)
     @user.lock_access!
   end
 

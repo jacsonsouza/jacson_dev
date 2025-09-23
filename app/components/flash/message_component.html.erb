@@ -1,4 +1,5 @@
 <div data-controller="flash-message" 
+     id="flash-message"
      class="fixed top-5 right-5 z-[10000] flex flex-col gap-4 max-w-[400px] w-full">
 
    <% messages.each do |type, message| %>
@@ -13,7 +14,7 @@
 
          <div class="flex-1 text-left">
             <div class="font-bold mb-1.5 text-lg text-white"><%= flash_title(type) %></div>
-            <div class="text-white/90"><%= sanitize(message) %></div>
+            <div id="flash-text" class="text-white/90"><%= sanitize(message) %></div>
             <div class="h-1 w-full bg-white/20 rounded-xs overflow-hidden mt-2.5">
                <div class="h-full w-full rounded-xs origin-left animate-progress <%= progress(type) %>"></div>
             </div>
