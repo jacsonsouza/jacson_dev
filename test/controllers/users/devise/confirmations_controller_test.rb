@@ -11,48 +11,48 @@ class Users::Devise::ConfirmationsControllerTest < ActionDispatch::IntegrationTe
     assert_response :success
   end
 
-  test 'should send confirmation instructions for unconfirmed user' do
+  test "should send confirmation instructions for unconfirmed user" do
     assert_emails 1 do
       post user_confirmation_url, params: { user: { email: @unconfirmed_user.email } }
     end
-    
+
     assert_redirected_to new_user_session_path
-    assert_equal I18n.t('devise.confirmations.send_instructions'), flash[:notice]
+    assert_equal I18n.t("devise.confirmations.send_instructions"), flash[:notice]
   end
 
-  test 'should not send confirmation for already confirmed account' do
+  test "should not send confirmation for already confirmed account" do
     assert_emails 0 do
       post user_confirmation_url, params: { user: { email: @confirmed_user.email } }
     end
-    
+
     assert_response :unprocessable_content
-    assert_error_message I18n.t('errors.messages.already_confirmed')
+    assert_error_message I18n.t("errors.messages.already_confirmed")
   end
 
-  test 'should handle non-existent email address gracefully' do
+  test "should handle non-existent email address gracefully" do
     assert_emails 0 do
-      post user_confirmation_url, params: { user: { email: 'nonexistent@example.com' } }
+      post user_confirmation_url, params: { user: { email: "nonexistent@example.com" } }
     end
-    
+
     assert_response :unprocessable_content
-    assert_error_message I18n.t('errors.messages.not_found')
+    assert_error_message I18n.t("errors.messages.not_found")
   end
 
-  test 'should validate email parameter presence' do
+  test "should validate email parameter presence" do
     assert_emails 0 do
-      post user_confirmation_url, params: { user: { email: '' } }
+      post user_confirmation_url, params: { user: { email: "" } }
     end
-    
+
     assert_response :unprocessable_content
-    assert_error_message I18n.t('errors.messages.blank')
+    assert_error_message I18n.t("errors.messages.blank")
   end
 
-  test 'should confirm user account with valid token' do
+  test "should confirm user account with valid token" do
     token = @unconfirmed_user.confirmation_token
     get user_confirmation_url(confirmation_token: token)
-    
+
     assert_redirected_to new_user_session_path
-    assert_equal I18n.t('devise.confirmations.confirmed'), flash[:notice]
+    assert_equal I18n.t("devise.confirmations.confirmed"), flash[:notice]
     assert @unconfirmed_user.reload.confirmed?
   end
 end

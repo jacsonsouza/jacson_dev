@@ -9,14 +9,14 @@ class Flash::MessageComponent < ViewComponent::Base
       progress: "bg-green-500"
     },
     alert: {
-      title: "Error", 
+      title: "Error",
       class: "border-l-red-500",
       icon: "exclamation-circle text-red-500",
       progress: "bg-red-500"
     },
     warning: {
       title: "Warning",
-      class: "border-l-yellow-500", 
+      class: "border-l-yellow-500",
       icon: "exclamation-triangle text-yellow-500",
       progress: "bg-yellow-500"
     }
@@ -25,7 +25,7 @@ class Flash::MessageComponent < ViewComponent::Base
   DEFAULT_CONFIG = {
     title: "Info",
     class: "border-l-gray-500",
-    icon: "info-circle text-gray-500", 
+    icon: "info-circle text-gray-500",
     progress: "bg-gray-500"
   }.freeze
 

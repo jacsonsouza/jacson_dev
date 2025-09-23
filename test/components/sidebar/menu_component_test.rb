@@ -18,7 +18,7 @@ class Sidebar::MenuComponentTest < ViewComponent::TestCase
 
   def test_sidebar_functionality
     render_inline(@component)
-    
+
     assert_selector "[data-controller='sidebar']"
     assert_selector "button[data-action='click->sidebar#toggleSidebar']"
     assert_selector "nav[data-sidebar-target='sidebar']"
@@ -29,16 +29,16 @@ class Sidebar::MenuComponentTest < ViewComponent::TestCase
   def assert_user_section
     assert_selector "img.avatar[alt='#{@user.name}']"
     assert_selector "h2", text: @user.name
-    assert_selector ".badge", text: I18n.t('users.menu.admin')
+    assert_selector ".badge", text: I18n.t("users.menu.admin")
   end
 
   def assert_all_menu_sections
     sections = [
       I18n.t("users.menu.sections.main"),
-      I18n.t("users.menu.sections.content"), 
+      I18n.t("users.menu.sections.content"),
       I18n.t("users.menu.sections.settings")
     ]
-    
+
     sections.each do |section|
       assert_selector "##{section}_section", text: section
     end

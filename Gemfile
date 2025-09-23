@@ -42,7 +42,7 @@ gem "thruster", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-gem 'active_link_to'
+gem "active_link_to"
 gem "devise", "~> 4.9"
 gem "simple_form"
 gem "tailwindcss-rails", "~> 4.3"
@@ -52,8 +52,8 @@ group :development, :test do
   gem "bullet", group: "development"
   gem "brakeman", require: false
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
-  gem 'factory_bot_rails'
-  gem 'faker'
+  gem "factory_bot_rails"
+  gem "faker"
   gem "rubocop-rails-omakase", require: false
 end
 
@@ -63,7 +63,7 @@ group :development do
   gem "rubocop-minitest", require: false
   gem "rubocop-rails", require: false
   gem "web-console"
-  gem 'mailtrap'
+  gem "mailtrap"
 end
 
 group :test do
