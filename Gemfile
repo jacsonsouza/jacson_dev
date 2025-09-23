@@ -68,6 +68,6 @@ end
 group :test do
   gem "capybara"
   gem "capybara-screenshot"
-  gem "selenium-webdriver"
+  gem "selenium-webdriver", '4.22.0'
   gem "simplecov", require: false
 end
