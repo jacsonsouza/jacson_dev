@@ -2,7 +2,7 @@ require "test_helper"
 
 class Users::Devise::SessionsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:admin)
+    @user = FactoryBot.create(:user)
   end
 
   test "should get new" do
@@ -12,7 +12,7 @@ class Users::Devise::SessionsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should sign in with a valid user' do
     post user_session_path, params: { user: { email: @user.email, password: @user.password } }
-    puts @user.password
+
     assert_redirected_to users_root_path
   end
 end

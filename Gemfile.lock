@@ -127,6 +127,13 @@ GEM
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
+    factory_bot (6.5.5)
+      activesupport (>= 6.1.0)
+    factory_bot_rails (6.5.1)
+      factory_bot (~> 6.5)
+      railties (>= 6.1.0)
+    faker (3.5.2)
+      i18n (>= 1.8.11, < 2)
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
@@ -427,6 +434,8 @@ DEPENDENCIES
   capybara-screenshot
   debug
   devise (~> 4.9)
+  factory_bot_rails
+  faker
   importmap-rails
   jbuilder
   kamal

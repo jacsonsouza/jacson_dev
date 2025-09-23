@@ -52,6 +52,8 @@ group :development, :test do
   gem "bullet", group: "development"
   gem "brakeman", require: false
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  gem 'factory_bot_rails'
+  gem 'faker'
   gem "rubocop-rails-omakase", require: false
 end
 
