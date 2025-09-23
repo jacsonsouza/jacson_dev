@@ -29,7 +29,7 @@ jobs:
           --health-retries 5
 
       chrome-server:
-        image: selenium/standalone-chrome:latest
+        image: selenium/standalone-chrome:4.22.0
         ports: ["4444:4444"]
         volumes:
           - /var/www/jacson_dev/test/assets/images:/var/www/jacson_dev/test/assets/images
