@@ -15,7 +15,7 @@
       </div>
 
       <% sections.each do |section| %>
-         <h3 class="pt-3.5 px-6 pb-1 text-slate-400 text-sm uppercase tracking-wide mt-3.5">
+         <h3 id="<%= section[:name] %>_section" class="pt-3.5 px-6 pb-1 text-slate-400 text-sm uppercase tracking-wide mt-3.5">
             <%= section[:name] %>
          </h3>
 
