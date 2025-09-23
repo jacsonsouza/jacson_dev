@@ -1,8 +1,11 @@
 require "test_helper"
 require "support/capybara"
+require "support/helpers/capybara_custom_assertions"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   driven_by :chrome
+
+  include CapybaraCustomAssertions
 
   def setup
     super

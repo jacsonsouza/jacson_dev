@@ -1,5 +1,6 @@
 require "support/simplecov"
 require "support/bullet"
+require "support/helpers/integration_custom_assertions"
 
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
@@ -11,6 +12,8 @@ module ActiveSupport
     parallelize(workers: :number_of_processors)
 
     include BulletHelper
+    include IntegrationCustomAssertions
+    include Devise::Test::IntegrationHelpers
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all

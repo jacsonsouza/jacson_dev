@@ -9,8 +9,21 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
-  # Defines the root path route ("/")
-  # root "posts#index"
-
   root "home#index"
+  get "about" => "home#about", as: :about
+  get "skills" => "home#skills", as: :skills
+  get "portfolio" => "home#portfolio", as: :portfolio
+  get "contact" => "home#contact", as: :contact
+
+  devise_for :users, controllers: { sessions: "users/devise/sessions",
+                                    registrations: "users/devise/registrations",
+                                    passwords: "users/devise/passwords",
+                                    confirmations: "users/devise/confirmations",
+                                    unlocks: "users/devise/unlocks" }
+
+  authenticate :user do
+    namespace :users do
+      root "dashboard#index"
+    end
+  end
 end

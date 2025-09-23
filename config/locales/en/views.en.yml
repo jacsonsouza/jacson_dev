@@ -1,13 +1,48 @@
 en:
   links:
     about: "About"
+    back_to_home: "Back to Home"
+    confirm_your_email: "Confirm your email"
     contact: "Contact"
     home: "Home"
     portfolio: "Portfolio"
+    reset_password: "Reset password"
+    send_me_reset_password_instructions: "Send me reset password instructions"
+    send_unlock_instructions: "Send unlock instructions"
     skills: "Skills"
+    sign_in: "Sign in"
+    sign_up: "Sign up"
+  shared:
+    under_construction:
+      title: "Under Construction"
+      description: "This page is under construction."
   home:
     index:
       greeting: "Hi, I'm "
       occupation: "Full Stack Developer"
       introduction: "I turn ideas into exceptional digital experiences with a strong focus on performance and innovative design."
       projects: "Explore Projects"
+  users:
+    menu:
+      admin: "Admin"
+      dashboard: "Dashboard"
+      profile: "Profile"
+      projects: "Projects"
+      skills: "Skills"
+      blog: "Blog"
+      settings: "Settings"
+      sign_out: "Sign out"
+      sections:
+        main: "Main"
+        content: "Content"
+        settings: "Settings"
+    devise:
+      sessions:
+        new:
+          welcome: "Welcome"
+          sign_in: "Sign in to your account"
+          remember_me: "Remember me"
+          forgot_password: "Forgot your password?"
+        registrations:
+          new:
+            sign_up: "Sign up"

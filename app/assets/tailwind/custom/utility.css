@@ -1,0 +1,3 @@
+@utility animation-delay-* {
+   animation-delay: --value([ *]);
+}
