@@ -4,6 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :timeoutable,
          :recoverable, :rememberable, :validatable, :confirmable, :lockable
 
+  validate :only_one_user_allowed
   validates :email, presence: true
   validates :name, presence: true, length: { minimum: 2, maximum: 50 }
+
+  private
+
+  def only_one_user_allowed
+    errors.add(:base, I18n.t('errors.messages.only_one_user')) if User.count >= 1
+  end
 end
