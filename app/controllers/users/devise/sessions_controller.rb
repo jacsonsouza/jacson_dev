@@ -1,5 +1,5 @@
 class Users::Devise::SessionsController < Devise::SessionsController
-  layout "devise/sessions"
+  layout 'devise/sessions'
 
   def after_sign_in_path_for(_resource)
     users_root_path

@@ -1,3 +1,3 @@
 class Users::Devise::PasswordsController < Devise::PasswordsController
-  layout "devise/sessions"
+  layout 'devise/sessions'
 end

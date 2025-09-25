@@ -1,4 +1,4 @@
-require "test_helper"
+require 'test_helper'
 
 class Users::Devise::RegistrationsControllerTest < ActionDispatch::IntegrationTest
   test 'should not allow sign up' do
@@ -107,10 +107,10 @@ class Users::Devise::RegistrationsControllerTest < ActionDispatch::IntegrationTe
 
   def valid_user_params
     {
-      email: "test@example.com",
-      name: "Test User",
-      password: "secure_password_123",
-      password_confirmation: "secure_password_123"
+      email: 'test@example.com',
+      name: 'Test User',
+      password: 'secure_password_123',
+      password_confirmation: 'secure_password_123'
     }
   end
 end

@@ -1,4 +1,4 @@
-require "test_helper"
+require 'test_helper'
 
 class Users::DashboardControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -6,8 +6,9 @@ class Users::DashboardControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
   end
 
-  test "should get index" do
+  test 'should get index' do
     get users_root_path
+
     assert_response :success
   end
 end

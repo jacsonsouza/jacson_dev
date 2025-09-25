@@ -1,21 +1,22 @@
-require "test_helper"
+require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   setup do
     @user = FactoryBot.build(:user)
   end
 
-  test "should be valid" do
-    assert @user.valid?
+  test 'should be valid' do
+    assert_predicate @user, :valid?
   end
 
-  test "should be invalid" do
+  test 'should be invalid' do
     @user.email = nil
+
     assert_not @user.valid?
   end
 
   test 'should allow only one user registered' do
-    assert @user.valid?
+    assert_predicate @user, :valid?
   end
 
   test 'should not allow multiple users registered' do

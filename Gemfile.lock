@@ -308,6 +308,9 @@ GEM
     rubocop-capybara (2.22.1)
       lint_roller (~> 1.1)
       rubocop (~> 1.72, >= 1.72.1)
+    rubocop-factory_bot (2.27.1)
+      lint_roller (~> 1.1)
+      rubocop (~> 1.72, >= 1.72.1)
     rubocop-minitest (0.38.1)
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
@@ -444,6 +447,7 @@ DEPENDENCIES
   rails-i18n (~> 8.0.0)
   rubocop
   rubocop-capybara
+  rubocop-factory_bot
   rubocop-minitest
   rubocop-rails
   rubocop-rails-omakase

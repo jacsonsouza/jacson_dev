@@ -1,3 +1,3 @@
 class Users::Devise::UnlocksController < Devise::UnlocksController
-  layout "devise/sessions"
+  layout 'devise/sessions'
 end
