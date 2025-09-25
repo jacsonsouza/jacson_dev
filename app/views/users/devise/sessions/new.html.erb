@@ -1,6 +1,4 @@
-<div class="text-center mb-8">
-   <h1 class="heading-1"><%= t('links.sign_in') %></h1>
-</div>
+<%= provide(:page_title, t('links.sign_in') ) %>
 
 <%= simple_form_for @user, url: user_session_path do |f| %>
 

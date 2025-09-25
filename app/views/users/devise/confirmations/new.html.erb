@@ -1,6 +1,4 @@
-<div class="text-center mb-8">
-   <h1 class="heading-1"><%= t('links.confirm_your_email') %></h1>
-</div>
+<%= provide(:page_title, t('links.confirm_your_email') ) %>
 
 <%= simple_form_for @user, url: user_confirmation_path, html: { method: :post } do |f| %>
 

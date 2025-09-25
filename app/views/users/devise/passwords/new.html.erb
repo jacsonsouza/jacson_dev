@@ -1,10 +1,13 @@
-<div class="text-center mb-8">
-   <h1 class="heading-1"><%= t('links.send_me_reset_password_instructions') %></h1>
-</div>
+<%= provide(:page_title, t('links.send_me_reset_password_instructions') ) %>
 
 <%= simple_form_for @user, url: user_password_path do |f| %>
 
    <%= f.input :email %>
+
+   <div class="mb-6 flex flex-wrap justify-end gap-1 text-fluid-mb">
+      <span class="text-slate-400">Remembered your password?</span>
+      <%= link_to t('links.sign_in'), new_user_session_path, class: 'text-indigo-500 hover:underline' %>
+   </div>
 
    <%= f.button :submit, t('links.send_me_reset_password_instructions') %>
 
