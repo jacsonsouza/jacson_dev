@@ -1,9 +1,9 @@
-<%= provide(:page_title, t('links.confirm_your_email') ) %>
+<%= provide(:page_title, t('links.send_me_confirmation_instructions') ) %>
 
 <%= simple_form_for @user, url: user_confirmation_path, html: { method: :post } do |f| %>
 
    <%= f.input :email, value: @user.pending_reconfirmation? ? @user.unconfirmed_email : @user.email %>
 
-   <%= f.button :submit, t('links.confirm_your_email') %>
+   <%= f.button :submit, t('links.send_me_instructions') %>
 
 <% end %>

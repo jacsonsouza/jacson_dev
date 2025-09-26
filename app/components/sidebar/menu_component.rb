@@ -4,8 +4,8 @@ class Sidebar::MenuComponent < ViewComponent::Base
   MenuItem = Struct.new(:icon, :name, :path, :method_type, keyword_init: true)
 
   def initialize(current_user: nil)
-    super
     @current_user = current_user
+    super
   end
 
   def sections

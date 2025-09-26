@@ -3,7 +3,6 @@ require 'test_helper'
 class Users::Devise::PasswordsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = FactoryBot.create(:user)
-    @unconfirmed_user = FactoryBot.create(:user, confirmed_at: nil)
   end
 
   test 'should get new' do
@@ -22,8 +21,10 @@ class Users::Devise::PasswordsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should send reset instructions even for unconfirmed user' do
+    @user.update!(confirmed_at: nil)
+
     assert_emails 1 do
-      post user_password_url, params: { user: { email: @unconfirmed_user.email } }
+      post user_password_url, params: { user: { email: @user.email } }
     end
 
     assert_redirected_to new_user_session_path

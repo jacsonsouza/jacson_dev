@@ -1,10 +1,9 @@
-# require:
-#   - rubocop-minitest
-#   - rubocop-rails
-#   - rubocop-capybara
-#   - rubocop-factory_bot
-
-plugins: [rubocop-minitest, rubocop-rails, rubocop-capybara, rubocop-factory_bot]
+plugins: [
+  rubocop-minitest, 
+  rubocop-rails, 
+  rubocop-capybara, 
+  rubocop-factory_bot
+]
 
 AllCops:
   NewCops: enable

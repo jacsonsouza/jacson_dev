@@ -9,7 +9,7 @@ class UnlocksTest < ApplicationSystemTestCase
   test 'should send unlock instructions when solicited by user' do
     visit new_user_unlock_path
 
-    assert_selector 'h1', text: I18n.t('links.send_unlock_instructions')
+    assert_selector 'span', text: I18n.t('links.send_me_unlock_instructions')
 
     within 'form' do
       fill_in 'user_email', with: @user.email

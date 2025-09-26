@@ -42,9 +42,9 @@
    }
 
    .btn-primary {
-      @apply inline-block w-fit px-10 py-3.5
+      @apply text-center px-4 py-2.5 
              bg-gradient-to-tr from-indigo-500 to-rose-400
-             text-white no-underline rounded-[2rem]
+             text-white no-underline rounded-4xl
              font-semibold text-lg border-none cursor-pointer
              shadow-lg shadow-indigo-500/40 relative overflow-hidden
              transition-all duration-500 hover:-translate-y-1.5 hover:shadow-indigo-500/60;

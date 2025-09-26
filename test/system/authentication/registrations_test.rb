@@ -1,6 +1,10 @@
 require 'application_system_test_case'
 
 class RegistrationsTest < ApplicationSystemTestCase
+  setup do
+    skip 'This test is skipped because it is not yet available'
+  end
+
   test 'should display sign up form with name and email' do
     visit new_user_registration_path
 

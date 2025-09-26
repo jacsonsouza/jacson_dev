@@ -2,8 +2,8 @@ require 'test_helper'
 
 class Users::Devise::ConfirmationsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @unconfirmed_user = FactoryBot.create(:user, confirmed_at: nil)
-    @confirmed_user = FactoryBot.create(:user, confirmed_at: Time.current)
+    @user = FactoryBot.create(:user, confirmed_at: nil)
+    # @confirmed_user = FactoryBot.create(:user, confirmed_at: Time.current)
   end
 
   test 'should display confirmation request form' do
@@ -14,7 +14,7 @@ class Users::Devise::ConfirmationsControllerTest < ActionDispatch::IntegrationTe
 
   test 'should send confirmation instructions for unconfirmed user' do
     assert_emails 1 do
-      post user_confirmation_url, params: { user: { email: @unconfirmed_user.email } }
+      post user_confirmation_url, params: { user: { email: @user.email } }
     end
 
     assert_redirected_to new_user_session_path
@@ -22,8 +22,10 @@ class Users::Devise::ConfirmationsControllerTest < ActionDispatch::IntegrationTe
   end
 
   test 'should not send confirmation for already confirmed account' do
+    @user.confirm
+
     assert_emails 0 do
-      post user_confirmation_url, params: { user: { email: @confirmed_user.email } }
+      post user_confirmation_url, params: { user: { email: @user.email } }
     end
 
     assert_response :unprocessable_content
@@ -49,11 +51,11 @@ class Users::Devise::ConfirmationsControllerTest < ActionDispatch::IntegrationTe
   end
 
   test 'should confirm user account with valid token' do
-    token = @unconfirmed_user.confirmation_token
+    token = @user.confirmation_token
     get user_confirmation_url(confirmation_token: token)
 
     assert_redirected_to new_user_session_path
     assert_equal I18n.t('devise.confirmations.confirmed'), flash[:notice]
-    assert_predicate @unconfirmed_user.reload, :confirmed?
+    assert_predicate @user.reload, :confirmed?
   end
 end
