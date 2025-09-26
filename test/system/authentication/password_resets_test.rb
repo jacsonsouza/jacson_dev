@@ -10,7 +10,7 @@ class PasswordResetsTest < ApplicationSystemTestCase
 
     within('form') do
       fill_in 'user[email]', with: @user.email
-      click_on I18n.t('links.send_me_reset_password_instructions')
+      click_on I18n.t('links.send_me_instructions')
     end
 
     assert_flash I18n.t('devise.passwords.send_instructions')
@@ -21,7 +21,7 @@ class PasswordResetsTest < ApplicationSystemTestCase
 
     within 'form' do
       fill_in 'user[email]', with: 'invalid_email'
-      click_on I18n.t('links.send_me_reset_password_instructions')
+      click_on I18n.t('links.send_me_instructions')
     end
 
     within '.user_email' do

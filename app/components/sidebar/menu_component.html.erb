@@ -22,7 +22,7 @@
          <ul role="list">
             <% section[:items].each do |item| %>
                <% html_options = { class: "flex items-center gap-4 w-full px-6 py-4 text-lg font-normal text-zinc-100 transition" } %>
-               <% html_options[:data] = { turbo_method: item.method } if item.method.present? %>
+               <% html_options[:data] = { turbo_method: item.method_type } if item.method_type.present? %>
 
                <li class="w-full hover:bg-indigo-500/20 focus-visible:ring-2 focus-visible:ring-indigo-400">
                   <%= link_to item.path || '#', html_options do %>

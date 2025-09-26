@@ -9,11 +9,11 @@ class UnlocksTest < ApplicationSystemTestCase
   test 'should send unlock instructions when solicited by user' do
     visit new_user_unlock_path
 
-    assert_selector 'span', text: I18n.t('links.send_me_unlock_instructions')
+    assert_selector 'p', text: I18n.t('links.send_me_unlock_instructions')
 
     within 'form' do
       fill_in 'user_email', with: @user.email
-      click_on I18n.t('links.send_unlock_instructions')
+      click_on I18n.t('links.send_me_instructions')
     end
 
     assert_flash I18n.t('devise.unlocks.send_instructions')

@@ -8,7 +8,7 @@ class UserSessionsTest < ApplicationSystemTestCase
   test 'should display login form' do
     visit new_user_session_path
 
-    assert_selector 'h1', text: I18n.t('links.sign_in')
+    assert_selector 'img[alt="Logo"]'
 
     within('form') do
       assert_selector 'input[name="user[email]"]'
