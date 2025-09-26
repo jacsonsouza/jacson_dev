@@ -1,6 +1,4 @@
-<div class="text-center mb-8">
-   <h1 class="heading-1"><%= t('links.reset_password') %></h1>
-</div>
+<%= provide(:page_title, t('links.reset_password') ) %>
 
 <%= simple_form_for @user, url: user_password_path, html: { method: :put } do |f| %>
 

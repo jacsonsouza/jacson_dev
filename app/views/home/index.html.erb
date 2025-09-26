@@ -11,7 +11,7 @@
          <p class="text-fluid-md leading-relaxed">
             <%= t('.introduction')%>
          </p>
-         <a href="#portfolio" class="btn-primary"><%= t('.projects') %></a>
+         <%= link_to t('.projects'), portfolio_path, class: 'btn-primary' %>
       </div>
 
       <div class="hidden md:block flex-1 relative w-full max-w-md h-72 md:h-80 lg:h-96 transform-3d" aria-hidden="true">

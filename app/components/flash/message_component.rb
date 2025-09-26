@@ -3,30 +3,30 @@
 class Flash::MessageComponent < ViewComponent::Base
   FLASH_CONFIG = {
     notice: {
-      title: "Success",
-      class: "border-l-green-500",
-      icon: "check-circle text-green-500",
-      progress: "bg-green-500"
+      title: 'Success',
+      class: 'border-l-green-500',
+      icon: 'check-circle text-green-500',
+      progress: 'bg-green-500'
     },
     alert: {
-      title: "Error",
-      class: "border-l-red-500",
-      icon: "exclamation-circle text-red-500",
-      progress: "bg-red-500"
+      title: 'Error',
+      class: 'border-l-red-500',
+      icon: 'exclamation-circle text-red-500',
+      progress: 'bg-red-500'
     },
     warning: {
-      title: "Warning",
-      class: "border-l-yellow-500",
-      icon: "exclamation-triangle text-yellow-500",
-      progress: "bg-yellow-500"
+      title: 'Warning',
+      class: 'border-l-yellow-500',
+      icon: 'exclamation-triangle text-yellow-500',
+      progress: 'bg-yellow-500'
     }
   }.freeze
 
   DEFAULT_CONFIG = {
-    title: "Info",
-    class: "border-l-gray-500",
-    icon: "info-circle text-gray-500",
-    progress: "bg-gray-500"
+    title: 'Info',
+    class: 'border-l-gray-500',
+    icon: 'info-circle text-gray-500',
+    progress: 'bg-gray-500'
   }.freeze
 
   def messages

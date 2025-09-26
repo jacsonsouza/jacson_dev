@@ -1,13 +1,9 @@
-<div class="text-center mb-8">
-   <h1 class="heading-1"><%= t('links.sign_up') %></h1>
-</div>
+<%= provide(:page_title, t('links.sign_up') ) %>
 
 <%= simple_form_for @user, url: user_registration_path do |f| %>
 
-   <div class="flex gap-2">
-      <%= f.input :name %>
-      <%= f.input :email %>
-   </div>
+   <%= f.input :name %>
+   <%= f.input :email %>
 
    <%= f.input :password %>
    <%= f.input :password_confirmation %>

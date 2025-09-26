@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title><%= content_for(:title) || "Jacson Dev" %></title>
+      <title><%= full_title(content_for(:page_title)) %></title>
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta name="apple-mobile-web-app-capable" content="yes">
       <meta name="mobile-web-app-capable" content="yes">
@@ -12,10 +12,6 @@
 
       <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
       <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
-      <link rel="icon" href="/icon.png" type="image/png">
-      <link rel="icon" href="/icon.svg" type="image/svg+xml">
-      <link rel="apple-touch-icon" href="/icon.png">
 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
       <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
@@ -31,8 +27,13 @@
 
       <%= rc 'flash/message' %>
 
-      <div class="w-full max-w-2xl p-7 relative z-10">
-         <div class="w-full p-10 bg-gray-900/70 backdrop-blur-md border border-white/10 rounded-3xl shadow-2xl animate-card transform-3d">
+      <div class="w-full max-w-xl p-7 relative z-10">
+         <div class="w-full p-8 md:p-10 bg-gray-900/70 backdrop-blur-md border border-white/10 rounded-3xl shadow-2xl transform-3d">
+
+            <div class="flex flex-col items-center justify-center gap-6 mb-6">
+               <%= link_to image_tag('logo.png', alt: 'Logo', class: 'w-56'), root_path %>
+               <p class="text-slate-400 text-center text-md tracking-wider"><%= content_for(:page_title) %></p>
+            </div>
 
             <%= yield %>
 

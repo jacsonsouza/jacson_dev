@@ -1,8 +1,50 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+plugins: [
+  rubocop-minitest, 
+  rubocop-rails, 
+  rubocop-capybara, 
+  rubocop-factory_bot
+]
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.3
+  # RuboCop has a bunch of cops enabled by default. This setting tells RuboCop
+  # to ignore them, so only the ones explicitly set in this file are enabled.
+  # DisabledByDefault: true
+  Exclude:
+    - "vendor/**/*"
+    - "bin/*"
+    - "db/schema.rb"
+    - "db/migrate/*"
+    - "config/puma.rb"
+    - "config/initializers/backtrace_silencers.rb"
+    - "config/initializers/content_security_policy.rb"
+    - "config/environments/production.rb"
+    - "config/initializers/simple_form.rb"
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: either
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/BlockLength:
+  AllowedMethods: ["context"]
+  Exclude:
+    - "db/queue_schema.rb"
+    - "config/environments/development.rb"
+    - "config/routes.rb"
+
+Rails/LexicallyScopedActionFilter:
+  Exclude:
+    - app/controllers/users/devise/sessions_controller.rb
+    - app/controllers/users/devise/registrations_controller.rb

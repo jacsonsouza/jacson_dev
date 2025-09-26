@@ -4,32 +4,37 @@
         data-mobile-menu-target="overlay" 
         data-action="click->mobile-menu#closeMenus touchstart->mobile-menu#touchStart touchend->mobile-menu#touchEnd"></div>
 
-   <!-- toggle button mobile -->
    <div class="btn-rounded md:hidden fixed bottom-6 right-6 z-[1000]" 
         data-mobile-menu-target="menuToggle" 
         data-action="click->mobile-menu#toggleMobileMenu">
       <i class="fas fa-plus text-white text-2xl transition-all duration-300" data-mobile-menu-target="toggleIcon"></i>
    </div>
 
-   <!-- Menu Mobile -->
    <ul data-mobile-menu-target="mobileMenu" 
-        class="hidden fixed bottom-24 right-6 flex flex-col items-center justify-center z-45 opacity-0 translate-y-5 transition-all duration-300">
+        class="hidden fixed bottom-24 right-6 md:flex flex-col items-center justify-center z-45 opacity-0 translate-y-5 transition-all duration-300">
 
       <% items = [
-            { name: t('links.home'), icon: 'fas fa-home', target: 'home' },
-            { name: t('links.about'), icon: 'fas fa-user', target: 'about' },
-            { name: t('links.skills'), icon: 'fas fa-code', target: 'skills' },
-            { name: t('links.portfolio'), icon: 'fas fa-briefcase', target: 'portfolio' },
-            { name: t('links.contact'), icon: 'fas fa-envelope', target: 'contact' }
+            { name: t('links.home'), icon: 'fas fa-home', target: 'home', path: root_path },
+            { name: t('links.about'), icon: 'fas fa-user', target: 'about', path: about_path },
+            { name: t('links.skills'), icon: 'fas fa-code', target: 'skills', path: skills_path },
+            { name: t('links.portfolio'), icon: 'fas fa-briefcase', target: 'portfolio', path: portfolio_path },
+            { name: t('links.contact'), icon: 'fas fa-envelope', target: 'contact', path: contact_path },
         ] %>
 
       <% items.each do |item| %>
-         <li class="w-12 h-12 rounded-full bg-gray-900/90 backdrop-blur-md flex items-center justify-center my-2 cursor-pointer transition-all duration-300 shadow-lg relative group active:bg-primary/30"
+         <li class="w-12 h-12 my-2 rounded-full cursor-pointer transition-all duration-300 shadow-lg relative group"
               data-mobile-menu-target="mobileMenuItem" 
               data-action="click->mobile-menu#navigate" data-target="<%= item[:target] %>">
 
-            <i class="<%= item[:icon] %> text-white text-lg"></i>
-            <span class="absolute right-12 bg-gray-900/90 px-3 py-1 mr-2 rounded-lg text-white font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap"><%= item[:name] %></span>
+            <%= active_link_to item[:path] || '#', 
+                               class: "w-full h-full rounded-full bg-gray-900/90 backdrop-blur-md flex items-center justify-center",
+                               class_active: "bg-indigo-900 text-white", 
+                               active: :exclusive do %>
+
+               <i class="<%= item[:icon] %> text-white text-lg"></i>
+               <span class="absolute right-12 bg-gray-900/90 px-3 py-1 mr-2 rounded-lg text-white font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap"><%= item[:name] %></span>
+
+            <% end %>
 
          </li>
       <% end %>

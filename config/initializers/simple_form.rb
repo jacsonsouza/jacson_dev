@@ -176,7 +176,7 @@ SimpleForm.setup do |config|
   # config.input_field_error_class = 'is-invalid'
 
   # Default style
-  config.wrappers :tailwind, tag: "div", class: "mb-6", error_class: :field_with_errors do |b|
+  config.wrappers :tailwind, tag: "div", class: "mb-4", error_class: :field_with_errors do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
@@ -184,15 +184,28 @@ SimpleForm.setup do |config|
     b.optional :pattern
     b.optional :min_max
     b.optional :readonly
-
+    
     b.use :label, class: "block text-sm font-medium text-gray-300 mb-2"
 
-    b.wrapper tag: "div", class: "relative" do |ba|
-      ba.use :input, class: "w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+    b.use :input, class: "w-full px-4 py-2 bg-gray-800 border 
+                          border-gray-700 rounded-lg text-white placeholder-gray-400 
+                          focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+    
+    b.use :error, wrap_with: { tag: "p", class: "mt-1 text-sm text-red-500" }
+    b.use :hint, wrap_with: { tag: "p", class: "mt-1 text-sm text-gray-400" }
+  end
 
-      ba.use :error, wrap_with: { tag: "p", class: "mt-1 text-sm text-red-500" }
-      ba.use :hint, wrap_with: { tag: "p", class: "mt-1 text-sm text-gray-400" }
-    end
+  config.wrappers :checkbox, tag: 'div', class: 'flex items-start justify-center', error_class: 'text-red-500' do |b|
+    b.use :html5
+    b.use :placeholder
+
+    b.use :input,
+            class: 'text-indigo-500 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500',
+            error_class: 'text-red-500'
+      
+    b.use :label, class: 'ml-2 text-md text-slate-300'
+    b.use :error, wrap_with: { tag: :p, class: 'mt-1 text-sm text-red-600' }
+    b.use :hint, wrap_with: { tag: :p, class: 'mt-1 text-sm text-slate-300' }
   end
 
   config.default_wrapper = :tailwind

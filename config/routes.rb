@@ -3,27 +3,27 @@ Rails.application.routes.draw do
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  get 'up' => 'rails/health#show', as: :rails_health_check
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
-  root "home#index"
-  get "about" => "home#about", as: :about
-  get "skills" => "home#skills", as: :skills
-  get "portfolio" => "home#portfolio", as: :portfolio
-  get "contact" => "home#contact", as: :contact
+  root 'home#index'
+  get 'about' => 'home#about', as: :about
+  get 'skills' => 'home#skills', as: :skills
+  get 'portfolio' => 'home#portfolio', as: :portfolio
+  get 'contact' => 'home#contact', as: :contact
 
-  devise_for :users, controllers: { sessions: "users/devise/sessions",
-                                    registrations: "users/devise/registrations",
-                                    passwords: "users/devise/passwords",
-                                    confirmations: "users/devise/confirmations",
-                                    unlocks: "users/devise/unlocks" }
+  devise_for :users, controllers: { sessions: 'users/devise/sessions',
+                                    registrations: 'users/devise/registrations',
+                                    passwords: 'users/devise/passwords',
+                                    confirmations: 'users/devise/confirmations',
+                                    unlocks: 'users/devise/unlocks' }
 
   authenticate :user do
     namespace :users do
-      root "dashboard#index"
+      root 'dashboard#index'
     end
   end
 end
