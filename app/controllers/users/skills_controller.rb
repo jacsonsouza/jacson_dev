@@ -21,6 +21,6 @@ class Users::SkillsController < ApplicationController
   private
 
   def skill_params
-    params.expect(skill: [:name, :description])
+    params.expect(skill: [:name, :description, :proficiency, :icon])
   end
 end

@@ -3,8 +3,10 @@
 <% end %>
 
 <% @skills.each do |skill| %>
-   <div class="flex justify-center items-center gap-2">
+   <div class="flex flex-col justify-center items-center gap-2">
+      <img src="<%= url_for(skill.icon) %>" alt="<%= skill.name %>" class="w-10 h-10">
       <h3><%= skill.name %></h3>
       <p><%= skill.description %></p>
+      <p><%= skill.proficiency %></p>
    </div>
 <% end %>
