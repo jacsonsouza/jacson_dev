@@ -1,0 +1,10 @@
+<% if @skills.empty? %>
+   <h2><%= t('.no_skills') %></h2>
+<% end %>
+
+<% @skills.each do |skill| %>
+   <div class="flex justify-center items-center gap-2">
+      <h3><%= skill.name %></h3>
+      <p><%= skill.description %></p>
+   </div>
+<% end %>

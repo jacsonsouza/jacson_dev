@@ -1,0 +1,8 @@
+<%= simple_form_for [:users, @skill] do |f| %>
+
+   <%= f.input :name %>
+   <%= f.input :description, as: :rich_text_area %>
+
+   <%= f.button :submit %>
+
+<% end %>

@@ -26,6 +26,10 @@
    <body class="page-container">
       <%= rc 'flash/message' %>
       <%= rc 'sidebar/menu', current_user: current_user %>
-      <%= yield %>
+
+      <div class="flex-1 lg:ml-64 p-7 transition-all">
+         <%= yield %>
+      </div>
+
    </body>
 </html>
