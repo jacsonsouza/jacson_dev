@@ -1,6 +1,8 @@
 class Skill < ApplicationRecord
   enum :proficiency, { beginner: 0, intermediate: 1, advanced: 2 }
 
+  attr_reader :flags
+
   has_one_attached :icon
   has_rich_text :description
 
