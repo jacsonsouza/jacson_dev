@@ -10,6 +10,9 @@ en:
         password_confirmation: 'Password confirmation'
       user:
         <<: *defaults
+      skill:
+        <<: *defaults
+        tag_list: 'Tags'
     placeholders:
       defaults: &defaults
         name: 'Name'
@@ -18,6 +21,9 @@ en:
         password_confirmation: 'Password confirmation'
       user:
         <<: *defaults
+      skill:
+        <<: *defaults
+        tag_list: 'Tags'
     required:
       text: 'required'
       mark: '*'

@@ -12,7 +12,7 @@
    }
 
    .badge {
-      @apply inline-block px-3 py-1 text-sm text-slate-300 bg-indigo-500/20 rounded-full;
+      @apply items-center gap-x-1.5 py-1.5 ps-3 pe-2 rounded-full text-xs font-medium text-slate-300 bg-indigo-500/20;
    }
 
    .avatar {
@@ -67,6 +67,13 @@
 
    .btn-primary:hover::before {
       transform: translateX(100%);
+   }
+
+   .btn-secondary {
+      @apply text-center px-4 py-2.5
+             bg-transparent border border-zinc-200
+             text-white no-underline rounded-4xl font-semibold text-lg
+             hover:bg-zinc-200 hover:text-slate-900 cursor-pointer hover:shadow-indigo-500/60;
    }
 
    .btn-rounded {

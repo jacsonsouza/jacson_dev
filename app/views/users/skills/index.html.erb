@@ -8,5 +8,7 @@
       <h3><%= skill.name %></h3>
       <p><%= skill.description %></p>
       <p><%= skill.proficiency %></p>
+
+      <% skill.tags.each do |tag| %><span class="badge">tags: <%= tag.name %></span><% end %>
    </div>
 <% end %>

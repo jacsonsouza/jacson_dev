@@ -1,0 +1,15 @@
+<div data-controller="skill-form">
+   <div class="mb-2" data-skill-form-target="container">
+      <%= f.input :tag_list,
+          input_html: {
+            autocomplete: "off",
+            data: {
+              action: "keydown->skill-form#onKeydown paste->skill-form#onPaste",
+              skill_form_target: "input"
+            }
+          }
+      %>
+   </div>
+
+   <div data-skill-form-target="list" class="flags-list flex space-x-2 items-center justify-start w-full mb-4"></div>
+</div>

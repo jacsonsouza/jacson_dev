@@ -1,35 +1,10 @@
-<%= link_to 'Back', users_skills_path %>
+<%= simple_form_for [:users, @skill] do |f| %>
+   <%= f.input :name %>
+   <%= f.input :proficiency, collection: Skill.proficiencies.keys %>
+   <%= f.input :icon, as: :image %>
+   <%= f.input :description, as: :rich_text_area %>
 
-<div data-controller="skill-form">
+   <%= render 'users/skills/partials/input_tags', f: f %>
 
-   <%= simple_form_for [:users, @skill] do |f| %>
-
-      <%= f.input :name %>
-      <%= f.input :proficiency, collection: @skill.proficiencies %>
-      <%= f.input :icon, as: :file %>
-      <%= f.input :description, as: :rich_text_area %>
-
-      <div data-skill-form-target="container" class="skill-form-component">
-         <div class="mb-2">
-            <%= f.input :flags,
-               input_html: {
-                  autocomplete: "off",
-                  placeholder: "Digite flags separadas por vírgula ou pressione Enter",
-                  data: {
-                  action: "keydown->skill-form#onKeydown input->skill-form#onInput paste->skill-form#onPaste",
-                  skill_form_target: "input"
-                  }
-               },
-               label: "Flags (separe por ,)"
-            %>
-         </div>
-
-         <!-- local onde as tags serão renderizadas -->
-         <div data-skill-form-target="list" class="flags-list"></div>
-      </div>
-
-      <%= f.button :submit %>
-
-   <% end %>
-
-</div>
+   <%= f.button :submit %>
+<% end %>

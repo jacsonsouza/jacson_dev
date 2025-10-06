@@ -2,7 +2,7 @@ class Users::SkillsController < ApplicationController
   layout 'users/dashboard'
 
   def index
-    @skills = Skill.all
+    @skills = Skill.includes([:icon_attachment, :tags, :rich_text_description]).where(user_id: current_user.id)
   end
 
   def new
@@ -21,6 +21,6 @@ class Users::SkillsController < ApplicationController
   private
 
   def skill_params
-    params.expect(skill: [:name, :description, :proficiency, :icon])
+    params.expect(skill: [:name, :description, :proficiency, :icon, :tag_list])
   end
 end
