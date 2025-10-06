@@ -1,3 +1,5 @@
+<% provide(:page_title, t('.title') ) %>
+
 <%= simple_form_for [:users, @skill] do |f| %>
    <%= f.input :name %>
    <%= f.input :proficiency, collection: Skill.proficiencies.keys %>

@@ -28,6 +28,8 @@
       <%= rc 'sidebar/menu', current_user: current_user %>
 
       <div class="page-container flex-1 lg:ml-64 p-7 transition-all">
+         <%= render 'layouts/breadcrumbs/breadcrumbs' %>
+         <h1 class="heading-1 mb-6"><%= content_for(:page_title) %></h1>
          <%= yield %>
       </div>
 

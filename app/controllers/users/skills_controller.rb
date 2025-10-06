@@ -1,6 +1,4 @@
-class Users::SkillsController < ApplicationController
-  layout 'users/dashboard'
-
+class Users::SkillsController < Users::BaseController
   def index
     @skills = Skill.includes([:icon_attachment, :tags, :rich_text_description]).where(user_id: current_user.id)
   end
@@ -22,5 +20,14 @@ class Users::SkillsController < ApplicationController
 
   def skill_params
     params.expect(skill: [:name, :description, :proficiency, :icon, :tag_list])
+  end
+
+  def set_breadcrumbs
+    add_breadcrumb t('breadcrumbs.skills.index'), users_skills_path
+
+    case action_name.to_sym
+    when :new
+      add_breadcrumb t('breadcrumbs.skills.new'), new_users_skill_path
+    end
   end
 end

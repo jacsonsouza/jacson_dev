@@ -48,3 +48,12 @@ en:
         registrations:
           new:
             sign_up: "Sign up"
+    skills:
+      new:
+        title: "New Skill"
+  breadcrumbs:
+    home: "Home"
+    skills:
+      index: "Skills"
+      new: "New Skill"
+      edit: "Edit Skill"
