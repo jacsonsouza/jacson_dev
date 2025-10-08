@@ -61,4 +61,4 @@ en:
     skills:
       index: "Skills"
       new: "New Skill"
-      edit: "Edit Skill"
+      edit: "Edit %{name}"

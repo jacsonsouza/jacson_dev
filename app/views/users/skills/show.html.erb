@@ -1,0 +1,65 @@
+<%= provide(:page_title, @skill.name ) %>
+
+<section id="skills" class="w-full relative flex items-start md:items-center py-12 md:py-0">
+   <div class="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
+
+      <div class="w-full flex lg:flex-col flex-col-reverse justify-center items-center gap-6 sm:gap-8 lg:gap-10 transition-all">
+
+         <div class="w-full flex items-start lg:items-center justify-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-14 max-w-6xl w-full items-start lg:items-center">
+
+               <div class="pr-0 lg:pr-5">
+                  <h2 id="frontend-title" class="heading-1 mb-6"><%= @skill.name %></h2>
+
+                  <p class="prose text-slate-300 text-sm sm:text-base lg:text-lg mb-6 max-w-lg">
+                     <%= @skill.description %>
+                  </p>
+
+                  <div class="mt-4">
+                     <h3 class="heading-2 mb-4">Aplicações:</h3>
+                     <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-sm sm:text-base lg:text-lg text-slate-300">
+                           <svg class="w-4 h-4 mt-1 text-indigo-500 flex-shrink-0" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/>
+                           </svg>
+                           <span>Plataforma E-commerce com carrinho dinâmico</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm sm:text-base lg:text-lg text-slate-300">
+                           <svg class="w-4 h-4 mt-1 text-indigo-500 flex-shrink-0" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/>
+                           </svg>
+                           <span>Dashboard administrativo com gráficos interativos</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm sm:text-base lg:text-lg text-slate-300">
+                           <svg class="w-4 h-4 mt-1 text-indigo-500 flex-shrink-0" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/>
+                           </svg>
+                           <span>Aplicação de gestão de projetos em tempo real</span>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+
+               <article class="bg-gray-900/80 backdrop-blur-lg p-5 sm:p-6 lg:p-10 rounded-3xl shadow-2xl border border-white/10 text-center relative overflow-hidden w-full max-w-lg lg:max-w-sm mx-auto">
+                  <div class="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 mb-4 mx-auto rounded-full bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center shadow-lg">
+                     <%= image_tag url_for(@skill.icon), alt: @skill.name, class: 'w-full h-full object-cover' %>
+                     <span class="sr-only"><%= @skill.name %></span>
+                  </div>
+
+                  <h3 class="text-xl sm:text-2xl lg:text-3xl mb-3 font-bold text-slate-200">React</h3>
+                  <div class="badge inline-block text-indigo-500 bg-indigo-500/10 font-medium px-3 py-1 rounded-full">Avançado</div>
+
+                  <div class="flex flex-wrap justify-center gap-2 mt-6">
+                     <% @skill.tags.each do |tag| %>
+                        <span class="badge bg-white/10 text-slate-200"><%= tag.name %></span>
+                     <% end %>
+                  </div>
+               </article>
+
+            </div>
+         </div>
+
+      </div>
+
+   </div>
+</section>

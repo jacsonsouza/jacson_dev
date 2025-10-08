@@ -1,0 +1,10 @@
+<%= simple_form_for [:users, skill] do |f| %>
+   <%= f.input :name %>
+   <%= f.input :proficiency, collection: Skill.proficiencies.keys %>
+   <%= f.input :icon, as: :image %>
+   <%= f.input :description, as: :rich_text_area %>
+
+   <%= render 'users/skills/partials/input_tags', f: f %>
+
+   <%= f.button :submit %>
+<% end %>

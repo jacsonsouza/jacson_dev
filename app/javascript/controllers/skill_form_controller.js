@@ -3,7 +3,6 @@ import { Controller } from '@hotwired/stimulus';
 export default class extends Controller {
    static targets = ['input', 'list', 'container'];
 
-   // Constants for better maintainability
    static KEYS = {
       ENTER: 'Enter',
       COMMA: ',',
@@ -85,9 +84,9 @@ export default class extends Controller {
 
    // Helper methods
    initializeExistingFlags() {
-      // TODO: Implement if needed for edit scenarios
-      // const initialValue = this.data.get('initial') || '';
-      // this.addFlagsFromString(initialValue);
+      const initialValue = this.inputTarget.value;
+      this.inputTarget.value = '';
+      this.addFlagsFromString(initialValue);
    }
 
    isAddKey(key) {
