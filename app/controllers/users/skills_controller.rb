@@ -1,4 +1,6 @@
 class Users::SkillsController < Users::BaseController
+  before_action :skill, only: [:edit, :update]
+
   def index
     @skills = Skill.includes([:icon_attachment, :tags, :rich_text_description]).where(user_id: current_user.id)
   end
@@ -7,16 +9,30 @@ class Users::SkillsController < Users::BaseController
     @skill = Skill.new
   end
 
+  def edit; end
+
   def create
     @skill = current_user.skills.build(skill_params)
     if @skill.save
-      redirect_to users_skills_path
+      redirect_to users_skills_path, notice: t('devise.registrations.created')
     else
       render :new, status: :unprocessable_content
     end
   end
 
+  def update
+    if @skill.update(skill_params)
+      redirect_to users_skills_path, notice: t('devise.registrations.updated')
+    else
+      render :edit, status: :unprocessable_content
+    end
+  end
+
   private
+
+  def skill
+    @skill ||= current_user.skills.find(params[:id])
+  end
 
   def skill_params
     params.expect(skill: [:name, :description, :proficiency, :icon, :tag_list])
