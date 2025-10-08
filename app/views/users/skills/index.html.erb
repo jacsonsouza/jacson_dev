@@ -1,14 +1,8 @@
-<% if @skills.empty? %>
-   <h2><%= t('.no_skills') %></h2>
-<% end %>
+<%= provide(:page_title, t('.title')) %>
 
-<% @skills.each do |skill| %>
-   <div class="flex flex-col justify-center items-center gap-2">
-      <img src="<%= url_for(skill.icon) %>" alt="<%= skill.name %>" class="w-10 h-10">
-      <h3><%= skill.name %></h3>
-      <p><%= skill.description %></p>
-      <p><%= skill.proficiency %></p>
+<!-- No needed with page title component -->
+<%= provide(:new_path, new_users_skill_path) %>
 
-      <% skill.tags.each do |tag| %><span class="badge">tags: <%= tag.name %></span><% end %>
-   </div>
-<% end %>
+<div class="grid grid-auto-fill-[260px] gap-6 mb-12">
+   <%= render partial: 'users/skills/partials/skill', collection: @skills, as: :skill %>
+</div>

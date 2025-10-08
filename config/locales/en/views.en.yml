@@ -49,6 +49,11 @@ en:
           new:
             sign_up: "Sign up"
     skills:
+      index:
+        title: "My Skills"
+        new: "New Skill"
+      edit:
+        title: "Edit Skill"
       new:
         title: "New Skill"
   breadcrumbs:

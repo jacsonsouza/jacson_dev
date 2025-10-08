@@ -1,0 +1,41 @@
+<article class="flex flex-col gap-4 bg-gray-900/70 backdrop-blur-md rounded-2xl p-6 shadow-2xl border border-white/10">
+
+   <div class="flex items-center gap-4">
+      <%= image_tag skill.icon.attached? ? url_for(skill.icon) : 'default_pic.png',
+                    alt: skill.name,
+                    class: 'w-16 h-16 rounded-full bg-gradient-to-r from-indigo-500 to-rose-400 shadow-brand',
+                    loading: 'lazy' %>
+      <div class="flex-1">
+         <h2 class="heading-2 text-white"><%= skill.name %></h2>
+         <span class="badge"><%= skill.proficiency %></span>
+      </div>
+   </div>
+
+   <p class="prose overflow-hidden scroll-thin max-h-16">
+      <%= sanitize(truncate(skill.description.to_s, length: 180)) %>
+   </p>
+
+   <div class="flex flex-wrap gap-2">
+      <%= safe_join(skill.tags.map { |tag| content_tag(:span, tag.name, class: 'badge bg-gray-500', title: tag.name) }) %>
+   </div>
+
+   <hr class="border-white/10">
+
+   <div class="flex flex-wrap justify-center gap-2.5">
+      <%= link_to(edit_users_skill_path(skill),
+         class: 'flex-1 py-2 px-3 bg-white/5 rounded-lg border border-white/10 text-center text-white hover:bg-indigo-500/20 focus:outline-none focus:ring-2 focus:ring-indigo-400',
+         aria: { label: t('skills.edit', name: skill.name) }) do %>
+         <i class="fas fa-pen mr-1" aria-hidden="true"></i>
+         <span><%= t('skills.edit') %></span>
+      <% end %>
+
+      <%= link_to users_skill_path(skill), method: :delete, data: { confirm: t('.confirm') },
+                  class: 'flex-1 py-2 px-3 bg-white/5 rounded-lg border border-white/10 text-center text-white hover:bg-rose-400/20 hover:border-rose-400/30 focus:outline-none focus:ring-2 focus:ring-rose-400' do %>
+
+         <i class="fas fa-trash mr-1" aria-hidden="true"></i>
+         <span><%= t('skills.delete') %></span>
+
+      <% end %>
+   </div>
+
+</article>

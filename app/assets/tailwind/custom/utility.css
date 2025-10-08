@@ -1,3 +1,13 @@
 @utility animation-delay-* {
    animation-delay: --value([ *]);
 }
+
+@utility grid-auto-fill-* {
+   grid-template-columns: repeat(auto-fill, minmax(--value([ *]), 1fr));
+}
+
+@layer utilities {
+   .shadow-brand {
+      box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
+   }
+}
