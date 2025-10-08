@@ -28,6 +28,11 @@ class Users::SkillsController < Users::BaseController
     end
   end
 
+  def destroy
+    skill.destroy
+    redirect_to users_skills_path, notice: t('devise.registrations.destroyed')
+  end
+
   private
 
   def skill
