@@ -3,7 +3,9 @@ class HomeController < ApplicationController
 
   def about; end
 
-  def skills; end
+  def skills
+    @skills = Skill.includes(:icon_attachment, :tags, :rich_text_description)
+  end
 
   def portfolio; end
 
