@@ -1,0 +1,26 @@
+<div class="parent">
+   <div class="skill-card">
+      <div class="logo">
+         <span class="circle circle-1"></span>
+         <span class="circle circle-2"></span>
+         <span class="circle circle-3"></span>
+         <span class="circle circle-4">
+            <%= image_tag skill.icon.attached? ? url_for(skill.icon) : 'default_pic.png', alt: skill.name, class: 'w-full' %>
+         </span>
+      </div>
+
+      <div class="glass"></div>
+
+      <div class="content flex flex-col items-end">
+         <span class="title block text-indigo-900 font-black text-xl"><%= skill.name %></span>
+      </div>
+
+      <div class="bottom">
+         <div class="social-buttons flex gap-3">
+            <% skill.tags.each do |tag| %>
+               <span class="social-button badge bg-white/10 text-slate-200"><%= tag.name %></span>
+            <% end %>
+         </div>
+      </div>
+   </div>
+</div>

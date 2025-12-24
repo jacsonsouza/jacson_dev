@@ -1,14 +1,14 @@
 @layer components {
    .page-container {
-      @apply overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 min-h-screen perspective-distant;
+      @apply overflow-hidden bg-linear-to-br from-slate-900 to-slate-800 min-h-screen perspective-distant;
    }
 
    .heading-1 {
-      @apply text-4xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-br from-indigo-500 to-rose-400 bg-clip-text text-transparent;
+      @apply text-4xl sm:text-2xl md:text-3xl font-bold bg-linear-to-br from-indigo-500 to-rose-400 bg-clip-text text-transparent;
    }
 
    .heading-2 {
-      @apply text-2xl sm:text-lg md:text-xl font-semibold bg-gradient-to-br from-indigo-500 to-pink-500 bg-clip-text text-transparent;
+      @apply text-2xl sm:text-lg md:text-xl font-semibold bg-linear-to-br from-indigo-500 to-pink-500 bg-clip-text text-transparent;
    }
 
    .badge {
@@ -43,7 +43,7 @@
 
    .btn-primary {
       @apply text-center px-4 py-2.5 
-             bg-gradient-to-tr from-indigo-500 to-rose-400
+             bg-linear-to-tr from-indigo-500 to-rose-400
              text-white no-underline rounded-4xl
              font-semibold text-lg border-none cursor-pointer
              shadow-lg shadow-indigo-500/40 relative overflow-hidden
@@ -78,13 +78,13 @@
 
    .btn-rounded {
       @apply w-16 h-16 rounded-full shadow-lg shadow-indigo-500/40
-           bg-gradient-to-br from-indigo-500 to-rose-400 cursor-pointer
+           bg-linear-to-br from-indigo-500 to-rose-400 cursor-pointer
            flex items-center justify-center transition-all duration-300
            hover:-translate-y-1.5 hover:shadow-indigo-500/60;
    }
 
    .bubble {
-      @apply absolute bg-gradient-to-tr from-indigo-500 to-rose-400 rounded-full animate-float;
+      @apply absolute bg-linear-to-tr from-indigo-500 to-rose-400 rounded-full animate-float;
    }
 
    .scroll-thin {
@@ -95,6 +95,7 @@
            [&::-webkit-scrollbar-thumb]:bg-indigo-900;
    }
 
+   /*
    .skill-card {
       position: relative;
       z-index: 0;
@@ -112,4 +113,5 @@
       z-index: -1;
       pointer-events: none;
    }
+   */
 }

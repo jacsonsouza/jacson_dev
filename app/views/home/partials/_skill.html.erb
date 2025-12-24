@@ -1,4 +1,4 @@
-<div class="carousel-slide flex-shrink-0 w-full snap-start">
+<div class="carousel-slide shrink-0 w-full snap-start">
    <div class="w-full flex lg:flex-col flex-col-reverse justify-center items-center gap-6 sm:gap-8 lg:gap-10 transition-all p-4">
       <div class="w-full flex items-start lg:items-center justify-center">
          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-14 max-w-6xl w-full items-start lg:items-center">
@@ -11,23 +11,9 @@
                </div>
             </div>
 
-            <article class="bg-gray-900/80 backdrop-blur-lg p-5 sm:p-6 lg:p-10 rounded-3xl shadow-2xl border border-white/10 text-center relative overflow-hidden w-full max-w-lg lg:max-w-sm mx-auto">
-               <div class="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 mb-4 mx-auto rounded-full bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center shadow-lg">
-                  <%= image_tag url_for(skill.icon), class: "w-full h-full object-cover" %>
-                  <span class="sr-only"><%= skill.name %></span>
-               </div>
-
-               <h3 class="text-xl sm:text-2xl lg:text-3xl mb-3 font-bold text-slate-200"><%= skill.name %></h3>
-               <div class="badge inline-block text-indigo-500 bg-indigo-500/10 font-medium px-3 py-1 rounded-full">
-                  <%= skill.proficiency %>
-               </div>
-
-               <div class="flex flex-wrap justify-center gap-2 mt-6">
-                  <% skill.tags.each do |tag| %>
-                     <span class="badge bg-white/10 text-slate-200"><%= tag.name %></span>
-                  <% end %>
-               </div>
-            </article>
+            <div class="p-5 sm:p-6 lg:p-10">
+               <%= render 'home/partials/skill_card', skill: skill %>
+            </div>
 
          </div>
       </div>
