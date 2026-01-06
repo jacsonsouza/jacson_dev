@@ -4,7 +4,7 @@
    }
 
    .heading-1 {
-      @apply text-4xl sm:text-2xl md:text-3xl font-bold bg-linear-to-br from-indigo-500 to-rose-400 bg-clip-text text-transparent;
+      @apply text-4xl sm:text-2xl md:text-3xl font-bold bg-linear-to-br from-primary to-accent bg-clip-text text-transparent;
    }
 
    .heading-2 {
@@ -96,22 +96,10 @@
    }
 
    /*
-   .skill-card {
-      position: relative;
-      z-index: 0;
-   }
-
-   .skill-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-         135deg,
-         rgba(108, 99, 255, 0.1),
-         rgba(255, 101, 132, 0.05)
-      );
-      z-index: -1;
-      pointer-events: none;
-   }
+   * card
    */
+
+   .card {
+      @apply bg-gray-900/80 rounded-2xl shadow-2xl p-8 backdrop-blur-md border border-indigo-500;
+   }
 }

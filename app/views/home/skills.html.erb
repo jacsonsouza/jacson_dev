@@ -1,36 +1,17 @@
-<section id="skills" data-controller="carousel" class="w-full relative overflow-visible md:overflow-hidden flex items-start md:min-h-screen md:items-center py-12 md:py-0">
-   <div class="w-full relative">
+<div class="flex flex-col gap-8 p-8">
+   <div class="bg-gray-900/80 rounded-2xl shadow-2xl p-8 backdrop-blur-md border border-indigo-500">
+      <h1 class="heading-1 mb-5">Minhas Skills</h1>
+      <p class="text-lg text-zinc-100/80 mb-5">Tecnologias e ferramentas que domino e utilizo em meus projetos</p>
 
-      <div data-carousel-target="carousel" 
-           class="carousel-container flex overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth">
-         <%= render partial: 'home/partials/skill', collection: @skills, as: :skill %>
-      </div>
-
-      <div class="flex justify-between items-center w-full text-white mt-8 px-4">
-         <button class="btn-rounded h-10 w-10 lg:h-12 lg:w-12 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all" 
-                 type="button" 
-                 data-carousel-target="prevButton"
-                 data-action="click->carousel#prev">
-            <i class="fas fa-chevron-left" aria-hidden="true"></i>
-         </button>
-
-         <div class="flex gap-2" data-carousel-target="indicators">
-            <% @skills.count.times do |i| %>
-               <button  type="button" 
-                        data-action="click->carousel#goToSlide"
-                  data-target="<%= i %>"
-                  data-carousel-target="indicator<%= i %>" 
-                  class="dot h-3 w-3 rounded-full bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all">
-               </button>
-            <% end %>
-         </div>
-
-         <button data-carousel-target="nextButton" 
-                 data-action="click->carousel#next" 
-            type="button" 
-            class="btn-rounded h-10 w-10 lg:h-12 lg:w-12 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all">
-            <i class="fas fa-chevron-right" aria-hidden="true"></i>
-         </button>
+      <div class="flex flex-wrap gap-4">
+         <button class="py-2.5 px-5 rounded-lg border-none bg-zinc-100/10 text-light font-medium transition-all backdrop-blur-md" data-filter="all">Todas</button>
+         <button class="py-2.5 px-5 rounded-lg border-none bg-zinc-100/10 text-light font-medium transition-all backdrop-blur-md" data-filter="backend">Back-end</button>
+         <button class="py-2.5 px-5 rounded-lg border-none bg-zinc-100/10 text-light font-medium transition-all backdrop-blur-md" data-filter="frontend">Front-end</button>
+         <button class="py-2.5 px-5 rounded-lg border-none bg-zinc-100/10 text-light font-medium transition-all backdrop-blur-md" data-filter="tools">Ferramentas</button>
       </div>
    </div>
-</section>
+
+   <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <%= render partial: 'home/partials/skill', collection: @skills, as: :skill %>
+   </div>
+</div>
