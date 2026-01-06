@@ -34,11 +34,7 @@
 .skill-card {
    height: 100%;
    border-radius: 40px;
-   background: linear-gradient(
-      135deg,
-      rgb(106, 90, 205) 0%,
-      rgb(147, 112, 219) 100%
-   );
+   background: linear-gradient(135deg, var(--primary), var(--accent));
    transition: all 0.6s ease-in-out;
    transform-style: preserve-3d;
    box-shadow: rgba(30, 30, 60, 0) 40px 50px 25px -40px,
@@ -186,8 +182,8 @@
    border-radius: 50%;
    top: 0;
    left: 0;
-   box-shadow: rgba(100, 100, 111, 0.2) 10px 10px 20px 0px;
-   background: rgba(147, 112, 219, 0.3);
+   /* box-shadow: rgba(100, 100, 111, 0.2) 10px 10px 20px 0px; */
+   /* background: rgba(147, 112, 219, 0.3); */
    transition: all 0.6s ease-in-out;
 }
 
@@ -238,7 +234,7 @@
 }
 
 .parent:hover .skill-card {
-   transform: rotate3d(1, -1, 0, 25deg);
+   /* transform: rotate3d(1, -1, 0, 25deg); */
    box-shadow: rgba(30, 30, 60, 0.3) 30px 50px 25px -40px,
       rgba(30, 30, 60, 0.15) 0px 25px 30px 0px;
 }

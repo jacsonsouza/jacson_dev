@@ -6,12 +6,12 @@
             <div class="pr-0 lg:pr-5">
                <h2 class="heading-1 mb-6"><%= skill.name %></h2>
 
-               <div class="prose max-h-96 overflow-y-auto p-3 rounded scroll-thin">
+               <div class="prose prose-invert max-h-96 overflow-y-auto p-3 rounded scroll-thin">
                   <%= skill.description %>
                </div>
             </div>
 
-            <div class="p-5 sm:p-6 lg:p-10">
+            <div class="flex justify-center lg:pr-6">
                <%= render 'home/partials/skill_card', skill: skill %>
             </div>
 
