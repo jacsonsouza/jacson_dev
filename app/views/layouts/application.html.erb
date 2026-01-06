@@ -23,11 +23,13 @@
       <%= favicon_link_tag %>
    </head>
 
-   <body class="bg-gradient-to-br from-slate-900 to-slate-800 md:min-h-screen perspective-distant">
+   <body class="bg-linear-to-br from-dark to-indigo-900 text-light flex min-h-screen p-5">
       <%= rc 'flash/message' %>
-      <%= render 'shared/side_menu' %>
-      <main class="flex-1 md:ml-20 relative transition [transform-style:preserve-3d]">
-         <%= yield %>
-      </main>
+      <div class="flex w-full max-w-screen gap-0 lg:gap-8">
+         <%= render 'shared/side_menu' %>
+         <main class="flex-1 flex flex-col gap-8">
+            <%= yield %>
+         </main>
+      </div>
    </body>
 </html>
