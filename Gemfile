@@ -40,7 +40,7 @@ gem 'kamal', require: false
 gem 'thruster', require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem "image_processing", "~> 1.2"
+gem 'image_processing', '~> 1.2'
 
 gem 'active_link_to'
 gem 'devise', '~> 4.9'
@@ -70,5 +70,7 @@ group :test do
   gem 'capybara'
   gem 'capybara-screenshot'
   gem 'selenium-webdriver', '4.22.0'
+  gem 'shoulda-context', '~> 3.0.0.rc1'
+  gem 'shoulda-matchers', '~> 6.0'
   gem 'simplecov', require: false
 end

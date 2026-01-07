@@ -1,6 +1,4 @@
 class Skill < ApplicationRecord
-  enum :proficiency, { beginner: 0, intermediate: 1, advanced: 2 }, validate: true
-
   has_one_attached :icon
   has_rich_text :description
   has_many :skill_tags, dependent: :destroy
@@ -14,6 +12,9 @@ class Skill < ApplicationRecord
             length: { maximum: 50 }
 
   validates :icon, :description, presence: true
+  validates :color, format: { with: /\A#([A-Fa-f0-9]{6})\z/ }
+  validates :short_description, length: { minimum: 10 }
+  validates :proficiency, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
 
   def tag_list
     tags.pluck(:name).join(', ')

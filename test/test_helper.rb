@@ -27,5 +27,12 @@ module ActiveSupport
     parallelize_teardown do |_worker|
       SimpleCov.result if ENV['COVERAGE']
     end
+
+    Shoulda::Matchers.configure do |config|
+      config.integrate do |with|
+        with.test_framework :minitest
+        with.library :rails
+      end
+    end
   end
 end

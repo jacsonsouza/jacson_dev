@@ -63,7 +63,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_06_171531) do
 
   create_table "skills", force: :cascade do |t|
     t.string "name"
-    t.integer "proficiency", default: 0
+    t.text "short_description"
+    t.string "color"
+    t.integer "experience_time"
+    t.integer "proficiency"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
