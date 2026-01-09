@@ -1,6 +1,8 @@
 <%= simple_form_for [:users, skill] do |f| %>
    <%= f.input :name %>
-   <%= f.input :proficiency, collection: Skill.proficiencies.keys %>
+   <%= f.input :short_description, as: :text %>
+   <%= f.input :color, as: :color %>
+   <%= f.input :proficiency, as: :integer %>
    <%= f.input :icon, as: :image %>
    <%= f.input :description, as: :rich_text_area %>
 

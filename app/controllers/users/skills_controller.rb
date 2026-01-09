@@ -42,7 +42,7 @@ class Users::SkillsController < Users::BaseController
   end
 
   def skill_params
-    params.expect(skill: [:name, :description, :proficiency, :icon, :tag_list])
+    params.expect(skill: [:name, :short_description, :color, :description, :proficiency, :icon, :tag_list])
   end
 
   def set_breadcrumbs
