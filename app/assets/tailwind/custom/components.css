@@ -1,33 +1,51 @@
 @layer components {
+   /* 
+   * LAYOUT & CONTAINERS
+   */
+
    .page-container {
-      @apply overflow-hidden bg-linear-to-br from-slate-900 to-slate-800 min-h-screen perspective-distant;
-   }
-
-   .heading-1 {
-      @apply text-4xl sm:text-2xl md:text-3xl font-bold bg-linear-to-br from-primary to-accent bg-clip-text text-transparent;
-   }
-
-   .heading-2 {
-      @apply text-2xl sm:text-lg md:text-xl font-semibold bg-linear-to-br from-indigo-500 to-pink-500 bg-clip-text text-transparent;
-   }
-
-   .badge {
-      @apply items-center gap-x-1.5 py-1.5 ps-3 pe-2 rounded-full text-xs font-medium text-slate-300 bg-indigo-500/20;
-   }
-
-   .avatar {
-      @apply object-cover w-28 h-28 mb-4 border-4 border-indigo-500 rounded-full shadow-lg;
+      @apply min-h-screen overflow-hidden bg-linear-to-br from-slate-900 to-slate-800 perspective-distant;
    }
 
    .page-section {
-      @apply relative flex items-center justify-center w-full h-screen px-6 py-12 sm:px-8 sm:py-16 lg:px-12 overflow-hidden;
+      @apply relative flex h-screen w-full items-center justify-center overflow-hidden px-6 py-12 sm:px-8 sm:py-16 lg:px-12;
    }
 
    .panel {
-      @apply flex flex-col-reverse items-center w-full max-w-5xl gap-8 p-6 text-white 
-             border border-white/10 bg-gray-900/70 backdrop-blur-md rounded-3xl 
-             shadow-2xl translate-z-12 md:flex-row md:gap-16 md:p-10 sm:p-8 animate-bounce-in-right;
+      @apply flex w-full max-w-5xl animate-bounce-in-right flex-col-reverse items-center gap-8 rounded-3xl border border-white/10 bg-gray-900/70 p-6 text-white shadow-2xl backdrop-blur-md md:flex-row md:gap-16 md:p-10 sm:p-8;
    }
+
+   .card {
+      @apply relative flex h-full flex-col overflow-hidden rounded-2xl border border-indigo-500 bg-gray-900/80 p-8 shadow-2xl backdrop-blur-md;
+   }
+
+   /*
+   * TYPOGRAPHY
+   */
+
+   .heading-1 {
+      @apply bg-linear-to-br from-primary to-accent bg-clip-text font-['Raleway'] text-4xl font-bold text-transparent sm:text-2xl md:text-3xl;
+   }
+
+   .heading-2 {
+      @apply bg-linear-to-br from-primary to-accent bg-clip-text text-2xl font-semibold text-transparent sm:text-lg md:text-xl;
+   }
+
+   .heading-3 {
+      @apply font-['Raleway'] text-2xl font-bold text-white;
+   }
+
+   .subtitle {
+      @apply font-['Raleway'] text-lg text-zinc-100/80;
+   }
+
+   .body-text {
+      @apply mb-6 grow text-sm text-zinc-100/90;
+   }
+
+   /*
+   * Responsive text utilities
+   */
 
    .text-fluid-xl {
       @apply text-2xl md:text-3xl lg:text-4xl;
@@ -41,19 +59,17 @@
       @apply md:text-base lg:text-lg;
    }
 
+   /*
+   * BUTTONS & INTERACTIVES
+   */
+
    .btn-primary {
-      @apply text-center px-4 py-2.5 
-             bg-linear-to-tr from-indigo-500 to-rose-400
-             text-white no-underline rounded-4xl
-             font-semibold text-lg border-none cursor-pointer
-             shadow-lg shadow-indigo-500/40 relative overflow-hidden
-             transition-all duration-500 hover:-translate-y-1.5 hover:shadow-indigo-500/60;
+      @apply relative cursor-pointer rounded-4xl border-none bg-linear-to-tr from-primary to-accent px-4 py-2.5 text-center font-semibold text-lg text-white no-underline shadow-lg shadow-indigo-500/40 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-indigo-500/60;
    }
 
    .btn-primary::before {
       content: "";
-      position: absolute;
-      inset: 0;
+      @apply pointer-events-none absolute inset-0;
       background: linear-gradient(
          90deg,
          transparent,
@@ -62,7 +78,6 @@
       );
       transform: translateX(-100%);
       transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      pointer-events: none;
    }
 
    .btn-primary:hover::before {
@@ -70,36 +85,42 @@
    }
 
    .btn-secondary {
-      @apply text-center px-4 py-2.5
-             bg-transparent border border-zinc-200
-             text-white no-underline rounded-4xl font-semibold text-lg
-             hover:bg-zinc-200 hover:text-slate-900 cursor-pointer hover:shadow-indigo-500/60;
+      @apply cursor-pointer rounded-4xl border border-zinc-200 bg-transparent px-4 py-2.5 text-center font-semibold text-lg text-white no-underline hover:bg-zinc-200 hover:text-slate-900 hover:shadow-indigo-500/60;
    }
 
    .btn-rounded {
-      @apply w-16 h-16 rounded-full shadow-lg shadow-indigo-500/40
-           bg-linear-to-br from-indigo-500 to-rose-400 cursor-pointer
-           flex items-center justify-center transition-all duration-300
-           hover:-translate-y-1.5 hover:shadow-indigo-500/60;
-   }
-
-   .bubble {
-      @apply absolute bg-linear-to-tr from-indigo-500 to-rose-400 rounded-full animate-float;
-   }
-
-   .scroll-thin {
-      @apply overflow-y-auto [&::-webkit-scrollbar]:w-0.5
-             [&::-webkit-scrollbar-track]:rounded-full
-           [&::-webkit-scrollbar-track]:bg-indigo-500
-             [&::-webkit-scrollbar-thumb]:rounded-full
-           [&::-webkit-scrollbar-thumb]:bg-indigo-900;
+      @apply flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-linear-to-br from-indigo-500 to-rose-400 shadow-lg shadow-indigo-500/40 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-indigo-500/60;
    }
 
    /*
-   * card
+   * UI COMPONENTS
    */
 
-   .card {
-      @apply bg-gray-900/80 rounded-2xl shadow-2xl p-8 backdrop-blur-md border border-indigo-500;
+   .badge {
+      @apply flex items-center gap-x-1.5 rounded-full bg-indigo-500/20 px-3 py-1.5 text-xs font-medium text-slate-300;
+   }
+
+   .avatar {
+      @apply mb-4 h-28 w-28 rounded-full border-4 border-indigo-500 object-cover shadow-lg;
+   }
+
+   /*
+   * EFFECTS & DECORATIONS
+   */
+
+   .bubble {
+      @apply absolute animate-float rounded-full bg-linear-to-tr from-indigo-500 to-rose-400;
+   }
+
+   /*
+   * UTILITIES
+   */
+
+   .scroll-thin {
+      @apply overflow-y-auto [&::-webkit-scrollbar]:w-0.5 
+           [&::-webkit-scrollbar-thumb]:rounded-full
+           [&::-webkit-scrollbar-thumb]:bg-indigo-900
+           [&::-webkit-scrollbar-track]:rounded-full
+           [&::-webkit-scrollbar-track]:bg-indigo-500;
    }
 }
