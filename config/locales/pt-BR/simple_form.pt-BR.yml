@@ -1,24 +1,21 @@
-en:
+pt-BR:
   simple_form:
-    "yes": "Yes"
-    "no": "No"
-
-    helpers:
-      submit: "Save"
+    "yes": "Sim"
+    "no": "Não"
 
     fields:
       skill: &skill_fields
-        proficiency: "Proficiency"
-        category: "Category"
-        short_description: "Short description"
+        proficiency: "Proficiência"
+        category: "Categoria"
+        short_description: "Descrição curta"
         tag_list: "Tags"
 
     labels:
       defaults: &defaults
-        name: "Name"
+        name: "Nome"
         email: "E-mail"
-        password: "Password"
-        password_confirmation: "Password confirmation"
+        password: "Senha"
+        password_confirmation: "Confirmação de senha"
 
       user:
         <<: *defaults
@@ -41,11 +38,11 @@ en:
     prompts:
       user:
         skill:
-          category: "Select a category"
+          category: "Selecione uma categoria"
 
     required:
-      text: "required"
+      text: "obrigatório"
       mark: "*"
 
     error_notification:
-      default_message: "Please review the problems below:"
+      default_message: "Por favor, revise os erros abaixo:"

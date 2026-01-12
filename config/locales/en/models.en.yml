@@ -2,34 +2,40 @@ en:
   activeRecord:
     models:
       user:
-        one: 'User'
-        other: 'Users'
+        one: "User"
+        other: "Users"
+
       skill:
-        one: 'Skill'
-        other: 'Skills'
+        one: "Skill"
+        other: "Skills"
+
       tag:
-        one: 'Tag'
-        other: 'Tags'
+        one: "Tag"
+        other: "Tags"
+
     attributes:
       user:
-        name: 'Name'
-        email: 'E-mail'
-        password: 'Password'
-        password_confirmation: 'Password confirmation'
+        name: "Name"
+        email: "E-mail"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+
       skill:
-        name: 'Name'
-        icon: 'Icon'
-        description: 'Description'
-        proficiency: 'Proficiency'
-        tags: 'Tags'
-        tag_list: 'Tags'
-        category: 'Category'
+        name: "Name"
+        icon: "Icon"
+        short_description: "Short description"
+        description: "Description"
+        proficiency: "Proficiency"
+        tags: "Tags"
+        tag_list: "Tags"
+        category: "Category"
+
         categories:
-          backend: 'Backend'
-          frontend: 'Frontend'
-          mobile: 'Mobile'
-          database: 'Database'
-          tools: 'Tools'
+          backend: "Backend"
+          frontend: "Frontend"
+          mobile: "Mobile"
+          database: "Database"
+          tools: "Tools"
+
       tag:
-        name: 'Name'
-        
+        name: "Name"

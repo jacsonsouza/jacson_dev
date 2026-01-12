@@ -2,7 +2,7 @@ class Users::SkillsController < Users::BaseController
   before_action :skill, except: [:index, :new, :create]
 
   def index
-    @skills = current_user.skills.includes([:icon_attachment, :tags, :rich_text_description])
+    @skills = current_user.skills.includes([:icon_attachment, :tags])
   end
 
   def show; end
@@ -16,7 +16,7 @@ class Users::SkillsController < Users::BaseController
   def create
     @skill = current_user.skills.build(skill_params)
     if @skill.save
-      redirect_to users_skills_path, notice: t('devise.registrations.created')
+      redirect_to users_skills_path, notice: success_message
     else
       render :new, status: :unprocessable_content
     end
@@ -24,7 +24,7 @@ class Users::SkillsController < Users::BaseController
 
   def update
     if @skill.update(skill_params)
-      redirect_to users_skills_path, notice: t('devise.registrations.updated')
+      redirect_to users_skills_path, notice: success_message
     else
       render :edit, status: :unprocessable_content
     end
@@ -32,7 +32,7 @@ class Users::SkillsController < Users::BaseController
 
   def destroy
     @skill.destroy
-    redirect_to users_skills_path, notice: t('devise.registrations.destroyed')
+    redirect_to users_skills_path, notice: success_message
   end
 
   private
@@ -42,7 +42,12 @@ class Users::SkillsController < Users::BaseController
   end
 
   def skill_params
-    params.expect(skill: [:name, :category, :short_description, :color, :description, :proficiency, :icon, :tag_list])
+    params.expect(skill: [:name, :category, :short_description,
+                          :color, :description, :proficiency, :icon, :tag_list])
+  end
+
+  def success_message
+    t("notices.#{action_name}", resource: @skill.model_name.human)
   end
 
   def set_breadcrumbs
