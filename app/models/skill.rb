@@ -1,10 +1,24 @@
 class Skill < ApplicationRecord
+  enum :category, {
+    backend: 0,
+    frontend: 1,
+    mobile: 2,
+    database: 3,
+    tools: 4
+  }
+
   has_one_attached :icon
   has_rich_text :description
   has_many :skill_tags, dependent: :destroy
   has_many :tags, through: :skill_tags
 
   belongs_to :user
+
+  scope :by_category, lambda { |category|
+    return all unless categories.key?(category)
+
+    where(category: category)
+  }
 
   validates :name,
             presence: true,
@@ -28,6 +42,16 @@ class Skill < ApplicationRecord
     end
 
     self.tags = new_tags.uniq
+  end
+
+  def self.category_options
+    categories.keys.map do |key|
+      [I18n.t("activeRecord.attributes.skill.categories.#{key}"), key]
+    end
+  end
+
+  def category_human
+    I18n.t("activeRecord.attributes.skill.categories.#{category}")
   end
 
   private

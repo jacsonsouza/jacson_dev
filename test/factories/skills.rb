@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :skill do
     name { Faker::ProgrammingLanguage.name }
+    category { Faker::Number.between(from: 0, to: 4) }
     short_description { Faker::Lorem.sentence }
     color { Faker::Color.hex_color }
     description { Faker::Lorem.paragraph }

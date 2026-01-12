@@ -1,28 +1,57 @@
-<div class="card relative overflow-hidden flex flex-col h-full transition-all duration-500 group hover:-translate-y-2.5" data-category="backend">
-   <div class="bg-secondary absolute w-32 h-32 rounded-full opacity-5 -top-10 -right-10 z-0 transition-all duration-500 group-hover:opacity-10 group-hover:scale-125"></div>
-   <div class="flex items-center mb-5 gap-4">
-      <div class="w-16 h-16 p-2 rounded-xl flex items-center justify-center bg-linear-to-br from-secondary to-red-700 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
-         <%= image_tag url_for(skill.icon), alt: skill.name %>
+<div
+  class="card group relative flex h-full flex-col overflow-hidden transition-all duration-500 hover:-translate-y-2.5"
+  data-category="backend"
+  style="--skill-color: <%= skill.color %>;"
+>
+
+   <div
+      class="absolute -right-10 -top-10 z-0 h-32 w-32 rounded-full opacity-5 transition-all duration-500 group-hover:scale-125 group-hover:opacity-10"
+      style="background-color: var(--skill-color);"
+   ></div>
+
+   <div class="mb-5 flex items-center gap-4">
+      <div
+         class="flex h-16 w-16 items-center justify-center rounded-xl bg-linear-to-br from-(--skill-color) to-from-(--skill-color)/30 p-2 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110"
+      >
+         <%= image_tag url_for(skill.icon), alt: skill.name, class: "h-full w-full object-contain" %>
       </div>
+
       <div>
-         <h3 class="font-(family-name: 'Roleway') font-bold text-2xl text-light"><%= skill.name %></h3>
-         <div class="text-sm text-zinc-100/70 mt-1">Back-end Framework</div>
+         <h3 class="font-['Raleway'] text-2xl font-bold text-white">
+            <%= skill.name %>
+         </h3>
+         <div class="mt-1 text-sm text-zinc-100/70">
+            <%= skill.category %>
+         </div>
       </div>
    </div>
-   <p class="text-sm text-zinc-100/90 mb-6 grow">
-      Framework full-stack para desenvolvimento web ágil com convenção sobre configuração.
+
+   <p class="mb-6 grow text-sm text-zinc-100/90">
+      <%= skill.short_description %>
    </p>
+
    <div class="mb-5">
-      <div class="flex justify-between mb-2 text-sm font-medium text-zinc-100/90">
+      <div class="mb-2 flex justify-between text-sm font-medium text-zinc-100/90">
          <span>Proficiência</span>
-         <span>90%</span>
+         <span><%= skill.proficiency %>%</span>
       </div>
-      <div class="h-2 bg-zinc-100/10 rounded-xl overflow-hidden">
-         <div class="h-full rounded-xl w-0 transition-[width] duration-1500 bg-linear-to-r from-secondary to-red-700" data-width="90"></div>
+
+      <div class="h-2 overflow-hidden rounded-xl bg-zinc-100/10">
+         <div
+            class="h-full rounded-xl bg-linear-to-r from-(--skill-color) to-(--skill-color)/30 transition-[width] duration-1500"
+            style="width: <%= skill.proficiency %>%"
+            data-width="<%= skill.proficiency %>">
+         </div>
       </div>
    </div>
-   <div class="flex justify-between items-center mt-auto">
-      <div class="text-sm text-zinc-100/70">3+ anos de experiência</div>
-      <div class="bg-linear-to-br from-primary to-accent text-white py-1.5 px-3 rounded-3xl text-sm font-medium"><%= skill.tags.first.name %></div>
+
+   <div class="mt-auto flex items-center justify-between">
+      <div class="text-sm text-zinc-100/70">
+         3+ anos de experiência
+      </div>
+
+      <div class="rounded-3xl bg-linear-to-br from-primary to-accent px-3 py-1.5 text-sm font-medium text-white">
+         <%= skill.tags.first.name %>
+      </div>
    </div>
 </div>

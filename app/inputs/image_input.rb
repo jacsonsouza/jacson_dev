@@ -14,7 +14,7 @@ class ImageInput < SimpleForm::Inputs::Base
   def preview_container
     content_tag :div, preview_attributes do
       content_tag(:div, class: 'w-full h-full p-6 flex items-center justify-center') do
-        content_tag(:div, class: 'relative h-full aspect-[3/4]') do
+        content_tag(:div, class: 'relative h-full') do
           preview_image + remove_button
         end
       end
@@ -46,14 +46,14 @@ class ImageInput < SimpleForm::Inputs::Base
     template.image_tag(
       image_url,
       data: { "#{CONTROLLER}-target": 'previewImage' },
-      class: 'w-full h-full object-cover rounded-xl shadow-lg'
+      class: 'w-full h-full p-10 rounded-full shadow-lg'
     )
   end
 
   def image_url
     return default_image unless valid_attachment?
 
-    Rails.application.routes.url_helpers.rails_blob_url(attachment.blob, only_path: true)
+    Rails.application.routes.url_helpers.rails_blob_url(object.send(attribute_name), only_path: true)
   rescue StandardError
     default_image
   end

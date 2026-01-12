@@ -24,6 +24,10 @@ en:
       skill:
         <<: *defaults
         tag_list: 'Tags'
+    prompts:
+      user:
+        skill:
+          category: 'Select a category'
     required:
       text: 'required'
       mark: '*'

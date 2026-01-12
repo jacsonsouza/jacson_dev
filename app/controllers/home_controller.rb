@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   def about; end
 
   def skills
-    @skills = Skill.includes(:icon_attachment, :tags)
+    @skills = Skill.by_category(params[:category]).includes(:icon_attachment, :tags)
   end
 
   def portfolio; end

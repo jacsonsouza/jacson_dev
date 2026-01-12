@@ -4,10 +4,12 @@
       <p class="text-lg text-zinc-100/80 mb-5">Tecnologias e ferramentas que domino e utilizo em meus projetos</p>
 
       <div class="flex flex-wrap gap-4">
-         <button class="py-2.5 px-5 rounded-lg border-none bg-zinc-100/10 text-light font-medium transition-all backdrop-blur-md" data-filter="all">Todas</button>
-         <button class="py-2.5 px-5 rounded-lg border-none bg-zinc-100/10 text-light font-medium transition-all backdrop-blur-md" data-filter="backend">Back-end</button>
-         <button class="py-2.5 px-5 rounded-lg border-none bg-zinc-100/10 text-light font-medium transition-all backdrop-blur-md" data-filter="frontend">Front-end</button>
-         <button class="py-2.5 px-5 rounded-lg border-none bg-zinc-100/10 text-light font-medium transition-all backdrop-blur-md" data-filter="tools">Ferramentas</button>
+         <%= link_to 'Todos', skills_path, class: 'py-2.5 px-5 rounded-lg border-none bg-zinc-100/10 text-light font-medium transition-all backdrop-blur-md' %>
+         <%= link_to 'Back-end', skills_path(category: 'backend'), class: 'py-2.5 px-5 rounded-lg border-none bg-zinc-100/10 text-light font-medium transition-all backdrop-blur-md' %>
+         <%= link_to 'Front-end', skills_path(category: 'frontend'), class: 'py-2.5 px-5 rounded-lg border-none bg-zinc-100/10 text-light font-medium transition-all backdrop-blur-md' %>
+         <%= link_to 'Mobile', skills_path(category: 'mobile'), class: 'py-2.5 px-5 rounded-lg border-none bg-zinc-100/10 text-light font-medium transition-all backdrop-blur-md' %>
+         <%= link_to 'Database', skills_path(category: 'database'), class: 'py-2.5 px-5 rounded-lg border-none bg-zinc-100/10 text-light font-medium transition-all backdrop-blur-md' %>
+         <%= link_to 'Tools', skills_path(category: 'tools'), class: 'py-2.5 px-5 rounded-lg border-none bg-zinc-100/10 text-light font-medium transition-all backdrop-blur-md' %>
       </div>
    </div>
 

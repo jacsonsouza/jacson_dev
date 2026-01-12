@@ -23,6 +23,13 @@ en:
         proficiency: 'Proficiency'
         tags: 'Tags'
         tag_list: 'Tags'
+        category: 'Category'
+        categories:
+          backend: 'Backend'
+          frontend: 'Frontend'
+          mobile: 'Mobile'
+          database: 'Database'
+          tools: 'Tools'
       tag:
         name: 'Name'
         

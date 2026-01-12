@@ -1,5 +1,6 @@
 <%= simple_form_for [:users, skill] do |f| %>
    <%= f.input :name %>
+   <%= f.input :category, collection: Skill.category_options, prompt: :translate %>
    <%= f.input :short_description, as: :text %>
    <%= f.input :color, as: :color %>
    <%= f.input :proficiency, as: :integer %>

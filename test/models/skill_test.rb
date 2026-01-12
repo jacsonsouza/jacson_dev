@@ -13,6 +13,7 @@ class SkillTest < ActiveSupport::TestCase
     should validate_presence_of(:icon)
     should validate_length_of(:short_description).is_at_least(10)
     should validate_numericality_of(:proficiency).is_in(0..100)
+    should define_enum_for(:category).with_values(Skill.categories)
   end
 
   context 'associations' do
