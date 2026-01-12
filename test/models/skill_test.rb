@@ -14,18 +14,15 @@ class SkillTest < ActiveSupport::TestCase
     should validate_length_of(:short_description).is_at_least(10)
     should validate_numericality_of(:proficiency).is_in(0..100)
     should define_enum_for(:category).with_values(Skill.categories)
+    should allow_value('#000000').for(:color)
+    should_not allow_value('invalid').for(:color)
   end
 
   context 'associations' do
     should belong_to(:user)
     should have_many(:skill_tags)
     should have_many(:tags).through(:skill_tags)
-  end
-
-  test 'should the color be a valid hex color' do
-    @skill.color = 'invalid'
-
-    assert_not @skill.valid?
+    should have_one_attached(:icon)
   end
 
   test 'should creates and associates a new tag when tag does not exist' do

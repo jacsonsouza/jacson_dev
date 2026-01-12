@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :skills, dependent: :destroy
 
   validate :only_one_user_allowed, on: :create
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true
   validates :name, presence: true, length: { minimum: 2, maximum: 50 }
 
   private
