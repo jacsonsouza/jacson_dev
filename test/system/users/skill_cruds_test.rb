@@ -23,6 +23,19 @@ class Users::SkillCrudsTest < ApplicationSystemTestCase
     end
   end
 
+  test 'an admin user can see a skill details' do
+    skill = FactoryBot.create(:skill, user: @user)
+
+    visit users_skill_path(skill)
+
+    within '#skill-header' do
+      assert_text skill.name
+      assert_text skill.short_description
+    end
+
+    assert_selector '.action-text', text: skill.description.to_plain_text
+  end
+
   test 'an admin user can create a skill' do
     visit new_users_skill_path
 
