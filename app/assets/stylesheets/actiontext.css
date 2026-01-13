@@ -357,10 +357,10 @@ trix-toolbar .trix-dialog__link-fields .trix-button-group {
 }
 
 .trix-content blockquote {
-   border-left: 4px solid var(--trix-primary);
+   border-left: 4px solid var(--color-primary);
    margin: 1.5rem 0;
    padding: 1rem 1.5rem;
-   background: #f8fafc;
+   background: var(--color-gray-700);
    border-radius: 0 var(--trix-radius) var(--trix-radius) 0;
    font-style: italic;
 }
@@ -368,7 +368,7 @@ trix-toolbar .trix-dialog__link-fields .trix-button-group {
 .trix-content [dir="rtl"] blockquote,
 .trix-content blockquote[dir="rtl"] {
    border-left: none;
-   border-right: 4px solid var(--trix-primary);
+   border-right: 4px solid var(--trix-border-dark);
    border-radius: var(--trix-radius) 0 0 var(--trix-radius);
 }
 
