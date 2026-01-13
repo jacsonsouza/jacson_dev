@@ -2,7 +2,8 @@ class Users::SkillsController < Users::BaseController
   before_action :skill, except: [:index, :new, :create]
 
   def index
-    @skills = current_user.skills.includes([:icon_attachment, :tags])
+    @skills = current_user
+              .skills.includes([:icon_attachment, :tags]).order(name: :asc)
   end
 
   def show; end

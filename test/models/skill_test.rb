@@ -1,14 +1,14 @@
 require 'test_helper'
 
 class SkillTest < ActiveSupport::TestCase
-  setup do
-    @skill = FactoryBot.create(:skill)
-  end
-
   context 'validations' do
+    setup do
+      @skill = FactoryBot.create(:skill)
+    end
+
     should validate_presence_of(:name)
     should validate_uniqueness_of(:name)
-    should validate_length_of(:name).is_at_most(50)
+    should validate_length_of(:name).is_at_most(100)
     should validate_presence_of(:description)
     should validate_presence_of(:icon)
     should validate_length_of(:short_description).is_at_least(10)
@@ -19,16 +19,43 @@ class SkillTest < ActiveSupport::TestCase
   end
 
   context 'associations' do
+    setup do
+      @skill = FactoryBot.create(:skill)
+    end
+
     should belong_to(:user)
     should have_many(:skill_tags)
     should have_many(:tags).through(:skill_tags)
     should have_one_attached(:icon)
+
+    should 'creates and associates a new tag when tag does not exist' do
+      @skill.tags << FactoryBot.build(:tag, name: 'test')
+
+      assert_equal 1, @skill.tags.count
+      assert_equal 'test', @skill.tags.last.name
+    end
   end
 
-  test 'should creates and associates a new tag when tag does not exist' do
-    @skill.tags << FactoryBot.build(:tag, name: 'test')
+  context 'scope by_category' do
+    setup do
+      user = FactoryBot.create(:user)
+      @backend = FactoryBot.create(:skill, category: 0, user: user)
+      @frontend = FactoryBot.create(:skill, category: 1, user: user)
+      @mobile = FactoryBot.create(:skill, category: 2, user: user)
+    end
 
-    assert_equal 1, @skill.tags.count
-    assert_equal 'test', @skill.tags.last.name
+    should 'return only skills from a valid category' do
+      result = Skill.by_category('backend')
+
+      assert_includes result, @backend
+      assert_not_includes result, @frontend
+      assert_not_includes result, @mobile
+    end
+
+    should 'return all skills when category is invalid' do
+      result = Skill.by_category(999)
+
+      assert_equal Skill.count, result.count
+    end
   end
 end

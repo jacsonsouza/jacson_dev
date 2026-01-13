@@ -33,7 +33,7 @@ class Users::SkillCrudsTest < ApplicationSystemTestCase
       assert_text skill.short_description
     end
 
-    assert_selector '.action-text', text: skill.description.to_plain_text
+    assert_selector '.prose', text: skill.description.to_plain_text
   end
 
   test 'an admin user can create a skill' do

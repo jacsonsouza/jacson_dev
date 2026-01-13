@@ -3,7 +3,8 @@
       <h1 class="heading-1 mb-5"><%= t('.title') %></h1>
       <p class="subtitle mb-5"><%= t('.subtitle') %></p>
 
-      <ul id="skills-filter" class="flex flex-wrap gap-4 justify-center lg:justify-start">
+      <ul id="skills-filter" class="flex gap-3 overflow-x-auto py-4
+                                    lg:flex-wrap lg:overflow-visible scrollbar-none">
 
          <% filters = [
             { name: t('links.all'), path: skills_path, id: 'all' },
@@ -15,7 +16,7 @@
          ] %>
 
          <% filters.each do |filter| %>
-            <li " class="mb-4">
+            <li " class="shrink-0">
                <%= active_link_to filter[:name],
                           filter[:path],
                           id: filter[:id],

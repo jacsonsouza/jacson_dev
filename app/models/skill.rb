@@ -23,7 +23,7 @@ class Skill < ApplicationRecord
   validates :name,
             presence: true,
             uniqueness: true,
-            length: { maximum: 50 }
+            length: { maximum: 100 }
 
   validates :icon, :description, presence: true
   validates :color, format: { with: /\A#([A-Fa-f0-9]{6})\z/ }

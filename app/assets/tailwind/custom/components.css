@@ -4,7 +4,7 @@
    */
 
    .page-container {
-      @apply min-h-screen overflow-hidden bg-linear-to-br from-slate-900 to-slate-800 perspective-distant;
+      @apply min-h-screen bg-linear-to-br from-slate-900 via-slate-950 to-indigo-950 text-light;
    }
 
    .page-section {
@@ -43,11 +43,6 @@
       @apply mb-6 grow text-sm text-zinc-100/90;
    }
 
-   .action-text {
-      @apply prose prose-invert prose-lg max-w-none prose-p:text-slate-300
-             prose-headings:text-slate-100 prose-a:text-indigo-400 prose-strong:text-slate-100;
-   }
-
    /*
    * Responsive text utilities
    */
@@ -69,24 +64,10 @@
    */
 
    .btn-primary {
-      @apply relative cursor-pointer rounded-4xl border-none bg-linear-to-tr from-primary to-accent px-4 py-2.5 text-center font-semibold text-lg text-white no-underline shadow-lg shadow-indigo-500/40 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-indigo-500/60;
-   }
-
-   .btn-primary::before {
-      content: "";
-      @apply pointer-events-none absolute inset-0;
-      background: linear-gradient(
-         90deg,
-         transparent,
-         rgba(255, 255, 255, 0.2),
-         transparent
-      );
-      transform: translateX(-100%);
-      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-   }
-
-   .btn-primary:hover::before {
-      transform: translateX(100%);
+      @apply relative cursor-pointer rounded-4xl border-none
+             bg-linear-to-tr from-primary to-accent px-4 py-2.5
+             text-center font-semibold text-lg text-white no-underline shadow-lg
+             shadow-indigo-500/40 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-indigo-500/60;
    }
 
    .btn-secondary {

@@ -13,6 +13,6 @@ class User < ApplicationRecord
   private
 
   def only_one_user_allowed
-    errors.add(:base, I18n.t('errors.messages.only_one_user')) if User.count >= 1
+    errors.add(:base, I18n.t('errors.messages.only_one_user')) if User.exists?
   end
 end
