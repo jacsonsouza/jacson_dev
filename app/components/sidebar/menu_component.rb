@@ -24,7 +24,7 @@ class Sidebar::MenuComponent < ViewComponent::Base
 
   def main_items
     [
-      menu_item(icon: 'fas fa-home', name: t('users.menu.dashboard'), path: '#'),
+      menu_item(icon: 'fas fa-home', name: t('users.menu.dashboard'), path: users_root_path),
       menu_item(icon: 'fas fa-user', name: t('users.menu.profile'),   path: '#')
     ]
   end
@@ -32,7 +32,7 @@ class Sidebar::MenuComponent < ViewComponent::Base
   def content_items
     [
       menu_item(icon: 'fas fa-briefcase', name: t('users.menu.projects'), path: '#'),
-      menu_item(icon: 'fas fa-code',      name: t('users.menu.skills'),   path: '#'),
+      menu_item(icon: 'fas fa-code',      name: t('users.menu.skills'),   path: users_skills_path),
       menu_item(icon: 'fas fa-newspaper', name: t('users.menu.blog'),     path: '#')
     ]
   end

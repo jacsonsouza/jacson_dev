@@ -23,7 +23,7 @@
       <%= favicon_link_tag %>
    </head>
 
-   <body class="page-container flex items-center justify-center">
+   <body class="page-container flex items-center justify-center overflow-hidden">
 
       <%= rc 'flash/message' %>
 
@@ -31,8 +31,14 @@
          <div class="w-full p-8 md:p-10 bg-gray-900/70 backdrop-blur-md border border-white/10 rounded-3xl shadow-2xl transform-3d">
 
             <div class="flex flex-col items-center justify-center gap-6 mb-6">
-               <%= link_to image_tag('logo.png', alt: 'Logo', class: 'w-56'), root_path %>
+
+               <div class="font-bold text-3xl text-primary text-center flex items-center justify-center gap-2.5">
+                  <%= image_tag "logos/primary-logo.png", class: "h-10", alt: 'Jacson Dev Logo' %>
+                  <span>Jacson Dev</span>
+               </div>
+
                <p class="text-slate-400 text-center text-md tracking-wider"><%= content_for(:page_title) %></p>
+
             </div>
 
             <%= yield %>

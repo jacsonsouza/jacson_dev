@@ -1,0 +1,25 @@
+<% unless breadcrumbs.empty? %>
+   <nav id="breadcrumbs" class="flex mb-6" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+         <% breadcrumbs.each_with_index do |crumb, index| %>
+            <% if crumb.link? %>
+               <li class="inline-flex items-center">
+                  <%= link_to crumb.path, class: "inline-flex items-center text-sm font-medium text-gray-400 hover:text-white" do %>
+                     <% if index == 0 %>
+                        <i class="fas fa-home fa-md me-2.5"></i>
+                     <% end %>
+                     <%= crumb.name %>
+                  <% end %>
+               </li>
+            <% else %>
+               <li aria-current="page">
+                  <span class="text-sm font-medium text-gray-500"><%= crumb.name %></span>
+               </li>
+            <% end %>
+            <% if index < breadcrumbs.size - 1 %>
+               <li> <i class="fas fa-chevron-right w-3 h-3 text-gray-400"></i> </li>
+            <% end %>
+         <% end %>
+      </ol>
+   </nav>
+<% end %>

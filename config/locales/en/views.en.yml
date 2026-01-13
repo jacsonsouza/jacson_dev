@@ -1,10 +1,15 @@
 en:
   links:
     about: "About"
+    all: "All"
     back_to_home: "Back to Home"
+    backend: "Backend"
     confirm_your_email: "Confirm your email"
     contact: "Contact"
+    database: "Database"
+    frontend: "Frontend"
     home: "Home"
+    mobile: "Mobile"
     portfolio: "Portfolio"
     reset_password: "Reset password"
     send_me_confirmation_instructions: "Send me confirmation instructions"
@@ -14,16 +19,24 @@ en:
     skills: "Skills"
     sign_in: "Sign in"
     sign_up: "Sign up"
+    tools: "Tools"
+
   shared:
     under_construction:
       title: "Under Construction"
       description: "This page is under construction."
+
   home:
     index:
       greeting: "Hi, I'm "
       occupation: "Full Stack Developer"
       introduction: "I turn ideas into exceptional digital experiences with a strong focus on performance and innovative design."
       projects: "Explore Projects"
+
+    skills:
+      title: "My Skills"
+      subtitle: "Technologies & Tools I Work With."
+
   users:
     menu:
       admin: "Admin"
@@ -34,10 +47,12 @@ en:
       blog: "Blog"
       settings: "Settings"
       sign_out: "Sign out"
+
       sections:
         main: "Main"
         content: "Content"
         settings: "Settings"
+
     devise:
       sessions:
         new:
@@ -45,6 +60,26 @@ en:
           sign_in: "Sign in to your account"
           remember_me: "Remember me"
           forgot_password: "Forgot your password?"
-        registrations:
-          new:
-            sign_up: "Sign up"
+
+      registrations:
+        new:
+          sign_up: "Sign up"
+
+    skills:
+      index:
+        title: "My Skills"
+        new: "New Skill"
+
+      edit:
+        title: "Edit Skill"
+
+      new:
+        title: "New Skill"
+
+  breadcrumbs:
+    home: "Home"
+
+    skills:
+      index: "Skills"
+      new: "New Skill"
+      edit: "Edit %{name}"

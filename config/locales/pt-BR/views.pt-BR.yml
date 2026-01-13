@@ -1,37 +1,84 @@
 pt-BR:
   links:
     about: "Sobre"
+    all: "Todos"
+    back_to_home: "Voltar para a página inicial"
+    backend: "Backend"
+    confirm_your_email: "Confirmar seu e-mail"
     contact: "Contato"
+    database: "Banco de dados"
+    frontend: "Frontend"
     home: "Início"
-    portfolio: "Portifólio"
+    portfolio: "Portfólio"
+    reset_password: "Redefinir senha"
+    send_me_confirmation_instructions: "Enviar instruções de confirmação"
+    send_me_instructions: "Enviar instruções"
+    send_me_reset_password_instructions: "Enviar instruções para redefinir senha"
+    send_me_unlock_instructions: "Enviar instruções de desbloqueio"
     skills: "Habilidades"
-    back_to_home: "Voltar para Início"
+    sign_in: "Entrar"
+    sign_up: "Cadastrar-se"
+    tools: "Ferramentas"
+
   shared:
     under_construction:
-      title: "Em Construção"
+      title: "Em construção"
       description: "Esta página está em construção."
+
   home:
     index:
       greeting: "Olá, eu sou "
       occupation: "Desenvolvedor Full Stack"
-      intruction: "Transformo ideias em experiências digitais excepcionais com foco em desempenho e design inovador."
-      projects: "Explorar Projetos"
+      introduction: "Transformo ideias em experiências digitais excepcionais, com forte foco em performance e design inovador."
+      projects: "Explorar projetos"
+
+    skills:
+      title: "Minhas habilidades"
+      subtitle: "Tecnologias e ferramentas que trabalho."
+
   users:
     menu:
-      admin: "Admin"
-      dashboard: "Painel"
+      admin: "Administração"
+      dashboard: "Dashboard"
       profile: "Perfil"
       projects: "Projetos"
       skills: "Habilidades"
       blog: "Blog"
       settings: "Configurações"
       sign_out: "Sair"
+
       sections:
         main: "Principal"
         content: "Conteúdo"
         settings: "Configurações"
+
     devise:
-      welcome: "Bem-vindo"
-      sign_in: "Entre com sua conta"
-      remember_me: "Lembrar-me"
-      forgot_password: "Esqueci minha senha"
+      sessions:
+        new:
+          welcome: "Bem-vindo"
+          sign_in: "Entre na sua conta"
+          remember_me: "Lembrar-me"
+          forgot_password: "Esqueceu sua senha?"
+
+      registrations:
+        new:
+          sign_up: "Criar conta"
+
+    skills:
+      index:
+        title: "Minhas habilidades"
+        new: "Nova habilidade"
+
+      edit:
+        title: "Editar habilidade"
+
+      new:
+        title: "Nova habilidade"
+
+  breadcrumbs:
+    home: "Início"
+
+    skills:
+      index: "Habilidades"
+      new: "Nova habilidade"
+      edit: "Editar %{name}"

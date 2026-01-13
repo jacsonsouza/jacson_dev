@@ -1,2 +1,8 @@
 pt-BR:
-  hello: "Olá"
+  app:
+    name: "Jacson Dev"
+
+  notices:
+    create: "%{resource} foi criado com sucesso."
+    update: "%{resource} foi atualizado com sucesso."
+    destroy: "%{resource} foi excluido com sucesso."

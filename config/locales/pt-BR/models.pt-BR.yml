@@ -1,0 +1,41 @@
+pt-BR:
+  activeRecord:
+    models:
+      user:
+        one: "Usuário"
+        other: "Usuários"
+
+      skill:
+        one: "Habilidade"
+        other: "Habilidades"
+
+      tag:
+        one: "Tag"
+        other: "Tags"
+
+    attributes:
+      user:
+        name: "Nome"
+        email: "E-mail"
+        password: "Senha"
+        password_confirmation: "Confirmação de senha"
+
+      skill:
+        name: "Nome"
+        icon: "Ícone"
+        short_description: "Descrição curta"
+        description: "Descrição"
+        proficiency: "Proficiência"
+        tags: "Tags"
+        tag_list: "Tags"
+        category: "Categoria"
+
+        categories:
+          backend: "Backend"
+          frontend: "Frontend"
+          mobile: "Mobile"
+          database: "Banco de dados"
+          tools: "Ferramentas"
+
+      tag:
+        name: "Nome"

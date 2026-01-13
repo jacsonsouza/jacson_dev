@@ -1,4 +1,10 @@
 @theme {
+   --color-primary: #6c63ff;
+   --color-secondary: #ff6584;
+   --color-accent: #36d1dc;
+   --color-dark: #1a1a2e;
+   --color-light: #f0f0f0;
+
    --animate-float: float 8s ease-in-out infinite;
    --animate-card: cardAppear 1s ease-in-out;
    --animate-slide-in: slideIn 0.5s forwards;

@@ -1,5 +1,35 @@
-<div class="page-section">
-   <div class="panel">
-      <%= render 'shared/under_construction' %>
+<div id="my-skills-page" class="flex flex-col gap-8">
+   <div class="bg-gray-900/80 rounded-2xl shadow-2xl p-8 backdrop-blur-md border border-indigo-500">
+      <h1 class="heading-1 mb-5"><%= t('.title') %></h1>
+      <p class="subtitle mb-5"><%= t('.subtitle') %></p>
+
+      <ul id="skills-filter" class="flex gap-3 overflow-x-auto py-4
+                                    lg:flex-wrap lg:overflow-visible scrollbar-none">
+
+         <% filters = [
+            { name: t('links.all'), path: skills_path, id: 'all' },
+            { name: t('links.backend'), path: skills_path(category: 'backend'), id: 'backend' },
+            { name: t('links.frontend'), path: skills_path(category: 'frontend'), id: 'frontend' },
+            { name: t('links.mobile'), path: skills_path(category: 'mobile'), id: 'mobile' },
+            { name: t('links.database'), path: skills_path(category: 'database'), id: 'database' },
+            { name: t('links.tools'), path: skills_path(category: 'tools'), id: 'tools' },
+         ] %>
+
+         <% filters.each do |filter| %>
+            <li " class="shrink-0">
+               <%= active_link_to filter[:name],
+                          filter[:path],
+                          id: filter[:id],
+                          class: "py-2.5 px-5 rounded-lg border-none bg-zinc-100/10 text-light font-medium transition-all backdrop-blur-md", 
+                          class_active: "bg-linear-to-br from-primary to-accent text-white shadow-2xl",
+                          active: :exact %>
+            </li>
+         <% end %>
+
+      </ul>
    </div>
+
+   <ul id="my-skills-list" class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <%= render partial: 'home/partials/skill', collection: @skills, as: :skill %>
+   </ul>
 </div>

@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   authenticate :user do
     namespace :users do
       root 'dashboard#index'
+
+      resources :skills
     end
   end
 end

@@ -1,0 +1,13 @@
+<%= simple_form_for [:users, skill] do |f| %>
+   <%= f.input :name %>
+   <%= f.input :category, collection: Skill.category_options, prompt: :translate %>
+   <%= f.input :short_description, as: :text %>
+   <%= f.input :color, as: :color %>
+   <%= f.input :proficiency, as: :integer %>
+   <%= f.input :icon, as: :image %>
+   <%= f.input :description, as: :rich_text_area %>
+
+   <%= render 'users/skills/partials/input_tags', f: f %>
+
+   <%= f.button :submit %>
+<% end %>

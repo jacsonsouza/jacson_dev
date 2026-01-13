@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html>
    <head>
       <title><%= full_title(content_for(:page_title)) %></title>
@@ -23,11 +23,19 @@
       <%= favicon_link_tag %>
    </head>
 
-   <body class="bg-gradient-to-br from-slate-900 to-slate-800 min-h-screen perspective-distant">
+   <body class="page-container p-5 overflow-x-hidden">
+
       <%= rc 'flash/message' %>
-      <%= render 'shared/side_menu' %>
-      <main class="min-h-screen flex-1 md:ml-20 relative transition [transform-style:preserve-3d]">
-         <%= yield %>
-      </main>
+
+      <div class="flex w-full min-w-0 gap-4">
+
+         <%= render 'shared/side_menu' %>
+
+         <main class="flex-1 min-w-0 flex flex-col gap-8">
+            <%= yield %>
+         </main>
+
+      </div>
+
    </body>
 </html>

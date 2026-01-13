@@ -1,26 +1,51 @@
 en:
   simple_form:
-    "yes": 'Yes'
-    "no": 'No'
+    "yes": "Yes"
+    "no": "No"
+
+    helpers:
+      submit: "Save"
+
+    fields:
+      skill: &skill_fields
+        proficiency: "Proficiency"
+        category: "Category"
+        short_description: "Short description"
+        tag_list: "Tags"
+
     labels:
       defaults: &defaults
-        name: 'Name'
-        email: 'E-mail'
-        password: 'Password'
-        password_confirmation: 'Password confirmation'
+        name: "Name"
+        email: "E-mail"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+
       user:
         <<: *defaults
+
+      skill:
+        <<: *defaults
+        <<: *skill_fields
+
     placeholders:
-      defaults: &defaults
-        name: 'Name'
-        email: 'E-mail'
-        password: 'Password'
-        password_confirmation: 'Password confirmation'
+      defaults:
+        <<: *defaults
+
       user:
         <<: *defaults
+
+      skill:
+        <<: *defaults
+        <<: *skill_fields
+
+    prompts:
+      user:
+        skill:
+          category: "Select a category"
+
     required:
-      text: 'required'
-      mark: '*'
+      text: "required"
+      mark: "*"
+
     error_notification:
       default_message: "Please review the problems below:"
-
