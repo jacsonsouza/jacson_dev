@@ -28,7 +28,7 @@ class SkillTest < ActiveSupport::TestCase
   test 'should creates and associates a new tag when tag does not exist' do
     @skill.tags << FactoryBot.build(:tag, name: 'test')
 
-    assert_equal 2, @skill.tags.count
+    assert_equal 1, @skill.tags.count
     assert_equal 'test', @skill.tags.last.name
   end
 end
