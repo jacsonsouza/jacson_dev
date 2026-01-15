@@ -4,7 +4,7 @@
    */
 
    .page-container {
-      @apply min-h-screen bg-linear-to-br from-slate-900 via-slate-950 to-indigo-950 text-light;
+      @apply min-h-screen flex bg-linear-to-br from-slate-900 via-slate-950 to-indigo-950 text-light;
    }
 
    .page-section {
@@ -71,11 +71,25 @@
    }
 
    .btn-secondary {
-      @apply cursor-pointer rounded-4xl border border-zinc-200 bg-transparent px-4 py-2.5 text-center font-semibold text-lg text-white no-underline hover:bg-zinc-200 hover:text-slate-900 hover:shadow-indigo-500/60;
+      @apply cursor-pointer rounded-4xl border border-zinc-200
+             bg-transparent px-4 py-2.5 text-center font-semibold text-lg
+             text-white no-underline hover:bg-zinc-200 hover:text-slate-900 hover:shadow-indigo-500/60;
    }
 
    .btn-rounded {
-      @apply flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-linear-to-br from-indigo-500 to-rose-400 shadow-lg shadow-indigo-500/40 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-indigo-500/60;
+      @apply flex h-16 w-16 cursor-pointer items-center justify-center
+             rounded-full bg-linear-to-br from-indigo-500 to-rose-400 shadow-lg
+             shadow-indigo-500/40 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-indigo-500/60;
+   }
+
+   .menu-link {
+      @apply flex items-center gap-3 py-3 px-4 rounded-xl
+           text-light font-medium transition-all duration-500
+           hover:bg-primary hover:text-white hover:translate-x-1.5;
+   }
+
+   .menu-link-active {
+      @apply bg-linear-to-br from-primary to-accent text-white shadow-2xl;
    }
 
    /*
