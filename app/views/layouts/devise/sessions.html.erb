@@ -32,10 +32,7 @@
 
             <div class="flex flex-col items-center justify-center gap-6 mb-6">
 
-               <div class="font-bold text-3xl text-primary text-center flex items-center justify-center gap-2.5">
-                  <%= image_tag "logos/primary-logo.png", class: "h-10", alt: 'Jacson Dev Logo' %>
-                  <span>Jacson Dev</span>
-               </div>
+               <%= rc 'app/logo', text_class: 'text-3xl', icon_class: 'h-10' %>
 
                <p class="text-slate-400 text-center text-md tracking-wider"><%= content_for(:page_title) %></p>
 
