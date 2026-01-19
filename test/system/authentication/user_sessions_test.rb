@@ -8,7 +8,7 @@ class UserSessionsTest < ApplicationSystemTestCase
   test 'should display login form' do
     visit new_user_session_path
 
-    assert_selector 'img[alt="Jacson Dev Logo"]'
+    assert_selector 'img[alt="Jacson Dev"]'
 
     within('form') do
       assert_selector 'input[name="user[email]"]'
