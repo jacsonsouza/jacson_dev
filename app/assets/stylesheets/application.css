@@ -7,6 +7,10 @@
    --transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+/*
+* Color Picker Customization
+*/
+
 input[type="color"]::-webkit-color-swatch-wrapper {
    padding: 0;
 }

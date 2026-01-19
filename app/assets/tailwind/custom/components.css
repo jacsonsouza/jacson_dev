@@ -12,7 +12,7 @@
    }
 
    .panel {
-      @apply flex w-full max-w-5xl animate-bounce-in-right flex-col-reverse items-center gap-8 rounded-3xl border border-white/10 bg-gray-900/70 p-6 text-white shadow-2xl backdrop-blur-md md:flex-row md:gap-16 md:p-10 sm:p-8;
+      @apply flex w-full max-w-5xl flex-col-reverse items-center gap-8 rounded-3xl border border-white/10 bg-gray-900/70 p-6 text-white shadow-2xl backdrop-blur-md md:flex-row md:gap-16 md:p-10 sm:p-8;
    }
 
    .card {
