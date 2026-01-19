@@ -82,6 +82,12 @@
              shadow-indigo-500/40 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-indigo-500/60;
    }
 
+   .btn-social {
+      @apply inline-flex items-center justify-center w-11 h-11 rounded-xl 
+             bg-zinc-100/10 text-light text-lg transition-all duration-500
+             hover:-translate-y-1.5 hover:bg-linear-to-r from-primary to-accent hover:text-white hover:shadow-lg;
+   }
+
    .menu-link {
       @apply flex items-center gap-3 py-3 px-4 rounded-xl
            text-light font-medium transition-all duration-500
