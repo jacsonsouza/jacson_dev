@@ -8,7 +8,7 @@ class HomeController < ApplicationController
                    .includes(:icon_attachment, :tags).order(name: :asc)
   end
 
-  def portfolio; end
+  def projects; end
 
   def contact; end
 end

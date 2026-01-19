@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'about' => 'home#about', as: :about
   get 'skills' => 'home#skills', as: :skills
-  get 'portfolio' => 'home#portfolio', as: :portfolio
+  get 'projects' => 'home#projects', as: :projects
   get 'contact' => 'home#contact', as: :contact
 
   devise_for :users, controllers: { sessions: 'users/devise/sessions',
