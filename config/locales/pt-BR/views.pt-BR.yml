@@ -68,6 +68,7 @@ pt-BR:
       index:
         title: "Minhas habilidades"
         new: "Nova habilidade"
+        confirm: "Deseja realmente excluir essa habilidade?"
 
       edit:
         title: "Editar habilidade"

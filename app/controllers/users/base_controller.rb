@@ -1,7 +1,7 @@
 class Users::BaseController < ApplicationController
   include Breadcrumbs
 
-  layout 'users/dashboard'
+  layout 'users/admin'
 
   def render(*args)
     default_breadcrumbs

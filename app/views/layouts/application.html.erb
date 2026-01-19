@@ -1,4 +1,4 @@
-   <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
    <head>
       <title><%= full_title(content_for(:page_title)) %></title>
@@ -23,19 +23,15 @@
       <%= favicon_link_tag %>
    </head>
 
-   <body class="page-container p-5 overflow-x-hidden">
+   <body class="page-container overflow-x-hidden">
 
       <%= rc 'flash/message' %>
 
-      <div class="flex w-full min-w-0 gap-4">
+      <%= render 'shared/side_menu' %>
 
-         <%= render 'shared/side_menu' %>
-
-         <main class="flex-1 min-w-0 flex flex-col gap-8">
-            <%= yield %>
-         </main>
-
-      </div>
+      <main class="flex-1 min-w-0 flex flex-col gap-8 animate-page-in">
+         <%= yield %>
+      </main>
 
    </body>
 </html>
