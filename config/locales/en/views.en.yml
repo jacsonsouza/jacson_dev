@@ -69,6 +69,9 @@ en:
       index:
         title: "My Skills"
         new: "New Skill"
+      partials:
+        skill: 
+          confirm: "Are you sure?"
 
       edit:
         title: "Edit Skill"
