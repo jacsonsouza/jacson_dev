@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       root 'dashboard#index'
 
       resources :skills
+      resources :projects
     end
   end
 end
