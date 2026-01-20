@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_06_171531) do
+ActiveRecord::Schema[8.0].define(version: 2026_01_19_213955) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -50,6 +50,30 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_06_171531) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "project_skills", force: :cascade do |t|
+    t.bigint "project_id"
+    t.bigint "skill_id"
+    t.index ["project_id"], name: "index_project_skills_on_project_id"
+    t.index ["skill_id"], name: "index_project_skills_on_skill_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "short_description"
+    t.date "start_date", null: false
+    t.date "end_date"
+    t.string "url"
+    t.string "repository"
+    t.boolean "favorite", default: false, null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["favorite"], name: "index_projects_on_favorite"
+    t.index ["name"], name: "index_projects_on_name"
+    t.index ["start_date", "end_date"], name: "index_projects_on_start_date_and_end_date"
+    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "skill_tags", force: :cascade do |t|
@@ -111,6 +135,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_06_171531) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "projects", "users"
   add_foreign_key "skill_tags", "skills"
   add_foreign_key "skill_tags", "tags"
   add_foreign_key "skills", "users"
