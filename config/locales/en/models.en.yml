@@ -5,6 +5,10 @@ en:
         one: "User"
         other: "Users"
 
+      project:
+        one: "Project"
+        other: "Projects"
+
       skill:
         one: "Skill"
         other: "Skills"
@@ -14,17 +18,30 @@ en:
         other: "Tags"
 
     attributes:
-      user:
-        name: "Name"
+      defaults: &defaults
+        description: "Description"
         email: "E-mail"
+        image: "Image"
+        name: "Name"
+        short_description: "Short description"
+
+      user:
+        <<: *defaults
         password: "Password"
         password_confirmation: "Password confirmation"
 
+      project:
+        <<: *defaults
+        start_date: "Start date"
+        end_date: "End date"
+        repository: "Repository"
+        url: "URL"
+        favorite: "Favorite"
+        details: "Details"
+
       skill:
-        name: "Name"
+        <<: *defaults
         icon: "Icon"
-        short_description: "Short description"
-        description: "Description"
         proficiency: "Proficiency"
         tags: "Tags"
         tag_list: "Tags"
@@ -38,4 +55,4 @@ en:
           tools: "Tools"
 
       tag:
-        name: "Name"
+        <<: *defaults

@@ -111,6 +111,26 @@
    }
 
    /*
+   * FORMS
+   */
+
+   .ts-wrapper {
+      @apply rounded-md border border-gray-700 bg-gray-800 text-indigo-500;
+   }
+
+   .ts-control {
+      @apply rounded-md border border-gray-700 bg-gray-800 text-indigo-500;
+   }
+
+   .ts-item {
+      @apply bg-indigo-500 text-white rounded px-2 py-1;
+   }
+
+   .ts-dropdown {
+      @apply rounded-md border border-gray-700 bg-gray-800;
+   }
+
+   /*
    * EFFECTS & DECORATIONS
    */
 

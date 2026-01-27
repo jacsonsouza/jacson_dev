@@ -1,10 +1,19 @@
 :root {
+   /* Core */
    --primary: #6c63ff;
    --secondary: #ff6584;
    --accent: #36d1dc;
    --dark: #1a1a2e;
    --light: #f0f0f0;
+
+   /* Transitions */
    --transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+   /* Multi-select */
+   --ts-bg: #1f2937;
+   --ts-border: #374151;
+   --ts-bg-hover: #374151;
+   --ts-text: #ffffff;
 }
 
 /*
@@ -22,5 +31,58 @@ input[type="color"]::-webkit-color-swatch {
 
 input[type="color"]::-moz-color-swatch {
    border: none;
+   border-radius: 6px;
+}
+
+/*
+ * Multi-Select Customization
+ */
+
+/* Wrapper */
+.ts-wrapper {
+   display: flex;
+   align-items: center;
+
+   background: var(--ts-bg);
+   border: 1px solid var(--ts-border);
+   border-radius: 6px;
+}
+
+/* Control */
+.ts-control {
+   background: var(--ts-bg);
+   border: none;
+   border-radius: 6px;
+}
+
+.ts-control input {
+   color: var(--ts-text);
+}
+
+/* Dropdown */
+.ts-dropdown {
+   background: var(--ts-bg);
+   border: 1px solid var(--ts-border);
+   border-radius: 6px;
+}
+
+.ts-dropdown .option {
+   padding: 8px;
+   color: var(--light);
+}
+
+/* Active option */
+.ts-dropdown-content .active {
+   background: var(--ts-bg-hover);
+   color: var(--light);
+   border-radius: 6px;
+}
+
+/* Multi-select items */
+.ts-wrapper.multi .ts-control > div {
+   padding: 5px 6px;
+
+   background: var(--primary);
+   color: var(--light);
    border-radius: 6px;
 }
