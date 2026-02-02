@@ -1,0 +1,37 @@
+<div class="<%= project.favorite? ? 'col-span-full' : '' %> flex flex-col h-full bg-gray-900/80 rounded-2xl shadow-2xl border border-indigo-500 overflow-hidden">
+   <div class="h-40 relative overflow-hidden">
+      <%= render 'shared/favorite_button', is_favorite: project.favorite? %>
+
+      <%= image_tag url_for(project.image), class: 'w-full h-full object-cover' %>
+      <span class="badge absolute top-4 right-4 z-10 bg-dark">
+         Technology
+      </span>
+   </div>
+
+   <div class="flex flex-col gap-4 p-4 flex-1">
+      <h2 class="heading-2"><%= project.name %></h2>
+      <p class="body-text"><%= project.short_description %></p>
+
+      <%= render 'shared/badge_groups', items: project.skills, classes: '' %>
+
+      <div class="mt-auto">
+         <hr class="border-white/10 mb-4">
+
+         <div class="flex items-center gap-4">
+            <%= link_to project.repository, target: '_blank', class: 'btn-social rounded-full' do %>
+               <i class="fas fa-code"></i>
+            <% end %>
+
+            <%= link_to project.url, target: '_blank', class: 'btn-social rounded-full' do %>
+               <i class="fas fa-external-link-alt"></i>
+            <% end %>
+
+            <%= link_to edit_users_project_path(project), class: 'btn-social rounded-full' do %><i class="fas fa-pen"></i><% end %>
+
+            <%= link_to users_project_path(project), data: { turbo_method: :delete, turbo_confirm: t('.confirm') }, class: 'btn-social rounded-full' do %><i class="fas fa-trash"></i><% end %>
+
+            <%= link_to users_project_path(project), class: 'btn-social rounded-full' do %><i class="fas fa-info"></i><% end %>
+         </div>
+      </div>
+   </div>
+</div>

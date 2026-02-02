@@ -2,8 +2,9 @@ class Users::ProjectsController < Users::BaseController
   before_action :project, except: [:index, :new, :create]
 
   def index
-    @projects = current_user
-                .projects.includes([:image_attachment]).order(name: :asc)
+    @projects = current_user.projects
+                            .includes([:image_attachment, :skills])
+                            .order(favorite: :desc, name: :asc)
   end
 
   def new
@@ -42,8 +43,8 @@ class Users::ProjectsController < Users::BaseController
 
   def project_params
     params.expect(project: [:name, :short_description,
-                            :description, :url, :repository,
-                            :favorite, :start_date, :end_date, :image])
+                            :description, :url, :repository, :details,
+                            :favorite, :start_date, :end_date, :image, { skill_ids: [] }])
   end
 
   def success_message
