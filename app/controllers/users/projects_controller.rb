@@ -35,6 +35,13 @@ class Users::ProjectsController < Users::BaseController
     redirect_to users_projects_path, notice: success_message
   end
 
+  def toggle_favorite
+    @project.update(favorite: !@project.favorite)
+
+    render partial: 'users/projects/partials/favorite_button',
+           locals: { project: @project }
+  end
+
   private
 
   def project

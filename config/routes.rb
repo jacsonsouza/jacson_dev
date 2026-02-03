@@ -26,7 +26,12 @@ Rails.application.routes.draw do
       root 'dashboard#index'
 
       resources :skills
-      resources :projects
+
+      resources :projects do
+        member do
+          patch :toggle_favorite
+        end
+      end
     end
   end
 end

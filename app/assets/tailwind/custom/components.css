@@ -88,6 +88,12 @@
              hover:-translate-y-1.5 hover:bg-linear-to-r from-primary to-accent hover:text-white hover:shadow-lg;
    }
 
+   .btn-favorite {
+      @apply absolute top-2 left-2 p-3 rounded-4xl flex items-center justify-center 
+             bg-dark text-light text-lg cursor-pointer
+             hover:bg-linear-to-r from-primary to-accent hover:text-white hover:shadow-lg;
+   }
+
    .menu-link {
       @apply flex items-center gap-3 py-3 px-4 rounded-xl
            text-light font-medium transition-all duration-500

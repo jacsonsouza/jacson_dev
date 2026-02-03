@@ -1,9 +1,0 @@
-<% icon_color = is_favorite ? 'text-primary' : 'text-white' %>
-
-<%= link_to '#', 
-            class: 'absolute top-2 left-2 p-3 rounded-4xl border border-light bg-dark flex items-center justify-center cursor-pointer',
-            data: { turbo_method: :patch } do %>
-
-   <i class="fas fa-heart <%= icon_color %>"></i>
-
-<% end %>
