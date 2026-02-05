@@ -38,6 +38,11 @@ en:
         url: "URL"
         favorite: "Favorite"
         details: "Details"
+        category: "Category"
+
+        categories:
+          web: "Web"
+          mobile: "Mobile"
 
       skill:
         <<: *defaults

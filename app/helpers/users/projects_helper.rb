@@ -9,4 +9,11 @@ module Users::ProjectsHelper
       { icon: 'fas fa-info', url: users_project_path(project) }
     ]
   end
+
+  def project_development_time(project)
+    t(
+      'time.development',
+      time: distance_of_time_in_words(project.start_date, project.end_date)
+    )
+  end
 end

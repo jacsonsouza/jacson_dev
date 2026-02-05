@@ -17,4 +17,14 @@ class Project < ApplicationRecord
   validates :favorite, inclusion: { in: [true, false] }
   validates :repository, format: URI::DEFAULT_PARSER.make_regexp, allow_blank: true
   validates :url, format: URI::DEFAULT_PARSER.make_regexp, allow_blank: true
+
+  def self.category_options
+    Project.categories.keys.map do |key|
+      [I18n.t("activeRecord.attributes.project.categories.#{key}"), key]
+    end
+  end
+
+  def category_human
+    I18n.t("activeRecord.attributes.project.categories.#{category}")
+  end
 end

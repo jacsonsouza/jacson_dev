@@ -49,7 +49,7 @@ class Users::ProjectsController < Users::BaseController
   end
 
   def project_params
-    params.expect(project: [:name, :short_description,
+    params.expect(project: [:name, :short_description, :category,
                             :description, :url, :repository, :details,
                             :favorite, :start_date, :end_date, :image, { skill_ids: [] }])
   end

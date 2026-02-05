@@ -5,7 +5,7 @@
    <div class="h-52 relative overflow-hidden">
       <% if project.favorite? %>
          <span class="badge absolute top-4 left-4 z-10 bg-red-500 text-light font-bold">
-            Highlight
+            <%= t('tags.highlight') %>
          </span>
       <% end %>
 
@@ -13,7 +13,7 @@
             class: 'w-full h-full object-cover transition-all duration-500 group-hover:scale-110' %>
 
       <span class="badge absolute top-4 right-4 z-10 bg-linear-to-r from-primary to-accent text-light font-bold">
-         Technology
+         <%= project.category_human %>
       </span>
    </div>
 
@@ -25,7 +25,7 @@
       <p class="inline-flex gap-2">
          <i class="fa fa-calendar text-primary"></i>
          <span class="text-sm font-medium text-zinc-400">
-            Concluded at <%= l(project.end_date, format: :long) %>
+            <%= t('time.ended_on', date: l(project.end_date, format: :long)) %>
          </span>
       </p>
 
@@ -67,7 +67,7 @@
          </div>
 
          <p class="text-sm font-medium text-zinc-400">
-            <%= distance_of_time_in_words(project.start_date, project.end_date) %> of development
+            <%= project_development_time(project) %>
          </p>
 
       </div>

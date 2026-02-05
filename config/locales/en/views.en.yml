@@ -22,6 +22,15 @@ en:
     sign_up: "Sign up"
     tools: "Tools"
 
+  tags:
+    highlight: "Highlight"
+
+  time:
+    ago: "ago"
+    from_now: "from now"
+    ended_on: "ended on %{date}"
+    development: "%{time} of development"
+
   shared:
     under_construction:
       title: "Under Construction"
