@@ -1,4 +1,6 @@
 class Project < ApplicationRecord
+  enum :category, { web: 0, mobile: 1 }
+
   belongs_to :user
 
   has_many :project_skills, dependent: :destroy

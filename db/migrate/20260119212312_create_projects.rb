@@ -3,6 +3,7 @@ class CreateProjects < ActiveRecord::Migration[8.0]
     create_table :projects do |t|
       t.string :name, null: false
       t.text :short_description
+      t.integer :category, default: 0
       t.date :start_date, null: false
       t.date :end_date
       t.string :url

@@ -62,6 +62,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_19_213955) do
   create_table "projects", force: :cascade do |t|
     t.string "name", null: false
     t.text "short_description"
+    t.integer "category", default: 0
     t.date "start_date", null: false
     t.date "end_date"
     t.string "url"
