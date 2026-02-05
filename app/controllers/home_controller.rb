@@ -13,5 +13,9 @@ class HomeController < ApplicationController
                        .order(favorite: :desc, name: :asc)
   end
 
+  def project
+    @project = Project.find(params[:id])
+  end
+
   def contact; end
 end

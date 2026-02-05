@@ -51,7 +51,7 @@
             <% links = [
                { url: project.repository, icon: 'fab fa-github', target: '_blank' },
                { url: project.url, icon: 'fas fa-globe', target: '_blank' },
-               { url: '#', icon: 'fas fa-circle-info', target: '_blank' }
+               { url: project_path(project), icon: 'fas fa-circle-info', target: '' }
             ] %>
 
             <% links.each do |link| %>

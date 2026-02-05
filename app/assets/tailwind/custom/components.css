@@ -19,6 +19,11 @@
       @apply relative flex h-full flex-col overflow-hidden rounded-2xl border border-indigo-500 bg-gray-900/80 p-8 shadow-2xl backdrop-blur-md;
    }
 
+   .card-container {
+      @apply p-8 bg-gray-900/80 rounded-2xl shadow-2xl
+             border border-indigo-500/10 hover:border-indigo-500 overflow-hidden;
+   }
+
    /*
    * TYPOGRAPHY
    */

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'about' => 'home#about', as: :about
   get 'skills' => 'home#skills', as: :skills
   get 'projects' => 'home#projects', as: :projects
+  get 'projects/:id' => 'home#project', as: :project
   get 'contact' => 'home#contact', as: :contact
 
   devise_for :users, controllers: { sessions: 'users/devise/sessions',
