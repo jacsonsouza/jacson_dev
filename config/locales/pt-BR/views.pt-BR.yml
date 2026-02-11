@@ -10,6 +10,7 @@ pt-BR:
     frontend: "Frontend"
     home: "Início"
     portfolio: "Portfólio"
+    projects: "Projetos"
     reset_password: "Redefinir senha"
     send_me_confirmation_instructions: "Enviar instruções de confirmação"
     send_me_instructions: "Enviar instruções"
@@ -19,6 +20,7 @@ pt-BR:
     sign_in: "Entrar"
     sign_up: "Cadastrar-se"
     tools: "Ferramentas"
+    new: "Novo %{resource}"
 
   shared:
     under_construction:
@@ -35,6 +37,10 @@ pt-BR:
     skills:
       title: "Minhas habilidades"
       subtitle: "Tecnologias e ferramentas que trabalho."
+
+    projects:
+      title: "Meus projetos"
+      subtitle: "Projetos pessoais e profissionais."
 
   users:
     menu:
@@ -64,9 +70,23 @@ pt-BR:
         new:
           sign_up: "Criar conta"
 
+    projects:
+      index:
+        title: "Projetos"
+        new: "Novo projeto"
+        
+      partials:
+        confirm: "Deseja realmente excluir este projeto?"
+
+      edit:
+        title: "Editar projeto"
+
+      new:
+        title: "Novo projeto"
+
     skills:
       index:
-        title: "Minhas habilidades"
+        title: "Habilidades"
         new: "Nova habilidade"
         confirm: "Deseja realmente excluir essa habilidade?"
 

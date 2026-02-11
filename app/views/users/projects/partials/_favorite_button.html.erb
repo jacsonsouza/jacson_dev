@@ -1,0 +1,9 @@
+<%= turbo_frame_tag project do %>
+
+   <%= button_to toggle_favorite_users_project_path(project), 
+                 class: 'btn-favorite',
+                 method: :patch do %>
+      <i class="fas fa-heart <%= project.favorite? ? 'text-red-500' : 'text-light' %>"></i>
+   <% end %>
+
+<% end %>

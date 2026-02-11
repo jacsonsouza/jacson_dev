@@ -52,15 +52,10 @@ class Users::SkillsController < Users::BaseController
   end
 
   def set_breadcrumbs
-    add_breadcrumb t('breadcrumbs.skills.index'), users_skills_path
-
-    case action_name.to_sym
-    when :new
-      add_breadcrumb t('breadcrumbs.skills.new')
-    when :edit
-      add_breadcrumb t('breadcrumbs.skills.edit', name: @skill.name)
-    when :show
-      add_breadcrumb @skill.name
-    end
+    set_resource_breadcrumbs(
+      resource: :skill,
+      collection_path: users_skills_path,
+      instance: @skill
+    )
   end
 end

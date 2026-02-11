@@ -1,0 +1,75 @@
+<div id="project-<%= project.id %>" class="<%= project.favorite? ? 'col-span-full' : '' %> flex flex-col h-full card-container">
+
+   <div class="h-52 relative overflow-hidden">
+      <% if project.favorite? %>
+         <span class="badge absolute top-4 left-4 z-10 bg-red-500 text-light font-bold">
+            <%= t('tags.highlight') %>
+         </span>
+      <% end %>
+
+      <%= image_tag url_for(project.image),
+            class: 'w-full h-full object-cover transition-all duration-500 group-hover:scale-110' %>
+
+      <span class="badge absolute top-4 right-4 z-10 bg-linear-to-r from-primary to-accent text-light font-bold">
+         <%= project.category_human %>
+      </span>
+   </div>
+
+   <div id="project-details" class="flex flex-col gap-4 p-6 flex-1">
+      <h2 class="heading-2">
+         <%= project.name %>
+      </h2>
+
+      <p class="inline-flex gap-2">
+         <i class="fa fa-calendar text-primary"></i>
+         <span class="text-sm font-medium text-zinc-400">
+            <%= t('time.ended_on', date: l(project.end_date, format: :long)) %>
+         </span>
+      </p>
+
+      <p class="body-text">
+         <%= project.short_description %>
+      </p>
+
+      <div>
+         <p class="inline-flex gap-2">
+            <i class="fas fa-code text-primary"></i>
+            <span class="body-text mb-2">Technologies:</span>
+         </p>
+
+         <%= render 'shared/badge_groups', items: project.skills, classes: '' %>
+      </div>
+
+      <hr class="border-white/10">
+
+      <div class="flex items-center justify-between">
+
+         <div class="flex items-center gap-4">
+
+            <% links = [
+               { url: project.repository, icon: 'fab fa-github', target: '_blank' },
+               { url: project.url, icon: 'fas fa-globe', target: '_blank' },
+               { url: project_path(project), icon: 'fas fa-circle-info', target: '' }
+            ] %>
+
+            <% links.each do |link| %>
+               <% if link[:url].present? %>
+                  <%= link_to link[:url],
+                              target: link[:target],
+                              data: link[:data],
+                              class: 'btn-social rounded-full text-md' do %>
+
+                     <i class="<%= link[:icon] %>"></i>
+                  <% end %>
+               <% end %>
+            <% end %>
+
+         </div>
+
+         <p class="text-sm font-medium text-zinc-400">
+            <%= project_development_time(project) %>
+         </p>
+
+      </div>
+   </div>
+</div>

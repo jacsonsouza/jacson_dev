@@ -1,0 +1,15 @@
+<ul id="skills-filter" class="flex gap-3 overflow-x-auto py-4
+                                    lg:flex-wrap lg:overflow-visible scrollbar-none">
+
+   <% attributes.each do |filter| %>
+      <li class="shrink-0">
+         <%= helpers.active_link_to filter[:name].capitalize,
+                          filter[:path],
+                          id: filter[:id],
+                          class: "py-2.5 px-5 rounded-lg border-none bg-zinc-100/10 text-light font-medium transition-all backdrop-blur-md", 
+                          class_active: "bg-linear-to-br from-primary to-accent text-white shadow-2xl",
+                          active: :exact %>
+      </li>
+   <% end %>
+
+</ul>

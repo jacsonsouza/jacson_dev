@@ -1,0 +1,11 @@
+<div id="projects" class="flex flex-col gap-5 p-5">
+   <div id="my-projects-page" class="card">
+      <h1 class="heading-1 mb-5"><%= t('.title') %></h1>
+      <p class="subtitle mb-5"><%= t('.subtitle') %></p>
+      <%= rc 'group/filters', model: Project, filters: Project.categories %>
+   </div>
+
+   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <%= render partial: 'home/partials/project', collection: @projects, as: :project %>
+   </div>
+</div>

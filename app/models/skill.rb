@@ -9,16 +9,16 @@ class Skill < ApplicationRecord
 
   has_one_attached :icon
   has_rich_text :description
+
   has_many :skill_tags, dependent: :destroy
   has_many :tags, through: :skill_tags
 
+  has_many :project_skills, dependent: :destroy
+  has_many :projects, through: :project_skills
+
   belongs_to :user
 
-  scope :by_category, lambda { |category|
-    return all unless categories.key?(category)
-
-    where(category: category)
-  }
+  scope :by_category, ->(category) { where(category: category) if category.present? }
 
   validates :name,
             presence: true,

@@ -16,6 +16,8 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
       <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
 
+      <link href="https://cdn.jsdelivr.net/npm/tom-select@2.4.3/dist/css/tom-select.css" rel="stylesheet">
+
       <%# Includes all stylesheet files in app/assets/stylesheets %>
       <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
       <%= javascript_importmap_tags %>
@@ -30,18 +32,7 @@
       <div class="page-container flex-1 flex-col lg:ml-64 p-7">
          <%= render 'layouts/breadcrumbs/breadcrumbs' %>
 
-         <!-- TODO: Make a component -->
-         <div class="flex items-center justify-between pb-6 mb-6 border-b border-white/10">
-            <h1 class="heading-1"><%= content_for(:page_title) %></h1>
-
-            <% if content_for?(:new_path) %>
-               <%= link_to content_for(:new_path), class: 'btn-primary' do %>
-                  <i class="fas fa-plus"></i>
-                  <%= t('.new') %>
-               <% end %>
-            <% end %>
-         </div>
-         <!-- /TODO: Make a component -->
+         <%= rc 'page/title', title: content_for(:page_title), path: content_for(:new_path) %>
 
          <%= yield %>
       </div>

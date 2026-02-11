@@ -8,7 +8,15 @@ class HomeController < ApplicationController
                    .includes(:icon_attachment, :tags).order(name: :asc)
   end
 
-  def portfolio; end
+  def projects
+    @projects = Project.by_category(params[:category])
+                       .includes([:image_attachment, :skills])
+                       .order(favorite: :desc, name: :asc)
+  end
+
+  def project
+    @project = Project.find(params[:id])
+  end
 
   def contact; end
 end

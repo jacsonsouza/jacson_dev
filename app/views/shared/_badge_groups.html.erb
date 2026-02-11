@@ -1,0 +1,5 @@
+<div class="flex flex-wrap gap-2">
+   <%= safe_join(
+        items.map { |item| content_tag(:span, item.name, class: "badge #{classes}", title: item.name) }
+    ) %>
+</div>

@@ -8,9 +8,12 @@ en:
     contact: "Contact"
     database: "Database"
     frontend: "Frontend"
+    github: "Code on GitHub"
+    website: "Visit website"
     home: "Home"
     mobile: "Mobile"
     portfolio: "Portfolio"
+    projects: "Projects"
     reset_password: "Reset password"
     send_me_confirmation_instructions: "Send me confirmation instructions"
     send_me_instructions: "Send me instructions"
@@ -20,6 +23,16 @@ en:
     sign_in: "Sign in"
     sign_up: "Sign up"
     tools: "Tools"
+    new: "New %{resource}"
+
+  tags:
+    highlight: "Highlight"
+
+  time:
+    ago: "ago"
+    from_now: "from now"
+    ended_on: "ended on %{date}"
+    development: "%{time} of development"
 
   shared:
     under_construction:
@@ -36,6 +49,10 @@ en:
     skills:
       title: "My Skills"
       subtitle: "Technologies & Tools I Work With."
+
+    projects:
+      title: "My Projects"
+      subtitle: "Projects I've worked on."
 
   users:
     menu:
@@ -65,9 +82,28 @@ en:
         new:
           sign_up: "Sign up"
 
+    dashboard:
+      index:
+        title: "Dashboard"
+
+    projects:
+      index:
+        title: "Projects"
+        new: "New Project"
+
+      partials:
+        project:
+          confirm: "Are you sure?"
+
+      edit:
+        title: "Edit Project"
+
+      new:
+        title: "New Project"
+
     skills:
       index:
-        title: "My Skills"
+        title: "Skills"
         new: "New Skill"
       partials:
         skill: 
@@ -85,4 +121,9 @@ en:
     skills:
       index: "Skills"
       new: "New Skill"
+      edit: "Edit %{name}"
+
+    projects:
+      index: "Projects"
+      new: "New Project"
       edit: "Edit %{name}"

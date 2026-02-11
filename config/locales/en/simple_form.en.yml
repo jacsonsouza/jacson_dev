@@ -12,16 +12,26 @@ en:
         category: "Category"
         short_description: "Short description"
         tag_list: "Tags"
+      
+      project: &project_fields
+        url: "URL"
+        repository: "Repository"
 
     labels:
       defaults: &defaults
         name: "Name"
         email: "E-mail"
+        image: "Image"
         password: "Password"
         password_confirmation: "Password confirmation"
 
       user:
         <<: *defaults
+
+      project:
+        <<: *defaults
+        <<: *skill_fields
+        <<: *project_fields 
 
       skill:
         <<: *defaults
@@ -33,6 +43,11 @@ en:
 
       user:
         <<: *defaults
+
+      project:
+        <<: *defaults
+        <<: *skill_fields
+        <<: *project_fields
 
       skill:
         <<: *defaults

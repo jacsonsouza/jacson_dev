@@ -175,8 +175,12 @@ SimpleForm.setup do |config|
   # config.input_field_valid_class = 'is-valid'
   # config.input_field_error_class = 'is-invalid'
 
-  # Default style
-  config.wrappers :tailwind, tag: "div", class: "mb-4", error_class: :field_with_errors do |b|
+  ####### Default style
+  config.wrappers :tailwind,
+                  tag: "div",
+                  class: "mb-4",
+                  error_class: :field_with_errors do |b|
+
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
@@ -184,28 +188,110 @@ SimpleForm.setup do |config|
     b.optional :pattern
     b.optional :min_max
     b.optional :readonly
-    
-    b.use :label, class: "block text-sm font-medium text-gray-300 mb-2"
 
-    b.use :input, class: "w-full px-4 py-2 bg-gray-800 border 
-                          border-gray-700 rounded-lg text-white placeholder-gray-400 
-                          focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-    
-    b.use :error, wrap_with: { tag: "p", class: "mt-1 text-sm text-red-500" }
-    b.use :hint, wrap_with: { tag: "p", class: "mt-1 text-sm text-gray-400" }
+    b.use :label,
+          class: "block text-sm font-medium text-gray-300 mb-2"
+
+    b.use :input,
+          class: "w-full px-4 py-2
+                  bg-gray-800 border border-gray-700 rounded-lg
+                  text-gray-100 placeholder-gray-400
+                  focus:outline-none
+                  focus:ring-2 focus:ring-indigo-500
+                  focus:border-indigo-500"
+
+    b.use :error,
+          wrap_with: { tag: "p", class: "mt-1 text-sm text-red-500" }
+
+    b.use :hint,
+          wrap_with: { tag: "p", class: "mt-1 text-sm text-slate-400" }
   end
 
-  config.wrappers :checkbox, tag: 'div', class: 'flex items-start justify-center', error_class: 'text-red-500' do |b|
+  ####### Checkbox style
+  config.wrappers :checkbox,
+                  tag: "div",
+                  class: "flex items-start mb-4",
+                  error_class: "text-red-500" do |b|
+
     b.use :html5
     b.use :placeholder
 
     b.use :input,
-            class: 'text-indigo-500 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500',
-            error_class: 'text-red-500'
-      
-    b.use :label, class: 'ml-2 text-md text-slate-300'
-    b.use :error, wrap_with: { tag: :p, class: 'mt-1 text-sm text-red-600' }
-    b.use :hint, wrap_with: { tag: :p, class: 'mt-1 text-sm text-slate-300' }
+          class: "text-indigo-500 bg-gray-800 border-gray-700 rounded
+                  focus:ring-indigo-500",
+          error_class: "border-red-500 focus:ring-red-500 text-red-500"
+
+    b.use :label,
+          class: "ml-2 text-md text-gray-300"
+
+    b.use :error,
+          wrap_with: { tag: :p, class: "mt-1 text-sm text-red-600" }
+
+    b.use :hint,
+          wrap_with: { tag: :p, class: "mt-1 text-sm text-slate-400" }
+  end
+
+  ####### Date style
+  config.wrappers :date,
+                  tag: "div",
+                  class: "flex flex-col gap-1 mb-4" do |b|
+
+    b.use :label,
+          class: "text-sm font-medium text-gray-300"
+
+    b.wrapper tag: "div", class: "flex gap-2" do |date|
+      date.use :html5
+
+      date.use :input,
+              class: <<~CSS.squish,
+                block w-full
+                rounded-md
+                border border-gray-700
+                bg-gray-800
+                px-3 py-2
+                text-sm text-gray-100
+                focus:outline-none
+                focus:ring-2 focus:ring-indigo-500
+                focus:border-indigo-500
+              CSS
+              error_class: "border-red-500 focus:ring-red-500"
+    end
+
+    b.use :error,
+          wrap_with: { tag: :p, class: "mt-1 text-sm text-red-600" }
+
+    b.use :hint,
+          wrap_with: { tag: :p, class: "mt-1 text-sm text-slate-400" }
+  end
+
+  ####### Multiselect style
+  config.wrappers :multiselect,
+                  tag: "div",
+                  class: "flex flex-col gap-1 mb-4",
+                  error_class: "has-error" do |b|
+
+    b.use :label,
+          class: "block text-sm font-medium text-gray-300 mb-2"
+
+    b.use :input,
+          class: <<~CSS.squish,
+            block w-full
+            min-h-10
+            rounded-md
+            border border-gray-700
+            bg-gray-800
+            text-gray-100 placeholder-gray-400
+            focus:outline-none
+            focus:ring-2 focus:ring-indigo-500
+            focus:border-indigo-500
+          CSS
+          error_class: "border-red-500 focus:ring-red-500"
+
+    b.use :error,
+          wrap_with: { tag: :p, class: "mt-1 text-sm text-red-600" }
+
+    b.use :hint,
+          wrap_with: { tag: :p, class: "mt-1 text-sm text-slate-400" }
   end
 
   config.default_wrapper = :tailwind

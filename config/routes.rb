@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'about' => 'home#about', as: :about
   get 'skills' => 'home#skills', as: :skills
-  get 'portfolio' => 'home#portfolio', as: :portfolio
+  get 'projects' => 'home#projects', as: :projects
+  get 'projects/:id' => 'home#project', as: :project
   get 'contact' => 'home#contact', as: :contact
 
   devise_for :users, controllers: { sessions: 'users/devise/sessions',
@@ -26,6 +27,12 @@ Rails.application.routes.draw do
       root 'dashboard#index'
 
       resources :skills
+
+      resources :projects do
+        member do
+          patch :toggle_favorite
+        end
+      end
     end
   end
 end
