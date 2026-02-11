@@ -1,6 +1,6 @@
 <%= provide(:page_title, t('.title')) %>
 <%= provide(:new_path, new_users_project_path) %>
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<ul id="my-projects" class="grid grid-cols-1 md:grid-cols-3 gap-4">
    <%= render partial: 'users/projects/partials/project', collection: @projects, as: :project %>
-</div>
+</ul>
