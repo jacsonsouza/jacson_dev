@@ -1,0 +1,10 @@
+<div class="flex items-center justify-between pb-6 mb-6 border-b border-white/10">
+   <h1 class="heading-1"><%= @title %></h1>
+
+   <% if @path %>
+      <%= link_to @path, class: 'btn-primary' do %>
+         <i class="<%= icon %>"></i>
+         <%= label %>
+      <% end %>
+   <% end %>
+</div>

@@ -23,6 +23,7 @@ en:
     sign_in: "Sign in"
     sign_up: "Sign up"
     tools: "Tools"
+    new: "New %{resource}"
 
   tags:
     highlight: "Highlight"
@@ -83,7 +84,7 @@ en:
 
     projects:
       index:
-        title: "My Projects"
+        title: "Projects"
         new: "New Project"
 
       partials:
@@ -98,7 +99,7 @@ en:
 
     skills:
       index:
-        title: "My Skills"
+        title: "Skills"
         new: "New Skill"
       partials:
         skill: 
@@ -116,4 +117,9 @@ en:
     skills:
       index: "Skills"
       new: "New Skill"
+      edit: "Edit %{name}"
+
+    projects:
+      index: "Projects"
+      new: "New Project"
       edit: "Edit %{name}"

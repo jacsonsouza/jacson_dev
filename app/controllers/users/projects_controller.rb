@@ -57,4 +57,12 @@ class Users::ProjectsController < Users::BaseController
   def success_message
     t("notices.#{action_name}", resource: @project.model_name.human)
   end
+
+  def set_breadcrumbs
+    set_resource_breadcrumbs(
+      resource: :project,
+      collection_path: users_projects_path,
+      instance: @project
+    )
+  end
 end

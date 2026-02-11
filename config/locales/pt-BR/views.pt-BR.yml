@@ -20,6 +20,7 @@ pt-BR:
     sign_in: "Entrar"
     sign_up: "Cadastrar-se"
     tools: "Ferramentas"
+    new: "Novo %{resource}"
 
   shared:
     under_construction:
@@ -71,7 +72,7 @@ pt-BR:
 
     projects:
       index:
-        title: "Meus projetos"
+        title: "Projetos"
         new: "Novo projeto"
         
       partials:
@@ -85,7 +86,7 @@ pt-BR:
 
     skills:
       index:
-        title: "Minhas habilidades"
+        title: "Habilidades"
         new: "Nova habilidade"
         confirm: "Deseja realmente excluir essa habilidade?"
 

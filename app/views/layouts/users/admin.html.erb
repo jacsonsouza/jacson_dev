@@ -32,18 +32,7 @@
       <div class="page-container flex-1 flex-col lg:ml-64 p-7">
          <%= render 'layouts/breadcrumbs/breadcrumbs' %>
 
-         <!-- TODO: Make a component -->
-         <div class="flex items-center justify-between pb-6 mb-6 border-b border-white/10">
-            <h1 class="heading-1"><%= content_for(:page_title) %></h1>
-
-            <% if content_for?(:new_path) %>
-               <%= link_to content_for(:new_path), class: 'btn-primary' do %>
-                  <i class="fas fa-plus"></i>
-                  <%= t('.new') %>
-               <% end %>
-            <% end %>
-         </div>
-         <!-- /TODO: Make a component -->
+         <%= rc 'page/title', title: content_for(:page_title), path: content_for(:new_path) %>
 
          <%= yield %>
       </div>

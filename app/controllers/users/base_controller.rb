@@ -14,4 +14,12 @@ class Users::BaseController < ApplicationController
     add_breadcrumb I18n.t('breadcrumbs.home'), users_root_path
     set_breadcrumbs if respond_to?(:set_breadcrumbs, true)
   end
+
+  def set_breadcrumbs
+    set_resource_breadcrumbs(
+      resource: :skill,
+      collection_path: users_skills_path,
+      instance: @skill
+    )
+  end
 end
