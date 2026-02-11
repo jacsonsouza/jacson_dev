@@ -69,6 +69,20 @@ pt-BR:
         new:
           sign_up: "Criar conta"
 
+    projects:
+      index:
+        title: "Meus projetos"
+        new: "Novo projeto"
+        
+      partials:
+        confirm: "Deseja realmente excluir este projeto?"
+
+      edit:
+        title: "Editar projeto"
+
+      new:
+        title: "Novo projeto"
+
     skills:
       index:
         title: "Minhas habilidades"

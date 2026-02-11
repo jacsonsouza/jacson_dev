@@ -81,6 +81,21 @@ en:
         new:
           sign_up: "Sign up"
 
+    projects:
+      index:
+        title: "My Projects"
+        new: "New Project"
+
+      partials:
+        project:
+          confirm: "Are you sure?"
+
+      edit:
+        title: "Edit Project"
+
+      new:
+        title: "New Project"
+
     skills:
       index:
         title: "My Skills"
