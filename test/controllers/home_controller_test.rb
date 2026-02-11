@@ -25,8 +25,8 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should get portfolio with success' do
-    get portfolio_path
+  test 'should get projects with success' do
+    get projects_path
 
     assert_response :success
   end

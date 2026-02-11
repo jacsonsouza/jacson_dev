@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :project do
     name { Faker::Lorem.words(number: 2).join(' ') }
-    short_description { Faker::Lorem.sentence }
+    short_description { Faker::Lorem.paragraph(sentence_count: 2) }
     start_date { Faker::Date.backward(days: 30) }
     end_date { Faker::Date.forward(days: 30) }
     url { Faker::Internet.url }
