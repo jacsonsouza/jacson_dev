@@ -18,11 +18,7 @@ class Skill < ApplicationRecord
 
   belongs_to :user
 
-  scope :by_category, lambda { |category|
-    return all unless categories.key?(category)
-
-    where(category: category)
-  }
+  scope :by_category, ->(category) { where(category: category) if category.present? }
 
   validates :name,
             presence: true,

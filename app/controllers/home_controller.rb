@@ -9,7 +9,8 @@ class HomeController < ApplicationController
   end
 
   def projects
-    @projects = Project.includes([:image_attachment, :skills])
+    @projects = Project.by_category(params[:category])
+                       .includes([:image_attachment, :skills])
                        .order(favorite: :desc, name: :asc)
   end
 

@@ -24,4 +24,25 @@ class ProjectTest < ActiveSupport::TestCase
     should have_one_attached(:image)
     should have_rich_text(:details)
   end
+
+  context 'scope by_category' do
+    setup do
+      user = FactoryBot.create(:user)
+      @web_project = FactoryBot.create(:project, category: 0, user: user)
+      @mobile_project = FactoryBot.create(:project, category: 1, user: user)
+    end
+
+    should 'return only projects from a valid category' do
+      result = Project.by_category('web')
+
+      assert_includes result, @web_project
+      assert_not_includes result, @mobile_project
+    end
+
+    should 'return all projects when category is not present' do
+      result = Project.by_category(nil)
+
+      assert_equal Project.count, result.count
+    end
+  end
 end

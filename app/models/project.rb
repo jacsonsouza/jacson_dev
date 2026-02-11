@@ -18,6 +18,8 @@ class Project < ApplicationRecord
   validates :repository, format: URI::DEFAULT_PARSER.make_regexp, allow_blank: true
   validates :url, format: URI::DEFAULT_PARSER.make_regexp, allow_blank: true
 
+  scope :by_category, ->(category) { where(category: category) if category.present? }
+
   def self.category_options
     Project.categories.keys.map do |key|
       [I18n.t("activeRecord.attributes.project.categories.#{key}"), key]
