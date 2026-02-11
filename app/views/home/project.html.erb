@@ -1,5 +1,5 @@
 <div class="flex flex-col gap-5 p-5">
-   <div class="relative h-64 rounded-2xl overflow-hidden">
+   <div id="project-header" class="relative h-64 rounded-2xl overflow-hidden">
       <%= image_tag @project.image,
         class: "absolute inset-0 h-full w-full object-cover" %>
 
@@ -21,7 +21,7 @@
    </div>
 
    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-      <div class="card h-fit col-span-2">
+      <div class="prose card h-fit col-span-2">
          <%= @project.details %>
       </div>
 
