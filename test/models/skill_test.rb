@@ -52,8 +52,8 @@ class SkillTest < ActiveSupport::TestCase
       assert_not_includes result, @mobile
     end
 
-    should 'return all skills when category is invalid' do
-      result = Skill.by_category(999)
+    should 'return all skills when category is not present' do
+      result = Skill.by_category(nil)
 
       assert_equal Skill.count, result.count
     end
