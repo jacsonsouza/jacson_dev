@@ -82,6 +82,10 @@ en:
         new:
           sign_up: "Sign up"
 
+    dashboard:
+      index:
+        title: "Dashboard"
+
     projects:
       index:
         title: "Projects"
