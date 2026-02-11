@@ -55,12 +55,14 @@
             ] %>
 
             <% links.each do |link| %>
-               <%= link_to link[:url],
-                           target: link[:target],
-                           data: link[:data],
-                           class: 'btn-social rounded-full text-md' do %>
+               <% if link[:url].present? %>
+                  <%= link_to link[:url],
+                              target: link[:target],
+                              data: link[:data],
+                              class: 'btn-social rounded-full text-md' do %>
 
-                  <i class="<%= link[:icon] %>"></i>
+                     <i class="<%= link[:icon] %>"></i>
+                  <% end %>
                <% end %>
             <% end %>
 
