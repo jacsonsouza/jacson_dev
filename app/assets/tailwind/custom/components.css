@@ -160,4 +160,8 @@
            [&::-webkit-scrollbar-track]:rounded-full
            [&::-webkit-scrollbar-track]:bg-indigo-500;
    }
+
+   .scroll-x-hidden {
+      @apply [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none];
+   }
 }
