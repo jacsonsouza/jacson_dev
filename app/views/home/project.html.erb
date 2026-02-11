@@ -5,7 +5,7 @@
 
       <div class="absolute inset-0 bg-black/60"></div>
 
-      <span class="badge absolute top-4 right-4 bg-linear-to-r from-primary to-accent">
+      <span class="badge text-light absolute top-4 right-4 bg-linear-to-r from-primary to-accent">
          <%= @project.category_human %>
       </span>
 
@@ -21,12 +21,12 @@
    </div>
 
    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-      <div class="card-container col-span-2">
+      <div class="card h-fit col-span-2">
          <%= @project.details %>
       </div>
 
       <div class="flex flex-col gap-5">
-         <div class="card-container">
+         <div class="card h-fit">
             <h3 class="mb-5">
                <i class="fa fa-code"></i>
                <span>Technologies</span>
@@ -34,7 +34,7 @@
             <%= render 'shared/badge_groups', items: @project.skills, classes: '' %>
          </div>
 
-         <div class="card-container">
+         <div class="card h-fit">
             <h3 class="mb-5">
                <i class="fa fa-link"></i>
                <span>Links</span>
