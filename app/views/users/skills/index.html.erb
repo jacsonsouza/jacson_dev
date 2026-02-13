@@ -1,6 +1,6 @@
 <%= provide(:page_title, t('.title')) %>
 <%= provide(:new_path, new_users_skill_path) %>
 
-<ul id="my-skills" class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<ul id="my-skills" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
    <%= render partial: 'users/skills/partials/skill', collection: @skills, as: :skill %>
 </ul>

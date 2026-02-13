@@ -5,7 +5,7 @@
       <%= rc 'group/filters', model: Skill, filters: Skill.categories %>
    </div>
 
-   <ul id="my-skills-list" class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+   <ul id="my-skills-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       <%= render partial: 'home/partials/skill', collection: @skills, as: :skill %>
    </ul>
 </div>
