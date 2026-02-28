@@ -8,7 +8,7 @@ image: jacsonss/jacson_dev
 servers:
   web:
     hosts:
-      - 3.135.224.37
+      - 35.188.165.48
   # job:
   #   hosts:
   #     - 192.168.0.1
