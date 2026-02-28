@@ -60,7 +60,7 @@ proxy:
 accessories:
   db:
     image: postgres:17.5
-    host: 3.135.224.37
+    host: 35.188.165.48
     env:
       clear:
         POSTGRES_USER: 'postgres'
