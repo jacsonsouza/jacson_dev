@@ -1,7 +1,17 @@
 @theme {
-   --color-primary: #6c63ff;
-   --color-secondary: #ff6584;
-   --color-accent: #36d1dc;
+   --color-primary: #ff6b00;
+   --color-secondary: #1a1a1a;
+   --color-accent: #ff8533;
+
+   --color-canvas: #ffffff;
+   --color-surface: #f9f9f9;
+   --color-muted: #e5e5e5;
+   --color-subtle: #fafafa;
+
+   --color-base: #262626;
+   --color-emphasis: #000000;
+   --color-inverse: #ffffff;
+
    --color-dark: #1a1a2e;
    --color-light: #f0f0f0;
 
