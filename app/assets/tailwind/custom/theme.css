@@ -8,70 +8,20 @@
    --color-muted: #e5e5e5;
    --color-subtle: #fafafa;
 
-   --color-base: #262626;
+   --color-content: #262626;
    --color-emphasis: #000000;
    --color-inverse: #ffffff;
 
    --color-dark: #1a1a2e;
    --color-light: #f0f0f0;
+}
 
-   --animate-float: float 8s ease-in-out infinite;
-   --animate-slide-in: slideIn 0.5s forwards;
-   --animate-slide-out: slideOut 0.5s forwards;
-   --animate-progress: progress 5s linear forwards;
-   --animate-page-in: pageIn 2s cubic-bezier(0.4, 0, 0.2, 1);
-
-   /*
-   * KEYFRAMES
-   */
-
-   @keyframes float {
-      0% {
-         transform: translateY(0) rotate(0deg);
-      }
-      50% {
-         transform: translateY(-20px) rotate(10deg);
-      }
-      100% {
-         transform: translateY(0) rotate(0deg);
-      }
-   }
-
-   @keyframes slideIn {
-      from {
-         transform: translateX(100%);
-         opacity: 0;
-      }
-      to {
-         transform: translateX(0);
-         opacity: 1;
-      }
-   }
-
-   @keyframes slideOut {
-      to {
-         transform: translateX(100%);
-         opacity: 0;
-      }
-   }
-
-   @keyframes progress {
-      from {
-         transform: scaleX(1);
-      }
-      to {
-         transform: scaleX(0);
-      }
-   }
-
-   @keyframes pageIn {
-      from {
-         opacity: 0;
-         transform: translateY(24px);
-      }
-      to {
-         opacity: 1;
-         transform: translateY(0);
-      }
-   }
+.dark {
+   --color-canvas: #000000;
+   --color-surface: #171717;
+   --color-muted: #262626;
+   --color-content: #e5e5e5;
+   --color-emphasis: #ffffff;
+   --color-inverse: #ffffff;
+   --color-primary: #ff8533;
 }

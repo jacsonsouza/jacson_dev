@@ -4,7 +4,7 @@
    */
 
    .page-container {
-      @apply min-h-screen flex bg-linear-to-br from-slate-900 via-slate-950 to-indigo-950 text-light;
+      @apply min-h-screen flex bg-canvas text-base;
    }
 
    .page-section {
@@ -107,6 +107,10 @@
 
    .menu-link-active {
       @apply bg-linear-to-br from-primary to-accent text-white shadow-2xl;
+   }
+
+   .active-dot {
+      @apply absolute left-0 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-primary;
    }
 
    /*
