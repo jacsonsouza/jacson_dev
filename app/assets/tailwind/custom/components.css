@@ -109,10 +109,6 @@
       @apply bg-linear-to-br from-primary to-accent text-white shadow-2xl;
    }
 
-   .active-dot {
-      @apply absolute left-0 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-primary;
-   }
-
    /*
    * UI COMPONENTS
    */
