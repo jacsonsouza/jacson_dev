@@ -1,75 +1,49 @@
-<div id="project-<%= project.id %>" class="<%= project.favorite? ? 'col-span-full' : '' %> flex flex-col h-full card-container">
+<article class="glass-panel group flex h-full flex-col rounded-3xl p-8 transition-transform duration-300 hover:scale-105 hover:border-primary">
+   <div class="mb-6 flex items-start justify-between">
+      <div class="glass-panel flex h-12 w-12 items-center justify-center rounded-xl border-white/10 transition-colors group-hover:border-primary/30">
+         <i class="fa-solid fa-layer-group text-primary text-xl"></i>
+      </div>
 
-   <div class="h-52 relative overflow-hidden">
-      <% if project.favorite? %>
-         <span class="badge absolute top-4 left-4 z-10 bg-red-500 text-light font-bold">
-            <%= t('tags.highlight') %>
-         </span>
-      <% end %>
+      <div class="flex gap-2">
+         <%= link_to project.repository,
+            class: 'flex h-9 w-9 items-center justify-center rounded-full bg-white/5 transition-colors hover:bg-primary group/link',
+            aria: { label: 'Ver repositório no GitHub' } do %>
+            <i class="fa-brands fa-github text-content/60 transition-colors group-hover/link:text-content"></i>
+         <% end %>
 
-      <%= image_tag url_for(project.image),
-            class: 'w-full h-full object-cover transition-all duration-500 group-hover:scale-110' %>
-
-      <span class="badge absolute top-4 right-4 z-10 bg-linear-to-r from-primary to-accent text-light font-bold">
-         <%= project.category_human %>
-      </span>
+         <%= link_to project.url,
+            class: 'flex h-9 w-9 items-center justify-center rounded-full bg-white/5 transition-colors hover:bg-primary group/link',
+            aria: { label: 'Ver projeto' } do %>
+            <i class="fa-solid fa-arrow-up-right-from-square text-content/60 transition-colors group-hover/link:text-content"></i>
+         <% end %>
+      </div>
    </div>
 
-   <div id="project-details" class="flex flex-col gap-4 p-6 flex-1">
-      <h2 class="heading-2">
+   <div class="flex-1">
+      <h3 class="mb-3 font-display text-2xl font-black tracking-tight text-content transition-colors group-hover:text-primary">
          <%= project.name %>
-      </h2>
+      </h3>
 
-      <p class="inline-flex gap-2">
-         <i class="fa fa-calendar text-primary"></i>
-         <span class="text-sm font-medium text-zinc-400">
-            <%= t('time.ended_on', date: l(project.end_date, format: :long)) %>
-         </span>
-      </p>
-
-      <p class="body-text">
+      <p class="mb-8 text-sm font-medium leading-relaxed text-content/40">
          <%= project.short_description %>
       </p>
-
-      <div>
-         <p class="inline-flex gap-2">
-            <i class="fas fa-code text-primary"></i>
-            <span class="body-text mb-2">Technologies:</span>
-         </p>
-
-         <%= render 'shared/badge_groups', items: project.skills, classes: '' %>
-      </div>
-
-      <hr class="border-white/10">
-
-      <div class="flex items-center justify-between">
-
-         <div class="flex items-center gap-4">
-
-            <% links = [
-               { url: project.repository, icon: 'fab fa-github', target: '_blank' },
-               { url: project.url, icon: 'fas fa-globe', target: '_blank' },
-               { url: project_path(project), icon: 'fas fa-circle-info', target: '' }
-            ] %>
-
-            <% links.each do |link| %>
-               <% if link[:url].present? %>
-                  <%= link_to link[:url],
-                              target: link[:target],
-                              data: link[:data],
-                              class: 'btn-social rounded-full text-md' do %>
-
-                     <i class="<%= link[:icon] %>"></i>
-                  <% end %>
-               <% end %>
-            <% end %>
-
-         </div>
-
-         <p class="text-sm font-medium text-zinc-400">
-            <%= project_development_time(project) %>
-         </p>
-
-      </div>
    </div>
-</div>
+
+   <% if project.skills.any? %>
+      <div class="border-t border-content/5 pt-6">
+         <p class="mb-4 font-mono text-[9px] uppercase tracking-[0.2em] text-white/20">
+            Stack
+         </p>
+
+         <ul class="flex items-center gap-4 opacity-60 transition-opacity group-hover:opacity-100">
+            <% project.skills.each do |skill| %>
+               <li>
+                  <% if skill.icon.attached? %>
+                     <%= image_tag url_for(skill.icon), class: "h-6 w-6", alt: skill.name %>
+                  <% end %>
+               </li>
+            <% end %>
+         </ul>
+      </div>
+   <% end %>
+</article>
