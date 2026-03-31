@@ -1,41 +1,26 @@
-<li id="skill-<%= skill.id %>">
-   <article class="card-container p-8 group transition-all duration-500 hover:-translate-y-2.5"
-     style="--skill-color: <%= skill.color %>;">
-
-      <div class="mb-5 flex items-center gap-4">
-         <div class="flex h-16 w-16 items-center justify-center rounded-xl bg-linear-to-br from-(--skill-color) to-from-(--skill-color)/30 p-2 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
-            <%= image_tag url_for(skill.icon), alt: skill.name, class: "h-full w-full object-contain" %>
-         </div>
-
-         <div>
-            <h3 class="heading-3">
-               <%= skill.name %>
-            </h3>
-            <p id="skill-<%= skill.id %>-category" class="mt-1 text-sm text-zinc-100/70">
-               <%= skill.category_human %>
-            </p>
-         </div>
+<section class="glass-panel p-8 rounded-3xl flex flex-col group h-full transition-transform duration-300 hover:scale-105 hover:border-primary hover:bg-primary/10">
+   <div class="flex justify-between items-start mb-8">
+      <div class="w-12 h-12 glass-panel rounded-xl flex items-center justify-center border-content/10 group-hover:border-accent/30 transition-colors">
+         <%= image_tag url_for(skill.icon), alt: skill.name, class: "object-contain" %>
       </div>
+      <div class="px-3 py-1.5 glass-panel border-primary/20 text-primary text-[10px] font-mono font-bold tracking-tighter rounded-lg group-hover:bg-primary/10 transition-colors">
+         <%= "#{skill.proficiency}%" %>
+      </div>
+   </div>
 
-      <p class="body-text">
+   <div class="flex-1">
+      <h3 class="text-xl font-display font-black text-content mb-3 tracking-tight group-hover:text-primary transition-colors">
+         <%= skill.name %>
+      </h3>
+      <p class="text-xs text-content/40 font-medium leading-relaxed">
          <%= skill.short_description %>
       </p>
+   </div>
 
-      <div class="mb-5">
-         <div id="skill-proficiency" class="mb-2 flex justify-between text-sm font-medium text-zinc-100/90">
-            <span><%= t('activeRecord.attributes.skill.proficiency') %></span>
-            <span><%= skill.proficiency %>%</span>
-         </div>
-
-         <div class="h-2 overflow-hidden rounded-xl bg-zinc-100/10">
-            <div class="h-full rounded-xl bg-linear-to-r from-(--skill-color) to-(--skill-color)/30 transition-[width] duration-1500"
-              style="width: <%= skill.proficiency %>%">
-            </div>
-         </div>
-      </div>
-
-      <ul class="mt-auto flex flex-wrap justify-center gap-2">
-         <%= safe_join(skill.tags.map { |tag| content_tag(:li, tag.name, class: 'badge', title: tag.name) }) %>
-      </ul>
-   </article>
-</li>
+   <div class="mt-8 pt-6 border-t border-content/5 flex items-center justify-between">
+      <span class="text-[9px] font-mono text-content/20 uppercase tracking-[0.2em]">
+         <%= skill.category %>
+      </span>
+      <i class="fa-solid fa-arrow-up-right-from-square text-content/10 group-hover:text-primary transition-all transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
+   </div>
+</section>

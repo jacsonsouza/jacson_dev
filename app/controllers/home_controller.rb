@@ -5,12 +5,12 @@ class HomeController < ApplicationController
 
   def skills
     @skills = Skill.by_category(params[:category])
-                   .includes(:icon_attachment, :tags).order(name: :asc)
+                   .includes(:icon_attachment).order(name: :asc)
   end
 
   def projects
     @projects = Project.by_category(params[:category])
-                       .includes([:skills])
+                       .includes(:skills)
                        .order(favorite: :desc, name: :asc)
   end
 

@@ -1,11 +1,22 @@
-<div id="my-skills-page" class="flex flex-col gap-8 p-5">
-   <div class="card">
-      <h1 class="heading-1 mb-5"><%= t('.title') %></h1>
-      <p class="subtitle mb-5"><%= t('.subtitle') %></p>
+<div id="projects" class="w-full flex flex-col mt-10">
+
+   <div class="flex flex-col items-center gap-2 mb-10">
+      <span class="text-[10px] font-mono tracking-[0.8em] text-white/30 uppercase">Selected Skills</span>
+      <h1 class="text-6xl md:text-8xl font-display font-black text-white leading-tight tracking-tighter flex items-center gap-6">
+         <span>Technical Skills</span>
+         <div class="w-12 h-0.5 bg-primary"></div>
+      </h1>
+      <p class="text-sm md:text-base text-white/40 max-w-lg text-center font-medium leading-relaxed uppercase tracking-widest">
+         A precision-engineered toolset for architecting production-grade digital ecosystems.
+      </p>
+   </div>
+
+   <div class="w-full flex flex-wrap justify-center gap-3 mb-20">
       <%= rc 'group/filters', model: Skill, filters: Skill.categories %>
    </div>
 
-   <ul id="my-skills-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-6">
       <%= render partial: 'home/partials/skill', collection: @skills, as: :skill %>
-   </ul>
+   </div>
+
 </div>
