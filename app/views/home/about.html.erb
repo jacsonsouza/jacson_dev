@@ -1,53 +1,80 @@
-<section class="w-full p-6">
-   <header class="flex items-center gap-3 mb-12 px-2 text-emphasis">
+<section class="flex h-full min-h-0 w-full flex-col p-6" data-controller="ai-chat">
+   <header class="mb-12 flex items-center gap-3 px-2 text-emphasis">
       <h2 class="text-sm font-display font-bold uppercase tracking-widest">Jacson AI</h2>
-      <div class="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+      <div class="h-1.5 w-1.5 rounded-full bg-green-500"></div>
    </header>
 
-   <div class="flex-1 grid grid-cols-1 md:grid-cols-[1fr_300px] gap-12 md:gap-24 overflow-hidden h-full pb-12">
-      <div class="flex flex-col border border-content/10 rounded-lg overflow-hidden">
-         <div id="chat-box" class="flex-1 overflow-y-auto p-6 md:p-10 space-y-8 chat-scroll">
+   <div class="grid min-h-0 flex-1 grid-cols-1 gap-12 overflow-hidden pb-12 md:grid-cols-[1fr_300px] md:gap-24">
+      <div class="flex max-h-[400px] flex-col overflow-hidden rounded-lg border border-content/10">
+         <div id="chat-box"
+              data-ai-chat-target="messages"
+              class="chat-scroll min-h-0 flex-1 space-y-8 overflow-y-auto p-6 md:p-10">
             <div class="msg-enter flex justify-start">
-               <div class="max-w-[85%] px-5 py-3 text-sm leading-relaxed text-content/60 border border-content/5 rounded-2xl rounded-tl-none">
+               <div class="max-w-[85%] rounded-2xl rounded-tl-none border border-content/5 px-5 py-3 text-sm leading-relaxed text-content/60">
                   System online. Ready for tasking. How can I assist?
                </div>
             </div>
          </div>
-         <div class="p-6 md:p-8">
-            <div class="relative flex items-center gap-4">
-               <input type="text" placeholder="Ask a question..." class="flex-1 bg-transparent border-b border-content/10 py-4 text-sm text-content focus:outline-none focus:border-primary transition-all placeholder:text-content/20">
-               <button class="text-content hover:text-primary transition-colors p-2 cursor-pointer">
+
+         <div class="shrink-0 p-6 md:p-8">
+            <form data-action="submit->ai-chat#submit" class="relative flex items-center gap-4">
+               <input type="text"
+                      name="question"
+                      data-ai-chat-target="input"
+                      placeholder="Ask a question..."
+                      class="flex-1 border-b border-content/10 bg-transparent py-4 text-sm text-content transition-all placeholder:text-content/20 focus:border-primary focus:outline-none">
+
+               <button type="submit"
+                       data-ai-chat-target="submitButton"
+                       class="cursor-pointer p-2 text-content transition-colors hover:text-primary">
                   <i class="fa-solid fa-bolt text-content"></i>
                </button>
-            </div>
+            </form>
+
             <div class="mt-4 px-1">
-               <span class="text-[9px] font-mono text-content/20 uppercase tracking-widest">ENTER TO EXECUTE</span>
+               <span class="text-[9px] font-mono uppercase tracking-widest text-content/20">ENTER TO EXECUTE</span>
             </div>
          </div>
       </div>
 
       <div class="flex flex-col gap-10">
          <div class="space-y-2">
-            <h3 class="text-[10px] font-mono text-content/30 uppercase tracking-[0.4em] mb-6">
+            <h3 class="mb-6 text-[10px] font-mono uppercase tracking-[0.4em] text-content/30">
                Operations
             </h3>
+
             <div class="flex flex-col">
-               <button class="flex items-center gap-4 py-5 border-b border-content/10 text-content/40 hover:text-primary hover:border-primary transition-all group cursor-pointer">
+               <button
+                  type="button"
+                  data-action="click->ai-chat#prefill"
+                  data-question="Show me your main projects"
+                  class="group flex cursor-pointer items-center gap-4 border-b border-content/10 py-5 text-content/40 transition-all hover:border-primary hover:text-primary">
                   <i class="fa-solid fa-bars-progress text-content"></i>
                   <span class="text-[10px] font-bold uppercase tracking-widest">View Projects</span>
                </button>
-               <button class="flex items-center gap-4 py-5 border-b border-content/10 text-content/40 hover:text-primary hover:border-primary transition-all group cursor-pointer">
+
+               <button
+                  type="button"
+                  data-action="click->ai-chat#prefill"
+                  data-question="What is your tech stack?"
+                  class="group flex cursor-pointer items-center gap-4 border-b border-content/10 py-5 text-content/40 transition-all hover:border-primary hover:text-primary">
                   <i class="fa-solid fa-microchip text-content"></i>
                   <span class="text-[10px] font-bold uppercase tracking-widest">Tech Stack</span>
                </button>
-               <button class="flex items-center gap-4 py-5 border-b border-content/10 text-content/40 hover:text-primary hover:border-primary transition-all group cursor-pointer">
+
+               <button
+                  type="button"
+                  data-action="click->ai-chat#prefill"
+                  data-question="How can we start a project together?"
+                  class="group flex cursor-pointer items-center gap-4 border-b border-content/10 py-5 text-content/40 transition-all hover:border-primary hover:text-primary">
                   <i class="fa-solid fa-rocket text-content"></i>
                   <span class="text-[10px] font-bold uppercase tracking-widest">Start Project</span>
                </button>
             </div>
          </div>
+
          <div class="mt-auto pb-4">
-            <p class="text-[9px] font-mono text-content/10 uppercase tracking-widest leading-relaxed">
+            <p class="text-[9px] font-mono uppercase tracking-widest leading-relaxed text-content/10">
                Architecture Intelligence V2.44
                <br>
                Production Grade Environment

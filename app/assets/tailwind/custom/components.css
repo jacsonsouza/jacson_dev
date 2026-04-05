@@ -160,4 +160,8 @@
    .scroll-x-hidden {
       @apply [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none];
    }
+
+   .chat-scroll {
+      @apply [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none];
+   }
 }

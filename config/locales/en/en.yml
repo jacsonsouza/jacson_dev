@@ -9,3 +9,6 @@ en:
     create: '%{resource} was successfully created.'
     update: '%{resource} was successfully updated.'
     destroy: '%{resource} was successfully destroyed.'
+
+  alert:
+    over_limit: 'You are sending requests too quickly. Please wait and try again.'

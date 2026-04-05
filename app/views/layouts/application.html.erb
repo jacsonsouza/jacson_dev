@@ -19,13 +19,13 @@
       <%= favicon_link_tag %>
    </head>
 
-   <body class="page-container flex flex-col gap-8 justify-center align-center overflow-x-hidden dark">
+   <body class="page-container min-h-screen flex flex-col gap-8 justify-center align-center overflow-x-hidden dark">
 
       <%= rc 'flash/message' %>
 
       <%= render 'shared/nav' %>
 
-      <main class="h-full flex-1 flex justify-center min-w-0 mt-20">
+      <main class="h-full min-h-0 flex-1 flex justify-center min-w-0 mt-20">
          <%= yield %>
       </main>
 

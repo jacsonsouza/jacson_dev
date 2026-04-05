@@ -1,0 +1,32 @@
+default: &default
+  about: >
+    I’m Jacson, a Full Stack Developer focused on building robust and maintainable
+    web applications. I work across both backend and frontend, with strong interest
+    in architecture, code quality, and user experience.
+
+  projects: >
+    One of my highlights was building a reporting system integrated with an operational
+    platform, reducing a monthly management task from 30 hours to 30 minutes. I also
+    develop complete web platforms with attention to structure, usability, and business value.
+
+  stack: >
+    My main stack includes Laravel, React, Ruby on Rails, and React Native. I enjoy
+    working on end-to-end solutions, from data modeling and backend logic to polished interfaces.
+
+  work: >
+    I can help with internal systems, dashboards, business platforms, and custom web
+    applications. I value clean architecture, maintainable code, and solutions that
+    generate real impact.
+
+  default: >
+    I can tell you about my projects, tech stack, professional experience, and how I
+    build software. Try asking about my main projects, technologies, or how I can help on a project.
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
