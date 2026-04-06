@@ -37,6 +37,12 @@ en:
         <<: *defaults
         <<: *skill_fields
 
+      message:
+        identity: "Full Identity"
+        email: "Digital Address"
+        subject: "Transmission subject"
+        content: "Message payload"
+
     placeholders:
       defaults:
         <<: *defaults
@@ -52,6 +58,12 @@ en:
       skill:
         <<: *defaults
         <<: *skill_fields
+
+      message:
+        identity: "Type your name..."
+        email: "Type your e-mail..."
+        subject: "What is this about?"
+        content: "State your request..."
 
     prompts:
       user:

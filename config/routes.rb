@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'projects' => 'home#projects', as: :projects
   get 'projects/:id' => 'home#project', as: :project
   get 'contact' => 'home#contact', as: :contact
+  post 'contact' => 'home#submit_contact', as: :new_contact
   get 'ai/chat/stream' => 'ai_chat#stream', as: :ai_chat_stream
 
   devise_for :users, controllers: {

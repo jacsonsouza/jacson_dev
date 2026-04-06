@@ -1,0 +1,8 @@
+<%= simple_form_for @message, 
+                    url: new_contact_path, class: 'space-y-10' do |f| %>
+   <%= f.input :identity %>
+   <%= f.input :email %>
+   <%= f.input :subject %>
+   <%= f.input :content, as: :text, rows: 5 %>
+   <%= f.button :submit, 'Execute Transmission' %>
+<% end %>

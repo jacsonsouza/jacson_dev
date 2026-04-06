@@ -14,6 +14,41 @@
 
    --color-dark: #1a1a2e;
    --color-light: #f0f0f0;
+
+   --animate-slide-in: slideIn 0.5s forwards;
+   --animate-slide-out: slideOut 0.5s forwards;
+   --animate-progress: progress 5s linear forwards;
+
+   /*
+   * KEYFRAMES
+   */
+
+   @keyframes slideIn {
+      from {
+         transform: translateX(100%);
+         opacity: 0;
+      }
+      to {
+         transform: translateX(0);
+         opacity: 1;
+      }
+   }
+
+   @keyframes slideOut {
+      to {
+         transform: translateX(100%);
+         opacity: 0;
+      }
+   }
+
+   @keyframes progress {
+      from {
+         transform: scaleX(1);
+      }
+      to {
+         transform: scaleX(0);
+      }
+   }
 }
 
 .dark {

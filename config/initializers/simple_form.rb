@@ -178,7 +178,7 @@ SimpleForm.setup do |config|
   ####### Default style
   config.wrappers :tailwind,
                   tag: "div",
-                  class: "mb-4",
+                  class: "mb-6",
                   error_class: :field_with_errors do |b|
 
     b.use :html5
@@ -205,6 +205,36 @@ SimpleForm.setup do |config|
 
     b.use :hint,
           wrap_with: { tag: "p", class: "mt-1 text-sm text-slate-400" }
+  end
+
+  ####### Public form style
+  config.wrappers :custom_input,
+                  tag: "div",
+                  class: "mb-10",
+                  error_class: :field_with_errors do |b|
+                    
+      b.use :html5
+      b.use :placeholder
+      b.optional :maxlength
+      b.optional :minlength
+      b.optional :pattern
+      b.optional :min_max
+      b.optional :readonly
+
+      b.use :label,
+            class: "block font-mono text-[10px] uppercase tracking-[0.15em] text-content/30 mb-2"
+
+      b.use :input,
+            class: "w-full border-b border-content/10 bg-transparent
+                    py-3 text-[14px] text-content transition-all duration-300
+                    ease-in-out focus:border-accent focus:outline-none focus:ring-0",
+            error_class: "border-red-500 focus:border-red-500 focus:ring-red-500"
+
+      b.use :error,
+            wrap_with: { tag: "p", class: "mt-1 text-sm text-red-500" }
+
+      b.use :hint,
+            wrap_with: { tag: "p", class: "mt-1 text-sm text-slate-400" }
   end
 
   ####### Checkbox style
@@ -294,6 +324,6 @@ SimpleForm.setup do |config|
           wrap_with: { tag: :p, class: "mt-1 text-sm text-slate-400" }
   end
 
-  config.default_wrapper = :tailwind
+  config.default_wrapper = :custom_input
   config.button_class = "btn-primary w-full"
 end
