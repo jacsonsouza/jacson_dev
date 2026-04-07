@@ -1,12 +1,12 @@
 <% items = [
    { name: 'home', path: root_path },
-   { name: 'about', path: about_path },
-   { name: 'skills', path: skills_path },
    { name: 'projects', path: projects_path },
+   { name: 'skills', path: skills_path },
+   { name: 'about', path: about_path },
    { name: 'contact', path: contact_path }
 ] %>
 
-<nav class="fixed top-6 left-1/2 z-50 -translate-x-1/2">
+<nav id="menu" class="fixed hidden md:block top-6 left-1/2 z-50 -translate-x-1/2">
    <ul class="flex items-center gap-2 rounded-full border border-muted bg-surface/30 p-2 backdrop-blur-md">
       <% items.each do |item| %>
          <li>

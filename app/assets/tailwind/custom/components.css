@@ -163,4 +163,20 @@
    .chat-scroll {
       @apply [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none];
    }
+
+   .nav-link-active::before {
+      content: '';
+      position: absolute;
+      left: -32px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 24px;
+      background: var(--accent);
+      border-radius: 0 4px 4px 0;
+   }
+
+   /*
+   * New components
+   */
 }

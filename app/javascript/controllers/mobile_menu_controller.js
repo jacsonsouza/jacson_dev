@@ -1,73 +1,66 @@
 import { Controller } from '@hotwired/stimulus';
 
-// Connects to data-controller="mobile-menu"
 export default class extends Controller {
-   static targets = [
-      'overlay',
-      'menuToggle',
-      'mobileMenu',
-      'mobileMenuItem',
-      'toggleIcon',
-   ];
+   static targets = ['mobileMenu', 'mobileMenuItem', 'toggleIcon', 'button'];
 
    connect() {
-      this.touchStartX = 0;
       this.isMenuOpen = false;
+      this.render();
    }
 
-   navigate(event) {
-      const targetId = event.currentTarget.dataset.target;
-      this.navigateToSection(targetId);
-   }
-
-   toggleMobileMenu() {
+   toggle() {
       this.isMenuOpen = !this.isMenuOpen;
-
-      if (this.isMenuOpen) {
-         this.mobileMenuTarget.classList.remove('hidden');
-         this.overlayTarget.classList.remove('hidden');
-         setTimeout(() => {
-            this.mobileMenuTarget.classList.remove(
-               'opacity-0',
-               'translate-y-5'
-            );
-            this.mobileMenuTarget.classList.add('opacity-100', 'translate-y-0');
-         }, 10);
-         this.toggleIconTarget.classList.add('rotate-135');
-      } else {
-         this.mobileMenuTarget.classList.add('opacity-0', 'translate-y-5');
-         this.mobileMenuTarget.classList.remove('opacity-100', 'translate-y-0');
-         setTimeout(() => {
-            this.mobileMenuTarget.classList.add('hidden');
-            this.overlayTarget.classList.add('hidden');
-         }, 300);
-         this.toggleIconTarget.classList.remove('rotate-135');
-      }
+      this.render();
    }
 
-   closeMenus() {
-      if (this.isMenuOpen) {
-         this.toggleMobileMenu();
-      }
+   render() {
+      this.updateButtonIcon();
+      this.updateMenuVisibility();
+      this.updateMenuItems();
+      this.toggleBodyScroll();
    }
 
-   touchStart(event) {
-      this.touchStartX = event.changedTouches[0].screenX;
+   updateButtonIcon() {
+      const [line1, line2, line3] = this.toggleIconTargets;
+
+      line1.classList.toggle('translate-y-2', this.isMenuOpen);
+      line1.classList.toggle('rotate-45', this.isMenuOpen);
+      line1.classList.toggle('bg-primary', this.isMenuOpen);
+
+      line2.classList.toggle('opacity-0', this.isMenuOpen);
+
+      line3.classList.toggle('-translate-y-2', this.isMenuOpen);
+      line3.classList.toggle('-rotate-45', this.isMenuOpen);
+      line3.classList.toggle('bg-primary', this.isMenuOpen);
    }
 
-   touchEnd(event) {
-      const touchEndX = event.changedTouches[0].screenX;
-
-      if (this.touchStartX < 50 && touchEndX > 100) {
-         this.toggleMobileMenu();
-      }
+   updateMenuVisibility() {
+      this.mobileMenuTarget.classList.toggle(
+         '-translate-x-full',
+         !this.isMenuOpen,
+      );
    }
 
-   navigateToSection(targetId) {
-      const section = document.getElementById(targetId);
-      if (section) {
-         section.scrollIntoView({ behavior: 'smooth' });
-         this.closeMenus();
-      }
+   updateMenuItems() {
+      this.mobileMenuItemTargets.forEach((item, index) => {
+         const delay = `${index * 100}ms`;
+         item.style.transitionDelay = delay;
+
+         item.classList.toggle('opacity-0', !this.isMenuOpen);
+         item.classList.toggle('-translate-x-5', !this.isMenuOpen);
+         item.classList.toggle('opacity-100', this.isMenuOpen);
+         item.classList.toggle('translate-x-0', this.isMenuOpen);
+      });
+   }
+
+   toggleBodyScroll() {
+      document.body.classList.toggle('overflow-hidden', this.isMenuOpen);
+   }
+
+   close() {
+      if (!this.isMenuOpen) return;
+
+      this.isMenuOpen = false;
+      this.render();
    }
 }
