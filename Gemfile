@@ -70,6 +70,7 @@ end
 group :test do
   gem 'capybara'
   gem 'capybara-screenshot'
+  gem 'rails-controller-testing'
   gem 'selenium-webdriver', '4.22.0'
   gem 'shoulda-context', '~> 3.0.0.rc1'
   gem 'shoulda-matchers', '~> 6.0'

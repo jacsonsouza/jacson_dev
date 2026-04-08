@@ -41,10 +41,8 @@ en:
 
   home:
     index:
-      greeting: "Hi, I'm "
-      occupation: "Full Stack Developer"
-      introduction: "I turn ideas into exceptional digital experiences with a strong focus on performance and innovative design."
-      projects: "Explore Projects"
+      subtitle: "Full Stack Developer"
+      deployment_btn: "Ready for deployment"
 
     skills:
       title: "My Skills"

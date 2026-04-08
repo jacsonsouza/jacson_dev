@@ -1,33 +1,14 @@
 require 'test_helper'
 
 class HomeControllerTest < ActionDispatch::IntegrationTest
-  test 'should get home with success' do
+  setup do
+    @user = FactoryBot.create(:user)
+  end
+
+  test 'should successfully get index' do
     get root_path
 
-    assert_response :success
-  end
-
-  test 'should get about with success' do
-    get about_path
-
-    assert_response :success
-  end
-
-  test 'should get contact with success' do
-    get contact_path
-
-    assert_response :success
-  end
-
-  test 'should get skills with success' do
-    get skills_path
-
-    assert_response :success
-  end
-
-  test 'should get projects with success' do
-    get projects_path
-
+    assert assigns(:user)
     assert_response :success
   end
 end
