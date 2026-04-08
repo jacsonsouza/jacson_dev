@@ -35,6 +35,10 @@ en:
     development: "%{time} of development"
 
   shared:
+    footer:
+      main_tech_stack: "Main Tech Stack"
+      contact: "Available for Contact"
+
     under_construction:
       title: "Under Construction"
       description: "This page is under construction."

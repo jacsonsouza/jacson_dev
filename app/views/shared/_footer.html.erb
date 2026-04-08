@@ -1,35 +1,55 @@
-<footer class="w-full flex flex-col md:flex-row items-center justify-between p-6 relative z-20">
-   <div class="flex items-center gap-8">
-      <div class="flex flex-col gap-1">
-         <span class="text-[10px] text-content/40 uppercase font-bold tracking-widest">Tech Stack</span>
-         <div class="flex gap-5 mt-1 text-content/40">
-            <i class="fa-brands fa-aws text-xl transition-transform hover:scale-110"></i>
-            <i class="fa-brands fa-python text-xl transition-transform hover:scale-110"></i>
-            <i class="fa-brands fa-react text-xl transition-transform hover:scale-110"></i>
-            <i class="fa-brands fa-laravel text-xl transition-transform hover:scale-110"></i>
-         </div>
+<footer class="relative z-20 flex w-full flex-col items-center justify-between p-6 md:flex-row">
+   <div class="flex flex-col gap-1">
+      <span class="text-[10px] font-bold uppercase tracking-widest text-content/40">
+         <%= t('.main_tech_stack') %>
+      </span>
+
+      <div class="mt-1 flex gap-5 text-content/40">
+         <% tech_stack = %w[ruby rails laravel react flutter] %>
+         <% tech_stack.each do |tech| %>
+            <i class="devicon-<%= tech %>-plain text-xl transition-transform hover:scale-110"></i>
+         <% end %>
       </div>
    </div>
 
-   <div class="absolute left-1/2 -translate-x-1/2 bottom-0 hidden lg:block">
+   <div class="absolute bottom-0 left-1/2 hidden -translate-x-1/2 lg:block">
       <div class="flex flex-col items-center gap-2">
-         <div class="w-px h-12 bg-linear-to-t from-[#FF5F1F] to-transparent"></div>
-         <span class="text-[8px] font-mono tracking-[0.4em] text-[#FF5F1F]">JACSON.DEV</span>
+         <div class="h-12 w-px bg-linear-to-t from-accent to-transparent"></div>
+
+         <span class="font-mono text-[8px] tracking-[0.4em] text-accent">
+            JACSON.DEV
+         </span>
       </div>
    </div>
 
-   <div class="flex items-center gap-10 mt-6 md:mt-0">
+   <div class="mt-6 flex items-center gap-10 md:mt-0">
       <div class="flex gap-4">
-         <a href="#" class="w-10 h-10 bg-content/30 backdrop-blur-[10px] border border-muted rounded flex items-center justify-center hover:border-[#FF5F1F]/50 group transition-all">
-            <i class="fa-brands fa-github text-content/40 group-hover:text-[#FF5F1F]"></i>
-         </a>
-         <a href="#" class="w-10 h-10 bg-content/30 backdrop-blur-[10px] border border-muted rounded flex items-center justify-center hover:border-[#FF5F1F]/50 group transition-all">
-            <i class="fa-brands fa-linkedin text-content/40 group-hover:text-[#FF5F1F]"></i>
-         </a>
+         <%= link_to 'https://github.com/jacsonsouza',
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            class: 'glass-panel group flex h-10 w-10 items-center justify-center rounded' do %>
+            <i class="devicon-github-original text-content/40 group-hover:text-accent"></i>
+         <% end %>
+
+         <%= link_to 'https://linkedin.com/in/jacsonsouza',
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            class: 'glass-panel group flex h-10 w-10 items-center justify-center rounded' do %>
+            <i class="devicon-linkedin-plain text-content/40 group-hover:text-accent"></i>
+         <% end %>
       </div>
-      <div class="flex flex-col items-end">
-         <span class="text-[10px] text-content/40 uppercase tracking-widest mb-1">Available for Ops</span>
-         <a href="mailto:ops@jacson.dev" class="text-xs font-bold text-content hover:text-[#FF5F1F] transition-colors">ops@jacson.dev</a>
-      </div>
+
+      <address class="flex flex-col items-end not-italic">
+         <span class="mb-1 text-[10px] uppercase tracking-widest text-content/40">
+            <%= t('.contact') %>
+         </span>
+
+         <a
+            href="mailto:contact@jacson.dev.br"
+            class="text-xs font-bold text-content transition-colors hover:text-accent"
+         >
+            contact@jacson.dev.br
+         </a>
+      </address>
    </div>
 </footer>
