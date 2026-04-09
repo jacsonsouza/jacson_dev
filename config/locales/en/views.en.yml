@@ -53,8 +53,9 @@ en:
       subtitle: "Technologies & Tools I Work With."
 
     projects:
-      title: "My Projects"
-      subtitle: "Projects I've worked on."
+      title: "Projects"
+      subtitle: "Architecting systems and experimental digital interfaces."
+      selected: "Selected Works"
 
   users:
     menu:

@@ -1,4 +1,4 @@
-<div id="projects" class="max-w-7xl flex flex-col mt-10">
+<div id="skills" class="w-full max-w-7xl flex flex-col mt-10 px-4">
 
    <div class="flex flex-col items-center gap-2 mb-10">
       <span class="text-[10px] font-mono tracking-[0.8em] text-white/30 uppercase">Selected Skills</span>
@@ -9,9 +9,6 @@
       <p class="text-sm md:text-base text-white/40 max-w-lg text-center font-medium leading-relaxed uppercase tracking-widest">
          A precision-engineered toolset for architecting production-grade digital ecosystems.
       </p>
-   </div>
-
-   <div class="w-full flex flex-wrap justify-center gap-3 mb-20">
       <%= rc 'group/filters', model: Skill, filters: Skill.categories %>
    </div>
 

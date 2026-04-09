@@ -1,26 +1,24 @@
-<article class="glass-panel group flex h-full flex-col rounded-3xl p-8 transition-transform duration-300 hover:scale-105 hover:border-primary">
+<article id="project-<%= project.id %>" class="glass-panel group flex h-full flex-col rounded-3xl p-8">
    <div class="mb-6 flex items-start justify-between">
-      <div class="glass-panel flex h-12 w-12 items-center justify-center rounded-xl border-white/10 transition-colors group-hover:border-primary/30">
+      <div class="glass-panel flex h-12 w-12 items-center justify-center rounded-xl transition-colors group-hover:border-primary/30">
          <i class="fa-solid fa-layer-group text-primary text-xl"></i>
       </div>
 
       <div class="flex gap-2">
          <%= link_to project.repository,
-            class: 'flex h-9 w-9 items-center justify-center rounded-full bg-white/5 transition-colors hover:bg-primary group/link',
-            aria: { label: 'Ver repositório no GitHub' } do %>
+            class: 'flex h-9 w-9 items-center justify-center rounded-full bg-white/5 transition-colors hover:bg-primary group/link' do %>
             <i class="fa-brands fa-github text-content/60 transition-colors group-hover/link:text-content"></i>
          <% end %>
 
          <%= link_to project.url,
-            class: 'flex h-9 w-9 items-center justify-center rounded-full bg-white/5 transition-colors hover:bg-primary group/link',
-            aria: { label: 'Ver projeto' } do %>
+            class: 'flex h-9 w-9 items-center justify-center rounded-full bg-white/5 transition-colors hover:bg-primary group/link' do %>
             <i class="fa-solid fa-arrow-up-right-from-square text-content/60 transition-colors group-hover/link:text-content"></i>
          <% end %>
       </div>
    </div>
 
    <div class="flex-1">
-      <h3 class="mb-3 font-display text-2xl font-black tracking-tight text-content transition-colors group-hover:text-primary">
+      <h3 class="mb-3 text-2xl font-black tracking-tight text-content transition-colors group-hover:text-primary">
          <%= project.name %>
       </h3>
 

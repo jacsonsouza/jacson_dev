@@ -11,6 +11,10 @@ class Group::FiltersComponent < ViewComponent::Base
     [all] + build_attributes
   end
 
+  def model_name
+    @model.model_name.human.downcase
+  end
+
   private
 
   def build_attributes
