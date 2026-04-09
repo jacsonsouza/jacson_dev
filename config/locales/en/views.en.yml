@@ -49,8 +49,9 @@ en:
       deployment_btn: "Ready for deployment"
 
     skills:
-      title: "My Skills"
-      subtitle: "Technologies & Tools I Work With."
+      title: "Technical Skills"
+      subtitle: "A precision-engineered toolset for architecting production-grade digital ecosystems."
+      selected: "Selected Skills"
 
     projects:
       title: "Projects"

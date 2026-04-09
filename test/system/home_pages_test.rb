@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class HomePagesTest < ApplicationSystemTestCase
   setup do
-    @user = create(:user)
+    @user = FactoryBot.create(:user)
   end
 
   test 'should displays the home page with user infos' do
