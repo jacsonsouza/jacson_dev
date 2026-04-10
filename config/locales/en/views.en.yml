@@ -58,6 +58,13 @@ en:
       subtitle: "Architecting systems and experimental digital interfaces."
       selected: "Selected Works"
 
+    about:
+      title: "Jacson AI"
+      presentation: "System online. Ready for tasking. How can I assist?"
+      execute: "ENTER TO EXECUTE"
+      operations: "AI Operations"
+      ask: "Ask a question..."
+
   users:
     menu:
       admin: "Admin"

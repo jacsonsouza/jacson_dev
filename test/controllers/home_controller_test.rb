@@ -35,4 +35,10 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
       assert_match skill.name, response.body
     end
   end
+
+  test 'should successfully access about page' do
+    get about_path
+
+    assert_response :success
+  end
 end

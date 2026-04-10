@@ -1,85 +1,86 @@
-<section class="flex h-full max-w-7xl w-full flex-col p-6" data-controller="ai-chat">
+<section
+   class="flex h-full w-full max-w-7xl flex-col p-6"
+   data-controller="ai-chat"
+>
    <header class="mb-12 flex items-center gap-3 px-2 text-emphasis">
-      <h2 class="text-sm font-display font-bold uppercase tracking-widest">Jacson AI</h2>
-      <div class="h-1.5 w-1.5 rounded-full bg-green-500"></div>
+      <h2 class="font-display text-sm font-bold uppercase tracking-widest">
+         <%= t('.title') %>
+      </h2>
+
+      <span class="h-1.5 w-1.5 rounded-full bg-green-500" aria-hidden="true"></span>
    </header>
 
    <div class="grid min-h-0 flex-1 grid-cols-1 gap-12 overflow-hidden pb-12 md:grid-cols-[1fr_300px] md:gap-24">
       <div class="flex max-h-[400px] flex-col overflow-hidden rounded-lg border border-content/10">
-         <div id="chat-box"
-              data-ai-chat-target="messages"
-              class="chat-scroll min-h-0 flex-1 space-y-8 overflow-y-auto p-6 md:p-10">
+         <div
+            id="chat-box"
+            data-ai-chat-target="messages"
+            class="chat-scroll min-h-0 flex-1 space-y-8 overflow-y-auto p-6 md:p-10"
+            role="log"
+            aria-live="polite"
+         >
             <div class="msg-enter flex justify-start">
                <div class="max-w-[85%] rounded-2xl rounded-tl-none border border-content/5 px-5 py-3 text-sm leading-relaxed text-content/60">
-                  System online. Ready for tasking. How can I assist?
+                  <%= t('.presentation') %>
                </div>
             </div>
          </div>
 
          <div class="shrink-0 p-6 md:p-8">
-            <form data-action="submit->ai-chat#submit" class="relative flex items-center gap-4">
-               <input type="text"
-                      name="question"
-                      data-ai-chat-target="input"
-                      placeholder="Ask a question..."
-                      class="flex-1 border-b border-content/10 bg-transparent py-4 text-sm text-content transition-all placeholder:text-content/20 focus:border-primary focus:outline-none">
+            <form data-action="submit->ai-chat#submit" class="flex items-center gap-4">
+               <input
+                  type="text"
+                  name="question"
+                  data-ai-chat-target="input"
+                  placeholder="<%= t('.ask') %>"
+                  class="flex-1 border-b border-content/10 bg-transparent py-4 text-sm text-content placeholder:text-content/20 transition-colors focus:border-primary focus:outline-none"
+               >
 
-               <button type="submit"
-                       data-ai-chat-target="submitButton"
-                       class="cursor-pointer p-2 text-content transition-colors hover:text-primary">
-                  <i class="fa-solid fa-bolt text-content"></i>
-               </button>
-            </form>
+                  <button
+                  type="submit"
+                  data-ai-chat-target="submitButton"
+                  class="p-2 text-content transition-colors hover:text-primary"
+               >
+                     <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+                  </button>
+               </form>
 
-            <div class="mt-4 px-1">
-               <span class="text-[9px] font-mono uppercase tracking-widest text-content/20">ENTER TO EXECUTE</span>
+               <p class="mt-4 px-1 font-mono text-[9px] uppercase tracking-widest text-content/20">
+                  <%= t('.execute') %>
+               </p>
             </div>
          </div>
-      </div>
 
-      <div class="flex flex-col gap-10">
-         <div class="space-y-2">
-            <h3 class="mb-6 text-[10px] font-mono uppercase tracking-[0.4em] text-content/30">
-               Operations
+         <aside class="flex flex-col gap-10">
+            <h3
+            id="ai-operations-title"
+            class="mb-6 font-mono text-[10px] uppercase tracking-[0.4em] text-content/30"
+         >
+               <%= t('.operations') %>
             </h3>
 
-            <div class="flex flex-col">
-               <button
-                  type="button"
-                  data-action="click->ai-chat#prefill"
-                  data-question="Show me your main projects"
-                  class="group flex cursor-pointer items-center gap-4 border-b border-content/10 py-5 text-content/40 transition-all hover:border-primary hover:text-primary">
-                  <i class="fa-solid fa-bars-progress text-content"></i>
-                  <span class="text-[10px] font-bold uppercase tracking-widest">View Projects</span>
-               </button>
+            <nav class="flex flex-col" aria-label="AI operations">
+               <% default_interactions.each do |interaction| %>
+                  <button
+                     type="button"
+                     data-action="click->ai-chat#prefill"
+                     data-question="<%= interaction[:question] %>"
+                     class="group flex items-center gap-4 border-b border-content/10 py-5 text-content/40 transition-colors hover:border-primary hover:text-primary"
+                     >
+                     <i class="fa-solid <%= interaction[:icon] %>" aria-hidden="true"></i>
+                     <span class="text-[10px] font-bold uppercase tracking-widest">
+                        <%= interaction[:label] %>
+                     </span>
+                  </button>
+               <% end %>
+            </nav>
 
-               <button
-                  type="button"
-                  data-action="click->ai-chat#prefill"
-                  data-question="What is your tech stack?"
-                  class="group flex cursor-pointer items-center gap-4 border-b border-content/10 py-5 text-content/40 transition-all hover:border-primary hover:text-primary">
-                  <i class="fa-solid fa-microchip text-content"></i>
-                  <span class="text-[10px] font-bold uppercase tracking-widest">Tech Stack</span>
-               </button>
-
-               <button
-                  type="button"
-                  data-action="click->ai-chat#prefill"
-                  data-question="How can we start a project together?"
-                  class="group flex cursor-pointer items-center gap-4 border-b border-content/10 py-5 text-content/40 transition-all hover:border-primary hover:text-primary">
-                  <i class="fa-solid fa-rocket text-content"></i>
-                  <span class="text-[10px] font-bold uppercase tracking-widest">Start Project</span>
-               </button>
-            </div>
-         </div>
-
-         <div class="mt-auto pb-4">
-            <p class="text-[9px] font-mono uppercase tracking-widest leading-relaxed text-content/10">
+            <p class="mt-auto pb-4 font-mono text-[9px] uppercase leading-relaxed tracking-widest text-content/10">
                Architecture Intelligence V2.44
                <br>
                Production Grade Environment
             </p>
-         </div>
+         </aside>
       </div>
    </div>
 </section>
