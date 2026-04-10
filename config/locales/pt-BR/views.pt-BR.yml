@@ -42,6 +42,12 @@ pt-BR:
       title: "Meus projetos"
       subtitle: "Projetos pessoais e profissionais."
 
+  skills:
+    index:
+      title: "Habilidades técnicas"
+      subtitle: "Stack técnica para o desenvolvimento de aplicações web prontas para produção."
+      selected: "Habilidades selecionadas"
+
   users:
     menu:
       admin: "Administração"

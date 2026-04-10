@@ -14,7 +14,7 @@ module ApplicationHelper
       { name: t('links.projects'), icon: 'fas fa-briefcase', path: projects_path },
       { name: t('links.skills'), icon: 'fas fa-code', path: skills_path },
       { name: t('links.about'), icon: 'fas fa-user', path: about_path },
-      { name: t('links.contact'), icon: 'fas fa-envelope', path: contact_path }
+      { name: t('links.contact'), icon: 'fas fa-envelope', path: new_contact_path }
     ]
   end
 end

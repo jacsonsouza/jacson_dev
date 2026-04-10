@@ -48,11 +48,6 @@ en:
       subtitle: "Full Stack Developer"
       deployment_btn: "Ready for deployment"
 
-    skills:
-      title: "Technical Skills"
-      subtitle: "A precision-engineered toolset for architecting production-grade digital ecosystems."
-      selected: "Selected Skills"
-
     projects:
       title: "Projects"
       subtitle: "Architecting systems and experimental digital interfaces."
@@ -64,6 +59,12 @@ en:
       execute: "ENTER TO EXECUTE"
       operations: "AI Operations"
       ask: "Ask a question..."
+
+  skills:
+    index:
+      title: "Technical Skills"
+      subtitle: "Technical stack for developing production-ready web applications."
+      selected: "Selected Skills"
 
   users:
     menu:
