@@ -14,6 +14,7 @@ module ActiveSupport
     include BulletHelper
     include IntegrationCustomAssertions
     include Devise::Test::IntegrationHelpers
+    include FactoryBot::Syntax::Methods
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all

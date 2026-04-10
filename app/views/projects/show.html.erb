@@ -1,0 +1,146 @@
+<div class="mx-auto w-full max-w-7xl px-6 pt-16 md:px-10 md:pt-24">
+   <header class="mb-20 grid grid-cols-1 items-end gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-8">
+         <div class="mb-6 flex items-center gap-4">
+            <span class="glass-panel rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-primary">
+               Case Study <%= @project.id %>
+            </span>
+
+            <span class="h-px w-12 bg-content/10"></span>
+
+            <span class="font-mono text-[10px] uppercase tracking-widest text-content/30">
+               Status: Production
+            </span>
+         </div>
+
+         <h1 class="mb-6 text-6xl font-display font-black uppercase leading-tight tracking-tighter text-content glow-text md:text-7xl">
+            <%= @project.name %>
+         </h1>
+
+         <p class="max-w-2xl text-lg font-medium leading-relaxed text-content/60 md:text-xl">
+            <%= @project.short_description %>
+         </p>
+      </div>
+
+      <div class="flex flex-col items-start gap-6 lg:col-span-4 lg:items-end">
+         <div class="flex w-full gap-4 lg:w-auto">
+            <%= link_to @project.url,
+               target: '_blank',
+               class: 'group flex flex-1 items-center justify-center gap-3 rounded-xl bg-content px-8 py-5 text-xs font-bold uppercase tracking-[0.2em] text-black shadow-xl transition-colors duration-300 hover:bg-accent hover:text-content lg:flex-none' do %>
+               <span>Live Deployment</span>
+               <i class="fa-solid fa-arrow-up-right-from-square transition-transform group-hover:rotate-45"></i>
+            <% end %>
+
+            <%= link_to @project.repository,
+               target: '_blank',
+               class: 'glass-panel flex h-16 w-16 items-center justify-center rounded-xl text-content/60 transition-colors hover:border-accent/50 hover:text-content' do %>
+               <i class="fa-brands fa-github text-2xl"></i>
+            <% end %>
+         </div>
+      </div>
+   </header>
+
+   <div class="relative mb-24 aspect-video w-full overflow-hidden rounded-3xl bg-content/5 md:aspect-21/9">
+      <%= image_tag url_for(@project.image),
+         class: 'h-full w-full object-cover opacity-85' %>
+
+      <div class="absolute inset-0 bg-linear-to-t from-surface/60 to-transparent"></div>
+
+      <div class="absolute bottom-10 left-10 z-20 hidden md:block">
+         <div class="glass-panel rounded-2xl px-6 py-4">
+            <div class="flex items-center gap-3">
+               <span class="h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+               <span class="font-mono text-[10px] uppercase tracking-widest text-content/60">
+                  System Heartbeat: 99.9% uptime
+               </span>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <div class="mb-24 grid grid-cols-1 gap-16 lg:grid-cols-12">
+      <div class="space-y-12 lg:col-span-4">
+         <div class="grid grid-cols-2 gap-8">
+            <div class="space-y-2">
+               <span class="font-mono text-[10px] uppercase tracking-widest text-content/20">
+                  Timeline
+               </span>
+               <p class="text-sm font-bold text-content">
+                  <%= @project.timeline %>
+               </p>
+            </div>
+
+            <div class="space-y-2">
+               <span class="font-mono text-[10px] uppercase tracking-widest text-content/20">
+                  Industry
+               </span>
+               <p class="text-sm font-bold text-content">
+                  <%= @project.category_human %> Development
+               </p>
+            </div>
+
+            <div class="space-y-2">
+               <span class="font-mono text-[10px] uppercase tracking-widest text-content/20">
+                  Team
+               </span>
+               <p class="text-sm font-bold text-content">
+                  1 Developer
+               </p>
+            </div>
+
+            <div class="space-y-2">
+               <span class="font-mono text-[10px] uppercase tracking-widest text-content/20">
+                  Role
+               </span>
+               <p class="text-sm font-bold text-content">
+                  Full Stack Developer
+               </p>
+            </div>
+         </div>
+      </div>
+
+      <div class="space-y-16 lg:col-span-8">
+         <section class="space-y-6">
+            <h2 class="text-3xl font-black uppercase tracking-tight text-content">
+               <%= t('.challenges') %>
+            </h2>
+
+            <div class="prose prose-invert">
+               <%= @project.details %>
+            </div>
+         </section>
+
+         <section class="space-y-8">
+            <div class="mb-4 flex items-center gap-6">
+               <h2 class="text-3xl font-black uppercase tracking-tight text-content">
+                  <%= t('.stack') %>
+               </h2>
+               <span class="h-px flex-1 bg-content/10"></span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6 md:grid-cols-4">
+               <% @project.skills.each do |skill| %>
+                  <div class="glass-panel rounded-2xl p-6 transition-colors hover:border-accent/40">
+                     <%= image_tag url_for(skill.icon),
+                        class: 'mb-4 h-8 w-8' %>
+
+                     <h3 class="text-xs font-bold text-content">
+                        <%= skill.name %>
+                     </h3>
+
+                     <p class="font-mono text-[10px] text-content/30">
+                        <%= skill.category_human %>
+                     </p>
+                  </div>
+               <% end %>
+            </div>
+         </section>
+      </div>
+   </div>
+
+   <%= rc 'carousel/slide',
+      title: t('.related'),
+      partial: 'projects/partials/related_project',
+      items: @related_projects,
+      as: :project %>
+</div>

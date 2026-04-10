@@ -86,3 +86,10 @@ input[type="color"]::-moz-color-swatch {
    color: var(--light);
    border-radius: 6px;
 }
+
+/* Animations */
+
+.stagger-in {
+   animation: stagger-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+   /* opacity: 0; */
+}

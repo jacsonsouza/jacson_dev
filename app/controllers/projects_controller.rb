@@ -3,12 +3,13 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = @user.projects.by_category(params[:category])
-                     .includes(:skills)
+                     .includes(skills: [:icon_attachment])
                      .order(favorite: :desc, name: :asc)
   end
 
   def show
-    @project = @user.projects.find(params[:id])
+    @project = @user.projects.includes({ skills: [:icon_attachment] }, :image_attachment).find(params[:id])
+    @related_projects = @project.related_projects
   end
 
   private

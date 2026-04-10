@@ -33,6 +33,7 @@ en:
     from_now: "from now"
     ended_on: "ended on %{date}"
     development: "%{time} of development"
+    present: "Present"
 
   shared:
     footer:
@@ -48,17 +49,23 @@ en:
       subtitle: "Full Stack Developer"
       deployment_btn: "Ready for deployment"
 
-    projects:
-      title: "Projects"
-      subtitle: "Architecting systems and experimental digital interfaces."
-      selected: "Selected Works"
-
     about:
       title: "Jacson AI"
       presentation: "System online. Ready for tasking. How can I assist?"
       execute: "ENTER TO EXECUTE"
       operations: "AI Operations"
       ask: "Ask a question..."
+
+  projects:
+    index:
+      title: "Projects"
+      subtitle: "Developing systems and digital interfaces."
+      selected: "Selected Works"
+
+    show:
+      related: "Related Projects"
+      challenges: "The Challenge"
+      stack: "Technical Stack"
 
   skills:
     index:

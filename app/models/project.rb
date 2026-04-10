@@ -20,6 +20,14 @@ class Project < ApplicationRecord
 
   scope :by_category, ->(category) { where(category: category) if category.present? }
 
+  def related_projects
+    Project.includes(:image_attachment)
+           .joins(:skills)
+           .where(skills: { id: skill_ids })
+           .where.not(id: id)
+           .distinct
+  end
+
   def self.category_options
     Project.categories.keys.map do |key|
       [I18n.t("activeRecord.attributes.project.categories.#{key}"), key]
@@ -28,5 +36,13 @@ class Project < ApplicationRecord
 
   def category_human
     I18n.t("activeRecord.attributes.project.categories.#{category}")
+  end
+
+  def timeline
+    if end_date.present?
+      "#{start_date.strftime('%b %Y')} - #{end_date.strftime('%b %Y')}"
+    else
+      "#{start_date.strftime('%b %Y')} - #{I18n.t('time.present')}"
+    end
   end
 end

@@ -7,6 +7,8 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
 
   include CapybaraCustomAssertions
 
+  # include FactoryBot::Syntax::Methods
+
   def setup
     super
     Capybara.disable_animation = true

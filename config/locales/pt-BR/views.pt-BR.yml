@@ -42,6 +42,17 @@ pt-BR:
       title: "Meus projetos"
       subtitle: "Projetos pessoais e profissionais."
 
+  projects:
+    index:
+      title: "Projetos"
+      subtitle: "Desenvolvendo sistemas e interfaces digitais."
+      selected: "Projetos Selecionados"
+
+    show:
+      related: "Projetos Relacionados"
+      challenges: "O Desafio"
+      stack: "Stack Técnica"
+
   skills:
     index:
       title: "Habilidades técnicas"
