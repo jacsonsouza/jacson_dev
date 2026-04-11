@@ -26,6 +26,11 @@ en:
     tools: "Tools"
     new: "New %{resource}"
 
+  labels:
+    projects: "Projects"
+    tech_stack: "Tech Stack"
+    new_project: "New Project"
+
   tags:
     highlight: "Highlight"
 
@@ -153,3 +158,9 @@ en:
       index: "Projects"
       new: "New Project"
       edit: "Edit %{name}"
+
+  ai:
+    questions:
+      projects: "What projects have you worked on?"
+      skills: "What are your technical skills?"
+      work_together: "How can we work together?"

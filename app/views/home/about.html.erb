@@ -11,7 +11,7 @@
    </header>
 
    <div class="grid min-h-0 flex-1 grid-cols-1 gap-12 overflow-hidden pb-12 md:grid-cols-[1fr_300px] md:gap-24">
-      <div class="flex max-h-[400px] flex-col overflow-hidden rounded-lg border border-content/10">
+      <div id="ai-chat" class="flex max-h-[400px] flex-col overflow-hidden rounded-lg border border-content/10">
          <div
             id="chat-box"
             data-ai-chat-target="messages"
@@ -37,10 +37,10 @@
                >
 
                   <button
-                  type="submit"
-                  data-ai-chat-target="submitButton"
-                  class="p-2 text-content transition-colors hover:text-primary"
-               >
+                     type="submit"
+                     data-ai-chat-target="submitButton"
+                     class="p-2 text-content transition-colors hover:text-primary"
+                  >
                      <i class="fa-solid fa-bolt" aria-hidden="true"></i>
                   </button>
                </form>
@@ -51,7 +51,7 @@
             </div>
          </div>
 
-         <aside class="flex flex-col gap-10">
+         <aside id="ai-operations" class="flex flex-col gap-10">
             <h3
                id="ai-operations-title"
                class="mb-6 font-mono text-[10px] uppercase tracking-[0.4em] text-content/30"

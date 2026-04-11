@@ -1,6 +1,6 @@
 require 'application_system_test_case'
 
-class HomePagesTest < ApplicationSystemTestCase
+class HomePageTest < ApplicationSystemTestCase
   setup do
     @user = FactoryBot.create(:user)
   end
