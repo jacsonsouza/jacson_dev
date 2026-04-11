@@ -7,7 +7,7 @@ class ContactController < ApplicationController
     @message.assign_attributes(message_params)
 
     if @message.save
-      redirect_to contact_path, notice: t('notices.sent_message')
+      redirect_to new_contact_path, notice: t('notices.sent_message')
     else
       flash.now[:alert] = t('alert.send_message_error')
       render :new, status: :unprocessable_content
