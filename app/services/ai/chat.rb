@@ -16,14 +16,11 @@ module Ai
     private
 
     def default_provider
-      case ENV.fetch('AI_PROVIDER', 'gemini')
-      when 'gemini'
-        Ai::Providers::GeminiProvider.new
-      when 'ollama'
-        Ai::Providers::OllamaProvider.new
-      else
-        Ai::Providers::StaticProvider.new
-      end
+      provider = Rails.application.credentials.dig(:ai, :provider).to_s.camelize
+
+      "Ai::Providers::#{provider}Provider".constantize.new
+    rescue NameError
+      Providers::StaticProvider.new
     end
 
     def build_prompt(question, context)

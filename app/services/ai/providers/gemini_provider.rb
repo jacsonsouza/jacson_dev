@@ -7,7 +7,7 @@ module Ai
   module Providers
     class GeminiProvider < Base
       def initialize(
-        model: ENV.fetch('GEMINI_MODEL', 'gemma-3-4b-it'),
+        model: Rails.application.credentials.dig(:gemini, :model),
         api_key: Rails.application.credentials.dig(:gemini, :api_key)
       )
         @model = model
