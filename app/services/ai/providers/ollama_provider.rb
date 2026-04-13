@@ -1,81 +1,88 @@
+# app/services/ai/providers/ollama_provider.rb
 require 'net/http'
 require 'json'
 
 module Ai
   module Providers
     class OllamaProvider < Base
-      def initialize(model: ENV.fetch('OLLAMA_MODEL', 'phi3:mini'))
+      DEFAULT_TIMEOUTS = {
+        open: 5,
+        read: 180,
+        write: 30
+      }.freeze
+
+      def initialize(
+        model: Rails.application.credentials.dig(:ollama, :model),
+        base_url: Rails.application.credentials.dig(:ollama, :base_url)
+      )
         super()
         @model = model
+        @base_url = base_url
       end
 
-      def stream(question, &block)
-        uri = URI("#{base_url}/api/generate")
-        http = Net::HTTP.new(uri.host, uri.port)
-        http.open_timeout = 5
-        http.read_timeout = 180
-        http.write_timeout = 30 if http.respond_to?(:write_timeout)
-        request = Net::HTTP::Post.new(uri, { 'Content-Type' => 'application/json' })
+      def stream(prompt, &block)
+        return enum_for(:stream, prompt) unless block_given?
 
-        request.body = {
-          model: model,
-          prompt: build_prompt(question),
-          stream: true,
-          keep_alive: '15m',
-          options: {
-            num_predict: 120,
-            temperature: 0.3
-          }
-        }.to_json
-
-        buffer = +''
+        http = build_http
+        request = build_request(prompt)
 
         http.request(request) do |response|
-          response.read_body do |chunk|
-            buffer << chunk
-
-            while (line = buffer.slice!(/.*\n/))
-              parsed = begin
-                JSON.parse(line)
-              rescue StandardError
-                nil
-              end
-              next unless parsed
-
-              content = parsed['response']
-              block.call(content) if content.present?
-            end
-          end
+          stream_response(response, &block)
         end
       end
 
       private
 
-      attr_reader :model
+      attr_reader :model, :base_url
 
-      def base_url
-        ENV.fetch('OLLAMA_URL', 'http://ollama:11434')
+      def uri
+        @uri ||= URI("#{base_url}/api/generate")
       end
 
-      def build_prompt(question)
-        <<~PROMPT
-          You are Jacson AI, an assistant embedded in Jacson's portfolio website.
+      def build_http
+        Net::HTTP.new(uri.host, uri.port).tap do |http|
+          http.open_timeout = DEFAULT_TIMEOUTS[:open]
+          http.read_timeout = DEFAULT_TIMEOUTS[:read]
+          http.write_timeout = DEFAULT_TIMEOUTS[:write] if http.respond_to?(:write_timeout)
+        end
+      end
 
-          Your job:
-          - Answer questions about Jacson's professional profile
-          - Be concise, clear, and professional
-          - Do not invent experience or technologies
-          - If information is unknown, say so honestly
+      def build_request(prompt)
+        Net::HTTP::Post.new(uri, headers).tap do |req|
+          req.body = body(prompt).to_json
+        end
+      end
 
-          Portfolio context:
-          - Jacson is a Full Stack Developer
-          - Main stack: Laravel, React, Ruby on Rails, React Native
-          - Focus: robust web applications, maintainable systems, clean architecture
-          - Highlight: built a reporting system that reduced a monthly process from 30 hours to 30 minutes
+      def headers
+        { 'Content-Type' => 'application/json' }
+      end
 
-          User question:
-          #{question}
-        PROMPT
+      def body(prompt)
+        {
+          model: model,
+          prompt: prompt,
+          stream: true,
+          keep_alive: '15m',
+          options: generation_config
+        }
+      end
+
+      def generation_config
+        {
+          num_predict: 120,
+          temperature: 0.3
+        }
+      end
+
+      def stream_response(response, &)
+        parser = Ai::Streaming::NdjsonParser.new
+
+        response.read_body do |chunk|
+          parser.call(chunk) do |parsed|
+            text = parsed['response']
+            yield text if text.present?
+          end
+        end
       end
     end
   end

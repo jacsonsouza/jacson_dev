@@ -1,125 +1,87 @@
-# app/services/ai/providers/gemini_provider.rb
-require 'net/http'
-require 'json'
-require 'uri'
-
 module Ai
   module Providers
     class GeminiProvider < Base
+      BASE_URI = 'https://generativelanguage.googleapis.com/v1beta/models'.freeze
+
       def initialize(
         model: Rails.application.credentials.dig(:gemini, :model),
         api_key: Rails.application.credentials.dig(:gemini, :api_key)
       )
+        super()
         @model = model
         @api_key = api_key
       end
 
-      def stream(question, &block)
-        raise 'Gemini API key is missing.' if @api_key.blank?
+      def stream(prompt, &block)
+        validate!
 
-        uri = URI(
-          "https://generativelanguage.googleapis.com/v1beta/models/#{@model}:streamGenerateContent?alt=sse&key=#{@api_key}"
-        )
-
-        http = Net::HTTP.new(uri.host, uri.port)
-        http.use_ssl = true
-        http.open_timeout = 5
-        http.read_timeout = 120
-        http.write_timeout = 30 if http.respond_to?(:write_timeout)
-
-        request = Net::HTTP::Post.new(uri, {
-                                        'Content-Type' => 'application/json'
-                                      })
-
-        request.body = {
-          contents: [
-            {
-              parts: [
-                {
-                  text: build_prompt(question)
-                }
-              ]
-            }
-          ],
-          generationConfig: {
-            temperature: 0.2,
-            maxOutputTokens: 400
-          }
-        }.to_json
-
-        buffer = +''
+        http = build_http
+        request = build_request(prompt)
 
         http.request(request) do |response|
-          response.read_body do |chunk|
-            buffer << chunk
-
-            while (line = buffer.slice!(/.*\n/))
-              line = line.strip
-              next if line.blank?
-              next unless line.start_with?('data:')
-
-              payload = line.delete_prefix('data:').strip
-              next if payload.blank?
-
-              parsed = begin
-                JSON.parse(payload)
-              rescue StandardError
-                nil
-              end
-              next unless parsed
-
-              text = extract_text(parsed)
-              block.call(text) if text.present?
-            end
-          end
+          yield_chunks(response, &block)
         end
       end
 
       private
 
-      def build_prompt(question)
-        skills = question[:context][:skills].pluck(0).join(', ')
-        projects = question[:context][:projects].map { |name, desc| "- #{name}: #{desc}" }.join("\n")
+      attr_reader :model, :api_key
 
-        <<~PROMPT
-          <role>
-          You are the virtual assistant for #{question[:context][:profile][:name]}'s developer portfolio. 
-          Your personality: Professional, helpful, and tech-savvy.
-          </role>
+      def build_http
+        Net::HTTP.new(uri.host, uri.port).tap do |http|
+          http.use_ssl = true
+          http.open_timeout = 5
+          http.read_timeout = 120
+        end
+      end
 
-          <technical_context>
-          - Main Stack: #{skills}
-          - Focus: Clean Architecture and sustainable web applications.
-          - Key Projects:
-          #{projects}
-          </technical_context>
+      def build_request(prompt)
+        Net::HTTP::Post.new(uri, headers).tap do |req|
+          req.body = body(prompt).to_json
+        end
+      end
 
-          <golden_rules>
-          1. Always respond in the same language the user used to ask the question.
-          2. If you don't know something about #{question[:context][:profile][:name]}, politely state that you don't have that information. Never invent facts (no hallucinations).
-          3. Be concise (maximum 3 paragraphs).
-          4. Use Markdown to format your response (bolding, lists, etc.).
-          </golden_rules>
+      def yield_chunks(response)
+        parser = Ai::Streaming::SseParser.new
 
-          User Question: "#{question[:question]}"
-        PROMPT
+        response.read_body do |chunk|
+          parser.call(chunk) do |parsed|
+            text = extract_text(parsed)
+            yield text if text.present?
+          end
+        end
+      end
+
+      def body(prompt)
+        {
+          contents: [{ parts: [{ text: prompt }] }],
+          generation_config: {
+            temperature: 0.2,
+            max_output_tokens: 400
+          }
+        }
+      end
+
+      def headers
+        { 'Content-Type' => 'application/json' }
+      end
+
+      def uri
+        URI("#{BASE_URI}/#{model}:streamGenerateContent?alt=sse&key=#{api_key}")
       end
 
       def extract_text(parsed)
-        candidates = parsed['candidates']
-        return nil unless candidates.is_a?(Array)
+        parsed
+          .fetch('candidates', [])
+          .flat_map { |c| c.dig('content', 'parts') || [] }
+          .pluck('text')
+          .compact
+          .join
+      end
 
-        parts = candidates.flat_map do |candidate|
-          content = candidate['content']
-          next [] unless content.is_a?(Hash)
-
-          content_parts = content['parts']
-          next [] unless content_parts.is_a?(Array)
-
-          content_parts.map { |part| part['text'] }.compact
-        end
-
-        parts.join
+      def validate!
+        raise 'Missing API key' if api_key.blank?
+        raise 'Missing model name' if model.blank?
       end
     end
   end

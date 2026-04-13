@@ -1,33 +1,24 @@
-module Ai
-  class Chat
-    def initialize(provider: default_provider)
-      @provider = provider
-    end
+class Ai::Chat
+  def initialize(provider: default_provider, pipeline: Ai::Rag::Pipeline.new)
+    @provider = provider
+    @pipeline = pipeline
+  end
 
-    def stream(question, &)
-      user = User.includes(:skills, :projects).first
-      context = Ai::ContextBuilder.new(user:).build
+  def stream(question, &)
+    prompt = pipeline.call(question: question)
 
-      prompt = build_prompt(question, context)
+    provider.stream(prompt, &)
+  end
 
-      @provider.stream(prompt, &)
-    end
+  private
 
-    private
+  attr_reader :provider, :pipeline
 
-    def default_provider
-      provider = Rails.application.credentials.dig(:ai, :provider).to_s.camelize
+  def default_provider
+    provider = Rails.application.credentials.dig(:ai, :provider).to_s.camelize
 
-      "Ai::Providers::#{provider}Provider".constantize.new
-    rescue NameError
-      Providers::StaticProvider.new
-    end
-
-    def build_prompt(question, context)
-      {
-        question: question,
-        context: context
-      }
-    end
+    "Ai::Providers::#{provider}Provider".constantize.new
+  rescue NameError
+    Providers::StaticProvider.new
   end
 end
