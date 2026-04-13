@@ -1,5 +1,5 @@
 # Base Image
-FROM ruby:3.3.4
+FROM ruby:4.0.2
 
 # Encoding
 # C.UTF8 locale supports Computer English language
@@ -84,7 +84,6 @@ RUN apt-get update -qq && \
     cron         \
     sudo         \
     vim          \
-    watchman     \
     && rm -rf /var/lib/apt/lists/*
 
 ENV _USER devel
@@ -117,5 +116,5 @@ RUN mkdir -p $APP \
 WORKDIR $APP
 
 # Install bundler and rails
-RUN gem install bundler -v 2.7 \
-    && gem install rails -v 8.0.2
+RUN gem install bundler \
+    && gem install rails -v 8.1.3
