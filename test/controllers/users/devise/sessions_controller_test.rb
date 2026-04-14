@@ -23,14 +23,14 @@ class Users::Devise::SessionsControllerTest < ActionDispatch::IntegrationTest
          params: login_params('unregistered@example.com', 'password')
 
     assert_response :unprocessable_content
-    assert_equal I18n.t('devise.failure.invalid', authentication_keys: 'Email'), flash[:alert]
+    assert_equal I18n.t('devise.failure.invalid', authentication_keys: 'email'), flash[:alert]
   end
 
   test 'should reject authentication with invalid password' do
     post user_session_path, params: login_params(@user.email, 'invalid')
 
     assert_response :unprocessable_content
-    assert_equal I18n.t('devise.failure.invalid', authentication_keys: 'Email'), flash[:alert]
+    assert_equal I18n.t('devise.failure.invalid', authentication_keys: 'email'), flash[:alert]
   end
 
   test 'should sign out successfully' do

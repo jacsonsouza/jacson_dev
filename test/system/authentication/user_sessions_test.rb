@@ -40,7 +40,7 @@ class UserSessionsTest < ApplicationSystemTestCase
 
     click_button I18n.t('links.sign_in')
 
-    assert_flash I18n.t('devise.failure.invalid', authentication_keys: 'Email')
+    assert_flash I18n.t('devise.failure.invalid', authentication_keys: 'email')
   end
 
   test 'should sign out when user is signed in' do

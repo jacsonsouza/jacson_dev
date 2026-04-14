@@ -35,7 +35,7 @@ class ProjectsTest < ApplicationSystemTestCase
     visit project_path(project)
 
     within '#project-header' do
-      assert_text project.name
+      assert_text project.name.upcase
       assert_text project.short_description
     end
 

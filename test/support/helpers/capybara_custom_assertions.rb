@@ -1,8 +1,6 @@
 module CapybaraCustomAssertions
   def assert_flash(message)
-    within 'div#flash-message' do
-      assert_selector '#flash-text', text: message
-    end
+    assert_selector 'div#flash-message #flash-text', text: message
   end
 
   def assert_input_error(attribute, message)

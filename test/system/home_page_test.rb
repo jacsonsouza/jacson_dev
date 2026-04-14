@@ -10,7 +10,7 @@ class HomePageTest < ApplicationSystemTestCase
 
     within '#home' do
       assert_selector 'h1', text: @user.first_name
-      assert_selector 'p', text: I18n.t('home.index.subtitle')
+      assert_selector 'p', text: I18n.t('home.index.subtitle').upcase
     end
   end
 end

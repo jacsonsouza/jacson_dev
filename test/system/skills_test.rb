@@ -10,8 +10,8 @@ class SkillsTest < ApplicationSystemTestCase
     visit skills_path
 
     within '#skills-header' do
-      assert_selector 'h1', text: I18n.t('home.skills.title')
-      assert_selector 'p', text: I18n.t('home.skills.subtitle').upcase
+      assert_selector 'h1', text: I18n.t('skills.index.title')
+      assert_selector 'p', text: I18n.t('skills.index.subtitle').upcase
     end
   end
 
