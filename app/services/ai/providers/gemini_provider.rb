@@ -1,3 +1,6 @@
+require 'net/http'
+require 'json'
+
 module Ai
   module Providers
     class GeminiProvider < Base

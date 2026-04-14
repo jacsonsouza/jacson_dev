@@ -1,6 +1,10 @@
 require 'application_system_test_case'
 
 class AboutPageTest < ApplicationSystemTestCase
+  setup do
+    @user = create(:user)
+  end
+
   test 'the visitant should access and see a chat' do
     visit about_path
 
@@ -33,14 +37,15 @@ class AboutPageTest < ApplicationSystemTestCase
     end
   end
 
-  # test 'the visitant can ask a question and see the answer' do
-  #   visit about_path
+  test 'the visitant can ask a question and see the answer' do
+    visit about_path
 
-  #   within '#ai-chat' do
-  #     fill_in 'question', with: I18n.t('ai.questions.skills')
-  #     click_button
+    within '#ai-chat' do
+      fill_in 'question', with: 'Talk about you.'
+      click_button(type: 'submit')
 
-  #     assert_text I18n.t('home.about.tech_stack_answer')
-  #   end
-  # end
+      assert_text 'Jacson'
+      assert_text 'Full Stack Developer'
+    end
+  end
 end

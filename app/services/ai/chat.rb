@@ -1,5 +1,5 @@
 class Ai::Chat
-  def initialize(provider: default_provider, pipeline: Ai::Rag::Pipeline.new)
+  def initialize(provider: default_provider, pipeline: default_pipeline)
     @provider = provider
     @pipeline = pipeline
   end
@@ -20,5 +20,9 @@ class Ai::Chat
     "Ai::Providers::#{provider}Provider".constantize.new
   rescue NameError
     Providers::StaticProvider.new
+  end
+
+  def default_pipeline
+    Ai::Rag::Pipeline.new
   end
 end

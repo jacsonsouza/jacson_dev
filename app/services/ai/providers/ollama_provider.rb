@@ -1,4 +1,3 @@
-# app/services/ai/providers/ollama_provider.rb
 require 'net/http'
 require 'json'
 

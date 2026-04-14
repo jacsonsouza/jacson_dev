@@ -30,11 +30,13 @@ module Ai
 
       def resolve_response(prompt)
         key = classify(prompt)
+        Rails.logger.info("StaticProvider classified question as: #{key} - #{prompt}")
         config.fetch(key, config[:default])
       end
 
       def classify(text)
-        normalized = text.to_s.downcase
+        question = text.match(/Question: (.*)/)[1]
+        normalized = question.downcase
 
         CLASSIFICATION_RULES
           .find { |rule| normalized.match?(rule[:pattern]) }
