@@ -15,8 +15,16 @@ class Project < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, comparison: { greater_than: :start_date }, allow_blank: true
   validates :favorite, inclusion: { in: [true, false] }
-  validates :repository, format: URI::DEFAULT_PARSER.make_regexp, allow_blank: true
-  validates :url, format: URI::DEFAULT_PARSER.make_regexp, allow_blank: true
+
+  validates :repository, format: {
+    with: %r{\Ahttps?://.+\z}i,
+    message: I18n.t('errors.messages.invalid_url')
+  }, allow_blank: true
+
+  validates :url, format: {
+    with: %r{\Ahttps?://.+\z}i,
+    message: I18n.t('errors.messages.invalid_url')
+  }, allow_blank: true
 
   scope :by_category, ->(category) { where(category: category) if category.present? }
 
