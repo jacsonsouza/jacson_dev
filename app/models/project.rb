@@ -9,7 +9,7 @@ class Project < ApplicationRecord
   has_one_attached :image
   has_rich_text :details
 
-  validates :name, presence: true, length: { minimum: 5 }
+  validates :name, presence: true, length: { minimum: 3 }
   validates :image, presence: true
   validates :short_description, presence: true, length: { in: 20..200 }
   validates :start_date, presence: true
