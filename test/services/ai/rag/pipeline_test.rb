@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Ai::Rag::PipelineTest < ActiveSupport::TestCase
-  def setup
+  setup do
     @user = create(:user)
     @skill = create(:skill, user: @user)
     @project = create(:project, user: @user)

@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Ai::ChatTest < ActiveSupport::TestCase
-  def setup
+  setup do
     user = create(:user)
     create(:skill, user: user)
     create(:project, user: user)

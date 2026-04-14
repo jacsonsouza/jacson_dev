@@ -30,7 +30,6 @@ module Ai
 
       def resolve_response(prompt)
         key = classify(prompt)
-        Rails.logger.info("StaticProvider classified question as: #{key} - #{prompt}")
         config.fetch(key, config[:default])
       end
 
