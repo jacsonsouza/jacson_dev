@@ -33,6 +33,7 @@ env:
     - POSTGRES_USER
     - POSTGRES_PASSWORD
     - APP_HOST
+    - REDIS_URL
 
 # Use a different ssh user than root
 ssh:
@@ -50,7 +51,9 @@ builder:
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
 proxy:
   ssl: true
-  host: jacson.dev.br
+  host: 
+    - jacson.dev.br
+    - www.jacson.dev.br
   app_port: 3000
   healthcheck:
     path: /up
@@ -72,6 +75,17 @@ accessories:
       - config/deploy.db.sql:/docker-entrypoint-initdb.d/setup.sql
     directories:
       - data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:alpine
+    host: 35.188.165.48
+    port: "127.0.0.1:6379:6379"
+    directories:
+      - data:/data
+    cmd: ["redis-server", "--appendonly", "yes", "--requirepass", "${REDIS_PASSWORD}"]
+    env:
+      secret:
+        - REDIS_PASSWORD
 
   # # Build image via remote server (useful for faster amd64 builds on arm64 computers)
   # remote: ssh://docker@docker-builder-server
