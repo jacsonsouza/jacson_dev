@@ -24,7 +24,7 @@
 
       <div class="flex flex-col items-start gap-6 lg:col-span-4 lg:items-end">
          <div class="flex w-full gap-4 lg:w-auto">
-            <%= link_to sanitize(@project.url),
+            <%= link_to sanitize(@project.safe_url),
                target: '_blank',
                rel: 'noopener noreferrer',
                class: 'group flex flex-1 items-center justify-center gap-3 rounded-xl bg-content px-8 py-5 text-xs font-bold uppercase tracking-[0.2em] text-black shadow-xl transition-colors duration-300 hover:bg-accent hover:text-content lg:flex-none' do %>
@@ -32,7 +32,7 @@
                <i class="fa-solid fa-arrow-up-right-from-square transition-transform group-hover:rotate-45"></i>
             <% end %>
 
-            <%= link_to sanitize(@project.repository),
+            <%= link_to sanitize(@project.safe_repository_url),
                target: '_blank',
                rel: 'noopener noreferrer',
                class: 'glass-panel flex h-16 w-16 items-center justify-center rounded-xl text-content/60 transition-colors hover:border-accent/50 hover:text-content' do %>

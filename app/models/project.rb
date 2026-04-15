@@ -53,4 +53,12 @@ class Project < ApplicationRecord
       "#{start_date.strftime('%b %Y')} - #{I18n.t('time.present')}"
     end
   end
+
+  def safe_repository_url
+    repository if repository.present? && repository.match?(%r{\Ahttps?://.+\z}i)
+  end
+
+  def safe_url
+    url if url.present? && url.match?(%r{\Ahttps?://.+\z}i)
+  end
 end
