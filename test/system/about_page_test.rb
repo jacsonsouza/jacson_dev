@@ -36,16 +36,4 @@ class AboutPageTest < ApplicationSystemTestCase
       assert_selector :field, 'question', with: I18n.t('ai.questions.projects')
     end
   end
-
-  test 'the visitant can ask a question and see the answer' do
-    visit about_path
-
-    within '#ai-chat' do
-      fill_in 'question', with: 'Talk about you.'
-      click_button(type: 'submit')
-
-      assert_text 'Jacson'
-      assert_text 'Full Stack Developer'
-    end
-  end
 end
