@@ -82,7 +82,7 @@ accessories:
     port: "127.0.0.1:6379:6379"
     directories:
       - data:/data
-    cmd: ["redis-server", "--appendonly", "yes", "--requirepass", "${REDIS_PASSWORD}"]
+    cmd: sh -c "redis-server --appendonly yes --requirepass $REDIS_PASSWORD"
     env:
       secret:
         - REDIS_PASSWORD
