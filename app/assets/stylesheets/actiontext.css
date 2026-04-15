@@ -328,10 +328,10 @@ trix-toolbar .trix-dialog__link-fields .trix-button-group {
 /* Content Styling
    ========================================================================== */
 .trix-content {
-   line-height: 1.7;
+   line-height: 1.625;
    overflow-wrap: break-word;
    word-break: break-word;
-   color: var(--trix-text);
+   color: rgba(255, 255, 255, 0.6);
 }
 
 .trix-content * {

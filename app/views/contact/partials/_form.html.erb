@@ -1,0 +1,10 @@
+<%= simple_form_for @message, 
+                    url: contact_index_path, class: 'space-y-10' do |f| %>
+
+   <%= f.input :identity %>
+   <%= f.input :email %>
+   <%= f.input :subject %>
+   <%= f.input :content, as: :text, rows: 5 %>
+   <%= f.button :submit, t('links.execute') %>
+
+<% end %>

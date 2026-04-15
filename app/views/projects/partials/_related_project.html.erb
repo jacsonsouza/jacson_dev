@@ -1,0 +1,15 @@
+<%= link_to project_path(project),
+   class: 'carousel-item group shrink-0 rounded-3xl border border-content/10 bg-content/5 p-8 backdrop-blur-md transition-all hover:border-accent/40' do %>
+   <div class="mb-8 aspect-video overflow-hidden rounded-2xl">
+      <%= image_tag url_for(project.image),
+         class: 'h-full w-full object-cover grayscale opacity-50 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100' %>
+   </div>
+
+   <h4 class="mb-2 text-xl font-black uppercase text-content">
+      <%= project.name %>
+   </h4>
+
+   <p class="line-clamp-2 text-sm leading-relaxed text-content/40">
+      <%= project.short_description %>
+   </p>
+<% end %>

@@ -1,0 +1,55 @@
+<footer class="relative z-20 flex w-full flex-col items-center justify-between p-6 md:flex-row">
+   <div class="flex flex-col gap-1">
+      <span class="text-[10px] font-bold uppercase tracking-widest text-content/40">
+         <%= t('.main_tech_stack') %>
+      </span>
+
+      <div class="mt-1 flex gap-5 text-content/40">
+         <% tech_stack = %w[ruby rails laravel react flutter] %>
+         <% tech_stack.each do |tech| %>
+            <i class="devicon-<%= tech %>-plain text-xl transition-transform hover:scale-110"></i>
+         <% end %>
+      </div>
+   </div>
+
+   <div class="absolute bottom-0 left-1/2 hidden -translate-x-1/2 lg:block">
+      <div class="flex flex-col items-center gap-2">
+         <div class="h-12 w-px bg-linear-to-t from-accent to-transparent"></div>
+
+         <span class="font-mono text-[8px] tracking-[0.4em] text-accent">
+            JACSON.DEV
+         </span>
+      </div>
+   </div>
+
+   <div class="mt-6 flex items-center gap-10 md:mt-0">
+      <div class="flex gap-4">
+         <%= link_to 'https://github.com/jacsonsouza',
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            class: 'glass-panel group flex h-10 w-10 items-center justify-center rounded' do %>
+            <i class="devicon-github-original text-content/40 group-hover:text-accent"></i>
+         <% end %>
+
+         <%= link_to 'https://linkedin.com/in/jacsonsouza',
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            class: 'glass-panel group flex h-10 w-10 items-center justify-center rounded' do %>
+            <i class="devicon-linkedin-plain text-content/40 group-hover:text-accent"></i>
+         <% end %>
+      </div>
+
+      <address class="flex flex-col items-end not-italic">
+         <span class="mb-1 text-[10px] uppercase tracking-widest text-content/40">
+            <%= t('.contact') %>
+         </span>
+
+         <a
+            href="mailto:contact@jacson.dev.br"
+            class="text-xs font-bold text-content transition-colors hover:text-accent"
+         >
+            contact@jacson.dev.br
+         </a>
+      </address>
+   </div>
+</footer>

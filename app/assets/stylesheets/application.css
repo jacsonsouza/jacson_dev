@@ -1,8 +1,8 @@
 :root {
    /* Core */
-   --primary: #6c63ff;
-   --secondary: #ff6584;
-   --accent: #36d1dc;
+   --primary: #ff6b00;
+   --secondary: #1a1a1a;
+   --accent: #FF5F1F;
    --dark: #1a1a2e;
    --light: #f0f0f0;
 
@@ -85,4 +85,11 @@ input[type="color"]::-moz-color-swatch {
    background: var(--primary);
    color: var(--light);
    border-radius: 6px;
+}
+
+/* Animations */
+
+.stagger-in {
+   animation: stagger-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+   /* opacity: 0; */
 }

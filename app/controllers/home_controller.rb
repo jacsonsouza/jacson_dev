@@ -1,22 +1,12 @@
 class HomeController < ApplicationController
-  def index; end
+  before_action :set_user
 
+  def index; end
   def about; end
 
-  def skills
-    @skills = Skill.by_category(params[:category])
-                   .includes(:icon_attachment, :tags).order(name: :asc)
-  end
+  private
 
-  def projects
-    @projects = Project.by_category(params[:category])
-                       .includes([:image_attachment, :skills])
-                       .order(favorite: :desc, name: :asc)
+  def set_user
+    @user = User.first
   end
-
-  def project
-    @project = Project.find(params[:id])
-  end
-
-  def contact; end
 end

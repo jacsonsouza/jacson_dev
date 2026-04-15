@@ -1,0 +1,52 @@
+<article id="project-<%= project.id %>" class="glass-panel group flex h-full flex-col rounded-3xl p-8">
+   <div class="mb-6 flex items-start justify-between">
+      <div class="glass-panel flex h-12 w-12 items-center justify-center rounded-xl transition-colors group-hover:border-primary/30">
+         <i class="fa-solid fa-layer-group text-primary text-xl"></i>
+      </div>
+
+      <div class="flex gap-2">
+         <%= link_to safe_external_url(project.repository),
+            class: 'flex h-9 w-9 items-center justify-center rounded-full bg-white/5 transition-colors hover:bg-primary group/link' do %>
+            <i class="fa-brands fa-github text-content/60 transition-colors group-hover/link:text-content"></i>
+         <% end %>
+
+         <%= link_to safe_external_url(project.url),
+            class: 'flex h-9 w-9 items-center justify-center rounded-full bg-white/5 transition-colors hover:bg-primary group/link' do %>
+            <i class="fa-solid fa-arrow-up-right-from-square text-content/60 transition-colors group-hover/link:text-content"></i>
+         <% end %>
+
+         <%= link_to project_path(project),
+            class: 'flex h-9 w-9 items-center justify-center rounded-full bg-white/5 transition-colors hover:bg-primary group/link' do %>
+            <i class="fa-solid fa-info text-content/60 transition-colors group-hover/link:text-content"></i>
+         <% end %>
+      </div>
+   </div>
+
+   <div class="flex-1">
+      <h3 class="mb-3 text-2xl font-black tracking-tight text-content transition-colors group-hover:text-primary">
+         <%= project.name %>
+      </h3>
+
+      <p class="mb-8 text-sm font-medium leading-relaxed text-content/40">
+         <%= project.short_description %>
+      </p>
+   </div>
+
+   <% if project.skills.any? %>
+      <div class="border-t border-content/5 pt-6">
+         <p class="mb-4 font-mono text-[9px] uppercase tracking-[0.2em] text-white/20">
+            Stack
+         </p>
+
+         <ul class="flex items-center gap-4 opacity-60 transition-opacity group-hover:opacity-100">
+            <% project.skills.each do |skill| %>
+               <li>
+                  <% if skill.icon.attached? %>
+                     <%= image_tag url_for(skill.icon), class: "h-6 w-6", alt: skill.name %>
+                  <% end %>
+               </li>
+            <% end %>
+         </ul>
+      </div>
+   <% end %>
+</article>

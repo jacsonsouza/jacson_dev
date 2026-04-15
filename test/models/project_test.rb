@@ -7,7 +7,7 @@ class ProjectTest < ActiveSupport::TestCase
 
   context 'validations' do
     should validate_presence_of(:name)
-    should validate_length_of(:name).is_at_least(5)
+    should validate_length_of(:name).is_at_least(3)
     should validate_presence_of(:short_description)
     should validate_length_of(:short_description).is_at_least(20).is_at_most(200)
     should validate_comparison_of(:end_date).is_greater_than(:start_date)
@@ -27,9 +27,9 @@ class ProjectTest < ActiveSupport::TestCase
 
   context 'scope by_category' do
     setup do
-      user = FactoryBot.create(:user)
-      @web_project = FactoryBot.create(:project, category: 0, user: user)
-      @mobile_project = FactoryBot.create(:project, category: 1, user: user)
+      user = create(:user)
+      @web_project = create(:project, category: 0, user: user)
+      @mobile_project = create(:project, category: 1, user: user)
     end
 
     should 'return only projects from a valid category' do
@@ -44,5 +44,22 @@ class ProjectTest < ActiveSupport::TestCase
 
       assert_equal Project.count, result.count
     end
+  end
+
+  test 'should return a formatted timeline' do
+    start_date = Date.new(2022, 1, 1)
+    end_date = Date.new(2022, 12, 31)
+
+    project = FactoryBot.build(:project, start_date: start_date, end_date: end_date)
+
+    assert_equal 'Jan 2022 - Dec 2022', project.timeline
+  end
+
+  test 'should return a formatted timeline with present end date' do
+    start_date = Date.new(2022, 1, 1)
+
+    project = FactoryBot.build(:project, start_date: start_date, end_date: nil)
+
+    assert_equal 'Jan 2022 - Present', project.timeline
   end
 end

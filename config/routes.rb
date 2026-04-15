@@ -11,10 +11,12 @@ Rails.application.routes.draw do
 
   root 'home#index'
   get 'about' => 'home#about', as: :about
-  get 'skills' => 'home#skills', as: :skills
-  get 'projects' => 'home#projects', as: :projects
-  get 'projects/:id' => 'home#project', as: :project
-  get 'contact' => 'home#contact', as: :contact
+
+  resources :skills, only: [:index, :show]
+  resources :projects, only: [:index, :show]
+  resources :contact, only: [:new, :create]
+
+  get 'ai/chat/stream' => 'ai_chat#stream', as: :ai_chat_stream
 
   devise_for :users, controllers: {
     sessions: 'users/devise/sessions',

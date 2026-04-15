@@ -4,7 +4,7 @@
    */
 
    .page-container {
-      @apply min-h-screen flex bg-linear-to-br from-slate-900 via-slate-950 to-indigo-950 text-light;
+      @apply min-h-screen flex bg-canvas text-base;
    }
 
    .page-section {
@@ -69,10 +69,9 @@
    */
 
    .btn-primary {
-      @apply relative cursor-pointer rounded-4xl border-none
-             bg-linear-to-tr from-primary to-accent px-4 py-2.5
-             text-center font-semibold text-lg text-white no-underline shadow-lg
-             shadow-indigo-500/40 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-indigo-500/60;
+      @apply w-full bg-primary text-white cursor-pointer
+             font-black text-xs uppercase tracking-[0.3em] py-6
+             transition-all hover:bg-accent/80 disabled:opacity-50 flex items-center justify-center gap-3;
    }
 
    .btn-secondary {
@@ -113,6 +112,10 @@
    * UI COMPONENTS
    */
 
+   .glass-panel {
+      @apply bg-content/5 backdrop-blur-md border border-content/10 transition-all duration-300 ease-out hover:border-orange-500/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-500/10;
+   }
+
    .badge {
       @apply flex items-center gap-x-1.5 rounded-full bg-indigo-500/20 px-3 py-1.5 text-xs font-medium text-slate-300;
    }
@@ -142,14 +145,6 @@
    }
 
    /*
-   * EFFECTS & DECORATIONS
-   */
-
-   .bubble {
-      @apply absolute animate-float rounded-full bg-linear-to-tr from-indigo-500 to-rose-400;
-   }
-
-   /*
    * UTILITIES
    */
 
@@ -164,4 +159,24 @@
    .scroll-x-hidden {
       @apply [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none];
    }
+
+   .chat-scroll {
+      @apply [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none];
+   }
+
+   .nav-link-active::before {
+      content: '';
+      position: absolute;
+      left: -32px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 24px;
+      background: var(--accent);
+      border-radius: 0 4px 4px 0;
+   }
+
+   /*
+   * New components
+   */
 }

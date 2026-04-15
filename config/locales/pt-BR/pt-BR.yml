@@ -6,3 +6,9 @@ pt-BR:
     create: "%{resource} foi criado com sucesso."
     update: "%{resource} foi atualizado com sucesso."
     destroy: "%{resource} foi excluido com sucesso."
+
+    sent_message: "Sua mensagem foi enviada com sucesso."
+
+  alert:
+    over_limit: "Você está enviando solicitações muito rapidamente. Por favor, aguarde e tente novamente."
+    send_message_error: "Houve um erro ao enviar sua mensagem. Por favor, verifique o formulário e tente novamente."

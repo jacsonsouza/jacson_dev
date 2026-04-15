@@ -7,6 +7,7 @@ en:
     confirm_your_email: "Confirm your email"
     contact: "Contact"
     database: "Database"
+    execute: "'Execute Transmission'"
     frontend: "Frontend"
     github: "Code on GitHub"
     website: "Visit website"
@@ -25,6 +26,11 @@ en:
     tools: "Tools"
     new: "New %{resource}"
 
+  labels:
+    projects: "Projects"
+    tech_stack: "Tech Stack"
+    new_project: "New Project"
+
   tags:
     highlight: "Highlight"
 
@@ -33,26 +39,51 @@ en:
     from_now: "from now"
     ended_on: "ended on %{date}"
     development: "%{time} of development"
+    present: "Present"
 
   shared:
+    footer:
+      main_tech_stack: "Main Tech Stack"
+      contact: "Available for Contact"
+
     under_construction:
       title: "Under Construction"
       description: "This page is under construction."
 
   home:
     index:
-      greeting: "Hi, I'm "
-      occupation: "Full Stack Developer"
-      introduction: "I turn ideas into exceptional digital experiences with a strong focus on performance and innovative design."
-      projects: "Explore Projects"
+      subtitle: "Full Stack Developer"
+      deployment_btn: "Ready for deployment"
 
-    skills:
-      title: "My Skills"
-      subtitle: "Technologies & Tools I Work With."
+    about:
+      title: "Jacson AI"
+      presentation: "System online. Ready for tasking. How can I assist?"
+      execute: "ENTER TO EXECUTE"
+      operations: "AI Operations"
+      ask: "Ask a question..."
 
-    projects:
-      title: "My Projects"
-      subtitle: "Projects I've worked on."
+  projects:
+    index:
+      title: "Projects"
+      subtitle: "Developing systems and digital interfaces."
+      selected: "Selected Works"
+
+    show:
+      related: "Related Projects"
+      challenges: "The Challenge"
+      stack: "Technical Stack"
+
+  contact:
+    new:
+      label: "Available for opportunities"
+      title: "Get in Touch"
+      subtitle: "I'm currently looking for new projects and collaborations. Let's build something together."
+
+  skills:
+    index:
+      title: "Technical Skills"
+      subtitle: "Technical stack for developing production-ready web applications."
+      selected: "Selected Skills"
 
   users:
     menu:
@@ -127,3 +158,9 @@ en:
       index: "Projects"
       new: "New Project"
       edit: "Edit %{name}"
+
+  ai:
+    questions:
+      projects: "What projects have you worked on?"
+      skills: "What are your technical skills?"
+      work_together: "How can we work together?"

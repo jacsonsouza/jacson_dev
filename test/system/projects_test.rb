@@ -2,8 +2,8 @@ require 'application_system_test_case'
 
 class ProjectsTest < ApplicationSystemTestCase
   setup do
-    @user = FactoryBot.create(:user)
-    @projects = FactoryBot.create_list(:project, 3, user: @user)
+    @user = create(:user)
+    @projects = create_list(:project, 3, user: @user)
   end
 
   test 'a visitant user can see all portfolio projects' do
@@ -20,7 +20,7 @@ class ProjectsTest < ApplicationSystemTestCase
   end
 
   test 'a visitant user can filter the skills' do
-    project_mobile = FactoryBot.create(:project, user: @user, category: 'mobile')
+    project_mobile = create(:project, user: @user, category: 'mobile')
 
     visit projects_path
 
@@ -35,7 +35,7 @@ class ProjectsTest < ApplicationSystemTestCase
     visit project_path(project)
 
     within '#project-header' do
-      assert_text project.name
+      assert_text project.name.upcase
       assert_text project.short_description
     end
 

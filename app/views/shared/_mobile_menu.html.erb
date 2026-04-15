@@ -1,42 +1,77 @@
-<div data-controller="mobile-menu">
+<div data-controller="mobile-menu" class="md:hidden">
+   <header class="relative z-50 flex shrink-0 items-center justify-between px-8 pt-8">
+      <div class="flex h-8 w-8 items-center justify-center rounded-lg border border-content/10 bg-content/5">
+         <%= image_tag 'logos/primary-logo.png', alt: 'Logo', class: 'object-contain p-1' %>
+      </div>
 
-   <div class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-40"
-        data-mobile-menu-target="overlay" 
-        data-action="click->mobile-menu#closeMenus touchstart->mobile-menu#touchStart touchend->mobile-menu#touchEnd"></div>
+      <button
+         type="button"
+         data-action="click->mobile-menu#toggle"
+         data-mobile-menu-target="button"
+         class="group flex h-11 w-11 flex-col items-center justify-center gap-1.5 transition-colors focus:outline-none"
+         >
+         <% 3.times do |i| %>
+            <span
+               data-mobile-menu-target="toggleIcon"
+               class="line-<%= i + 1 %> h-0.5 w-6 bg-content transition-all duration-300 group-hover:bg-primary"
+            ></span>
+         <% end %>
+      </button>
+   </header>
 
-   <div class="btn-rounded md:hidden fixed bottom-6 right-6 z-[1000]" 
-        data-mobile-menu-target="menuToggle" 
-        data-action="click->mobile-menu#toggleMobileMenu">
-      <i class="fas fa-plus text-white text-2xl transition-all duration-300" data-mobile-menu-target="toggleIcon"></i>
-   </div>
+   <nav
+      id="mobile-navigation"
+      data-mobile-menu-target="mobileMenu"
+      class="fixed inset-0 z-40 flex -translate-x-full flex-col border-r border-content/5 bg-canvas transition-transform duration-500"
+   >
+      <div class="flex flex-1 flex-col px-10 pt-32">
+         <div class="mb-8">
+            <span class="font-mono text-[9px] uppercase tracking-[0.4em] text-content/20">
+               Navigation system
+            </span>
+         </div>
 
-   <ul data-mobile-menu-target="mobileMenu" 
-        class="hidden fixed bottom-24 right-6 md:flex flex-col items-center justify-center z-45 opacity-0 translate-y-5 transition-all duration-300">
+         <ul class="space-y-1">
+            <% nav_items.each do |item| %>
+               <li
+                  data-action="click->mobile-menu#close"
+                  data-mobile-menu-target="mobileMenuItem"
+                  class="-translate-x-5 opacity-0 transition-all duration-500"
+                  >
+                  <%= active_link_to item[:path] || '#',
+                     class: 'group relative flex items-center gap-4 py-4 focus:outline-none',
+                     class_active: 'text-accent nav-link-active',
+                     class_inactive: 'text-content hover:text-content/80',
+                     active: :exclusive do %>
 
-      <% items = [
-            { name: t('links.home'), icon: 'fas fa-home', target: 'home', path: root_path },
-            { name: t('links.about'), icon: 'fas fa-user', target: 'about', path: about_path },
-            { name: t('links.skills'), icon: 'fas fa-code', target: 'skills', path: skills_path },
-            { name: t('links.projects'), icon: 'fas fa-briefcase', target: 'projects', path: projects_path },
-            { name: t('links.contact'), icon: 'fas fa-envelope', target: 'contact', path: contact_path },
-        ] %>
-
-      <% items.each do |item| %>
-         <li class="w-12 h-12 my-2 rounded-full cursor-pointer transition-all duration-300 shadow-lg relative group"
-              data-mobile-menu-target="mobileMenuItem" 
-              data-action="click->mobile-menu#navigate" data-target="<%= item[:target] %>">
-
-            <%= active_link_to item[:path] || '#', 
-                               class: "w-full h-full rounded-full bg-gray-900/90 backdrop-blur-md flex items-center justify-center",
-                               class_active: "bg-indigo-900 text-white", 
-                               active: :exclusive do %>
-
-               <i class="<%= item[:icon] %> text-white text-lg"></i>
-               <span class="absolute right-12 bg-gray-900/90 px-3 py-1 mr-2 rounded-lg text-white font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap"><%= item[:name] %></span>
-
+                     <i class="<%= item[:icon] %> text-xl opacity-40 transition-all group-hover:text-accent/80 group-hover:opacity-100"></i>
+                     <span class="text-4xl font-black uppercase tracking-tighter transition-transform group-hover:translate-x-2">
+                        <%= item[:name] %>
+                     </span>
+                  <% end %>
+               </li>
             <% end %>
+         </ul>
 
-         </li>
-      <% end %>
-   </ul>
+         <div class="mt-auto flex flex-col gap-6 pb-[34px]">
+            <hr class="w-full border-0 border-t border-content/5">
+
+            <div class="flex items-center gap-6">
+               <%= link_to 'https://github.com/jacson-dev',
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
+                  class: 'text-content/30 transition-colors hover:text-content' do %>
+                  <i class="fab fa-github text-xl"></i>
+               <% end %>
+
+               <%= link_to 'https://www.linkedin.com/in/jacson-dev',
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
+                  class: 'text-content/30 transition-colors hover:text-content' do %>
+                  <i class="fab fa-linkedin text-xl"></i>
+               <% end %>
+            </div>
+         </div>
+      </div>
+   </nav>
 </div>

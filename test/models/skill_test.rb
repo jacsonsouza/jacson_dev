@@ -3,7 +3,7 @@ require 'test_helper'
 class SkillTest < ActiveSupport::TestCase
   context 'validations' do
     setup do
-      @skill = FactoryBot.create(:skill)
+      @skill = create(:skill)
     end
 
     should validate_presence_of(:name)
@@ -20,7 +20,7 @@ class SkillTest < ActiveSupport::TestCase
 
   context 'associations' do
     setup do
-      @skill = FactoryBot.create(:skill)
+      @skill = create(:skill)
     end
 
     should belong_to(:user)
@@ -29,7 +29,7 @@ class SkillTest < ActiveSupport::TestCase
     should have_one_attached(:icon)
 
     should 'creates and associates a new tag when tag does not exist' do
-      @skill.tags << FactoryBot.build(:tag, name: 'test')
+      @skill.tags << build(:tag, name: 'test')
 
       assert_equal 1, @skill.tags.count
       assert_equal 'test', @skill.tags.last.name
@@ -38,10 +38,10 @@ class SkillTest < ActiveSupport::TestCase
 
   context 'scope by_category' do
     setup do
-      user = FactoryBot.create(:user)
-      @backend = FactoryBot.create(:skill, category: 0, user: user)
-      @frontend = FactoryBot.create(:skill, category: 1, user: user)
-      @mobile = FactoryBot.create(:skill, category: 2, user: user)
+      user = create(:user)
+      @backend = create(:skill, category: 0, user: user)
+      @frontend = create(:skill, category: 1, user: user)
+      @mobile = create(:skill, category: 2, user: user)
     end
 
     should 'return only skills from a valid category' do

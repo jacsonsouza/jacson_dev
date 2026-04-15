@@ -1,32 +1,25 @@
 require 'test_helper'
 
 class HomeControllerTest < ActionDispatch::IntegrationTest
-  test 'should get home with success' do
+  setup do
+    @user = create(:user)
+  end
+
+  test 'should get index successfully' do
     get root_path
 
     assert_response :success
   end
 
-  test 'should get about with success' do
+  test 'should get the user first name on the index page' do
+    get root_path
+
+    assert_response :success
+    assert_match @user.first_name, response.body
+  end
+
+  test 'should successfully access about page' do
     get about_path
-
-    assert_response :success
-  end
-
-  test 'should get contact with success' do
-    get contact_path
-
-    assert_response :success
-  end
-
-  test 'should get skills with success' do
-    get skills_path
-
-    assert_response :success
-  end
-
-  test 'should get projects with success' do
-    get projects_path
 
     assert_response :success
   end

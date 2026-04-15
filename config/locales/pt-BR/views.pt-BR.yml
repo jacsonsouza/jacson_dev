@@ -42,6 +42,29 @@ pt-BR:
       title: "Meus projetos"
       subtitle: "Projetos pessoais e profissionais."
 
+  projects:
+    index:
+      title: "Projetos"
+      subtitle: "Desenvolvendo sistemas e interfaces digitais."
+      selected: "Projetos Selecionados"
+
+    show:
+      related: "Projetos Relacionados"
+      challenges: "O Desafio"
+      stack: "Stack Técnica"
+
+  skills:
+    index:
+      title: "Habilidades técnicas"
+      subtitle: "Stack técnica para o desenvolvimento de aplicações web prontas para produção."
+      selected: "Habilidades selecionadas"
+
+  contact:
+    new:
+      title: "Entre em contato"
+      subtitle: "Estou aberto para novas oportunidades de trabalho. Vamos trabalhar juntos!"
+      label: "Disponível para oportunidades"
+
   users:
     menu:
       admin: "Administração"

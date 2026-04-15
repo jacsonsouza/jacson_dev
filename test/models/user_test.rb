@@ -21,4 +21,10 @@ class UserTest < ActiveSupport::TestCase
     assert_not user_not_allowed.valid?
     assert_includes user_not_allowed.errors[:base], I18n.t('errors.messages.only_one_user')
   end
+
+  test 'should return user fist name' do
+    user = FactoryBot.create(:user, name: 'Jacson S Souza')
+
+    assert_equal 'Jacson', user.first_name
+  end
 end

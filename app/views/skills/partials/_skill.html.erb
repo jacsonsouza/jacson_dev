@@ -1,0 +1,39 @@
+<li
+   id="skill-<%= skill.id %>"
+   class="
+      glass-panel
+      group
+      flex h-full flex-col
+      rounded-3xl p-8
+      transition-transform duration-300
+      hover:scale-105 hover:border-primary
+   "
+>
+   <div class="mb-8 flex items-start justify-between">
+      <div class="glass-panel flex h-12 w-12 items-center justify-center rounded-xl border-content/10 transition-colors group-hover:border-accent/30">
+         <%= image_tag url_for(skill.icon), alt: skill.name, class: "object-contain" %>
+      </div>
+
+      <div class="glass-panel rounded-lg border-primary/20 px-3 py-1.5 font-mono text-[10px] font-bold tracking-tighter text-primary transition-colors group-hover:bg-primary/10">
+         <%= "#{skill.proficiency}%" %>
+      </div>
+   </div>
+
+   <div class="flex-1">
+      <h3 class="mb-3 font-display text-xl font-black tracking-tight text-content transition-colors group-hover:text-primary">
+         <%= skill.name %>
+      </h3>
+
+      <p class="text-xs font-medium leading-relaxed text-content/40">
+         <%= skill.short_description %>
+      </p>
+   </div>
+
+   <div class="mt-8 flex items-center justify-between border-t border-content/5 pt-6">
+      <span class="font-mono text-[9px] uppercase tracking-[0.2em] text-content/20">
+         <%= skill.category %>
+      </span>
+
+      <i class="fa-solid fa-arrow-up-right-from-square text-content/10 transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"></i>
+   </div>
+</li>

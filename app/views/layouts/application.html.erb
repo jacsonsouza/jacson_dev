@@ -10,28 +10,27 @@
 
       <%= yield :head %>
 
-      <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-      <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
-      <%# Includes all stylesheet files in app/assets/stylesheets %>
       <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
       <%= javascript_importmap_tags %>
 
       <%= favicon_link_tag %>
    </head>
 
-   <body class="page-container overflow-x-hidden">
+   <body class="page-container min-h-screen flex flex-col gap-8 justify-center align-center overflow-x-hidden dark">
 
       <%= rc 'flash/message' %>
 
-      <%= render 'shared/side_menu' %>
+      <%= render 'shared/nav' %>
+      <%= render 'shared/mobile_menu' %>
 
-      <main class="flex-1 min-w-0 flex flex-col gap-8 animate-page-in">
+      <main class="flex w-full flex-1 justify-center md:mt-20">
          <%= yield %>
       </main>
+
+      <%= render 'shared/footer' %>
 
    </body>
 </html>

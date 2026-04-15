@@ -17,6 +17,10 @@ en:
         one: "Tag"
         other: "Tags"
 
+      message:
+        one: "Message"
+        other: "Messages"
+
     attributes:
       defaults: &defaults
         description: "Description"
@@ -61,3 +65,9 @@ en:
 
       tag:
         <<: *defaults
+
+      message:
+        identity: "Identity"
+        email: "E-mail"
+        subject: "Subject"
+        content: "Message"
