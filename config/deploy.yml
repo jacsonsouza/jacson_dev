@@ -56,7 +56,7 @@ proxy:
   healthcheck:
     path: /up
     interval: 3
-    timeout: 30
+    timeout: 120
 
 accessories:
   db:
