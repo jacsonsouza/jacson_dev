@@ -33,7 +33,6 @@ env:
     - POSTGRES_USER
     - POSTGRES_PASSWORD
     - APP_HOST
-    - REDIS_URL
 
 # Use a different ssh user than root
 ssh:
@@ -74,16 +73,16 @@ accessories:
     directories:
       - data:/var/lib/postgresql/data
 
-  redis:
-    image: redis:alpine
-    host: 35.188.165.48
-    port: "127.0.0.1:6379:6379"
-    directories:
-      - data:/data
-    cmd: sh -c "redis-server --appendonly yes --requirepass $REDIS_PASSWORD"
-    env:
-      secret:
-        - REDIS_PASSWORD
+  # redis:
+  #   image: redis:alpine
+  #   host: 35.188.165.48
+  #   port: "127.0.0.1:6379:6379"
+  #   directories:
+  #     - data:/data
+  #   cmd: sh -c "redis-server --appendonly yes --requirepass $REDIS_PASSWORD"
+  #   env:
+  #     secret:
+  #       - REDIS_PASSWORD
 
   # # Build image via remote server (useful for faster amd64 builds on arm64 computers)
   # remote: ssh://docker@docker-builder-server
