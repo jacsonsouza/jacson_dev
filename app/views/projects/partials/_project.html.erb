@@ -5,12 +5,12 @@
       </div>
 
       <div class="flex gap-2">
-         <%= link_to project.repository,
+         <%= link_to sanitize(project.repository),
             class: 'flex h-9 w-9 items-center justify-center rounded-full bg-white/5 transition-colors hover:bg-primary group/link' do %>
             <i class="fa-brands fa-github text-content/60 transition-colors group-hover/link:text-content"></i>
          <% end %>
 
-         <%= link_to project.url,
+         <%= link_to sanitize(project.url),
             class: 'flex h-9 w-9 items-center justify-center rounded-full bg-white/5 transition-colors hover:bg-primary group/link' do %>
             <i class="fa-solid fa-arrow-up-right-from-square text-content/60 transition-colors group-hover/link:text-content"></i>
          <% end %>
