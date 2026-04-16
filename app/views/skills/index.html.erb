@@ -1,21 +1,23 @@
-<section class="w-full max-w-7xl flex flex-col mt-10 px-4">
+<section class="w-full max-w-7xl px-2 md:px-4 mt-10">
 
    <div id="skills-header" class="flex flex-col items-center gap-2 mb-10">
-      <span class="text-[10px] font-mono tracking-[0.8em] text-white/30 uppercase"><%= t('.selected') %></span>
+      <span class="text-[10px] font-mono tracking-[0.8em] text-white/30 uppercase">
+         <%= t('.selected') %>
+      </span>
 
-      <h1 class="text-6xl md:text-8xl font-display font-black text-white leading-tight tracking-tighter flex items-center gap-6">
+      <h1 class="text-6xl md:text-8xl flex items-center gap-6">
          <span><%= t('.title') %></span>
          <span class="w-12 h-0.5 bg-primary"></span>
       </h1>
 
-      <p class="text-sm md:text-base text-white/40 max-w-lg text-center font-medium leading-relaxed uppercase tracking-widest">
+      <p class="subheadline md:text-base max-w-lg text-center font-medium uppercase tracking-widest">
          <%= t('.subtitle') %>
       </p>
 
       <%= rc 'group/filters', model: Skill, filters: Skill.categories %>
    </div>
 
-   <ul id="skills" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-6">
+   <ul id="skills" class="responsive-grid">
       <%= render partial: 'skills/partials/skill', collection: @skills, as: :skill %>
    </ul>
 

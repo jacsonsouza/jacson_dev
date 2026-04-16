@@ -10,17 +10,17 @@
    "
 >
    <div class="mb-8 flex items-start justify-between">
-      <div class="glass-panel flex h-12 w-12 items-center justify-center rounded-xl border-content/10 transition-colors group-hover:border-accent/30">
-         <%= image_tag url_for(skill.icon), alt: skill.name, class: "object-contain" %>
+      <div class="glass-panel flex h-12 w-12 items-center justify-center rounded-xl border-content/1">
+         <%= image_tag url_for(skill.icon), alt: skill.name, class: "object-contain p-2" %>
       </div>
 
-      <div class="glass-panel rounded-lg border-primary/20 px-3 py-1.5 font-mono text-[10px] font-bold tracking-tighter text-primary transition-colors group-hover:bg-primary/10">
+      <div class="glass-panel rounded-md border-primary/20 px-3 py-1.5 font-mono text-[10px] font-bold tracking-tighter text-primary">
          <%= "#{skill.proficiency}%" %>
       </div>
    </div>
 
    <div class="flex-1">
-      <h3 class="mb-3 font-display text-xl font-black tracking-tight text-content transition-colors group-hover:text-primary">
+      <h3 class="mb-3 text-xl tracking-tight transition-colors group-hover:text-primary">
          <%= skill.name %>
       </h3>
 
@@ -34,6 +34,6 @@
          <%= skill.category %>
       </span>
 
-      <i class="fa-solid fa-arrow-up-right-from-square text-content/10 transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"></i>
+      <i class="fa-solid fa-arrow-up-right-from-square text-content/10 group-hover:text-primary"></i>
    </div>
 </li>

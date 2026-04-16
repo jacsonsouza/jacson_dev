@@ -1,5 +1,5 @@
-<section class="mt-10 grid w-full max-w-7xl grid-cols-1 gap-8 px-4 md:px-28 md:grid-cols-2">
-   <header class="flex flex-col gap-16">
+<section class="grid grid-cols-1 lg:grid-cols-2 w-full max-w-7xl gap-8 p-4 md:px-28 md:py-4 mt-10">
+   <header class="space-y-16">
       <div class="space-y-6">
          <div class="flex items-center gap-3">
             <span class="h-2 w-2 rounded-full bg-green-500" aria-hidden="true"></span>
@@ -8,11 +8,11 @@
             </span>
          </div>
 
-         <h1 class="font-display text-6xl font-black uppercase leading-none tracking-tighter text-content md:text-8xl">
-            <%= sanitize(t('.title'), tags: %w[br]) %>
+         <h1 class="text-6xl md:text-8xl uppercase">
+            <%= t('.title') %>
          </h1>
 
-         <p class="max-w-sm text-sm leading-relaxed text-content/40">
+         <p class="subheadline max-w-sm">
             <%= t('.subtitle') %>
          </p>
       </div>
