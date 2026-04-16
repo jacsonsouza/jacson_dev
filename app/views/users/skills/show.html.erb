@@ -7,11 +7,11 @@
 
          <div class="lg:col-span-2">
             <header id="skill-header" class="mb-10">
-               <h2 class="heading-2 mb-3">
+               <h2 class="text-3xl sm:text-xl md:text-2xl mb-3">
                   <%= @skill.name %>
                </h2>
 
-               <p class="body-text">
+               <p class="mb-6 grow text-sm text-zinc-100/90">
                   <%= @skill.short_description %>
                </p>
             </header>
@@ -32,7 +32,7 @@
                      <%= image_tag url_for(@skill.icon), alt: @skill.name, class: "h-10 w-10 object-contain" %>
                   </div>
 
-                  <h3 class="heading-3">
+                  <h3 class="text-lg">
                      <%= @skill.name %>
                   </h3>
 
