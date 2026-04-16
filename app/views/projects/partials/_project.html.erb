@@ -6,24 +6,24 @@
 
       <div class="flex gap-2">
          <%= link_to safe_external_url(project.repository),
-            class: 'flex h-9 w-9 items-center justify-center rounded-full bg-white/5 transition-colors hover:bg-primary group/link' do %>
+            class: 'btn-circle-subtle' do %>
             <i class="fa-brands fa-github text-content/60 transition-colors group-hover/link:text-content"></i>
          <% end %>
 
          <%= link_to safe_external_url(project.url),
-            class: 'flex h-9 w-9 items-center justify-center rounded-full bg-white/5 transition-colors hover:bg-primary group/link' do %>
-            <i class="fa-solid fa-arrow-up-right-from-square text-content/60 transition-colors group-hover/link:text-content"></i>
+            class: 'btn-circle-subtle' do %>
+            <i class="fa-solid fa-arrow-up-right-from-square text-content/60 transition-colors group-hover/link:text-emphasis"></i>
          <% end %>
 
          <%= link_to project_path(project),
-            class: 'flex h-9 w-9 items-center justify-center rounded-full bg-white/5 transition-colors hover:bg-primary group/link' do %>
-            <i class="fa-solid fa-info text-content/60 transition-colors group-hover/link:text-content"></i>
+            class: 'btn-circle-subtle' do %>
+            <i class="fa-solid fa-info text-content/60 transition-colors group-hover/link:text-emphasis"></i>
          <% end %>
       </div>
    </div>
 
    <div class="flex-1">
-      <h3 class="mb-3 text-2xl font-black tracking-tight text-content transition-colors group-hover:text-primary">
+      <h3 class="mb-3 text-2xl transition-colors group-hover:text-primary">
          <%= project.name %>
       </h3>
 

@@ -1,7 +1,11 @@
 @layer components {
   /* --- BASE TYPOGRAPHY --- */
-  h1, h2, h3 {
+  h1, h2, h3, h4 {
     @apply font-black tracking-tighter leading-tight text-emphasis;
+  }
+
+  .subheadline {
+    @apply text-sm leading-relaxed text-content/40;
   }
 
   /* --- BUTTONS --- */
@@ -37,6 +41,10 @@
            hover:bg-linear-to-r from-primary to-accent hover:text-white hover:shadow-lg;
   }
 
+  .btn-circle-subtle {
+    @apply flex h-9 w-9 items-center justify-center rounded-full bg-white/5 transition-colors hover:bg-primary;
+  }
+
   /* --- UI COMPONENTS / CONTAINERS --- */
   .page-container {
       @apply min-h-screen flex bg-canvas text-base;
@@ -69,6 +77,10 @@
     @apply mb-4 h-28 w-28 
            rounded-full border-4 border-indigo-500 
            object-cover shadow-lg;
+  }
+
+  .responsive-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-2 md:p-6;
   }
 
   /* --- FORMS (TomSelect/Custom) --- */
