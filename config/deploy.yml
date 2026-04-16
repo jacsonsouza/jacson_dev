@@ -53,8 +53,12 @@ boot:
 #
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
 proxy:
-  ssl: true
-  host: jacson.dev.br
+  ssl: 
+    certificate_pem: <%= secret("CERTIFICATE_PEM") %>
+    private_key_pem: <%= secret("PRIVATE_KEY_PEM") %>
+  hosts:
+    - jacson.dev.br
+    - www.jacson.dev.br
   app_port: 3000
   healthcheck:
     path: /up

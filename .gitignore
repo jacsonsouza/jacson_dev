@@ -41,6 +41,9 @@
 /config/credentials/production.key
 /config/credentials/test.key
 
+/config/deploy/certs/origin.pem
+/config/deploy/certs/private.key
+
 # Ignore secrets file
 .kamal/secrets
 /app/assets/builds/*
