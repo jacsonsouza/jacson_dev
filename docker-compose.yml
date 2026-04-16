@@ -8,7 +8,6 @@
       - /dev/shm:/dev/shm
     depends_on:
       - db
-      - redis
     networks:
       - jacson-network
     stdin_open: true
@@ -40,20 +39,6 @@
       networks:
         - jacson-network
 
-    redis:
-      image: redis:alpine
-      command: redis-server --appendonly yes
-      networks:
-        - jacson-network
-      volumes:
-        - redis_data:/data
-      mem_limit: 128m
-      healthcheck:
-        test: ["CMD", "redis-cli", "ping"]
-        interval: 5s
-        timeout: 3s
-        retries: 5
-
     tests:
       <<: *app
       environment:
@@ -81,8 +66,6 @@
 
   volumes:
     pgdata:
-      driver: local
-    redis_data:
       driver: local
     bundle_path:
 
