@@ -1,31 +1,33 @@
 # frozen_string_literal: true
 
 class Sidebar::MenuComponent < ViewComponent::Base
-  MenuItem = Struct.new(:icon, :name, :path, :method_type, keyword_init: true)
+  MenuItem = Struct.new(:icon, :name, :path, :method_type)
 
-  def initialize(current_user: nil)
+  def initialize(current_user:)
     super()
     @current_user = current_user
   end
 
   def sections
-    @sections ||= build_sections.freeze
+    main_items
   end
 
   private
 
+  attr_reader :current_user
+
   def build_sections
     [
-      { items: main_items,     name: t('users.menu.sections.main') },
-      { items: content_items,  name: t('users.menu.sections.content') },
-      { items: settings_items, name: t('users.menu.sections.settings') }
+      { items: main_items, name: t('users.menu.sections.main') }
     ]
   end
 
   def main_items
     [
       menu_item(icon: 'fas fa-home', name: t('users.menu.dashboard'), path: users_root_path),
-      menu_item(icon: 'fas fa-user', name: t('users.menu.profile'),   path: '#')
+      menu_item(icon: 'fas fa-briefcase', name: t('users.menu.projects'), path: users_projects_path),
+      menu_item(icon: 'fas fa-code',      name: t('users.menu.skills'),   path: users_skills_path),
+      menu_item(icon: 'fas fa-envelope', name: 'Messages', path: '#')
     ]
   end
 
