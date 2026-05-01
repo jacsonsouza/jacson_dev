@@ -1,5 +1,9 @@
-<div data-controller="sidebar">
-   <aside class="z-20 flex min-h-dvh w-72 flex-col border-r border-content/10 bg-canvas">
+<div
+   data-controller="sidebar"
+   data-action="sidebar:close@window->sidebar#hide"
+   class="sidebar-container sticky top-0 z-20 h-screen ml-0 shrink-0 overflow-hidden transition-[margin-left] duration-300 ease-in-out"
+   >
+   <aside class="flex h-full w-72 flex-col overflow-y-auto border-r border-content/10 bg-canvas">
       <header class="flex items-center gap-4 px-6 py-8">
          <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-content/10 bg-content/5">
             <%= image_tag 'logos/primary-logo.png',
@@ -12,7 +16,8 @@
             <p class="truncate text-sm font-semibold text-content">
                <%= current_user&.first_name.presence || 'User' %>
             </p>
-            <span class="text-[11px] font-mono uppercase tracking-[0.2em] text-content/60">
+
+            <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-content/60">
                Control Center
             </span>
          </div>
@@ -23,11 +28,10 @@
             <% sections.each do |section| %>
                <li>
                   <%= helpers.active_link_to section[:path],
-                        class: 'flex w-full items-center gap-3 rounded-lg p-4 text-sm font-medium tracking-wide',
-                        class_active: 'border-accent bg-accent/10 text-accent border-r-4 border-accent',
-                        class_inactive: 'text-content/60 hover:bg-content/5 hover:text-content',
-                        active: :exclusive do %>
-
+                     class: 'flex w-full items-center gap-3 rounded-lg p-4 text-sm font-medium tracking-wide',
+                     class_active: 'border-r-4 border-accent bg-accent/10 text-accent',
+                     class_inactive: 'text-content/60 hover:bg-content/5 hover:text-content',
+                     active: :exclusive do %>
                      <i class="<%= section[:icon] %> text-base" aria-hidden="true"></i>
                      <span class="uppercase"><%= section[:name] %></span>
                   <% end %>
@@ -40,10 +44,10 @@
          <span class="mb-4 block h-px w-full bg-content/10"></span>
 
          <%= link_to destroy_user_session_path,
-               data: { turbo_method: :delete },
-               class: 'inline-flex w-full items-center justify-center gap-3 rounded-lg border border-content/10 bg-content/5 px-4 py-3 text-sm font-semibold tracking-wide text-content/70 transition-colors duration-150 hover:border-red-500 hover:bg-red-500/10 hover:text-red-600' do %>
-            <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
-            <span>Secure Logout</span>
+            data: { turbo_method: :delete },
+            class: 'inline-flex w-full items-center justify-center gap-3 rounded-lg border border-content/10 bg-content/5 px-4 py-3 text-[11px] tracking-wide text-content/70 transition-colors duration-150 hover:border-red-500 hover:bg-red-500/10 hover:text-red-600' do %>
+            <i class="fas fa-sign-out-alt text-lg" aria-hidden="true"></i>
+            <span class="uppercase">Secure Logout</span>
          <% end %>
       </div>
    </aside>
