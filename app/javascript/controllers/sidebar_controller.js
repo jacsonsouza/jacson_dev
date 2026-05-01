@@ -9,5 +9,8 @@ export default class extends Controller {
    toggle() {
       this.element.classList.toggle('-ml-72');
       this.element.classList.toggle('ml-0');
+
+      this.element.classList.toggle('md:ml-0');
+      this.element.classList.toggle('md:-ml-72');
    }
 }
