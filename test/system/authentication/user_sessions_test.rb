@@ -48,7 +48,7 @@ class UserSessionsTest < ApplicationSystemTestCase
 
     visit users_root_path
 
-    click_link I18n.t('users.menu.sign_out')
+    click_on I18n.t('users.menu.sign_out')
 
     assert_flash I18n.t('devise.sessions.signed_out')
   end

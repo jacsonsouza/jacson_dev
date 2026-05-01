@@ -2,16 +2,15 @@ import { Controller } from '@hotwired/stimulus';
 
 // Connects to data-controller="sidebar"
 export default class extends Controller {
-   static targets = ['sidebar', 'menuToggle'];
-
    toggleSidebar() {
-      this.sidebarTarget.classList.toggle('-translate-x-full');
-      this.sidebarTarget.classList.toggle('translate-x-0');
-      this.changeIcon();
+      this.toggle();
    }
 
-   changeIcon() {
-      this.menuToggleTarget.classList.toggle('rotate-180');
-      this.menuToggleTarget.classList.toggle('rotate-0');
+   toggle() {
+      this.element.classList.toggle('-ml-72');
+      this.element.classList.toggle('ml-0');
+
+      this.element.classList.toggle('md:ml-0');
+      this.element.classList.toggle('md:-ml-72');
    }
 }
