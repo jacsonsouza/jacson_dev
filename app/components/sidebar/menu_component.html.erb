@@ -13,7 +13,7 @@
          </div>
 
          <div class="min-w-0">
-            <p class="truncate text-sm font-semibold text-content">
+            <p id="user-name" class="truncate text-sm font-semibold text-content">
                <%= current_user&.first_name.presence || 'User' %>
             </p>
 
@@ -25,15 +25,15 @@
 
       <nav class="flex-1 px-4" aria-label="Sections">
          <ul class="space-y-1">
-            <% sections.each do |section| %>
+            <% items.each do |item| %>
                <li>
-                  <%= helpers.active_link_to section[:path],
+                  <%= helpers.active_link_to item[:path],
                      class: 'flex w-full items-center gap-3 rounded-lg p-4 text-sm font-medium tracking-wide',
                      class_active: 'border-r-4 border-accent bg-accent/10 text-accent',
                      class_inactive: 'text-content/60 hover:bg-content/5 hover:text-content',
                      active: :exclusive do %>
-                     <i class="<%= section[:icon] %> text-base" aria-hidden="true"></i>
-                     <span class="uppercase"><%= section[:name] %></span>
+                     <i class="<%= item[:icon] %> text-base" aria-hidden="true"></i>
+                     <span class="uppercase"><%= item[:name] %></span>
                   <% end %>
                </li>
             <% end %>

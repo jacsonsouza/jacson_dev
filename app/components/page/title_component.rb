@@ -10,10 +10,14 @@ class Page::TitleComponent < ViewComponent::Base
   end
 
   def label
-    @label || t('links.new', resource: @title.singularize)
+    @label || t('links.new', resource: title.singularize)
   end
 
   def icon
     @icon || 'fas fa-plus'
   end
+
+  private
+
+  attr_reader :title, :path
 end
