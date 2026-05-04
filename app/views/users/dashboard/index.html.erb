@@ -1,1 +1,17 @@
 <% provide(:page_title, t('.title') ) %>
+
+<div class="flex">
+
+</div>
+
+<div class="flex gap-4">
+   <div class="w-full flex flex-col gap-4 p-4 bg-canvas/5 border border-content/10 rounded-xl">
+      <h2>Projects</h2>
+      <%= line_chart Project.group(:created_at).count, color: '#4f46e5' %>
+   </div>
+
+   <div class="w-full flex flex-col gap-4 p-4 bg-canvas/5 border border-content/10 rounded-xl">
+      <h2>Skills</h2>
+      <%= pie_chart Project.joins(:skills).group('skills.name').count, color: '#4f46e5' %>
+   </div>
+</div>

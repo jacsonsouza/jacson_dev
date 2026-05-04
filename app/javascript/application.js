@@ -5,3 +5,5 @@ import 'controllers';
 import 'trix';
 import '@rails/actiontext';
 import 'tom_select';
+import 'chartkick';
+import 'Chart.bundle';

@@ -45,6 +45,7 @@ gem 'image_processing', '~> 1.2'
 gem 'active_link_to'
 gem 'ahoy_matey'
 gem 'aws-sdk-s3', '~> 1.211', require: false
+gem 'chartkick'
 gem 'devise', '~> 5.0'
 gem 'simple_form'
 gem 'tailwindcss-rails', '~> 4.3'
