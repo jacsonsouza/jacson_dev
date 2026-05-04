@@ -47,6 +47,7 @@ gem 'ahoy_matey'
 gem 'aws-sdk-s3', '~> 1.211', require: false
 gem 'chartkick'
 gem 'devise', '~> 5.0'
+gem 'groupdate'
 gem 'simple_form'
 gem 'tailwindcss-rails', '~> 4.3'
 gem 'view_component'
