@@ -1,3 +1,15 @@
-<div class="flex flex-col justify-center glass-panel min-h-56 w-full rounded-3xl p-8">
-   <%= yield %>
+<div class="flex flex-col gap-4 justify-center glass-panel min-h-56 w-full rounded-3xl p-8">
+   <div class="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+      <i class="fa <%= chart[:icon] %> text-2xl text-primary"></i>
+   </div>
+
+   <div class="flex flex-col">
+      <span class="text-4xl font-display font-black text-white tracking-tighter stat-number">
+         <%= chart[:count] %>
+      </span>
+
+      <span class="text-[10px] font-mono text-white/30 uppercase tracking-[0.2em]">
+         <%= chart[:title] %>
+      </span>
+   </div>
 </div>
