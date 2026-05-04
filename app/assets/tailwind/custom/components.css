@@ -83,6 +83,11 @@
     @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-2 md:p-6;
   }
 
+  .select-filter {
+    @apply bg-white/5 border border-white/10 rounded-lg text-[10px]
+           text-content font-bold uppercase tracking-widest py-1.5 px-3 focus:outline-none;
+  }
+
   /* --- FORMS (TomSelect/Custom) --- */
   .ts-wrapper, .ts-control {
     @apply rounded-md border border-gray-700 bg-gray-800 text-indigo-500;

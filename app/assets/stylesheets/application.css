@@ -1,8 +1,18 @@
 :root {
-   /* Core */
-   --primary: #ff6b00;
+   /* Colors */
+   --primary: #ff8533;
    --secondary: #1a1a1a;
    --accent: #FF5F1F;
+
+   --canvas: #000000;
+   --surface: #171717;
+   --muted: #262626;
+   --subtle: #fafafa;
+
+   --content: #e5e5e5;
+   --emphasis: #ffffff;
+   --inverse: #ffffff;
+
    --dark: #1a1a2e;
    --light: #f0f0f0;
 
@@ -10,10 +20,10 @@
    --transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
    /* Multi-select */
-   --ts-bg: #1f2937;
-   --ts-border: #374151;
-   --ts-bg-hover: #374151;
-   --ts-text: #ffffff;
+   --ts-bg: var(--surface);
+   --ts-border: var(--muted);
+   --ts-bg-hover: var(--muted);
+   --ts-text: var(--light);
 }
 
 /*
@@ -87,7 +97,18 @@ input[type="color"]::-moz-color-swatch {
    border-radius: 6px;
 }
 
-/* Animations */
+/*
+ * Default styling
+ */
+
+option {
+   background: var(--ts-bg);
+   color: var(--ts-text);
+}
+
+/* 
+ * Animations
+ */
 
 .stagger-in {
    animation: stagger-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
