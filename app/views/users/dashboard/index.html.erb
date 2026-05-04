@@ -1,11 +1,11 @@
-<% provide(:page_title, t('.title') ) %>
+<% provide(:page_title, t('.title')) %>
 
 <% count_charts = [
    { title: 'Total Projects', count: Project.count, icon: 'fa-project-diagram' },
    { title: 'Tech Arsenal', count: Skill.count, icon: 'fa-code' },
    { title: 'Inquiries', count: Message.count, icon: 'fa-envelope' },
    { title: 'Global Views', count: Ahoy::Visit.count, icon: 'fa-globe' }
-]%>
+] %>
 
 <section class="space-y-8">
    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">

@@ -38,7 +38,7 @@ Rails.application.routes.draw do
         end
       end
 
-      get 'dashboard/views_chart', to: 'dashboard/widgets#views_chart', as: :dashboard_views_chart
+      get 'dashboard/views_chart', to: 'dashboard/widgets#visits_over_time', as: :dashboard_views_chart
       get 'dashboard/projects_by_skill', to: 'dashboard/widgets#projects_by_skill', as: :dashboard_projects_by_skill
     end
   end
