@@ -1,0 +1,32 @@
+<%= turbo_frame_tag "visits_over_time" do %>
+   <header class="flex items-end justify-between mb-4">
+      <div class="flex flex-col">
+         <h3
+            id="visits_over_time_title"
+            class="text-xl font-black text-white uppercase tracking-tight"
+         >
+            <%= t('.title') %>
+         </h3>
+
+         <span
+            id="visits_over_time_subtitle"
+            class="text-[10px] font-mono text-white/20 uppercase tracking-widest"
+         >
+            <%= t('.subtitle', days: @period_in_days) %>
+         </span>
+      </div>
+
+      <%= form_with url: users_dashboard_widgets_visits_over_time_path, method: :get do |f| %>
+         <%= f.select :period,
+            visits_over_time_period_options,
+            { selected: @period_in_days },
+            {
+               onchange: "this.form.requestSubmit()",
+               class: "select-filter"
+            }
+         %>
+      <% end %>
+   </header>
+
+   <%= line_chart @visits_over_time, id: "visits_by_day" %>
+<% end %>

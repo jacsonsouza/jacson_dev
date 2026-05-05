@@ -1,4 +1,4 @@
-module Users::Dashboard::WidgetsHelper
+module Users::Dashboard::Widgets::VisitsOverTimeHelper
   def visits_over_time_period_options
     [
       [t('.periods.7_days'), 7],

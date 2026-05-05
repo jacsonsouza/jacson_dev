@@ -1,14 +1,25 @@
-<div class="flex flex-col gap-4 justify-center glass-panel min-h-56 w-full rounded-3xl p-8">
-   <div class="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+<div
+   id="<%= "#{chart[:title].parameterize}-chart" %>"
+   class="flex flex-col justify-center w-full min-h-56 gap-4 p-8 rounded-3xl glass-panel"
+>
+   <div
+      class="flex items-center justify-center w-12 h-12 border rounded-2xl bg-primary/10 border-primary/20"
+   >
       <i class="fa <%= chart[:icon] %> text-2xl text-primary"></i>
    </div>
 
    <div class="flex flex-col">
-      <span class="text-4xl font-black text-white tracking-tighter stat-number">
+      <span
+         id="chart-value"
+         class="text-4xl font-black tracking-tighter text-white stat-number"
+      >
          <%= chart[:count] %>
       </span>
 
-      <span class="text-[10px] font-mono text-white/30 uppercase tracking-[0.2em]">
+      <span
+         id="chart-title"
+         class="text-[10px] font-mono uppercase tracking-[0.2em] text-white/30"
+      >
          <%= chart[:title] %>
       </span>
    </div>

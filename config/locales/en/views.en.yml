@@ -123,16 +123,18 @@ en:
           inquiries: "Inquiries"
 
       widgets:
-        projects_by_skill: 
-          title: "Projects by Skill"
-          subtitle: "Distribution of projects across skills"
+        project_skill_distributions: 
+          show:
+            title: "Projects by Skill"
+            subtitle: "Distribution of projects across skills"
 
-        visits_over_time: 
-          title: "Visits Over Time"
-          subtitle: "%{days}-day monitoring period"
-          periods:
-            7_days: "Last 7 days"
-            30_days: "Last 30 days"
+        visits_over_times:
+          show:
+            title: "Visits Over Time"
+            subtitle: "%{days}-day monitoring period"
+            periods:
+              7_days: "Last 7 days"
+              30_days: "Last 30 days"
 
     projects:
       index:
