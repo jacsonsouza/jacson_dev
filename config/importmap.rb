@@ -9,3 +9,6 @@ pin 'trix'
 pin '@rails/actiontext', to: 'actiontext.esm.js'
 
 pin 'tom_select', to: 'lib/tom_select.js'
+
+pin 'chartkick', to: 'chartkick.js'
+pin 'Chart.bundle', to: 'Chart.bundle.js'

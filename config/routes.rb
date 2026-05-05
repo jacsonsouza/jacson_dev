@@ -37,6 +37,13 @@ Rails.application.routes.draw do
           patch :toggle_favorite
         end
       end
+
+      namespace :dashboard do
+        namespace :widgets do
+          resource :visits_over_time, only: :show
+          resource :project_skill_distribution, only: :show
+        end
+      end
     end
   end
 end

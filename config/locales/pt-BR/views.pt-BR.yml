@@ -2,45 +2,65 @@ pt-BR:
   links:
     about: "Sobre"
     all: "Todos"
-    back_to_home: "Voltar para a página inicial"
-    backend: "Backend"
-    confirm_your_email: "Confirmar seu e-mail"
+    back_to_home: "Voltar para a Home"
+    backend: "Back-end"
+    confirm_your_email: "Confirme seu e-mail"
     contact: "Contato"
-    database: "Banco de dados"
-    frontend: "Frontend"
+    database: "Banco de Dados"
+    execute: "'Executar Transmissão'"
+    frontend: "Front-end"
+    github: "Código no GitHub"
+    website: "Visitar site"
     home: "Início"
+    mobile: "Mobile"
     portfolio: "Portfólio"
     projects: "Projetos"
     reset_password: "Redefinir senha"
     send_me_confirmation_instructions: "Enviar instruções de confirmação"
     send_me_instructions: "Enviar instruções"
-    send_me_reset_password_instructions: "Enviar instruções para redefinir senha"
+    send_me_reset_password_instructions: "Enviar instruções para redefinir a senha"
     send_me_unlock_instructions: "Enviar instruções de desbloqueio"
     skills: "Habilidades"
     sign_in: "Entrar"
-    sign_up: "Cadastrar-se"
+    sign_up: "Cadastrar"
     tools: "Ferramentas"
     new: "Novo %{resource}"
 
+  labels:
+    projects: "Projetos"
+    tech_stack: "Stack Tecnológica"
+    new_project: "Novo Projeto"
+
+  tags:
+    highlight: "Destaque"
+
+  time:
+    ago: "atrás"
+    from_now: "a partir de agora"
+    ended_on: "finalizado em %{date}"
+    development: "%{time} de desenvolvimento"
+    present: "Presente"
+
   shared:
+    footer:
+      main_tech_stack: "Principais Tecnologias"
+      contact: "Disponível para Contato"
+
     under_construction:
-      title: "Em construção"
+      title: "Em Construção"
       description: "Esta página está em construção."
 
   home:
     index:
-      greeting: "Olá, eu sou "
-      occupation: "Desenvolvedor Full Stack"
-      introduction: "Transformo ideias em experiências digitais excepcionais, com forte foco em performance e design inovador."
-      projects: "Explorar projetos"
+      subtitle: "Desenvolvedor Full Stack"
+      deployment_btn: "Pronto para deploy"
 
-    skills:
-      title: "Minhas habilidades"
-      subtitle: "Tecnologias e ferramentas que trabalho."
-
-    projects:
-      title: "Meus projetos"
-      subtitle: "Projetos pessoais e profissionais."
+    about:
+      title: "Jacson AI"
+      presentation: "Sistema online. Pronto para execução. Como posso ajudar?"
+      execute: "PRESSIONE ENTER PARA EXECUTAR"
+      operations: "Operações de IA"
+      ask: "Faça uma pergunta..."
 
   projects:
     index:
@@ -53,28 +73,28 @@ pt-BR:
       challenges: "O Desafio"
       stack: "Stack Técnica"
 
-  skills:
-    index:
-      title: "Habilidades técnicas"
-      subtitle: "Stack técnica para o desenvolvimento de aplicações web prontas para produção."
-      selected: "Habilidades selecionadas"
-
   contact:
     new:
-      title: "Entre em contato"
-      subtitle: "Estou aberto para novas oportunidades de trabalho. Vamos trabalhar juntos!"
       label: "Disponível para oportunidades"
+      title: "Entre em Contato"
+      subtitle: "Estou atualmente em busca de novos projetos e colaborações. Vamos construir algo juntos."
+
+  skills:
+    index:
+      title: "Habilidades Técnicas"
+      subtitle: "Stack técnica para desenvolvimento de aplicações web prontas para produção."
+      selected: "Habilidades Selecionadas"
 
   users:
     menu:
-      admin: "Administração"
+      admin: "Admin"
       dashboard: "Dashboard"
       profile: "Perfil"
       projects: "Projetos"
       skills: "Habilidades"
-      blog: "Blog"
+      messages: "Mensagens"
       settings: "Configurações"
-      sign_out: "Sair"
+      sign_out: "Sair com Segurança"
 
       sections:
         main: "Principal"
@@ -85,44 +105,82 @@ pt-BR:
       sessions:
         new:
           welcome: "Bem-vindo"
-          sign_in: "Entre na sua conta"
-          remember_me: "Lembrar-me"
+          sign_in: "Acesse sua conta"
+          remember_me: "Lembrar de mim"
           forgot_password: "Esqueceu sua senha?"
 
       registrations:
         new:
-          sign_up: "Criar conta"
+          sign_up: "Cadastrar"
+
+    dashboard:
+      index:
+        title: "Dashboard"
+        charts:
+          views: "Visualizações Globais"
+          projects: "Projetos"
+          skills: "Arsenal Tecnológico"
+          inquiries: "Consultas"
+
+      widgets:
+        project_skill_distributions: 
+          show:
+            title: "Projetos por Tecnologia"
+            subtitle: "Distribuição dos projetos por tecnologia"
+
+        visits_over_times:
+          show:
+            title: "Visitas ao Longo do Tempo"
+            subtitle: "Período de monitoramento de %{days} dias"
+            periods:
+              7_days: "Últimos 7 dias"
+              30_days: "Últimos 30 dias"
 
     projects:
       index:
         title: "Projetos"
-        new: "Novo projeto"
-        
+        new: "Novo Projeto"
+
       partials:
-        confirm: "Deseja realmente excluir este projeto?"
+        project:
+          confirm: "Tem certeza?"
 
       edit:
-        title: "Editar projeto"
+        title: "Editar Projeto"
 
       new:
-        title: "Novo projeto"
+        title: "Novo Projeto"
 
     skills:
       index:
         title: "Habilidades"
-        new: "Nova habilidade"
-        confirm: "Deseja realmente excluir essa habilidade?"
+        new: "Nova Habilidade"
+
+      partials:
+        skill: 
+          confirm: "Tem certeza?"
 
       edit:
-        title: "Editar habilidade"
+        title: "Editar Habilidade"
 
       new:
-        title: "Nova habilidade"
+        title: "Nova Habilidade"
 
   breadcrumbs:
     home: "Início"
 
     skills:
       index: "Habilidades"
-      new: "Nova habilidade"
+      new: "Nova Habilidade"
       edit: "Editar %{name}"
+
+    projects:
+      index: "Projetos"
+      new: "Novo Projeto"
+      edit: "Editar %{name}"
+
+  ai:
+    questions:
+      projects: "Em quais projetos você já trabalhou?"
+      skills: "Quais são suas habilidades técnicas?"
+      work_together: "Como podemos trabalhar juntos?"
