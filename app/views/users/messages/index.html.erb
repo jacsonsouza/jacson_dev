@@ -1,0 +1,5 @@
+<%= provide(:page_title, t('.title')) %>
+
+<ul id="messages" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+   <%= render partial: 'users/messages/partials/message', collection: @messages, as: :message %>
+</ul>

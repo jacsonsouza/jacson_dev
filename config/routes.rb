@@ -38,6 +38,12 @@ Rails.application.routes.draw do
         end
       end
 
+      resources :messages, only: [:index, :destroy] do
+        member do
+          patch :toggle_read
+        end
+      end
+
       namespace :dashboard do
         namespace :widgets do
           resource :visits_over_time, only: :show
