@@ -143,6 +143,10 @@ en:
         delete: "Are you sure you want to delete this message?"
       index:
         title: "Messages"
+        filters:
+          all: "All"
+          unread: "Unread"
+          read: "Read"
 
     projects:
       index:

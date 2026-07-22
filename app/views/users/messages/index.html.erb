@@ -1,5 +1,27 @@
 <%= provide(:page_title, t('.title')) %>
 
-<ul id="messages" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-   <%= render partial: 'users/messages/partials/message', collection: @messages, as: :message %>
-</ul>
+<% filters = [
+   { label: t('.filters.all'), path: users_messages_path },
+   { label: t('.filters.read'), path: users_messages_path(read: true) },
+   { label: t('.filters.unread'), path: users_messages_path(read: false) } 
+] %>
+
+<section class="space-y-12">
+   <ul class="flex justify-center md:justify-start gap-2">
+      <% filters.each do |filter| %>
+         <li>
+            <%= active_link_to filter[:label].capitalize,
+                        filter[:path],
+                        id: filter[:label],
+                        class: "glass-panel px-4 py-2 rounded-full text-[9px] font-bold uppercase tracking-widest md:px-6 md:py-2.5 md:text-[10px]",
+                        class_active: "bg-accent/10 border-accent text-content",
+                        class_inactive: "border-content/10 text-content/40 hover:text-content",
+                        active: :exact %>
+         </li>
+      <% end %>
+   </ul>
+
+   <ul id="messages" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <%= render partial: 'users/messages/partials/message', collection: @messages, as: :message %>
+   </ul>
+</section>
