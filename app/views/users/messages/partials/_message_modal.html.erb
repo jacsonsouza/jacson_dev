@@ -20,7 +20,8 @@
 
       <footer class="flex justify-between items-center mt-4">
          <%= button_to users_message_path(message), 
-               method: :delete, 
+               method: :delete,
+               id: "btn-delete",
                data: { confirm: t('users.messages.confirm.delete') }, 
                class: "btn-icon bg-red-50 text-red-600 hover:bg-red-100" do %>
             <i class="fa fa-trash text-base"></i>
@@ -28,6 +29,7 @@
 
          <%= button_to toggle_read_users_message_path(message), 
                method: :patch, 
+               id: "btn-toggle-read",
                class: "btn-icon-text flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-xl" do %>
             <i class="fa <%= message.read? ? 'fa-envelope' : 'fa-envelope-open' %> text-xs"></i>
             <span><%= message.read? ? t('users.messages.mark_as_unread') : t('users.messages.mark_as_read') %></span>

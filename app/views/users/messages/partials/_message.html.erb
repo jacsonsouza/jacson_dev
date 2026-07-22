@@ -1,4 +1,4 @@
-<li class="card gap-4 group">
+<li id="message-<%= message.id %>" class="card gap-4 group">
    <header class="inline-flex justify-between">
       <div>
          <h3><%= message.identity %></h3>
@@ -6,6 +6,7 @@
       </div>
 
       <button type="button" 
+              id="open-modal-<%= message.id %>"
               commandfor="modal_message_<%= message.id %>" 
               command="show-modal"
               class="h-12 w-12 rounded-full text-content/40 hover:text-primary hover:bg-muted/50 transition-colors opacity-0 cursor-pointer group-hover:opacity-100 focus:opacity-100">

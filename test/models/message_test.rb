@@ -12,4 +12,14 @@ class MessageTest < ActiveSupport::TestCase
     should validate_presence_of(:content)
     should validate_length_of(:content).is_at_least(10).is_at_most(1000)
   end
+
+  context 'scopes' do
+    should 'filter by read' do
+      unread_messages = create_list(:message, 2)
+      read_message = create(:message, read: true)
+
+      assert_equal [read_message.id], Message.filter_by_read(true).pluck(:id)
+      assert_equal unread_messages.pluck(:id), Message.filter_by_read(false).pluck(:id)
+    end
+  end
 end
