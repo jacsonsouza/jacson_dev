@@ -34,7 +34,7 @@ class Users::MessagesTest < ApplicationSystemTestCase
 
     message = @unread_messages.first
 
-    find("#open-modal-#{message.id}", visible: :any).click
+    find("#open-modal-#{message.id}").click
 
     assert_selector "#modal_message_#{message.id}"
 
@@ -49,7 +49,7 @@ class Users::MessagesTest < ApplicationSystemTestCase
 
     message = @unread_messages.first
 
-    find("#open-modal-#{message.id}", visible: :any).click
+    find("#open-modal-#{message.id}").click
 
     assert_selector "#modal_message_#{message.id}"
 
@@ -66,7 +66,7 @@ class Users::MessagesTest < ApplicationSystemTestCase
 
     message = @unread_messages.first
 
-    find("#open-modal-#{message.id}", visible: :any).click
+    find("#open-modal-#{message.id}").click
 
     within "#modal_message_#{message.id}" do
       find('.btn-icon-text').click
