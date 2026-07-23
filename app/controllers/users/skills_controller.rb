@@ -39,7 +39,7 @@ class Users::SkillsController < Users::BaseController
   private
 
   def skill
-    @skill ||= current_user.skills.find(params[:id])
+    @skill ||= current_user.skills.find(params.expect(:id))
   end
 
   def skill_params

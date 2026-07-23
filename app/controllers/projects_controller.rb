@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = @user.projects.includes({ skills: [:icon_attachment] }, :image_attachment).find(params[:id])
+    @project = @user.projects.includes({ skills: [:icon_attachment] }, :image_attachment).find(params.expect(:id))
     @related_projects = @project.related_projects
   end
 

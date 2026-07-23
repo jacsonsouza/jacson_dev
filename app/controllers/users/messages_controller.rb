@@ -26,6 +26,6 @@ class Users::MessagesController < Users::BaseController
   private
 
   def set_message
-    @message = Message.find(params[:id])
+    @message = Message.find(params.expect(:id))
   end
 end
