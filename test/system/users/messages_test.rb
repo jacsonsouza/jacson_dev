@@ -32,42 +32,46 @@ class Users::MessagesTest < ApplicationSystemTestCase
   test 'should open message details modal' do
     visit users_messages_path
 
-    find("#open-modal-#{@unread_messages.first.id}", visible: false).click
+    message = @unread_messages.first
 
-    assert_selector "#modal_message_#{@unread_messages.first.id}"
+    find("#open-modal-#{message.id}", visible: :any).click
 
-    within "#modal_message_#{@unread_messages.first.id}" do
-      assert_text @unread_messages.first.subject
-      assert_text @unread_messages.first.content
+    assert_selector "#modal_message_#{message.id}"
+
+    within "#modal_message_#{message.id}" do
+      assert_text message.subject
+      assert_text message.content
     end
   end
 
   test 'should delete a message from modal' do
     visit users_messages_path
 
-    find("#open-modal-#{@unread_messages.first.id}", visible: false).click
+    message = @unread_messages.first
 
-    assert_selector "#modal_message_#{@unread_messages.first.id}"
+    find("#open-modal-#{message.id}", visible: :any).click
 
-    within "#modal_message_#{@unread_messages.first.id}" do
+    assert_selector "#modal_message_#{message.id}"
+
+    within "#modal_message_#{message.id}" do
       find('.btn-icon').click
     end
 
-    assert_flash I18n.t('notices.destroy', resource: @unread_messages.first.model_name.human)
-    assert_no_selector "#message-#{@unread_messages.first.id}"
+    assert_flash I18n.t('notices.destroy', resource: message.model_name.human)
+    assert_no_selector "#message-#{message.id}"
   end
 
   test 'should toggle message read status' do
     visit users_messages_path
 
-    find("#open-modal-#{@unread_messages.first.id}", visible: false).click
+    message = @unread_messages.first
 
-    assert_selector "#modal_message_#{@unread_messages.first.id}"
+    find("#open-modal-#{message.id}", visible: :any).click
 
-    within "#modal_message_#{@unread_messages.first.id}" do
+    within "#modal_message_#{message.id}" do
       find('.btn-icon-text').click
     end
 
-    assert_flash I18n.t('notices.update', resource: @unread_messages.first.model_name.human)
+    assert_flash I18n.t('notices.update', resource: message.model_name.human)
   end
 end

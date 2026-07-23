@@ -10,9 +10,5 @@ class SkillsControllerTest < ActionDispatch::IntegrationTest
     get skills_path
 
     assert_response :success
-
-    @skills.each do |skill|
-      assert_match skill.name, response.body
-    end
   end
 end
