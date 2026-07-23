@@ -15,3 +15,4 @@ en:
   alert:
     over_limit: 'You are sending requests too quickly. Please wait and try again.'
     send_message_error: 'There was an error sending your message. Please check the form and try again.'
+    delete_message_error: 'There was an error deleting your message. Please try again.'

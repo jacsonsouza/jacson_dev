@@ -45,7 +45,7 @@ class Users::ProjectsController < Users::BaseController
   private
 
   def project
-    @project ||= current_user.projects.find(params[:id])
+    @project ||= current_user.projects.find(params.expect(:id))
   end
 
   def project_params

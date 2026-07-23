@@ -1,0 +1,39 @@
+<dialog id="<%= id %>" class="fixed inset-0 m-auto w-full max-w-lg p-6 rounded-xl bg-surface shadow-xl backdrop:bg-black/50 backdrop:backdrop-blur-sm focus:outline-none">
+   <div class="flex flex-col gap-4">
+      <header class="inline-flex justify-between">
+         <span class="text-sm text-content/40"><%= message.email %></span>
+
+         <button type="button" commandfor="<%= id %>" command="close" class="text-gray-400 hover:text-gray-600 text-lg">
+            ✕
+         </button>
+      </header>
+
+      <hr class="border-muted">
+
+      <div class="space-y-3">
+         <h2 class="text-lg font-semibold"><%= message.subject %></h2>
+         <p class="text-content/60 text-sm whitespace-pre-wrap leading-relaxed"><%= message.content %></p>
+         <time class="block text-gray-400 text-xs"><%= l(message.created_at, format: :long) %></time>
+      </div>
+
+      <hr class="border-muted">
+
+      <footer class="flex justify-between items-center mt-4">
+         <%= button_to users_message_path(message), 
+               method: :delete,
+               id: "btn-delete",
+               data: { confirm: t('users.messages.confirm.delete') }, 
+               class: "btn-icon bg-red-50 text-red-600 hover:bg-red-100" do %>
+            <i class="fa fa-trash text-base"></i>
+         <% end %>
+
+         <%= button_to toggle_read_users_message_path(message), 
+               method: :patch, 
+               id: "btn-toggle-read",
+               class: "btn-icon-text flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-xl" do %>
+            <i class="fa <%= message.read? ? 'fa-envelope' : 'fa-envelope-open' %> text-xs"></i>
+            <span><%= message.read? ? t('users.messages.mark_as_unread') : t('users.messages.mark_as_read') %></span>
+         <% end %>
+      </footer>
+   </div>
+</dialog>

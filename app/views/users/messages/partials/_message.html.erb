@@ -1,0 +1,30 @@
+<li id="message-<%= message.id %>" class="card gap-4 group">
+   <header class="inline-flex justify-between">
+      <div>
+         <h3><%= message.identity %></h3>
+         <span class="text-content/40 text-xs"><%= message.email %></span>
+      </div>
+
+      <button type="button" 
+              id="open-modal-<%= message.id %>"
+              commandfor="modal_message_<%= message.id %>" 
+              command="show-modal"
+              class="h-12 w-12 rounded-full text-content/40 hover:text-primary hover:bg-muted/50 transition-colors cursor-pointer">
+         <i class="fa fa-ellipsis-v text-sm"></i>
+      </button>
+
+   </header>
+
+   <hr class="border-muted">
+
+   <div class="space-y-2">
+      <h2 class="text-lg group-hover:text-primary"><%= message.subject %></h2>
+      <p class="text-content/50 text-sm font-medium line-clamp-6"><%= message.content %></p>
+   </div>
+
+   <div>
+      <time class="text-content/40 text-[9px] uppercase tracking-wide"><%= l(message.created_at, format: :short) %> • INCOMING</time>
+   </div>
+</li>
+
+<%= render 'users/messages/partials/message_modal', id: "modal_message_#{message.id}", message: message %>
