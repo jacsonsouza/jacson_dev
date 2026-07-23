@@ -34,10 +34,11 @@ class Users::MessagesTest < ApplicationSystemTestCase
 
     find("#open-modal-#{@unread_messages.first.id}", visible: false).click
 
+    assert_selector "#modal_message_#{@unread_messages.first.id}"
+
     within "#modal_message_#{@unread_messages.first.id}" do
       assert_text @unread_messages.first.subject
-      assert_button class: 'btn-icon'
-      assert_button class: 'btn-icon-text'
+      assert_text @unread_messages.first.content
     end
   end
 
@@ -45,6 +46,8 @@ class Users::MessagesTest < ApplicationSystemTestCase
     visit users_messages_path
 
     find("#open-modal-#{@unread_messages.first.id}", visible: false).click
+
+    assert_selector "#modal_message_#{@unread_messages.first.id}"
 
     within "#modal_message_#{@unread_messages.first.id}" do
       find('.btn-icon').click
@@ -58,6 +61,8 @@ class Users::MessagesTest < ApplicationSystemTestCase
     visit users_messages_path
 
     find("#open-modal-#{@unread_messages.first.id}", visible: false).click
+
+    assert_selector "#modal_message_#{@unread_messages.first.id}"
 
     within "#modal_message_#{@unread_messages.first.id}" do
       find('.btn-icon-text').click
