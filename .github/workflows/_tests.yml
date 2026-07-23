@@ -40,7 +40,9 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Install libpq-dev for postgres
-        run: apt-get -yqq install libpq-dev
+        run: |
+          apt-get update -qq
+          apt-get -yqq install libpq-dev
 
       - name: Cache bundle gems
         uses: actions/cache@v4
@@ -68,7 +70,7 @@ jobs:
         env:
           RAILS_ENV: test
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY_TEST }}
-          DATABASE_URL: postgres://postgres:@db
+          DATABASE_URL: postgres://postgres:postgres@db:5432/postgres
         run: |
           bundle exec rails db:create
           bundle exec rails db:migrate
@@ -77,7 +79,7 @@ jobs:
         env:
           RAILS_ENV: test
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY_TEST }}
-          DATABASE_URL: postgres://postgres:@db
+          DATABASE_URL: postgres://postgres:postgres@db:5432/postgres
           SELENIUM_HOST: chrome-server
           SELENIUM_PORT: 4444
           TEST_APP_HOST: testHost
