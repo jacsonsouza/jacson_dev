@@ -55,7 +55,7 @@ SimpleForm.setup do |config|
     ## Inputs
     # b.use :input, class: 'input', error_class: 'is-invalid', valid_class: 'is-valid'
     b.use :label_input
-    b.use :hint,  wrap_with: { tag: :span, class: :hint }
+    b.use :hint, wrap_with: { tag: :span, class: :hint }
     b.use :error, wrap_with: { tag: :span, class: :error }
 
     ## full_messages_for
@@ -89,10 +89,10 @@ SimpleForm.setup do |config|
   config.error_notification_class = "error_notification"
 
   # Series of attempts to detect a default label method for collection.
-  # config.collection_label_methods = [ :to_label, :name, :title, :to_s ]
+  # config.collection_label_methods = [:to_label, :name, :title, :to_s]
 
   # Series of attempts to detect a default value method for collection.
-  # config.collection_value_methods = [ :id, :to_s ]
+  # config.collection_value_methods = [:id, :to_s]
 
   # You can wrap a collection of radio/check boxes in a pre-defined tag, defaulting to none.
   # config.collection_wrapper_tag = nil
@@ -104,7 +104,7 @@ SimpleForm.setup do |config|
   # defaulting to :span.
   # config.item_wrapper_tag = :span
 
-  # You can define a class to use in all item wrappers. Defaulting to none.
+  # You can define a class to use in all item wrappers.
   # config.item_wrapper_class = nil
 
   # How the label text should be generated altogether with the required text.
@@ -113,8 +113,8 @@ SimpleForm.setup do |config|
   # You can define the class to use on all labels. Default is nil.
   # config.label_class = nil
 
-  # You can define the default class to be used on forms. Can be overridden
-  # with `html: { :class }`. Defaulting to none.
+  # You can define the default class to be used on forms.
+  # Can be overridden with `html: { :class }`.
   # config.default_form_class = nil
 
   # You can define which elements should obtain additional classes
@@ -123,11 +123,13 @@ SimpleForm.setup do |config|
   # Whether attributes are required by default (or not). Default is true.
   # config.required_by_default = true
 
-  # Tell browsers whether to use the native HTML5 validations (novalidate form option).
-  # These validations are enabled in SimpleForm's internal config but disabled by default
-  # in this configuration, which is recommended due to some quirks from different browsers.
-  # To stop SimpleForm from generating the novalidate option, enabling the HTML5 validations,
-  # change this configuration to true.
+  # Tell browsers whether to use the native HTML5 validations
+  # (novalidate form option).
+  # These validations are enabled in SimpleForm's internal config but
+  # disabled by default in this configuration, which is recommended
+  # due to some quirks from different browsers.
+  # To stop SimpleForm from generating the novalidate option, enabling
+  # the HTML5 validations, change this configuration to true.
   config.browser_validations = false
 
   # Custom mappings for input types. This should be a hash containing a regexp
@@ -139,8 +141,8 @@ SimpleForm.setup do |config|
   # type as key and the wrapper that will be used for all inputs with specified type.
   # config.wrapper_mappings = { string: :prepend }
 
-  # Namespaces where SimpleForm should look for custom input classes that
-  # override default inputs.
+  # Namespaces where SimpleForm should look for custom input classes
+  # that override default inputs.
   # config.custom_inputs_namespaces << "CustomInputs"
 
   # Default priority for time_zone inputs.
@@ -161,7 +163,7 @@ SimpleForm.setup do |config|
   # Default class for inputs
   # config.input_class = nil
 
-  # Define the default class of the input wrapper of the boolean input.
+  # Define the default class to be used on the input wrapper of the boolean input.
   config.boolean_label_class = "checkbox"
 
   # Defines if the default input wrapper class should be included in radio
@@ -169,11 +171,11 @@ SimpleForm.setup do |config|
   # config.include_default_input_wrapper_class = true
 
   # Defines which i18n scope will be used in Simple Form.
-  # config.i18n_scope = 'simple_form'
+  # config.i18n_scope = "simple_form"
 
   # Defines validation classes to the input_field. By default it's nil.
-  # config.input_field_valid_class = 'is-valid'
-  # config.input_field_error_class = 'is-invalid'
+  # config.input_field_valid_class = "is-valid"
+  # config.input_field_error_class = "is-invalid"
 
   ####### Default style
   config.wrappers :tailwind,
@@ -190,21 +192,29 @@ SimpleForm.setup do |config|
     b.optional :readonly
 
     b.use :label,
-          class: "block text-sm font-medium text-gray-300 mb-2"
+          class: "mb-2 block text-sm font-medium text-content/70"
 
     b.use :input,
-          class: "w-full px-4 py-2
-                  bg-gray-800 border border-gray-700 rounded-lg
-                  text-gray-100 placeholder-gray-400
-                  focus:outline-none
-                  focus:ring-2 focus:ring-indigo-500
-                  focus:border-indigo-500"
+          class: <<~CSS.squish,
+            w-full
+            rounded-lg
+            border border-content/10
+            bg-surface
+            px-4 py-2
+            text-content
+            placeholder-content/30
+            transition-all duration-300
+            focus:border-accent
+            focus:outline-none
+            focus:ring-2 focus:ring-accent/20
+          CSS
+          error_class: "border-red-500 focus:border-red-500 focus:ring-red-500"
 
     b.use :error,
           wrap_with: { tag: "p", class: "mt-1 text-sm text-red-500" }
 
     b.use :hint,
-          wrap_with: { tag: "p", class: "mt-1 text-sm text-slate-400" }
+          wrap_with: { tag: "p", class: "mt-1 text-sm text-content/40" }
   end
 
   ####### Public form style
@@ -212,116 +222,137 @@ SimpleForm.setup do |config|
                   tag: "div",
                   class: "mb-10",
                   error_class: :field_with_errors do |b|
-                    
-      b.use :html5
-      b.use :placeholder
-      b.optional :maxlength
-      b.optional :minlength
-      b.optional :pattern
-      b.optional :min_max
-      b.optional :readonly
 
-      b.use :label,
-            class: "block font-mono text-[10px] uppercase tracking-[0.15em] text-content/30 mb-2"
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :minlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
 
-      b.use :input,
-            class: "w-full border-b border-content/10 bg-transparent
-                    py-3 text-[14px] text-content transition-all duration-300
-                    ease-in-out focus:border-accent focus:outline-none focus:ring-0",
-            error_class: "border-red-500 focus:border-red-500 focus:ring-red-500"
+    b.use :label,
+          class: "mb-2 block font-mono text-[10px] uppercase tracking-[0.15em] text-content/30"
 
-      b.use :error,
-            wrap_with: { tag: "p", class: "mt-1 text-sm text-red-500" }
+    b.use :input,
+          class: <<~CSS.squish,
+            w-full
+            border-b border-content/10
+            bg-transparent
+            py-3
+            text-[14px] text-content
+            placeholder-content/30
+            transition-all duration-300 ease-in-out
+            focus:border-accent
+            focus:outline-none
+            focus:ring-0
+          CSS
+          error_class: "border-red-500 focus:border-red-500 focus:ring-0"
 
-      b.use :hint,
-            wrap_with: { tag: "p", class: "mt-1 text-sm text-slate-400" }
+    b.use :error,
+          wrap_with: { tag: "p", class: "mt-1 text-sm text-red-500" }
+
+    b.use :hint,
+          wrap_with: { tag: "p", class: "mt-1 text-sm text-content/40" }
   end
 
   ####### Checkbox style
   config.wrappers :checkbox,
                   tag: "div",
-                  class: "flex items-start mb-4",
+                  class: "mb-4 flex items-start",
                   error_class: "text-red-500" do |b|
 
     b.use :html5
     b.use :placeholder
 
     b.use :input,
-          class: "text-indigo-500 bg-gray-800 border-gray-700 rounded
-                  focus:ring-indigo-500",
-          error_class: "border-red-500 focus:ring-red-500 text-red-500"
+          class: <<~CSS.squish,
+            mt-0.5
+            rounded
+            border border-content/10
+            bg-surface
+            text-accent
+            transition-all duration-300
+            focus:border-accent
+            focus:ring-2 focus:ring-accent/20
+          CSS
+          error_class: "border-red-500 focus:border-red-500 focus:ring-red-500"
 
     b.use :label,
-          class: "ml-2 text-md text-gray-300"
+          class: "ml-2 text-sm text-content/70"
 
     b.use :error,
-          wrap_with: { tag: :p, class: "mt-1 text-sm text-red-600" }
+          wrap_with: { tag: :p, class: "mt-1 text-sm text-red-500" }
 
     b.use :hint,
-          wrap_with: { tag: :p, class: "mt-1 text-sm text-slate-400" }
+          wrap_with: { tag: :p, class: "mt-1 text-sm text-content/40" }
   end
 
   ####### Date style
   config.wrappers :date,
                   tag: "div",
-                  class: "flex flex-col gap-1 mb-4" do |b|
+                  class: "mb-4 flex flex-col gap-1" do |b|
 
     b.use :label,
-          class: "text-sm font-medium text-gray-300"
+          class: "text-sm font-medium text-content/70"
 
     b.wrapper tag: "div", class: "flex gap-2" do |date|
       date.use :html5
 
       date.use :input,
-              class: <<~CSS.squish,
-                block w-full
-                rounded-md
-                border border-gray-700
-                bg-gray-800
-                px-3 py-2
-                text-sm text-gray-100
-                focus:outline-none
-                focus:ring-2 focus:ring-indigo-500
-                focus:border-indigo-500
-              CSS
-              error_class: "border-red-500 focus:ring-red-500"
+                class: <<~CSS.squish,
+                  block w-full
+                  rounded-md
+                  border border-content/10
+                  bg-surface
+                  px-3 py-2
+                  text-sm text-content
+                  placeholder-content/30
+                  transition-all duration-300
+                  focus:border-accent
+                  focus:outline-none
+                  focus:ring-2 focus:ring-accent/20
+                CSS
+                error_class: "border-red-500 focus:border-red-500 focus:ring-red-500"
     end
 
     b.use :error,
-          wrap_with: { tag: :p, class: "mt-1 text-sm text-red-600" }
+          wrap_with: { tag: :p, class: "mt-1 text-sm text-red-500" }
 
     b.use :hint,
-          wrap_with: { tag: :p, class: "mt-1 text-sm text-slate-400" }
+          wrap_with: { tag: :p, class: "mt-1 text-sm text-content/40" }
   end
 
   ####### Multiselect style
   config.wrappers :multiselect,
                   tag: "div",
-                  class: "flex flex-col gap-1 mb-4",
+                  class: "mb-4 flex flex-col gap-1",
                   error_class: "has-error" do |b|
 
     b.use :label,
-          class: "block text-sm font-medium text-gray-300 mb-2"
+          class: "mb-2 block text-sm font-medium text-content/70"
 
     b.use :input,
           class: <<~CSS.squish,
             block w-full
             min-h-10
             rounded-md
-            border border-gray-700
-            bg-gray-800
-            text-gray-100 placeholder-gray-400
+            border border-content/10
+            bg-surface
+            text-content
+            placeholder-content/30
+            transition-all duration-300
+            focus:border-accent
             focus:outline-none
-            focus:ring-2 focus:ring-indigo-500
-            focus:border-indigo-500
+            focus:ring-2 focus:ring-accent/20
           CSS
-          error_class: "border-red-500 focus:ring-red-500"
+          error_class: "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-accent/20"
 
     b.use :error,
-          wrap_with: { tag: :p, class: "mt-1 text-sm text-red-600" }
+          wrap_with: { tag: :p, class: "mt-1 text-sm text-red-500" }
 
     b.use :hint,
-          wrap_with: { tag: :p, class: "mt-1 text-sm text-slate-400" }
+          wrap_with: { tag: :p, class: "mt-1 text-sm text-content/40" }
   end
 
   config.default_wrapper = :custom_input

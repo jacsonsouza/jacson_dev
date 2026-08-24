@@ -23,7 +23,10 @@
       <%= favicon_link_tag %>
    </head>
 
-   <body class="page-container flex items-center justify-center overflow-hidden">
+   <body 
+      data-controller="toggle-theme"
+      class="dark page-container flex items-center justify-center overflow-hidden"
+   >
 
       <%= rc 'flash/message' %>
 
