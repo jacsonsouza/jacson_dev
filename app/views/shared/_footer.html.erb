@@ -23,33 +23,43 @@
    </div>
 
    <div class="mt-6 flex items-center gap-10 md:mt-0">
-      <div class="flex gap-4">
-         <%= link_to 'https://github.com/jacsonsouza',
-            target: '_blank',
-            rel: 'noopener noreferrer',
-            class: 'glass-panel group flex h-10 w-10 items-center justify-center rounded' do %>
-            <i class="devicon-github-original text-content/40 group-hover:text-accent"></i>
-         <% end %>
+      <div class="flex items-center gap-4">
 
-         <%= link_to 'https://linkedin.com/in/jacsonsouza',
-            target: '_blank',
-            rel: 'noopener noreferrer',
-            class: 'glass-panel group flex h-10 w-10 items-center justify-center rounded' do %>
-            <i class="devicon-linkedin-plain text-content/40 group-hover:text-accent"></i>
-         <% end %>
+         <label class="ui-switch">
+            <input type="checkbox">
+            <div class="slider">
+               <div class="circle"></div>
+            </div>
+         </label>
+
+         <div class="flex gap-4">
+            <%= link_to 'https://github.com/jacsonsouza',
+               target: '_blank',
+               rel: 'noopener noreferrer',
+               class: 'glass-panel group flex h-10 w-10 items-center justify-center rounded' do %>
+               <i class="devicon-github-original text-content/40 group-hover:text-accent"></i>
+            <% end %>
+
+            <%= link_to 'https://linkedin.com/in/jacsonsouza',
+               target: '_blank',
+               rel: 'noopener noreferrer',
+               class: 'glass-panel group flex h-10 w-10 items-center justify-center rounded' do %>
+               <i class="devicon-linkedin-plain text-content/40 group-hover:text-accent"></i>
+            <% end %>
+         </div>
+
+         <address class="flex flex-col items-end not-italic">
+            <span class="mb-1 text-[10px] uppercase tracking-widest text-content/40">
+               <%= t('.contact') %>
+            </span>
+
+            <a
+               href="mailto:contact@jacson.dev.br"
+               class="text-xs font-bold text-content transition-colors hover:text-accent"
+            >
+               contact@jacson.dev.br
+            </a>
+         </address>
       </div>
-
-      <address class="flex flex-col items-end not-italic">
-         <span class="mb-1 text-[10px] uppercase tracking-widest text-content/40">
-            <%= t('.contact') %>
-         </span>
-
-         <a
-            href="mailto:contact@jacson.dev.br"
-            class="text-xs font-bold text-content transition-colors hover:text-accent"
-         >
-            contact@jacson.dev.br
-         </a>
-      </address>
    </div>
 </footer>
