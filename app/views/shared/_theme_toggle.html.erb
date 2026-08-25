@@ -1,12 +1,12 @@
 <label
-   class="group relative flex h-8 w-14 cursor-pointer items-center rounded-full border border-content/10 bg-surface/40 p-1 backdrop-blur-sm transition-all duration-300 hover:border-accent/30"
+  class="group relative flex h-8 w-14 cursor-pointer items-center rounded-full border border-content/10 bg-surface/40 p-1 backdrop-blur-sm transition-all duration-300 hover:border-accent/30"
 >
    <input
-      data-action="change->toggle-theme#toggle"
-      data-toggle-theme-target="switch"
       type="checkbox"
+      data-action="change->theme#toggle"
+      data-theme-target="switch"
       class="peer sr-only"
-   >
+   />
 
    <span
       class="absolute inset-1 rounded-full transition-colors duration-300 peer-checked:bg-accent/10"
