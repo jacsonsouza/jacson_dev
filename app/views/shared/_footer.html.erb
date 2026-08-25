@@ -6,8 +6,11 @@
 
       <div class="mt-1 flex gap-5 text-content/40">
          <% tech_stack = %w[ruby rails laravel react flutter] %>
+
          <% tech_stack.each do |tech| %>
-            <i class="devicon-<%= tech %>-plain text-xl transition-transform hover:scale-110"></i>
+            <i
+               class="devicon-<%= tech %>-plain text-xl transition-all duration-300 hover:-translate-y-0.5 hover:text-accent"
+            ></i>
          <% end %>
       </div>
    </div>
@@ -22,34 +25,42 @@
       </div>
    </div>
 
-   <div class="mt-6 flex items-center gap-10 md:mt-0">
-      <div class="flex gap-4">
-         <%= link_to 'https://github.com/jacsonsouza',
-            target: '_blank',
-            rel: 'noopener noreferrer',
-            class: 'glass-panel group flex h-10 w-10 items-center justify-center rounded' do %>
-            <i class="devicon-github-original text-content/40 group-hover:text-accent"></i>
-         <% end %>
+   <div class="mt-6 flex items-center gap-6 md:mt-0">
+      <div class="flex items-center gap-3">
+         <%= render 'shared/theme_toggle' %>
 
-         <%= link_to 'https://linkedin.com/in/jacsonsouza',
-            target: '_blank',
-            rel: 'noopener noreferrer',
-            class: 'glass-panel group flex h-10 w-10 items-center justify-center rounded' do %>
-            <i class="devicon-linkedin-plain text-content/40 group-hover:text-accent"></i>
-         <% end %>
+         <div class="flex items-center gap-2">
+            <%= link_to 'https://github.com/jacsonsouza',
+               target: '_blank',
+               rel: 'noopener noreferrer',
+               aria: { label: 'GitHub' },
+               class: 'glass-panel group flex h-10 w-10 items-center justify-center rounded transition-all duration-300 hover:border-accent/30 hover:bg-accent/5' do %>
+
+               <i class="devicon-github-original text-sm text-content/40 transition-colors duration-300 group-hover:text-accent"></i>
+            <% end %>
+
+            <%= link_to 'https://linkedin.com/in/jacsonsouza',
+               target: '_blank',
+               rel: 'noopener noreferrer',
+               aria: { label: 'LinkedIn' },
+               class: 'glass-panel group flex h-10 w-10 items-center justify-center rounded transition-all duration-300 hover:border-accent/30 hover:bg-accent/5' do %>
+
+               <i class="devicon-linkedin-plain text-sm text-content/40 transition-colors duration-300 group-hover:text-accent"></i>
+            <% end %>
+         </div>
+
+         <address class="flex flex-col items-end not-italic">
+            <span class="mb-1 text-[10px] uppercase tracking-widest text-content/40">
+               <%= t('.contact') %>
+            </span>
+
+            <a
+               href="mailto:contact@jacson.dev.br"
+               class="text-xs font-bold text-content transition-colors duration-300 hover:text-accent"
+            >
+               contact@jacson.dev.br
+            </a>
+         </address>
       </div>
-
-      <address class="flex flex-col items-end not-italic">
-         <span class="mb-1 text-[10px] uppercase tracking-widest text-content/40">
-            <%= t('.contact') %>
-         </span>
-
-         <a
-            href="mailto:contact@jacson.dev.br"
-            class="text-xs font-bold text-content transition-colors hover:text-accent"
-         >
-            contact@jacson.dev.br
-         </a>
-      </address>
    </div>
 </footer>

@@ -1,0 +1,26 @@
+<label
+  class="group relative flex h-8 w-14 cursor-pointer items-center rounded-full border border-content/10 bg-surface/40 p-1 backdrop-blur-sm transition-all duration-300 hover:border-accent/30"
+>
+   <input
+      type="checkbox"
+      data-action="change->theme#toggle"
+      data-theme-target="switch"
+      class="peer sr-only"
+   />
+
+   <span
+      class="absolute inset-1 rounded-full transition-colors duration-300 peer-checked:bg-accent/10"
+   ></span>
+
+   <span
+      class="absolute left-1 flex h-6 w-6 items-center justify-center rounded-full bg-content/10 text-content/50 shadow-sm transition-all duration-300 peer-checked:translate-x-6 peer-checked:bg-accent peer-checked:text-surface"
+   ></span>
+
+   <i
+      class="fa-solid fa-sun absolute left-2.75 z-10 text-[10px] text-content/50 transition-all duration-300 peer-checked:translate-x-6 peer-checked:scale-0 peer-checked:opacity-0"
+   ></i>
+
+   <i
+      class="fa-solid fa-moon absolute left-2.75 z-10 scale-0 text-[10px] text-surface opacity-0 transition-all duration-300 peer-checked:translate-x-6 peer-checked:scale-100 peer-checked:opacity-100"
+   ></i>
+</label>

@@ -17,9 +17,14 @@
       <%= javascript_importmap_tags %>
 
       <%= favicon_link_tag %>
+
+      <%= render 'shared/theme' %>
    </head>
 
-   <body class="page-container min-h-screen flex flex-col gap-8 justify-center align-center overflow-x-hidden">
+   <body
+      data-controller="theme"
+      class="page-container min-h-screen flex flex-col gap-8 justify-center align-center overflow-x-hidden"
+   >
 
       <%= rc 'flash/message' %>
 

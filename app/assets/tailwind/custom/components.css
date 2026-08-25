@@ -45,8 +45,8 @@
 
   .btn-favorite {
     @apply absolute top-2 left-2 flex items-center justify-center p-3 
-           cursor-pointer rounded-4xl bg-dark text-light text-lg 
-           hover:bg-linear-to-r from-primary to-accent hover:text-white hover:shadow-lg;
+           cursor-pointer rounded-4xl bg-canvas text-content text-lg 
+           hover:bg-linear-to-r from-primary to-accent hover:shadow-lg;
   }
 
   .btn-circle-subtle {
@@ -66,8 +66,8 @@
 
   .card-container {
     @apply h-full overflow-hidden 
-           rounded-2xl border border-indigo-500/10 
-           bg-gray-900/80 shadow-2xl hover:border-indigo-500;
+           rounded-2xl border border-muted 
+           bg-surface shadow-2xl hover:border-primary;
   }
 
   .glass-panel {
@@ -78,12 +78,12 @@
 
   .badge {
     @apply flex items-center gap-x-1.5 px-3 py-1.5 
-           rounded-full bg-indigo-500/20 font-medium text-xs text-slate-300;
+           rounded-full bg-canvas/20 font-medium text-xs text-content/60;
   }
 
   .avatar {
     @apply mb-4 h-28 w-28 
-           rounded-full border-4 border-indigo-500 
+           rounded-full border-4 border-primary
            object-cover shadow-lg;
   }
 
