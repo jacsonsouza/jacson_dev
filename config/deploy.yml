@@ -4,7 +4,10 @@ service: jacson_dev
 # Name of the container image.
 image: jacsonss/jacson_dev
 
-deploy_timeout: 90
+# Seconds kamal-proxy waits for the new container to answer its health check
+# before failing (and rolling back) the deploy. Production boots in ~7 min on
+# the always-free VM, so 90s was aborting every deploy mid-boot.
+deploy_timeout: 600
 
 # Deploy to these servers.
 servers:
