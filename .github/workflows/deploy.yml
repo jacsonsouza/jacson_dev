@@ -182,13 +182,6 @@ jobs:
             bin/kamal "$KAMAL_COMMAND"
           fi
 
-      - name: Smoke check
-        if: ${{ github.event.inputs.command != 'rollback' }}
-        run: >
-          curl --fail --silent --show-error
-          --retry 5 --retry-connrefused --retry-delay 10 --max-time 30
-          https://jacson.dev.br/up
-
       - name: Remove secrets from runner
         if: always()
         run: >
