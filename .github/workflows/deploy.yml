@@ -91,12 +91,22 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
 
           host=$(ruby -ryaml -e 'puts YAML.load_file("config/deploy.yml").dig("servers", "web", "hosts", 0)')
-          ssh-keyscan -H -T 10 "$host" >> ~/.ssh/known_hosts
-          test -s ~/.ssh/known_hosts || {
-            echo "::error::ssh-keyscan returned no key for $host (is port 22 reachable from the runner?)"
-            exit 1
-          }
+
+          # Scan every host key type separately. net-ssh only matches the key type it
+          # negotiates (ssh-ed25519 here), so a partial scan fails the deploy with
+          # Net::SSH::HostKeyMismatch even though the server key is legitimate.
+          : > ~/.ssh/known_hosts
+          for type in ed25519 ecdsa rsa; do
+            ssh-keyscan -t "$type" -T 30 "$host" >> ~/.ssh/known_hosts
+          done
           chmod 644 ~/.ssh/known_hosts
+
+          for type in ssh-ed25519 ecdsa-sha2-nistp256 ssh-rsa; do
+            if ! grep -q " $type " ~/.ssh/known_hosts; then
+              echo "::error::host key $type missing for $host (ssh-keyscan incomplete)."
+              exit 1
+            fi
+          done
 
       # `.kamal/secrets`, `config/credentials/production.key` and `config/deploy/certs/`
       # are gitignored, so they are missing from the checkout. Kamal 2.12 reads secrets
