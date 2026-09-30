@@ -6,6 +6,7 @@
 
 # Ignore bundler config.
 /.bundle
+/vendor/bundle
 
 # Ignore all environment files.
 /.env*
@@ -42,6 +43,9 @@
 # Ignore Kamal files.
 /config/deploy*.yml
 /.kamal
+
+# Never ship TLS keys inside the image.
+/config/deploy/certs
 
 # Ignore development files
 /.devcontainer
