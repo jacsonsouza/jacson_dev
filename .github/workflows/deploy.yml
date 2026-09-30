@@ -1,0 +1,189 @@
+name: Deploy onto production
+
+# Production deploy via Kamal 2.12.
+#
+# Prerequisites on GitHub (Settings -> Environments -> "production"):
+#   SSH_PRIVATE_KEY          private key of the `deployer` user (config/deploy.yml -> ssh.user)
+#   KAMAL_REGISTRY_USERNAME  Docker Hub user (jacsonss)
+#   KAMAL_REGISTRY_PASSWORD  Docker Hub token/PAT
+#   RAILS_MASTER_KEY         config/credentials/production.key
+#   POSTGRES_USER            accessory db user
+#   POSTGRES_PASSWORD        accessory db password
+#   APP_HOST                 application hostname
+#   CERTIFICATE_PEM          TLS certificate (config/deploy/certs/origin.pem)
+#   PRIVATE_KEY_PEM          TLS private key  (config/deploy/certs/private.key)
+#
+# Repo secret already used by CI: RAILS_MASTER_KEY_TEST (passed to _tests.yml).
+
+on:
+  push:
+    branches:
+      - production
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "Kamal command to run"
+        type: choice
+        required: true
+        default: deploy
+        options:
+          - deploy
+          - rollback
+      version:
+        description: "Image version/SHA (required when command=rollback)"
+        type: string
+        required: false
+
+# A deploy is a production operation: read-only access to the repository.
+permissions:
+  contents: read
+
+# Serialize deploys: two quick pushes to `production` never run in parallel.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  # Rollback is incident recovery — it must not be blocked by the test suite.
+  tests:
+    if: ${{ github.ref == 'refs/heads/production' && github.event.inputs.command != 'rollback' }}
+    uses: ./.github/workflows/_tests.yml
+    secrets:
+      RAILS_MASTER_KEY_TEST: ${{ secrets.RAILS_MASTER_KEY_TEST }}
+
+  deploy:
+    needs: tests
+    # workflow_dispatch can be triggered from any branch: only deploy from production.
+    if: ${{ github.ref == 'refs/heads/production' && !cancelled() && (needs.tests.result == 'success' || needs.tests.result == 'skipped') }}
+    runs-on: ubuntu-24.04
+    environment: production
+    timeout-minutes: 45
+    env:
+      BUNDLE_WITHOUT: "development test"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      # Kamal 2.12 builds the image with `docker buildx build`.
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Validate rollback input
+        if: ${{ github.event.inputs.command == 'rollback' && github.event.inputs.version == '' }}
+        run: |
+          echo "::error::rollback requires the version input (image SHA/tag)."
+          exit 1
+
+      - name: Set up SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+          host=$(ruby -ryaml -e 'puts YAML.load_file("config/deploy.yml").dig("servers", "web", "hosts", 0)')
+          ssh-keyscan -H -T 10 "$host" >> ~/.ssh/known_hosts
+          test -s ~/.ssh/known_hosts || {
+            echo "::error::ssh-keyscan returned no key for $host (is port 22 reachable from the runner?)"
+            exit 1
+          }
+          chmod 644 ~/.ssh/known_hosts
+
+      # `.kamal/secrets`, `config/credentials/production.key` and `config/deploy/certs/`
+      # are gitignored, so they are missing from the checkout. Kamal 2.12 reads secrets
+      # ONLY from `.kamal/secrets` (no env fallback), so we materialize those files from
+      # the "production" environment before calling bin/kamal.
+      - name: Materialize Kamal secrets
+        env:
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          APP_HOST: ${{ secrets.APP_HOST }}
+          KAMAL_REGISTRY_USERNAME: ${{ secrets.KAMAL_REGISTRY_USERNAME }}
+          KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          CERTIFICATE_PEM: ${{ secrets.CERTIFICATE_PEM }}
+          PRIVATE_KEY_PEM: ${{ secrets.PRIVATE_KEY_PEM }}
+        run: |
+          set -euo pipefail
+          umask 077
+
+          require() {
+            if [ -z "$2" ]; then
+              echo "::error::Secret $1 is missing in the \"production\" environment."
+              exit 1
+            fi
+          }
+
+          write() {
+            case "$2" in
+              *"'"*)
+                echo "::error::Secret $1 contains a single quote, which .kamal/secrets cannot represent."
+                exit 1
+                ;;
+            esac
+            printf "%s='%s'\n" "$1" "$2"
+          }
+
+          require POSTGRES_USER "$POSTGRES_USER"
+          require POSTGRES_PASSWORD "$POSTGRES_PASSWORD"
+          require APP_HOST "$APP_HOST"
+          require KAMAL_REGISTRY_USERNAME "$KAMAL_REGISTRY_USERNAME"
+          require KAMAL_REGISTRY_PASSWORD "$KAMAL_REGISTRY_PASSWORD"
+          require RAILS_MASTER_KEY "$RAILS_MASTER_KEY"
+          require CERTIFICATE_PEM "$CERTIFICATE_PEM"
+          require PRIVATE_KEY_PEM "$PRIVATE_KEY_PEM"
+
+          # PEMs are multiline: write them to files, exactly like the local setup.
+          mkdir -p .kamal config/deploy/certs
+          printf '%s' "$CERTIFICATE_PEM" > config/deploy/certs/origin.pem
+          printf '%s' "$PRIVATE_KEY_PEM" > config/deploy/certs/private.key
+          printf '%s' "$RAILS_MASTER_KEY" > config/credentials/production.key
+
+          {
+            write POSTGRES_USER "$POSTGRES_USER"
+            write POSTGRES_PASSWORD "$POSTGRES_PASSWORD"
+            write APP_HOST "$APP_HOST"
+            write KAMAL_REGISTRY_USERNAME "$KAMAL_REGISTRY_USERNAME"
+            write KAMAL_REGISTRY_PASSWORD "$KAMAL_REGISTRY_PASSWORD"
+            printf '%s\n' \
+              'RAILS_MASTER_KEY=$(cat config/credentials/production.key)' \
+              'CERTIFICATE_PEM=$(cat config/deploy/certs/origin.pem)' \
+              'PRIVATE_KEY_PEM=$(cat config/deploy/certs/private.key)'
+          } > .kamal/secrets
+
+      - name: Deploy using Kamal
+        env:
+          KAMAL_COMMAND: ${{ github.event.inputs.command || 'deploy' }}
+          KAMAL_INPUT_VERSION: ${{ github.event.inputs.command == 'rollback' && github.event.inputs.version || '' }}
+        run: |
+          set -euo pipefail
+          if [ -n "$KAMAL_INPUT_VERSION" ]; then
+            bin/kamal "$KAMAL_COMMAND" "$KAMAL_INPUT_VERSION"
+          else
+            bin/kamal "$KAMAL_COMMAND"
+          fi
+
+      - name: Smoke check
+        if: ${{ github.event.inputs.command != 'rollback' }}
+        run: >
+          curl --fail --silent --show-error
+          --retry 5 --retry-connrefused --retry-delay 10 --max-time 30
+          https://jacson.dev.br/up
+
+      - name: Remove secrets from runner
+        if: always()
+        run: >
+          rm -f .kamal/secrets
+          config/credentials/production.key
+          config/deploy/certs/origin.pem
+          config/deploy/certs/private.key
+          ~/.ssh/id_rsa
