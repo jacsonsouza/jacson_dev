@@ -49,7 +49,8 @@ class Users::ProjectCrudsTest < ApplicationSystemTestCase
       fill_in 'project[repository]', with: 'https://github.com/test/test'
       find('trix-editor').set('Long description of the project')
       select Project.categories.keys.first.capitalize, from: 'Category'
-      select skill.name, from: 'project[skill_ids][]'
+      click_button '+ Add'
+      click_button skill.name
       attach_file 'project[image]', 'test/fixtures/files/logo.png', make_visible: true
       click_on 'Create Project'
     end

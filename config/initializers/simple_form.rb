@@ -291,7 +291,7 @@ SimpleForm.setup do |config|
   ####### Date style
   config.wrappers :date,
                   tag: "div",
-                  class: "mb-4 flex flex-col gap-1" do |b|
+                  class: "mb-10 flex flex-col gap-1" do |b|
 
     b.use :label,
           class: "text-sm font-medium text-content/70"
@@ -326,11 +326,11 @@ SimpleForm.setup do |config|
   ####### Multiselect style
   config.wrappers :multiselect,
                   tag: "div",
-                  class: "mb-4 flex flex-col gap-1",
+                  class: "mb-10 flex flex-col gap-1",
                   error_class: "has-error" do |b|
 
     b.use :label,
-          class: "mb-2 block text-sm font-medium text-content/70"
+          class: "mb-2 block font-mono text-[10px] uppercase tracking-[0.15em] text-content/30"
 
     b.use :input,
           class: <<~CSS.squish,

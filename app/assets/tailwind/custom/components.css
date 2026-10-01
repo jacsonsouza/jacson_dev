@@ -96,19 +96,6 @@
            text-content font-bold uppercase tracking-widest py-1.5 px-3 focus:outline-none;
   }
 
-  /* --- FORMS (TomSelect/Custom) --- */
-  .ts-wrapper, .ts-control {
-    @apply rounded-md border border-gray-700 bg-gray-800 text-indigo-500;
-  }
-
-  .ts-item {
-    @apply px-2 py-1 rounded bg-indigo-500 text-white;
-  }
-
-  .ts-dropdown {
-    @apply rounded-md border border-gray-700 bg-gray-800;
-  }
-
   /* --- UTILITIES --- */
   .scroll-thin {
     @apply overflow-y-auto 
