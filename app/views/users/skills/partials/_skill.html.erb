@@ -11,12 +11,12 @@
                      loading: 'lazy' %>
          </div>
          <div class="flex flex-col justify-between gap-2">
-            <%= link_to skill.name, users_skill_path(skill), class: 'text-3xl sm:text-xl md:text-2xl text-white' %>
-            <span class="text-sm text-slate-300/70"><%= skill.category_human %></span>
+            <%= link_to skill.name, users_skill_path(skill), class: 'text-3xl sm:text-xl md:text-2xl text-content' %>
+            <span class="text-sm text-content/70"><%= skill.category_human %></span>
          </div>
       </div>
 
-      <p class="grow text-sm text-zinc-100/90">
+      <p class="grow text-sm text-content/90">
          <%= skill.short_description %>
       </p>
 
@@ -24,24 +24,24 @@
          <%= safe_join(skill.tags.map { |tag| content_tag(:span, tag.name, class: 'badge', title: tag.name) }) %>
       </div>
 
-      <hr class="border-white/10">
+      <hr class="border-content/10">
 
       <div class="flex flex-wrap justify-center gap-2.5">
 
          <%= link_to edit_users_skill_path(skill),
-                     class: 'flex-1 py-2 px-3 bg-white/5 rounded-lg border border-white/10 text-center text-white hover:bg-indigo-500/20 focus:outline-none focus:ring-2 focus:ring-indigo-400',
+                     class: 'flex-1 py-2 px-3 bg-content/5 rounded-lg border border-content/10 text-center text-content hover:bg-primary/20 focus:outline-none focus:ring-2 focus:ring-primary',
                      aria: { label: t('skills.edit', name: skill.name) } do %>
 
-            <i class="fas fa-pen mr-1" aria-hidden="true"></i>
+            <%= icon(:pen, class: 'mr-1 inline-block h-4 w-4') %>
             <span><%= t('skills.edit') %></span>
 
          <% end %>
 
          <%= link_to users_skill_path(skill), 
                      data: { turbo_method: :delete, turbo_confirm: t('.confirm') },
-                     class: 'flex-1 py-2 px-3 bg-white/5 rounded-lg border border-white/10 text-center text-white hover:bg-rose-400/20 hover:border-rose-400/30 focus:outline-none focus:ring-2 focus:ring-rose-400' do %>
+                     class: 'flex-1 py-2 px-3 bg-content/5 rounded-lg border border-content/10 text-center text-content hover:bg-rose-400/20 hover:border-rose-400/30 focus:outline-none focus:ring-2 focus:ring-rose-400' do %>
 
-            <i class="fas fa-trash mr-1" aria-hidden="true"></i>
+            <%= icon(:trash, class: 'mr-1 inline-block h-4 w-4') %>
             <span><%= t('skills.delete') %></span>
 
          <% end %>

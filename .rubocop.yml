@@ -37,6 +37,17 @@ Style/HashSyntax:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+# SVGs do Font Awesome ficam em linha única (app/helpers/icons_helper.rb).
+Layout/LineLength:
+  Exclude:
+    - "app/helpers/icons_helper.rb"
+
+# O helper injeta classes em SVGs de uma constante frozen e imutável — não há
+# entrada de usuário no interpolar.
+Rails/OutputSafety:
+  Exclude:
+    - "app/helpers/icons_helper.rb"
+
 Metrics/BlockLength:
   AllowedMethods: ["context"]
   Exclude:

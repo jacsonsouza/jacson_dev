@@ -17,8 +17,8 @@ class Flash::MessageComponentTest < ViewComponent::TestCase
     success_message = 'Operation completed successfully!'
     render_component(notice: success_message)
 
-    assert_selector '.fa-check-circle'
-    assert_selector '.bg-green-500'
+    assert_selector 'svg[data-icon="circle_check"]'
+    assert_selector '.bg-success'
     assert_selector '#flash-text', text: success_message
   end
 
@@ -26,8 +26,8 @@ class Flash::MessageComponentTest < ViewComponent::TestCase
     error_message = 'Error processing request.'
     render_component(alert: error_message)
 
-    assert_selector '.fa-exclamation-circle'
-    assert_selector '.bg-red-500'
+    assert_selector 'svg[data-icon="circle_exclamation"]'
+    assert_selector '.bg-danger'
     assert_selector '#flash-text', text: error_message
   end
 
@@ -35,7 +35,7 @@ class Flash::MessageComponentTest < ViewComponent::TestCase
     warning_message = 'Warning: please check the data.'
     render_component(warning: warning_message)
 
-    assert_selector '.fa-exclamation-triangle'
+    assert_selector 'svg[data-icon="triangle_exclamation"]'
     assert_selector '.bg-yellow-500'
     assert_selector '#flash-text', text: warning_message
   end
@@ -78,8 +78,8 @@ class Flash::MessageComponentTest < ViewComponent::TestCase
     render_component(custom_type: 'Custom message')
 
     assert_text 'Info'
-    assert_selector '.bg-gray-500'
-    assert_selector '.fa-info-circle'
+    assert_selector '.bg-subtle'
+    assert_selector 'svg[data-icon="circle_info"]'
   end
 
   private

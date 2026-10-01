@@ -11,24 +11,24 @@
                   <%= @skill.name %>
                </h2>
 
-               <p class="mb-6 grow text-sm text-zinc-100/90">
+               <p class="mb-6 grow text-sm text-content/90">
                   <%= @skill.short_description %>
                </p>
             </header>
 
-            <article class="prose prose-invert prose-lg max-w-none prose-p:text-slate-300
-                            prose-headings:text-slate-100 prose-a:text-indigo-400 prose-strong:text-slate-100">
+            <article class="prose prose-invert prose-lg max-w-none prose-p:text-content/70
+                            prose-headings:text-content prose-a:text-primary prose-strong:text-content">
                <%= @skill.description %>
             </article>
          </div>
 
          <aside class="lg:sticky lg:top-24">
-            <div class="rounded-2xl border border-white/10 bg-slate-900/80 backdrop-blur p-6">
+            <div class="rounded-2xl border border-content/10 bg-surface/80 backdrop-blur p-6">
 
                <div class="flex flex-col items-center text-center gap-4">
 
                   <div class="flex h-20 w-20 items-center justify-center
-                              rounded-full bg-slate-800 border border-white/10">
+                              rounded-full bg-muted border border-content/10">
                      <%= image_tag url_for(@skill.icon), alt: @skill.name, class: "h-10 w-10 object-contain" %>
                   </div>
 
@@ -36,14 +36,14 @@
                      <%= @skill.name %>
                   </h3>
 
-                  <span class="text-sm text-slate-400">
+                  <span class="text-sm text-content/50">
                      <%= @skill.category_human %>
                   </span>
 
                </div>
 
                <% if @skill.tags.any? %>
-                  <div class="mt-6 border-t border-white/10 pt-4">
+                  <div class="mt-6 border-t border-content/10 pt-4">
                      <ul class="flex flex-wrap justify-center gap-2">
                         <%= safe_join(
                               @skill.tags.map do |tag|

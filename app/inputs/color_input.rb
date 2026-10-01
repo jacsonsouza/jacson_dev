@@ -16,9 +16,9 @@ class ColorInput < SimpleForm::Inputs::Base
       hex_options.merge(
         value: @current_value,
         data: { 'color-target': 'hex', action: 'input->color#hexChanged' },
-        class: "w-full h-11 pl-3 pr-14 bg-gray-800 border border-gray-700
-                rounded-lg text-white placeholder-gray-400
-                focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition"
+        class: "w-full h-11 pl-3 pr-14 bg-surface border border-muted
+                rounded-lg text-content placeholder:text-content/40
+                focus:ring-2 focus:ring-primary focus:border-primary transition"
       )
     )
   end
@@ -36,7 +36,7 @@ class ColorInput < SimpleForm::Inputs::Base
     template.content_tag(
       :div,
       '',
-      class: 'absolute right-1 top-1 w-9 h-9 rounded-md border border-gray-600 pointer-events-none',
+      class: 'absolute right-1 top-1 w-9 h-9 rounded-md border border-muted pointer-events-none',
       data: { 'color-target': 'swatch' },
       style: "background-color: #{@current_value}"
     )

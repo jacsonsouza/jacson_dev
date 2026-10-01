@@ -1,0 +1,24 @@
+<title><%= full_title(content_for(:page_title)) %></title>
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+
+<%= csrf_meta_tags %>
+<%= csp_meta_tag %>
+
+<%= yield :head %>
+
+<%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+<%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+<%# Includes all stylesheet files in app/assets/stylesheets %>
+<%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+<%= javascript_importmap_tags %>
+
+<%= favicon_link_tag %>
+
+<%= render 'layouts/shared/theme' %>

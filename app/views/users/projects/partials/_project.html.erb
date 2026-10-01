@@ -17,14 +17,14 @@
             <%= project.name %>
          </h2>
 
-         <p class="mb-6 grow text-sm text-zinc-100/90">
+         <p class="mb-6 grow text-sm text-content/90">
             <%= project.short_description %>
          </p>
 
          <%= render 'shared/badge_groups', items: project.skills, classes: '' %>
 
          <div class="mt-auto">
-            <hr class="border-white/10 mb-4">
+            <hr class="border-content/10 mb-4">
 
             <div class="flex items-center gap-4">
                <% project_action_links(project).each do |link| %>
@@ -33,7 +33,7 @@
                            data: link[:data],
                            class: 'btn-social rounded-full' do %>
 
-                     <i class="<%= link[:icon] %>"></i>
+                     <%= icon(link[:icon], class: 'h-5 w-5') %>
                   <% end %>
                <% end %>
             </div>

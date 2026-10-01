@@ -11,7 +11,7 @@
   /* --- BUTTONS --- */
   .btn-primary {
     @apply flex items-center justify-center gap-3 w-full py-6 
-           cursor-pointer uppercase tracking-[0.3em] font-black text-xs text-white 
+           cursor-pointer uppercase tracking-[0.3em] font-black text-xs text-inverse 
            bg-primary transition-all hover:bg-accent/80 disabled:opacity-50;
   }
 
@@ -34,13 +34,13 @@
     @apply flex items-center justify-center h-16 w-16 
            cursor-pointer rounded-full 
            bg-surface
-           transition-all duration-300 hover:-translate-y-1.5 hover:shadow-indigo-500/60;
+           transition-all duration-300 hover:-translate-y-1.5 hover:shadow-primary/60;
   }
 
   .btn-social {
     @apply inline-flex items-center justify-center w-11 h-11 
-           rounded-xl bg-zinc-100/10 text-light text-lg 
-           transition-all duration-500 hover:-translate-y-1.5 hover:bg-linear-to-r from-primary to-accent hover:text-white hover:shadow-lg;
+           rounded-xl bg-content/10 text-light text-lg 
+           transition-all duration-500 hover:-translate-y-1.5 hover:bg-linear-to-r from-primary to-accent hover:text-inverse hover:shadow-lg;
   }
 
   .btn-favorite {
@@ -50,7 +50,7 @@
   }
 
   .btn-circle-subtle {
-    @apply flex h-9 w-9 items-center justify-center rounded-full bg-white/5 transition-colors hover:bg-primary;
+    @apply flex h-9 w-9 items-center justify-center rounded-full bg-content/5 transition-colors hover:bg-primary;
   }
 
   /* --- UI COMPONENTS / CONTAINERS --- */
@@ -73,7 +73,7 @@
   .glass-panel {
     @apply border border-content/10 bg-content/5 backdrop-blur-md 
            transition-all duration-300 ease-out 
-           hover:-translate-y-1 hover:border-orange-500/30 hover:shadow-xl hover:shadow-orange-500/10;
+           hover:-translate-y-1 hover:border-accent/30 hover:shadow-xl hover:shadow-accent/10;
   }
 
   .badge {
@@ -92,29 +92,16 @@
   }
 
   .select-filter {
-    @apply bg-white/5 border border-white/10 rounded-lg text-[10px]
+    @apply bg-content/5 border border-content/10 rounded-lg text-[10px]
            text-content font-bold uppercase tracking-widest py-1.5 px-3 focus:outline-none;
-  }
-
-  /* --- FORMS (TomSelect/Custom) --- */
-  .ts-wrapper, .ts-control {
-    @apply rounded-md border border-gray-700 bg-gray-800 text-indigo-500;
-  }
-
-  .ts-item {
-    @apply px-2 py-1 rounded bg-indigo-500 text-white;
-  }
-
-  .ts-dropdown {
-    @apply rounded-md border border-gray-700 bg-gray-800;
   }
 
   /* --- UTILITIES --- */
   .scroll-thin {
     @apply overflow-y-auto 
            [&::-webkit-scrollbar]:w-0.5 
-           [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-indigo-500
-           [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-indigo-900;
+           [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-muted
+           [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-primary;
   }
 
   .scroll-x-hidden, .chat-scroll {

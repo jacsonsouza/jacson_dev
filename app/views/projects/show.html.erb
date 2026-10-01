@@ -29,14 +29,14 @@
                rel: 'noopener noreferrer',
                class: 'group flex flex-1 items-center justify-center gap-3 rounded-xl bg-content px-8 py-5 text-xs font-bold uppercase tracking-[0.2em] text-canvas shadow-xl transition-colors duration-300 hover:bg-accent hover:text-content lg:flex-none' do %>
                <span>Live Deployment</span>
-               <i class="fa-solid fa-arrow-up-right-from-square transition-transform group-hover:rotate-45"></i>
+               <%= icon(:arrow_up_right_from_square, class: 'h-4 w-4 transition-transform group-hover:rotate-45') %>
             <% end %>
 
             <%= link_to safe_external_url(@project.repository),
                target: '_blank',
                rel: 'noopener noreferrer',
                class: 'glass-panel flex h-16 w-16 items-center justify-center rounded-xl text-content/60 transition-colors hover:border-accent/50 hover:text-content' do %>
-               <i class="fa-brands fa-github text-2xl"></i>
+               <%= icon(:github, class: 'h-6 w-6') %>
             <% end %>
          </div>
       </div>
@@ -51,7 +51,7 @@
       <div class="absolute bottom-10 left-10 z-20 hidden md:block">
          <div class="glass-panel rounded-2xl px-6 py-4">
             <div class="flex items-center gap-3">
-               <span class="h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+               <span class="h-2 w-2 rounded-full bg-success animate-pulse"></span>
                <span class="font-mono text-[10px] uppercase tracking-widest text-content/60">
                   System Heartbeat: 99.9% uptime
                </span>

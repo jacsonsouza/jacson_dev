@@ -5,20 +5,20 @@
    <div
       class="flex items-center justify-center w-12 h-12 border rounded-2xl bg-primary/10 border-primary/20"
    >
-      <i class="fa <%= chart[:icon] %> text-2xl text-primary"></i>
+      <%= icon(chart[:icon], class: 'h-6 w-6 text-primary') %>
    </div>
 
    <div class="flex flex-col">
       <span
          id="chart-value"
-         class="text-4xl font-black tracking-tighter text-white stat-number"
+         class="text-4xl font-black tracking-tighter text-content stat-number"
       >
          <%= chart[:count] %>
       </span>
 
       <span
          id="chart-title"
-         class="text-[10px] font-mono uppercase tracking-[0.2em] text-white/30"
+         class="text-[10px] font-mono uppercase tracking-[0.2em] text-content/30"
       >
          <%= chart[:title] %>
       </span>

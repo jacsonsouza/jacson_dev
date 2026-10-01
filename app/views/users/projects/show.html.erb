@@ -9,12 +9,12 @@
          <%= @project.category_human %>
       </span>
 
-      <div class="relative z-10 flex h-full flex-col justify-end p-6 text-white">
+      <div class="relative z-10 flex h-full flex-col justify-end p-6 text-inverse">
          <h2 class="text-xl font-semibold">
             <%= @project.name %>
          </h2>
 
-         <p class="mt-2 text-sm text-zinc-200">
+         <p class="mt-2 text-sm text-inverse/80">
             <%= @project.short_description %>
          </p>
       </div>
@@ -28,7 +28,7 @@
       <div class="flex flex-col gap-5">
          <div class="card h-fit">
             <h3 class="mb-5">
-               <i class="fa fa-code"></i>
+               <%= icon(:code, class: 'h-4 w-4') %>
                <span>Technologies</span>
             </h3>
             <%= render 'shared/badge_groups', items: @project.skills, classes: '' %>
@@ -36,13 +36,13 @@
 
          <div class="card h-fit">
             <h3 class="mb-5">
-               <i class="fa fa-link"></i>
+               <%= icon(:link, class: 'h-4 w-4') %>
                <span>Links</span>
             </h3>
 
             <% links = [
-            { url: @project.repository, icon: 'fa-brands fa-github', name: 'github' },
-            { url: @project.url, icon: 'fa-solid fa-globe', name: 'website' },
+            { url: @project.repository, icon: :github, name: 'github' },
+            { url: @project.url, icon: :globe, name: 'website' },
          ] %>
 
             <div class="flex flex-col gap-5">
@@ -53,7 +53,7 @@
                            data: link[:data],
                            class: "btn-primary text-md" do %>
 
-                        <i class="<%= link[:icon] %>"></i>
+                        <%= icon(link[:icon], class: 'h-4 w-4') %>
                         <%= t("links.#{link[:name]}")%>
                      <% end %>
                   <% end %>

@@ -1,8 +1,14 @@
 /* ==========================================================================
-   Editor
+   Theme tokens
+   ==========================================================================
+   Declared on :root instead of trix-editor because the rendered rich text
+   (.trix-content) is also used outside the editor — on public pages such as
+   projects#show and skills#show. Every value derives from the Tailwind theme
+   variables, so they follow the light/dark switch driven by the .dark class
+   on <html>.
    ========================================================================== */
 
-trix-editor {
+:root {
   --trix-primary: var(--color-accent);
   --trix-border: color-mix(in srgb, var(--color-content) 10%, transparent);
   --trix-border-dark: color-mix(in srgb, var(--color-content) 20%, transparent);
@@ -19,7 +25,13 @@ trix-editor {
   --trix-radius: 0.5rem;
   --trix-radius-sm: 0.375rem;
   --trix-transition: all 0.2s ease-in-out;
+}
 
+/* ==========================================================================
+   Editor
+   ========================================================================== */
+
+trix-editor {
   box-sizing: border-box;
   width: 100%;
   min-height: 20rem;
@@ -58,15 +70,6 @@ trix-editor:focus {
 
 trix-toolbar,
 trix-toolbar * {
-  --trix-primary: var(--color-accent);
-  --trix-border: color-mix(in srgb, var(--color-content) 10%, transparent);
-  --trix-border-dark: color-mix(in srgb, var(--color-content) 20%, transparent);
-  --trix-background: var(--color-surface);
-  --trix-hover: color-mix(in srgb, var(--color-content) 5%, transparent);
-  --trix-active: color-mix(in srgb, var(--color-accent) 15%, transparent);
-  --trix-text: var(--color-content);
-  --trix-text-light: color-mix(in srgb, var(--color-content) 40%, transparent);
-  
   box-sizing: border-box;
 }
 

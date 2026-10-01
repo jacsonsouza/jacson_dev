@@ -44,7 +44,7 @@
                      class_inactive: 'text-content hover:text-content/80',
                      active: :exclusive do %>
 
-                     <i class="<%= item[:icon] %> text-xl opacity-40 transition-all group-hover:text-accent/80 group-hover:opacity-100"></i>
+                     <%= icon(item[:icon], class: 'h-5 w-5 opacity-40 transition-all group-hover:text-accent/80 group-hover:opacity-100') %>
                      <span class="text-4xl font-black uppercase tracking-tighter transition-transform group-hover:translate-x-2">
                         <%= item[:name] %>
                      </span>
@@ -61,14 +61,14 @@
                   target: '_blank',
                   rel: 'noopener noreferrer',
                   class: 'text-content/30 transition-colors hover:text-content' do %>
-                  <i class="fab fa-github text-xl"></i>
+                  <%= icon(:github, class: 'h-5 w-5') %>
                <% end %>
 
                <%= link_to 'https://www.linkedin.com/in/jacson-dev',
                   target: '_blank',
                   rel: 'noopener noreferrer',
                   class: 'text-content/30 transition-colors hover:text-content' do %>
-                  <i class="fab fa-linkedin text-xl"></i>
+                  <%= icon(:linkedin, class: 'h-5 w-5') %>
                <% end %>
             </div>
          </div>

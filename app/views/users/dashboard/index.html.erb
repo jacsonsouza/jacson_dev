@@ -1,10 +1,10 @@
 <% provide(:page_title, t('.title')) %>
 
 <% count_charts = [
-   { title: t('.charts.projects'), count: Project.count, icon: 'fa-project-diagram' },
-   { title: t('.charts.skills'), count: Skill.count, icon: 'fa-code' },
-   { title: t('.charts.messages'), count: Message.count, icon: 'fa-envelope' },
-   { title: t('.charts.inquiries'), count: Ahoy::Visit.count, icon: 'fa-globe' }
+   { title: t('.charts.projects'), count: Project.count, icon: :diagram_project },
+   { title: t('.charts.skills'), count: Skill.count, icon: :code },
+   { title: t('.charts.messages'), count: Message.count, icon: :envelope },
+   { title: t('.charts.inquiries'), count: Ahoy::Visit.count, icon: :globe }
 ] %>
 
 <section class="space-y-8">

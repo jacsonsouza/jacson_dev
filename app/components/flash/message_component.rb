@@ -4,29 +4,33 @@ class Flash::MessageComponent < ViewComponent::Base
   FLASH_CONFIG = {
     notice: {
       title: 'Success',
-      class: 'border-l-green-500',
-      icon: 'check-circle text-green-500',
-      progress: 'bg-green-500'
+      class: 'border-l-success',
+      icon: :circle_check,
+      icon_class: 'text-success',
+      progress: 'bg-success'
     },
     alert: {
       title: 'Error',
-      class: 'border-l-red-500',
-      icon: 'exclamation-circle text-red-500',
-      progress: 'bg-red-500'
+      class: 'border-l-danger',
+      icon: :circle_exclamation,
+      icon_class: 'text-danger',
+      progress: 'bg-danger'
     },
     warning: {
       title: 'Warning',
       class: 'border-l-yellow-500',
-      icon: 'exclamation-triangle text-yellow-500',
+      icon: :triangle_exclamation,
+      icon_class: 'text-yellow-500',
       progress: 'bg-yellow-500'
     }
   }.freeze
 
   DEFAULT_CONFIG = {
     title: 'Info',
-    class: 'border-l-gray-500',
-    icon: 'info-circle text-gray-500',
-    progress: 'bg-gray-500'
+    class: 'border-l-subtle',
+    icon: :circle_info,
+    icon_class: 'text-subtle',
+    progress: 'bg-subtle'
   }.freeze
 
   def messages
@@ -41,8 +45,12 @@ class Flash::MessageComponent < ViewComponent::Base
     config_for(flash_type)[:class]
   end
 
-  def icon(flash_type)
+  def icon_name(flash_type)
     config_for(flash_type)[:icon]
+  end
+
+  def icon_class(flash_type)
+    config_for(flash_type)[:icon_class]
   end
 
   def progress(flash_type)

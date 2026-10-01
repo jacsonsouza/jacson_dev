@@ -18,10 +18,10 @@ class Sidebar::MenuComponent < ViewComponent::Base
 
   def main_items
     [
-      menu_item(icon: 'fas fa-home', name: t('users.menu.dashboard'), path: users_root_path),
-      menu_item(icon: 'fas fa-briefcase', name: t('users.menu.projects'), path: users_projects_path),
-      menu_item(icon: 'fas fa-code',      name: t('users.menu.skills'),   path: users_skills_path),
-      menu_item(icon: 'fas fa-envelope', name: t('users.menu.messages'), path: users_messages_path)
+      menu_item(icon: :house, name: t('users.menu.dashboard'), path: users_root_path),
+      menu_item(icon: :briefcase, name: t('users.menu.projects'), path: users_projects_path),
+      menu_item(icon: :code,      name: t('users.menu.skills'),   path: users_skills_path),
+      menu_item(icon: :envelope, name: t('users.menu.messages'), path: users_messages_path)
     ]
   end
 

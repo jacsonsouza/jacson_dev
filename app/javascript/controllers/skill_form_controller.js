@@ -165,7 +165,7 @@ export default class extends Controller {
       return `
          <span class="badge">
             <span class="badge_text">${escapedFlag}</span>
-            <button type="button" class="shrink-0 size-4 inline-flex items-center justify-center rounded-full hover:bg-indigo-500" 
+            <button type="button" class="shrink-0 size-4 inline-flex items-center justify-center rounded-full hover:bg-primary" 
                   data-action="click->skill-form#handleRemove" 
                   data-flag="${escapedFlag}"
                   aria-label="Remover ${escapedFlag}">

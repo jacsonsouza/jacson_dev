@@ -208,10 +208,10 @@ SimpleForm.setup do |config|
             focus:outline-none
             focus:ring-2 focus:ring-accent/20
           CSS
-          error_class: "border-red-500 focus:border-red-500 focus:ring-red-500"
+          error_class: "border-danger focus:border-danger focus:ring-danger"
 
     b.use :error,
-          wrap_with: { tag: "p", class: "mt-1 text-sm text-red-500" }
+          wrap_with: { tag: "p", class: "mt-1 text-sm text-danger" }
 
     b.use :hint,
           wrap_with: { tag: "p", class: "mt-1 text-sm text-content/40" }
@@ -247,10 +247,10 @@ SimpleForm.setup do |config|
             focus:outline-none
             focus:ring-0
           CSS
-          error_class: "border-red-500 focus:border-red-500 focus:ring-0"
+          error_class: "border-danger focus:border-danger focus:ring-0"
 
     b.use :error,
-          wrap_with: { tag: "p", class: "mt-1 text-sm text-red-500" }
+          wrap_with: { tag: "p", class: "mt-1 text-sm text-danger" }
 
     b.use :hint,
           wrap_with: { tag: "p", class: "mt-1 text-sm text-content/40" }
@@ -260,7 +260,7 @@ SimpleForm.setup do |config|
   config.wrappers :checkbox,
                   tag: "div",
                   class: "mb-4 flex items-start",
-                  error_class: "text-red-500" do |b|
+                  error_class: "text-danger" do |b|
 
     b.use :html5
     b.use :placeholder
@@ -276,13 +276,13 @@ SimpleForm.setup do |config|
             focus:border-accent
             focus:ring-2 focus:ring-accent/20
           CSS
-          error_class: "border-red-500 focus:border-red-500 focus:ring-red-500"
+          error_class: "border-danger focus:border-danger focus:ring-danger"
 
     b.use :label,
           class: "ml-2 text-sm text-content/70"
 
     b.use :error,
-          wrap_with: { tag: :p, class: "mt-1 text-sm text-red-500" }
+          wrap_with: { tag: :p, class: "mt-1 text-sm text-danger" }
 
     b.use :hint,
           wrap_with: { tag: :p, class: "mt-1 text-sm text-content/40" }
@@ -291,7 +291,7 @@ SimpleForm.setup do |config|
   ####### Date style
   config.wrappers :date,
                   tag: "div",
-                  class: "mb-4 flex flex-col gap-1" do |b|
+                  class: "mb-10 flex flex-col gap-1" do |b|
 
     b.use :label,
           class: "text-sm font-medium text-content/70"
@@ -313,11 +313,11 @@ SimpleForm.setup do |config|
                   focus:outline-none
                   focus:ring-2 focus:ring-accent/20
                 CSS
-                error_class: "border-red-500 focus:border-red-500 focus:ring-red-500"
+                error_class: "border-danger focus:border-danger focus:ring-danger"
     end
 
     b.use :error,
-          wrap_with: { tag: :p, class: "mt-1 text-sm text-red-500" }
+          wrap_with: { tag: :p, class: "mt-1 text-sm text-danger" }
 
     b.use :hint,
           wrap_with: { tag: :p, class: "mt-1 text-sm text-content/40" }
@@ -326,11 +326,11 @@ SimpleForm.setup do |config|
   ####### Multiselect style
   config.wrappers :multiselect,
                   tag: "div",
-                  class: "mb-4 flex flex-col gap-1",
+                  class: "mb-10 flex flex-col gap-1",
                   error_class: "has-error" do |b|
 
     b.use :label,
-          class: "mb-2 block text-sm font-medium text-content/70"
+          class: "mb-2 block font-mono text-[10px] uppercase tracking-[0.15em] text-content/30"
 
     b.use :input,
           class: <<~CSS.squish,
@@ -346,10 +346,10 @@ SimpleForm.setup do |config|
             focus:outline-none
             focus:ring-2 focus:ring-accent/20
           CSS
-          error_class: "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-accent/20"
+          error_class: "border-danger focus:border-danger focus:ring-2 focus:ring-accent/20"
 
     b.use :error,
-          wrap_with: { tag: :p, class: "mt-1 text-sm text-red-500" }
+          wrap_with: { tag: :p, class: "mt-1 text-sm text-danger" }
 
     b.use :hint,
           wrap_with: { tag: :p, class: "mt-1 text-sm text-content/40" }

@@ -2,9 +2,9 @@
    <%= f.input :name %>
    <%= f.input :short_description, as: :text %>
    <%= f.input :category, collection: Project.category_options, prompt: :translate %>
-   <%= f.association :skills, wrapper: :multiselect, input_html: { data: { controller: 'tom-select' } } %>
+   <%= f.association :skills, wrapper: :multiselect, input_html: { class: "hidden", data: { controller: 'ui--multiselect' } } %>
 
-   <div class="grid grid-cols-2 gap-4">
+   <div class="grid grid-cols-2 gap-4 my-4">
       <%= f.input :start_date, as: :date, wrapper: :date %>
       <%= f.input :end_date, as: :date, wrapper: :date %>
    </div>

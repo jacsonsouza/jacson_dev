@@ -5,7 +5,7 @@ module CapybaraCustomAssertions
 
   def assert_input_error(attribute, message)
     within "div.#{attribute}" do
-      assert_selector 'p.text-red-500', text: message
+      assert_selector 'p.text-danger', text: message
     end
   end
 end
