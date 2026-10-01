@@ -4,7 +4,8 @@
       <%= render 'layouts/shared/head' %>
    </head>
 
-   <body class="dark flex min-h-screen bg-canvas">
+   <body data-controller="theme" class="flex min-h-screen bg-canvas">
+
       <%= rc 'flash/message' %>
       <%= rc 'sidebar/menu', current_user: current_user %>
 
@@ -19,6 +20,6 @@
             <%= yield %>
          </section>
       </main>
-   </body>
 
+   </body>
 </html>
