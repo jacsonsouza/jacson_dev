@@ -36,15 +36,15 @@ class Sidebar::MenuComponentTest < ViewComponent::TestCase
 
   def items
     [
-      { icon: 'fas fa-home', name: I18n.t('users.menu.dashboard') },
-      { icon: 'fas fa-briefcase', name: I18n.t('users.menu.projects') },
-      { icon: 'fas fa-code', name: I18n.t('users.menu.skills') },
-      { icon: 'fas fa-envelope', name: 'Messages' }
+      { icon: :house, name: I18n.t('users.menu.dashboard') },
+      { icon: :briefcase, name: I18n.t('users.menu.projects') },
+      { icon: :code, name: I18n.t('users.menu.skills') },
+      { icon: :envelope, name: 'Messages' }
     ]
   end
 
-  def assert_menu_item(icon_class, text)
-    assert_selector "i.#{icon_class.gsub(' ', '.')}"
+  def assert_menu_item(icon, text)
+    assert_selector "svg[data-icon='#{icon}']"
     assert_text text
   end
 end

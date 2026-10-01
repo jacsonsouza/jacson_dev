@@ -14,7 +14,7 @@ class Page::TitleComponent < ViewComponent::Base
   end
 
   def icon
-    @icon || 'fas fa-plus'
+    @icon || :plus
   end
 
   private

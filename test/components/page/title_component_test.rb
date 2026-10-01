@@ -21,10 +21,10 @@ class Page::TitleComponentTest < ViewComponent::TestCase
       Page::TitleComponent.new(title: 'Test Title',
                                path: 'https://example.com',
                                label: 'Click Me',
-                               icon: 'fa fa-pencil')
+                               icon: :pen)
     )
 
     assert_selector('a', text: 'Click Me')
-    assert_selector('i.fa.fa-pencil')
+    assert_selector('svg[data-icon="pen"]')
   end
 end

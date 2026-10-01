@@ -11,25 +11,25 @@
       </div>
 
       <div class="flex gap-4">
-         <button
-            type="button"
-            aria-label="Previous slide"
-            data-carousel-target="prevButton"
-            data-action="click->carousel#prev"
-            class="glass-panel flex h-12 w-12 items-center justify-center rounded-full text-content/40 transition-colors hover:bg-accent hover:text-content"
-            >
-            <i class="fa-solid fa-arrow-left text-lg"></i>
-         </button>
+            <button
+               type="button"
+               aria-label="Previous slide"
+               data-carousel-target="prevButton"
+               data-action="click->carousel#prev"
+               class="glass-panel flex h-12 w-12 items-center justify-center rounded-full text-content/40 transition-colors hover:bg-accent hover:text-content"
+               >
+               <%= helpers.icon(:arrow_left, class: 'h-5 w-5') %>
+            </button>
 
-         <button
-            type="button"
-            aria-label="Next slide"
-            data-carousel-target="nextButton"
-            data-action="click->carousel#next"
-            class="glass-panel flex h-12 w-12 items-center justify-center rounded-full text-content/40 transition-colors hover:bg-accent hover:text-content"
-            >
-            <i class="fa-solid fa-arrow-right text-lg"></i>
-         </button>
+            <button
+               type="button"
+               aria-label="Next slide"
+               data-carousel-target="nextButton"
+               data-action="click->carousel#next"
+               class="glass-panel flex h-12 w-12 items-center justify-center rounded-full text-content/40 transition-colors hover:bg-accent hover:text-content"
+               >
+               <%= helpers.icon(:arrow_right, class: 'h-5 w-5') %>
+            </button>
       </div>
    </div>
 

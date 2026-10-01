@@ -6,7 +6,7 @@
                <li class="inline-flex items-center">
                   <%= link_to crumb.path, class: "inline-flex items-center text-sm font-medium text-gray-400 hover:text-white" do %>
                      <% if index == 0 %>
-                        <i class="fas fa-home fa-md me-2.5"></i>
+                        <%= icon(:house, class: 'me-2.5 h-4 w-4') %>
                      <% end %>
                      <%= crumb.name %>
                   <% end %>
@@ -17,7 +17,7 @@
                </li>
             <% end %>
             <% if index < breadcrumbs.size - 1 %>
-               <li> <i class="fas fa-chevron-right w-3 h-3 text-gray-400"></i> </li>
+               <li> <%= icon(:chevron_right, class: 'h-3 w-3 text-content/50') %> </li>
             <% end %>
          <% end %>
       </ol>

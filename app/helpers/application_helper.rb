@@ -12,11 +12,11 @@ module ApplicationHelper
 
   def nav_items
     [
-      { name: t('links.home'), icon: 'fas fa-home', path: root_path },
-      { name: t('links.projects'), icon: 'fas fa-briefcase', path: projects_path },
-      { name: t('links.skills'), icon: 'fas fa-code', path: skills_path },
-      { name: t('links.about'), icon: 'fas fa-user', path: about_path },
-      { name: t('links.contact'), icon: 'fas fa-envelope', path: new_contact_path }
+      { name: t('links.home'), icon: :house, path: root_path },
+      { name: t('links.projects'), icon: :briefcase, path: projects_path },
+      { name: t('links.skills'), icon: :code, path: skills_path },
+      { name: t('links.about'), icon: :user, path: about_path },
+      { name: t('links.contact'), icon: :envelope, path: new_contact_path }
     ]
   end
 

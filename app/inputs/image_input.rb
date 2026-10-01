@@ -60,14 +60,14 @@ class ImageInput < SimpleForm::Inputs::Base
 
   def upload_content
     template.content_tag :div, class: 'text-center px-4' do
-      template.content_tag(:i, '', class: 'fas fa-cloud-upload-alt fa-3x mb-6 text-gray-400') +
-        template.content_tag(:p, 'Click to upload', class: 'mb-3 text-sm text-gray-500 font-semibold')
+      template.icon(:cloud_arrow_up, class: 'mb-6 h-12 w-12 text-content/50') +
+        template.content_tag(:p, 'Click to upload', class: 'mb-3 text-sm text-content/50 font-semibold')
     end
   end
 
   def remove_button
     template.button_tag(
-      'X',
+      template.icon(:xmark, class: 'h-3 w-3'),
       type: 'button',
       class: 'absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center',
       data: { action: "#{CONTROLLER}#removeImage" }

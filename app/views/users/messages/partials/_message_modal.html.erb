@@ -3,8 +3,8 @@
       <header class="inline-flex justify-between">
          <span class="text-sm text-content/40"><%= message.email %></span>
 
-         <button type="button" commandfor="<%= id %>" command="close" class="text-gray-400 hover:text-gray-600 text-lg">
-            ✕
+         <button type="button" commandfor="<%= id %>" command="close" class="cursor-pointer text-content/50 transition-colors hover:text-content/80">
+            <%= icon(:xmark, class: 'h-5 w-5') %>
          </button>
       </header>
 
@@ -23,15 +23,15 @@
                method: :delete,
                id: "btn-delete",
                data: { confirm: t('users.messages.confirm.delete') }, 
-               class: "btn-icon bg-red-50 text-red-600 hover:bg-red-100" do %>
-            <i class="fa fa-trash text-base"></i>
+               class: "btn-icon bg-danger/10 text-danger hover:bg-danger/20" do %>
+            <%= icon(:trash, class: 'h-4 w-4') %>
          <% end %>
 
          <%= button_to toggle_read_users_message_path(message), 
                method: :patch, 
                id: "btn-toggle-read",
-               class: "btn-icon-text flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-xl" do %>
-            <i class="fa <%= message.read? ? 'fa-envelope' : 'fa-envelope-open' %> text-xs"></i>
+               class: "btn-icon-text flex items-center gap-2 px-4 py-2 bg-primary text-inverse rounded-xl" do %>
+            <%= icon(message.read? ? :envelope : :envelope_open, class: 'h-3 w-3') %>
             <span><%= message.read? ? t('users.messages.mark_as_unread') : t('users.messages.mark_as_read') %></span>
          <% end %>
       </footer>

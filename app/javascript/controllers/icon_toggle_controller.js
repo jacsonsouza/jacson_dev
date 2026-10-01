@@ -6,8 +6,8 @@ export default class extends Controller {
    static outlets = ['sidebar'];
 
    toggleSidebar() {
-      this.iconTarget.classList.toggle('fa-square-caret-left');
-      this.iconTarget.classList.toggle('fa-square-caret-right');
+      this.iconTarget.querySelector('.caret-left').classList.toggle('hidden');
+      this.iconTarget.querySelector('.caret-right').classList.toggle('hidden');
 
       this.sidebarOutlet.toggle();
    }

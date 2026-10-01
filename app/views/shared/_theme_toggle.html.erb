@@ -16,11 +16,7 @@
       class="absolute left-1 flex h-6 w-6 items-center justify-center rounded-full bg-content/10 text-content/50 shadow-sm transition-all duration-300 peer-checked:translate-x-6 peer-checked:bg-accent peer-checked:text-surface"
    ></span>
 
-   <i
-      class="fa-solid fa-sun absolute left-2.75 z-10 text-[10px] text-content/50 transition-all duration-300 peer-checked:translate-x-6 peer-checked:scale-0 peer-checked:opacity-0"
-   ></i>
+   <%= icon(:sun, class: 'absolute left-2.75 z-10 h-2.5 w-2.5 text-content/50 transition-all duration-300 peer-checked:translate-x-6 peer-checked:scale-0 peer-checked:opacity-0') %>
 
-   <i
-      class="fa-solid fa-moon absolute left-2.75 z-10 scale-0 text-[10px] text-surface opacity-0 transition-all duration-300 peer-checked:translate-x-6 peer-checked:scale-100 peer-checked:opacity-100"
-   ></i>
+   <%= icon(:moon, class: 'absolute left-2.75 z-10 h-2.5 w-2.5 scale-0 text-surface opacity-0 transition-all duration-300 peer-checked:translate-x-6 peer-checked:scale-100 peer-checked:opacity-100') %>
 </label>

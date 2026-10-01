@@ -33,7 +33,7 @@
                            data: link[:data],
                            class: 'btn-social rounded-full' do %>
 
-                     <i class="<%= link[:icon] %>"></i>
+                     <%= icon(link[:icon], class: 'h-5 w-5') %>
                   <% end %>
                <% end %>
             </div>

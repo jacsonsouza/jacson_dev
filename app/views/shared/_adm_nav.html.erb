@@ -6,10 +6,10 @@
       data-action="click->icon-toggle#toggleSidebar"
       class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl text-content/40 transition-colors duration-150 hover:bg-content/5 hover:text-content"
       >
-      <i
-         data-icon-toggle-target="icon"
-         class="fa-regular fa-square-caret-left text-2xl"
-      ></i>
+      <span data-icon-toggle-target="icon" class="block h-6 w-6">
+         <%= icon(:square_caret_left, class: 'caret-left block h-6 w-6') %>
+         <%= icon(:square_caret_right, class: 'caret-right hidden block h-6 w-6') %>
+      </span>
    </button>
 
    <div class="group inline-flex cursor-pointer items-center gap-4">
