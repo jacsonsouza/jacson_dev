@@ -30,3 +30,7 @@ end
 Capybara::Screenshot.register_driver(:chrome) do |driver, path|
   driver.browser.save_screenshot(path)
 end
+
+# Respostas do app no container de testes chegam a ~3s (ActiveStorage variants +
+# SimpleCov), acima do padrão de 2s — evita falso-negativo no assert_flash.
+Capybara.default_max_wait_time = 5
