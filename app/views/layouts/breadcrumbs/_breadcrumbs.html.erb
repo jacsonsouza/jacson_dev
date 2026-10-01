@@ -4,7 +4,7 @@
          <% breadcrumbs.each_with_index do |crumb, index| %>
             <% if crumb.link? %>
                <li class="inline-flex items-center">
-                  <%= link_to crumb.path, class: "inline-flex items-center text-sm font-medium text-gray-400 hover:text-white" do %>
+                  <%= link_to crumb.path, class: "inline-flex items-center text-sm font-medium text-content/50 hover:text-content" do %>
                      <% if index == 0 %>
                         <%= icon(:house, class: 'me-2.5 h-4 w-4') %>
                      <% end %>
@@ -13,7 +13,7 @@
                </li>
             <% else %>
                <li aria-current="page">
-                  <span class="text-sm font-medium text-gray-500"><%= crumb.name %></span>
+                  <span class="text-sm font-medium text-content/60"><%= crumb.name %></span>
                </li>
             <% end %>
             <% if index < breadcrumbs.size - 1 %>

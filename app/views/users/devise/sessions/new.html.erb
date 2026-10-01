@@ -9,7 +9,7 @@
 
    <div class="flex justify-between items-center my-4">
       <%= f.input :remember_me, label: t('.remember_me'), wrapper: :checkbox, as: :boolean if devise_mapping.rememberable? %>
-      <%= link_to t('.forgot_password'), new_user_password_path, class: 'text-indigo-500 text-sm text-end hover:underline' %>
+      <%= link_to t('.forgot_password'), new_user_password_path, class: 'text-primary text-sm text-end hover:underline' %>
    </div>
 
    <%= f.button :submit, t('links.sign_in') %>

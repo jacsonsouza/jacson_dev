@@ -5,8 +5,8 @@
    <%= f.input :email %>
 
    <div class="mb-6 flex flex-wrap justify-end gap-1 text-fluid-mb">
-      <span class="text-slate-400">Remembered your password?</span>
-      <%= link_to t('links.sign_in'), new_user_session_path, class: 'text-indigo-500 hover:underline' %>
+      <span class="text-content/50">Remembered your password?</span>
+      <%= link_to t('links.sign_in'), new_user_session_path, class: 'text-primary hover:underline' %>
    </div>
 
    <%= f.button :submit, t('links.send_me_instructions') %>

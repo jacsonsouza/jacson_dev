@@ -1,6 +1,6 @@
 module IntegrationCustomAssertions
   def assert_error_message(message)
-    assert_select 'p.text-red-500', text: message
+    assert_select 'p.text-danger', text: message
   end
 
   def assert_access_to(paths)

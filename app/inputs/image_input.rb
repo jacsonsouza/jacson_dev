@@ -37,7 +37,7 @@ class ImageInput < SimpleForm::Inputs::Base
 
   def wrapper_attributes
     {
-      class: 'relative w-full h-64 border-2 border-dashed border-gray-700 rounded-lg bg-gray-800',
+      class: 'relative w-full h-64 border-2 border-dashed border-muted rounded-lg bg-surface',
       data: { controller: CONTROLLER }
     }
   end
@@ -69,7 +69,7 @@ class ImageInput < SimpleForm::Inputs::Base
     template.button_tag(
       template.icon(:xmark, class: 'h-3 w-3'),
       type: 'button',
-      class: 'absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center',
+      class: 'absolute top-2 right-2 bg-danger text-inverse rounded-full w-6 h-6 flex items-center justify-center',
       data: { action: "#{CONTROLLER}#removeImage" }
     )
   end
@@ -82,7 +82,7 @@ class ImageInput < SimpleForm::Inputs::Base
   end
 
   def upload_label_attrs
-    classes = 'absolute inset-0 flex flex-col items-center justify-center rounded-lg cursor-pointer hover:bg-gray-700'
+    classes = 'absolute inset-0 flex flex-col items-center justify-center rounded-lg cursor-pointer hover:bg-muted'
     {
       class: "#{classes} #{'hidden' if valid_attachment?}",
       data: { "#{CONTROLLER}-target": 'defaultContent' }
