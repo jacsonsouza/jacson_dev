@@ -1,24 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title><%= full_title(content_for(:page_title)) %></title>
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <meta name="mobile-web-app-capable" content="yes">
-      <%= csrf_meta_tags %>
-      <%= csp_meta_tag %>
-
-      <%= yield :head %>
-
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-      <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-
-      <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-      <%= javascript_importmap_tags %>
-
-      <%= favicon_link_tag %>
-
-      <%= render 'shared/theme' %>
+      <%= render 'layouts/shared/head' %>
    </head>
 
    <body

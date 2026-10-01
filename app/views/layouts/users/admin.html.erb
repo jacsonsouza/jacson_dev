@@ -1,28 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title><%= full_title(content_for(:page_title)) %></title>
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <meta name="mobile-web-app-capable" content="yes">
-      <%= csrf_meta_tags %>
-      <%= csp_meta_tag %>
-
-      <%= yield :head %>
-
-      <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-      <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
-
-      <link href="https://cdn.jsdelivr.net/npm/tom-select@2.4.3/dist/css/tom-select.css" rel="stylesheet">
-
-      <%# Includes all stylesheet files in app/assets/stylesheets %>
-      <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-      <%= javascript_importmap_tags %>
-
-      <%= favicon_link_tag %>
+      <%= render 'layouts/shared/head' %>
    </head>
 
    <body class="dark flex min-h-screen bg-canvas">
@@ -34,11 +13,12 @@
 
          <section class="relative z-10 flex flex-1 flex-col p-10 backdrop-blur-sm">
             <%= rc 'page/title',
-               title: content_for(:page_title),
-               path: content_for(:new_path) %>
+                    title: content_for(:page_title),
+                    path: content_for(:new_path) %>
 
             <%= yield %>
          </section>
       </main>
    </body>
+
 </html>
