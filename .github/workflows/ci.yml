@@ -53,6 +53,20 @@ jobs:
       - name: Lint code for consistent style
         run: bin/rubocop -f github
 
+  herb:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Lint HTML+ERB templates
+        run: npx --yes @herb-tools/linter
+
+      - name: Check HTML+ERB formatting
+        run: npx --yes @herb-tools/formatter --check
+
   tests:
     uses: ./.github/workflows/_tests.yml
     secrets:

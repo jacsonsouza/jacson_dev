@@ -79,3 +79,5 @@ group :test do
   gem 'shoulda-matchers', '~> 6.0'
   gem 'simplecov', require: false
 end
+
+gem 'herb', '~> 0.11.1'
