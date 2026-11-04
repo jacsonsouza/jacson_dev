@@ -23,7 +23,7 @@ class Group::FiltersComponentTest < ViewComponent::TestCase
     render_component(Project)
 
     Project.categories.each do |category|
-      assert_selector("a##{category.first}", visible: false) do |element|
+      assert_selector("a##{category.first}", visible: :all) do |element|
         assert_equal projects_path(category: category.first), element[:href]
       end
     end
