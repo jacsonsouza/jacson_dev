@@ -1,18 +1,16 @@
 <%
-    links = [
-      { url: 'https://github.com/jacsonsouza', icon: :github },
-      { url: 'https://www.linkedin.com/in/jacson-souza-143797277/', icon: :linkedin },
-      { url: 'https://twitter.com/', icon: :twitter },
-      { url: 'https://www.instagram.com/', icon: :instagram }
-    ]
+  links = [
+    { url: 'https://github.com/jacsonsouza', icon: :github },
+    { url: 'https://www.linkedin.com/in/jacson-souza-143797277/', icon: :linkedin },
+    { url: 'https://twitter.com/', icon: :twitter },
+    { url: 'https://www.instagram.com/', icon: :instagram }
+  ]
 %>
 
 <div class="flex gap-4 justify-center md:justify-start">
-
-   <% links.each do |link| %>
-      <%= link_to link[:url], target: '_blank', class: 'btn-social' do %>
-         <%= icon(link[:icon], class: 'h-6 w-6') %>
-      <% end %>
-   <% end %>
-
+  <% links.each do |link| %>
+    <%= link_to link[:url], target: '_blank', class: 'btn-social' do %>
+      <%= icon(link[:icon], class: 'h-6 w-6') %>
+    <% end %>
+  <% end %>
 </div>

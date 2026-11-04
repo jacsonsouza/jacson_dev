@@ -1,16 +1,15 @@
 <%= provide(:page_title, t('.sign_in') ) %>
 
 <%= simple_form_for @user, url: user_session_path do |f| %>
+  <div class="flex flex-col gap-2">
+    <%= f.input :email %>
+    <%= f.input :password %>
+  </div>
 
-   <div class="flex flex-col gap-2">
-      <%= f.input :email %>
-      <%= f.input :password %>
-   </div>
+  <div class="flex justify-between items-center my-4">
+    <%= f.input :remember_me, label: t('.remember_me'), wrapper: :checkbox, as: :boolean if devise_mapping.rememberable? %>
+    <%= link_to t('.forgot_password'), new_user_password_path, class: 'text-primary text-sm text-end hover:underline' %>
+  </div>
 
-   <div class="flex justify-between items-center my-4">
-      <%= f.input :remember_me, label: t('.remember_me'), wrapper: :checkbox, as: :boolean if devise_mapping.rememberable? %>
-      <%= link_to t('.forgot_password'), new_user_password_path, class: 'text-primary text-sm text-end hover:underline' %>
-   </div>
-
-   <%= f.button :submit, t('links.sign_in') %>
+  <%= f.button :submit, t('links.sign_in') %>
 <% end %>

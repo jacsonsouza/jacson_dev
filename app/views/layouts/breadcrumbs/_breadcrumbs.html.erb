@@ -1,25 +1,27 @@
 <% unless breadcrumbs.empty? %>
-   <nav id="breadcrumbs" class="flex mb-6" aria-label="Breadcrumb">
-      <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-         <% breadcrumbs.each_with_index do |crumb, index| %>
-            <% if crumb.link? %>
-               <li class="inline-flex items-center">
-                  <%= link_to crumb.path, class: "inline-flex items-center text-sm font-medium text-content/50 hover:text-content" do %>
-                     <% if index == 0 %>
-                        <%= icon(:house, class: 'me-2.5 h-4 w-4') %>
-                     <% end %>
-                     <%= crumb.name %>
-                  <% end %>
-               </li>
-            <% else %>
-               <li aria-current="page">
-                  <span class="text-sm font-medium text-content/60"><%= crumb.name %></span>
-               </li>
+  <nav id="breadcrumbs" class="flex mb-6" aria-label="Breadcrumb">
+    <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+      <% breadcrumbs.each_with_index do |crumb, index| %>
+        <% if crumb.link? %>
+          <li class="inline-flex items-center">
+            <%= link_to crumb.path, class: "inline-flex items-center text-sm font-medium text-content/50 hover:text-content" do %>
+              <% if index == 0 %>
+                <%= icon(:house, class: 'me-2.5 h-4 w-4') %>
+              <% end %>
+
+              <%= crumb.name %>
             <% end %>
-            <% if index < breadcrumbs.size - 1 %>
-               <li> <%= icon(:chevron_right, class: 'h-3 w-3 text-content/50') %> </li>
-            <% end %>
-         <% end %>
-      </ol>
-   </nav>
+          </li>
+        <% else %>
+          <li aria-current="page">
+            <span class="text-sm font-medium text-content/60"><%= crumb.name %></span>
+          </li>
+        <% end %>
+
+        <% if index < breadcrumbs.size - 1 %>
+          <li><%= icon(:chevron_right, class: 'h-3 w-3 text-content/50') %></li>
+        <% end %>
+      <% end %>
+    </ol>
+  </nav>
 <% end %>

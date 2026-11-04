@@ -1,9 +1,7 @@
 <%= turbo_frame_tag project do %>
-
-   <%= button_to toggle_favorite_users_project_path(project), 
+  <%= button_to toggle_favorite_users_project_path(project), 
                  class: 'btn-favorite',
                  method: :patch do %>
-      <%= icon(:heart, class: "h-5 w-5 #{project.favorite? ? 'text-danger' : 'text-light'}") %>
-   <% end %>
-
+    <%= icon(:heart, class: "h-5 w-5 #{project.favorite? ? 'text-danger' : 'text-light'}") %>
+  <% end %>
 <% end %>

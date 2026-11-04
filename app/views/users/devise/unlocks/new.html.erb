@@ -1,9 +1,7 @@
 <%= provide(:page_title, t('links.send_me_unlock_instructions') ) %>
 
 <%= simple_form_for @user, url: user_unlock_path do |f| %>
+  <%= f.input :email %>
 
-   <%= f.input :email %>
-
-   <%= f.button :submit, t('links.send_me_instructions') %>
-
+  <%= f.button :submit, t('links.send_me_instructions') %>
 <% end %>

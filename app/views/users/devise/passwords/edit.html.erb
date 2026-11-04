@@ -1,13 +1,11 @@
 <%= provide(:page_title, t('links.reset_password') ) %>
 
 <%= simple_form_for @user, url: user_password_path, html: { method: :put } do |f| %>
+  <%= f.hidden_field :reset_password_token %>
+  <%= f.input :email %>
 
-   <%= f.hidden_field :reset_password_token %>
-   <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
 
-   <%= f.input :password %>
-   <%= f.input :password_confirmation %>
-
-   <%= f.button :submit, t('links.reset_password') %>
-
+  <%= f.button :submit, t('links.reset_password') %>
 <% end %>

@@ -1,13 +1,11 @@
 <%= provide(:page_title, t('links.sign_up') ) %>
 
 <%= simple_form_for @user, url: user_registration_path do |f| %>
+  <%= f.input :name %>
+  <%= f.input :email %>
 
-   <%= f.input :name %>
-   <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
 
-   <%= f.input :password %>
-   <%= f.input :password_confirmation %>
-
-   <%= f.button :button, t('links.sign_up') %>
-
+  <%= f.button :button, t('links.sign_up') %>
 <% end %>

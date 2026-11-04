@@ -1,25 +1,24 @@
 <!DOCTYPE html>
+
 <html>
-   <head>
-      <%= render 'layouts/shared/head' %>
-   </head>
+  <head>
+    <%= render 'layouts/shared/head' %>
+  </head>
 
-   <body data-controller="theme" class="flex min-h-screen bg-canvas">
+  <body data-controller="theme" class="flex min-h-screen bg-canvas">
+    <%= rc 'flash/message' %>
+    <%= rc 'sidebar/menu', current_user: current_user %>
 
-      <%= rc 'flash/message' %>
-      <%= rc 'sidebar/menu', current_user: current_user %>
+    <main class="flex flex-1 flex-col overflow-hidden bg-canvas">
+      <%= render 'shared/adm_nav' %>
 
-      <main class="flex flex-1 flex-col overflow-hidden bg-canvas">
-         <%= render 'shared/adm_nav' %>
-
-         <section class="relative z-10 flex flex-1 flex-col p-10 backdrop-blur-sm">
-            <%= rc 'page/title',
+      <section class="relative z-10 flex flex-1 flex-col p-10 backdrop-blur-sm">
+        <%= rc 'page/title',
                     title: content_for(:page_title),
                     path: content_for(:new_path) %>
 
-            <%= yield %>
-         </section>
-      </main>
-
-   </body>
+        <%= yield %>
+      </section>
+    </main>
+  </body>
 </html>

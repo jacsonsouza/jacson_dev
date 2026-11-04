@@ -1,14 +1,12 @@
 <%= provide(:page_title, t('links.send_me_reset_password_instructions') ) %>
 
 <%= simple_form_for @user, url: user_password_path do |f| %>
+  <%= f.input :email %>
 
-   <%= f.input :email %>
+  <div class="mb-6 flex flex-wrap justify-end gap-1 text-fluid-mb">
+    <span class="text-content/50">Remembered your password?</span>
+    <%= link_to t('links.sign_in'), new_user_session_path, class: 'text-primary hover:underline' %>
+  </div>
 
-   <div class="mb-6 flex flex-wrap justify-end gap-1 text-fluid-mb">
-      <span class="text-content/50">Remembered your password?</span>
-      <%= link_to t('links.sign_in'), new_user_session_path, class: 'text-primary hover:underline' %>
-   </div>
-
-   <%= f.button :submit, t('links.send_me_instructions') %>
-
+  <%= f.button :submit, t('links.send_me_instructions') %>
 <% end %>
