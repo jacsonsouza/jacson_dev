@@ -1,77 +1,91 @@
 <div data-controller="mobile-menu" class="md:hidden">
-   <header class="relative z-50 flex shrink-0 items-center justify-between px-8 pt-8">
-      <div class="flex h-8 w-8 items-center justify-center rounded-lg border border-content/10 bg-content/5">
-         <%= image_tag 'logos/primary-logo.png', alt: 'Logo', class: 'object-contain p-1' %>
+  <header class="relative z-50 flex shrink-0 items-center justify-between px-8 pt-8">
+    <div
+      class="
+        flex h-8 w-8 items-center justify-center rounded-lg border
+        border-content/10 bg-content/5
+      "
+    >
+      <%= image_tag 'logos/primary-logo.png', alt: 'Logo', class: 'object-contain p-1' %>
+    </div>
+
+    <button
+      type="button"
+      data-action="click->mobile-menu#toggle"
+      data-mobile-menu-target="button"
+      class="
+        group flex h-11 w-11 flex-col items-center justify-center gap-1.5
+        transition-colors focus:outline-none
+      "
+    >
+      <% 3.times do |i| %>
+        <% line_class = "line-#{i + 1} h-0.5 w-6 bg-content transition-all duration-300 group-hover:bg-primary" %>
+        <span data-mobile-menu-target="toggleIcon" class="<%= line_class %>"></span>
+      <% end %>
+    </button>
+  </header>
+
+  <nav
+    id="mobile-navigation"
+    data-mobile-menu-target="mobileMenu"
+    class="
+      fixed inset-0 z-40 flex -translate-x-full flex-col border-r
+      border-content/5 bg-canvas transition-transform duration-500
+    "
+  >
+    <div class="flex flex-1 flex-col px-10 pt-32">
+      <div class="mb-8">
+        <span class="font-mono text-[9px] uppercase tracking-[0.4em] text-content/20">
+          Navigation system
+        </span>
       </div>
 
-      <button
-         type="button"
-         data-action="click->mobile-menu#toggle"
-         data-mobile-menu-target="button"
-         class="group flex h-11 w-11 flex-col items-center justify-center gap-1.5 transition-colors focus:outline-none"
-         >
-         <% 3.times do |i| %>
-            <span
-               data-mobile-menu-target="toggleIcon"
-               class="line-<%= i + 1 %> h-0.5 w-6 bg-content transition-all duration-300 group-hover:bg-primary"
-            ></span>
-         <% end %>
-      </button>
-   </header>
-
-   <nav
-      id="mobile-navigation"
-      data-mobile-menu-target="mobileMenu"
-      class="fixed inset-0 z-40 flex -translate-x-full flex-col border-r border-content/5 bg-canvas transition-transform duration-500"
-   >
-      <div class="flex flex-1 flex-col px-10 pt-32">
-         <div class="mb-8">
-            <span class="font-mono text-[9px] uppercase tracking-[0.4em] text-content/20">
-               Navigation system
-            </span>
-         </div>
-
-         <ul class="space-y-1">
-            <% nav_items.each do |item| %>
-               <li
-                  data-action="click->mobile-menu#close"
-                  data-mobile-menu-target="mobileMenuItem"
-                  class="-translate-x-5 opacity-0 transition-all duration-500"
-                  >
-                  <%= active_link_to item[:path] || '#',
+      <ul class="space-y-1">
+        <% nav_items.each do |item| %>
+          <li
+            data-action="click->mobile-menu#close"
+            data-mobile-menu-target="mobileMenuItem"
+            class="-translate-x-5 opacity-0 transition-all duration-500"
+          >
+            <%= active_link_to item[:path] || '#',
                      class: 'group relative flex items-center gap-4 py-4 focus:outline-none',
                      class_active: 'text-accent nav-link-active',
                      class_inactive: 'text-content hover:text-content/80',
                      active: :exclusive do %>
+              <%= icon(item[:icon], class: 'h-5 w-5 opacity-40 transition-all group-hover:text-accent/80 group-hover:opacity-100') %>
 
-                     <%= icon(item[:icon], class: 'h-5 w-5 opacity-40 transition-all group-hover:text-accent/80 group-hover:opacity-100') %>
-                     <span class="text-4xl font-black uppercase tracking-tighter transition-transform group-hover:translate-x-2">
-                        <%= item[:name] %>
-                     </span>
-                  <% end %>
-               </li>
+              <span
+                class="
+                  text-4xl font-black uppercase tracking-tighter
+                  transition-transform group-hover:translate-x-2
+                "
+              >
+                <%= item[:name] %>
+              </span>
             <% end %>
-         </ul>
+          </li>
+        <% end %>
+      </ul>
 
-         <div class="mt-auto flex flex-col gap-6 pb-[34px]">
-            <hr class="w-full border-0 border-t border-content/5">
+      <div class="mt-auto flex flex-col gap-6 pb-[34px]">
+        <hr class="w-full border-0 border-t border-content/5">
 
-            <div class="flex items-center gap-6">
-               <%= link_to 'https://github.com/jacson-dev',
+        <div class="flex items-center gap-6">
+          <%= link_to 'https://github.com/jacson-dev',
                   target: '_blank',
                   rel: 'noopener noreferrer',
                   class: 'text-content/30 transition-colors hover:text-content' do %>
-                  <%= icon(:github, class: 'h-5 w-5') %>
-               <% end %>
+            <%= icon(:github, class: 'h-5 w-5') %>
+          <% end %>
 
-               <%= link_to 'https://www.linkedin.com/in/jacson-dev',
+          <%= link_to 'https://www.linkedin.com/in/jacson-dev',
                   target: '_blank',
                   rel: 'noopener noreferrer',
                   class: 'text-content/30 transition-colors hover:text-content' do %>
-                  <%= icon(:linkedin, class: 'h-5 w-5') %>
-               <% end %>
-            </div>
-         </div>
+            <%= icon(:linkedin, class: 'h-5 w-5') %>
+          <% end %>
+        </div>
       </div>
-   </nav>
+    </div>
+  </nav>
 </div>

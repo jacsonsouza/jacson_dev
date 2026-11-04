@@ -1,24 +1,26 @@
 <!DOCTYPE html>
+
 <html>
-   <head>
-      <%= render 'layouts/shared/head' %>
-   </head>
+  <head>
+    <%= render 'layouts/shared/head' %>
+  </head>
 
-   <body
-      data-controller="theme"
-      class="page-container min-h-screen flex flex-col gap-8 justify-center align-center overflow-x-hidden"
-   >
+  <body
+    data-controller="theme"
+    class="
+      page-container min-h-screen flex flex-col gap-8 justify-center
+      align-center overflow-x-hidden
+    "
+  >
+    <%= rc 'flash/message' %>
 
-      <%= rc 'flash/message' %>
+    <%= render 'shared/nav' %>
+    <%= render 'shared/mobile_menu' %>
 
-      <%= render 'shared/nav' %>
-      <%= render 'shared/mobile_menu' %>
+    <main class="flex w-full flex-1 justify-center md:mt-20">
+      <%= yield %>
+    </main>
 
-      <main class="flex w-full flex-1 justify-center md:mt-20">
-         <%= yield %>
-      </main>
-
-      <%= render 'shared/footer' %>
-
-   </body>
+    <%= render 'shared/footer' %>
+  </body>
 </html>

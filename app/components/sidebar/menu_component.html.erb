@@ -1,54 +1,67 @@
 <div
-   data-controller="sidebar"
-   data-action="sidebar:close@window->sidebar#hide"
-   class="sidebar-container sticky top-0 z-20 h-screen -ml-72 md:ml-0 shrink-0 overflow-hidden transition-[margin-left] duration-300 ease-in-out"
-   >
-   <aside class="flex h-full w-72 flex-col overflow-y-auto border-r border-content/10 bg-canvas">
-      <header class="flex items-center gap-4 px-6 py-8">
-         <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-content/10 bg-content/5">
-            <%= image_tag 'logos/primary-logo.png',
+  data-controller="sidebar"
+  data-action="sidebar:close@window->sidebar#hide"
+  class="
+    sidebar-container sticky top-0 z-20 h-screen -ml-72 md:ml-0 shrink-0
+    overflow-hidden transition-[margin-left] duration-300 ease-in-out
+  "
+>
+  <aside
+    class="
+      flex h-full w-72 flex-col overflow-y-auto border-r border-content/10
+      bg-canvas
+    "
+  >
+    <header class="flex items-center gap-4 px-6 py-8">
+      <div
+        class="
+          flex h-10 w-10 shrink-0 items-center justify-center rounded-lg
+          border border-content/10 bg-content/5
+        "
+      >
+        <%= image_tag 'logos/primary-logo.png',
                alt: 'Logo',
                class: 'h-8 w-8 object-contain',
                loading: 'eager' %>
-         </div>
+      </div>
 
-         <div class="min-w-0">
-            <p id="user-name" class="truncate text-sm font-semibold text-content">
-               <%= current_user&.first_name.presence || 'User' %>
-            </p>
+      <div class="min-w-0">
+        <p id="user-name" class="truncate text-sm font-semibold text-content">
+          <%= current_user&.first_name.presence || 'User' %>
+        </p>
 
-            <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-content/60">
-               Control Center
-            </span>
-         </div>
-      </header>
+        <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-content/60">
+          Control Center
+        </span>
+      </div>
+    </header>
 
-      <nav class="flex-1 px-4" aria-label="Sections">
-         <ul class="space-y-1">
-            <% items.each do |item| %>
-               <li>
-                  <%= helpers.active_link_to item[:path],
+    <nav class="flex-1 px-4" aria-label="Sections">
+      <ul class="space-y-1">
+        <% items.each do |item| %>
+          <li>
+            <%= helpers.active_link_to item[:path],
                      class: 'flex w-full items-center gap-3 rounded-lg p-4 text-sm font-medium tracking-wide',
                      class_active: 'border-r-4 border-accent bg-accent/10 text-accent',
                      class_inactive: 'text-content/60 hover:bg-content/5 hover:text-content',
                      active: :exclusive do %>
-                     <%= helpers.icon(item[:icon], class: 'h-4 w-4') %>
-                     <span class="uppercase"><%= item[:name] %></span>
-                  <% end %>
-               </li>
+              <%= helpers.icon(item[:icon], class: 'h-4 w-4') %>
+              <span class="uppercase"><%= item[:name] %></span>
             <% end %>
-         </ul>
-      </nav>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
 
-      <div class="px-4 pb-6">
-         <span class="mb-4 block h-px w-full bg-content/10"></span>
+    <div class="px-4 pb-6">
+      <span class="mb-4 block h-px w-full bg-content/10"></span>
 
-         <%= link_to destroy_user_session_path,
+      <%= link_to destroy_user_session_path,
             data: { turbo_method: :delete },
             class: 'inline-flex w-full items-center justify-center gap-3 rounded-lg border border-content/10 bg-content/5 px-4 py-3 text-[11px] tracking-wide text-content/70 transition-colors duration-150 hover:border-danger hover:bg-danger/10 hover:text-danger' do %>
-            <%= helpers.icon(:right_from_bracket, class: 'h-5 w-5') %>
-            <span class="uppercase">Secure Logout</span>
-         <% end %>
-      </div>
-   </aside>
+        <%= helpers.icon(:right_from_bracket, class: 'h-5 w-5') %>
+        <span class="uppercase">Secure Logout</span>
+      <% end %>
+    </div>
+  </aside>
 </div>

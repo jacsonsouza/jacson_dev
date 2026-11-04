@@ -1,65 +1,70 @@
 <div class="flex flex-col gap-5 p-5">
-   <div id="project-header" class="relative h-64 rounded-2xl overflow-hidden">
-      <%= image_tag @project.image,
+  <div id="project-header" class="relative h-64 rounded-2xl overflow-hidden">
+    <%= image_tag @project.image,
         class: "absolute inset-0 h-full w-full object-cover" %>
 
-      <div class="absolute inset-0 bg-black/60"></div>
+    <div class="absolute inset-0 bg-black/60"></div>
 
-      <span class="badge text-light absolute top-4 right-4 bg-linear-to-r from-primary to-accent">
-         <%= @project.category_human %>
-      </span>
+    <span
+      class="
+        badge text-light absolute top-4 right-4 bg-linear-to-r from-primary
+        to-accent
+      "
+    >
+      <%= @project.category_human %>
+    </span>
 
-      <div class="relative z-10 flex h-full flex-col justify-end p-6 text-inverse">
-         <h2 class="text-xl font-semibold">
-            <%= @project.name %>
-         </h2>
+    <div class="relative z-10 flex h-full flex-col justify-end p-6 text-inverse">
+      <h2 class="text-xl font-semibold">
+        <%= @project.name %>
+      </h2>
 
-         <p class="mt-2 text-sm text-inverse/80">
-            <%= @project.short_description %>
-         </p>
+      <p class="mt-2 text-sm text-inverse/80">
+        <%= @project.short_description %>
+      </p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <div class="prose card h-fit col-span-2">
+      <%= @project.details %>
+    </div>
+
+    <div class="flex flex-col gap-5">
+      <div class="card h-fit">
+        <h3 class="mb-5">
+          <%= icon(:code, class: 'h-4 w-4') %>
+          <span>Technologies</span>
+        </h3>
+
+        <%= render 'shared/badge_groups', items: @project.skills, classes: '' %>
       </div>
-   </div>
 
-   <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-      <div class="prose card h-fit col-span-2">
-         <%= @project.details %>
-      </div>
+      <div class="card h-fit">
+        <h3 class="mb-5">
+          <%= icon(:link, class: 'h-4 w-4') %>
+          <span>Links</span>
+        </h3>
 
-      <div class="flex flex-col gap-5">
-         <div class="card h-fit">
-            <h3 class="mb-5">
-               <%= icon(:code, class: 'h-4 w-4') %>
-               <span>Technologies</span>
-            </h3>
-            <%= render 'shared/badge_groups', items: @project.skills, classes: '' %>
-         </div>
-
-         <div class="card h-fit">
-            <h3 class="mb-5">
-               <%= icon(:link, class: 'h-4 w-4') %>
-               <span>Links</span>
-            </h3>
-
-            <% links = [
+        <% links = [
             { url: @project.repository, icon: :github, name: 'github' },
             { url: @project.url, icon: :globe, name: 'website' },
          ] %>
 
-            <div class="flex flex-col gap-5">
-               <% links.each do |link| %>
-                  <% if link[:url].present? %>
-                     <%= link_to link[:url],
+        <div class="flex flex-col gap-5">
+          <% links.each do |link| %>
+            <% if link[:url].present? %>
+              <%= link_to link[:url],
                            target: '_blank',
                            data: link[:data],
                            class: "btn-primary text-md" do %>
-
-                        <%= icon(link[:icon], class: 'h-4 w-4') %>
-                        <%= t("links.#{link[:name]}")%>
-                     <% end %>
-                  <% end %>
-               <% end %>
-            </div>
-         </div>
+                <%= icon(link[:icon], class: 'h-4 w-4') %>
+                <%= t("links.#{link[:name]}") %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
-   </div>
+    </div>
+  </div>
 </div>

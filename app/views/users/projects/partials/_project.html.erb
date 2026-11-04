@@ -1,44 +1,41 @@
 <li id="project-<%= project.id %>">
-   <div class="flex flex-col h-full card-container overflow-hidden">
+  <div class="flex flex-col h-full card-container overflow-hidden">
+    <div class="h-40 relative overflow-hidden">
+      <%= render 'users/projects/partials/favorite_button', project: project %>
 
-      <div class="h-40 relative overflow-hidden">
-         <%= render 'users/projects/partials/favorite_button', project: project %>
-
-         <%= image_tag url_for(project.image),
+      <%= image_tag url_for(project.image),
             class: 'w-full h-full object-cover' %>
 
-         <span class="badge absolute top-4 right-4 z-10 bg-canvas">
-            <%= project.category_human %>
-         </span>
-      </div>
+      <span class="badge absolute top-4 right-4 z-10 bg-canvas">
+        <%= project.category_human %>
+      </span>
+    </div>
 
-      <div class="flex flex-col gap-4 p-4 flex-1">
-         <h2 class="text-3xl sm:text-xl md:text-2xl">
-            <%= project.name %>
-         </h2>
+    <div class="flex flex-col gap-4 p-4 flex-1">
+      <h2 class="text-3xl sm:text-xl md:text-2xl">
+        <%= project.name %>
+      </h2>
 
-         <p class="mb-6 grow text-sm text-content/90">
-            <%= project.short_description %>
-         </p>
+      <p class="mb-6 grow text-sm text-content/90">
+        <%= project.short_description %>
+      </p>
 
-         <%= render 'shared/badge_groups', items: project.skills, classes: '' %>
+      <%= render 'shared/badge_groups', items: project.skills, classes: '' %>
 
-         <div class="mt-auto">
-            <hr class="border-content/10 mb-4">
+      <div class="mt-auto">
+        <hr class="border-content/10 mb-4">
 
-            <div class="flex items-center gap-4">
-               <% project_action_links(project).each do |link| %>
-                  <%= link_to link[:url],
+        <div class="flex items-center gap-4">
+          <% project_action_links(project).each do |link| %>
+            <%= link_to link[:url],
                            target: link[:target],
                            data: link[:data],
                            class: 'btn-social rounded-full' do %>
-
-                     <%= icon(link[:icon], class: 'h-5 w-5') %>
-                  <% end %>
-               <% end %>
-            </div>
-         </div>
+              <%= icon(link[:icon], class: 'h-5 w-5') %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
-   </div>
-
+    </div>
+  </div>
 </li>

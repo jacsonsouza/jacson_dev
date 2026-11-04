@@ -1,20 +1,31 @@
 <section id="home" class="flex flex-col items-center justify-center gap-6">
-   <h1 class="text-7xl md:text-9xl">
-      <%= @user.first_name %>
-   </h1>
+  <h1 class="text-7xl md:text-9xl">
+    <%= @user.first_name %>
+  </h1>
 
-   <span class="mt-6 h-px w-20 bg-primary"></span>
+  <span class="mt-6 h-px w-20 bg-primary"></span>
 
-   <p class="flex items-center gap-6 text-xs font-bold uppercase tracking-[0.8em] text-content/90 md:text-sm">
-      <span class="h-px w-10 bg-content/30"></span>
-      <span class="text-center"><%= t('.subtitle') %></span>
-      <span class="h-px w-10 bg-content/30"></span>
-   </p>
+  <p
+    class="
+      flex items-center gap-6 text-xs font-bold uppercase tracking-[0.8em]
+      text-content/90 md:text-sm
+    "
+  >
+    <span class="h-px w-10 bg-content/30"></span>
+    <span class="text-center"><%= t('.subtitle') %></span>
+    <span class="h-px w-10 bg-content/30"></span>
+  </p>
 
-   <div class="mt-8 flex items-center gap-2 rounded-sm border border-muted bg-surface/30 px-5 py-3">
-      <span class="h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></span>
-      <span class="text-[10px] font-medium uppercase text-content/70">
-         <%= t('.deployment_btn') %>
-      </span>
-   </div>
+  <div
+    class="
+      mt-8 flex items-center gap-2 rounded-sm border border-muted
+      bg-surface/30 px-5 py-3
+    "
+  >
+    <span class="h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></span>
+
+    <span class="text-[10px] font-medium uppercase text-content/70">
+      <%= t('.deployment_btn') %>
+    </span>
+  </div>
 </section>

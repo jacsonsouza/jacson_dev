@@ -1,66 +1,81 @@
-<footer class="relative z-20 flex w-full flex-col items-center justify-between p-6 md:flex-row">
-   <div class="flex flex-col gap-1">
-      <span class="text-[10px] font-bold uppercase tracking-widest text-content/40">
-         <%= t('.main_tech_stack') %>
+<footer
+  class="
+    relative z-20 flex w-full flex-col items-center justify-between p-6
+    md:flex-row
+  "
+>
+  <div class="flex flex-col gap-1">
+    <span class="text-[10px] font-bold uppercase tracking-widest text-content/40">
+      <%= t('.main_tech_stack') %>
+    </span>
+
+    <div class="mt-1 flex gap-5 text-content/40">
+      <% tech_stack = %w[ruby rails laravel react flutter] %>
+
+      <% tech_stack.each do |tech| %>
+        <% icon_class = "devicon-#{tech}-plain text-xl transition-all duration-300 hover:-translate-y-0.5 hover:text-accent" %>
+        <i class="<%= icon_class %>"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="absolute bottom-0 left-1/2 hidden -translate-x-1/2 lg:block">
+    <div class="flex flex-col items-center gap-2">
+      <div class="h-12 w-px bg-linear-to-t from-accent to-transparent"></div>
+
+      <span class="font-mono text-[8px] tracking-[0.4em] text-accent">
+        JACSON.DEV
       </span>
+    </div>
+  </div>
 
-      <div class="mt-1 flex gap-5 text-content/40">
-         <% tech_stack = %w[ruby rails laravel react flutter] %>
+  <div class="mt-6 flex items-center gap-6 md:mt-0">
+    <div class="flex items-center gap-3">
+      <%= render 'shared/theme_toggle' %>
 
-         <% tech_stack.each do |tech| %>
-            <i
-               class="devicon-<%= tech %>-plain text-xl transition-all duration-300 hover:-translate-y-0.5 hover:text-accent"
-            ></i>
-         <% end %>
-      </div>
-   </div>
-
-   <div class="absolute bottom-0 left-1/2 hidden -translate-x-1/2 lg:block">
-      <div class="flex flex-col items-center gap-2">
-         <div class="h-12 w-px bg-linear-to-t from-accent to-transparent"></div>
-
-         <span class="font-mono text-[8px] tracking-[0.4em] text-accent">
-            JACSON.DEV
-         </span>
-      </div>
-   </div>
-
-   <div class="mt-6 flex items-center gap-6 md:mt-0">
-      <div class="flex items-center gap-3">
-         <%= render 'shared/theme_toggle' %>
-
-         <div class="flex items-center gap-2">
-            <%= link_to 'https://github.com/jacsonsouza',
+      <div class="flex items-center gap-2">
+        <%= link_to 'https://github.com/jacsonsouza',
                target: '_blank',
                rel: 'noopener noreferrer',
                aria: { label: 'GitHub' },
                class: 'glass-panel group flex h-10 w-10 items-center justify-center rounded transition-all duration-300 hover:border-accent/30 hover:bg-accent/5' do %>
+          <i
+            class="
+              devicon-github-original text-sm text-content/40
+              transition-colors duration-300 group-hover:text-accent
+            "
+          ></i>
+        <% end %>
 
-               <i class="devicon-github-original text-sm text-content/40 transition-colors duration-300 group-hover:text-accent"></i>
-            <% end %>
-
-            <%= link_to 'https://linkedin.com/in/jacsonsouza',
+        <%= link_to 'https://linkedin.com/in/jacsonsouza',
                target: '_blank',
                rel: 'noopener noreferrer',
                aria: { label: 'LinkedIn' },
                class: 'glass-panel group flex h-10 w-10 items-center justify-center rounded transition-all duration-300 hover:border-accent/30 hover:bg-accent/5' do %>
-
-               <i class="devicon-linkedin-plain text-sm text-content/40 transition-colors duration-300 group-hover:text-accent"></i>
-            <% end %>
-         </div>
-
-         <address class="flex flex-col items-end not-italic">
-            <span class="mb-1 text-[10px] uppercase tracking-widest text-content/40">
-               <%= t('.contact') %>
-            </span>
-
-            <a
-               href="mailto:contact@jacson.dev.br"
-               class="text-xs font-bold text-content transition-colors duration-300 hover:text-accent"
-            >
-               contact@jacson.dev.br
-            </a>
-         </address>
+          <i
+            class="
+              devicon-linkedin-plain text-sm text-content/40
+              transition-colors duration-300 group-hover:text-accent
+            "
+          ></i>
+        <% end %>
       </div>
-   </div>
+
+      <address class="flex flex-col items-end not-italic">
+        <span class="mb-1 text-[10px] uppercase tracking-widest text-content/40">
+          <%= t('.contact') %>
+        </span>
+
+        <a
+          href="mailto:contact@jacson.dev.br"
+          class="
+            text-xs font-bold text-content transition-colors duration-300
+            hover:text-accent
+          "
+        >
+          contact@jacson.dev.br
+        </a>
+      </address>
+    </div>
+  </div>
 </footer>

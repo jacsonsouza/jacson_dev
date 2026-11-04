@@ -1,52 +1,53 @@
 <!DOCTYPE html>
+
 <html>
-   <head>
-      <title><%= full_title(content_for(:page_title)) %></title>
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <meta name="mobile-web-app-capable" content="yes">
-      <%= csrf_meta_tags %>
-      <%= csp_meta_tag %>
+  <head>
+    <title><%= full_title(content_for(:page_title)) %></title>
 
-      <%= yield :head %>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
 
-      <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-      <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <%= yield :head %>
 
-      <%# Includes all stylesheet files in app/assets/stylesheets %>
-      <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-      <%= javascript_importmap_tags %>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Raleway:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    >
 
-      <%= favicon_link_tag %>
-   </head>
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
 
-   <body 
-      data-controller="toggle-theme"
-      class="dark page-container flex items-center justify-center overflow-hidden"
-   >
+    <%= favicon_link_tag %>
+  </head>
 
-      <%= rc 'flash/message' %>
+  <body
+    data-controller="toggle-theme"
+    class="dark page-container flex items-center justify-center overflow-hidden"
+  >
+    <%= rc 'flash/message' %>
 
-      <div class="w-full max-w-xl p-7 relative z-10">
-         <div class="w-full p-8 md:p-10 bg-surface/70 backdrop-blur-md
-                     border border-content/10 rounded-3xl shadow-2xl transform-3d">
+    <div class="w-full max-w-xl p-7 relative z-10">
+      <div
+        class="
+          w-full p-8 md:p-10 bg-surface/70 backdrop-blur-md
+          border border-content/10 rounded-3xl shadow-2xl transform-3d
+        "
+      >
+        <div class="flex flex-col items-center justify-center gap-6 mb-6">
+          <%= rc 'app/logo', text_class: 'text-3xl', icon_class: 'h-10' %>
 
-            <div class="flex flex-col items-center justify-center gap-6 mb-6">
+          <p class="text-content/50 text-center text-md tracking-wider">
+            <%= content_for(:page_title) %>
+          </p>
+        </div>
 
-               <%= rc 'app/logo', text_class: 'text-3xl', icon_class: 'h-10' %>
-
-               <p class="text-content/50 text-center text-md tracking-wider">
-                  <%= content_for(:page_title) %>
-               </p>
-
-            </div>
-
-            <%= yield %>
-
-         </div>
+        <%= yield %>
       </div>
-
-   </body>
+    </div>
+  </body>
 </html>

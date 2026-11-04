@@ -1,34 +1,41 @@
-<section class="grid grid-cols-1 lg:grid-cols-2 w-full max-w-7xl gap-8 p-4 md:px-28 md:py-4 mt-10">
-   <header class="space-y-16">
-      <div class="space-y-6">
-         <div class="flex items-center gap-3">
-            <span class="h-2 w-2 rounded-full bg-success" aria-hidden="true"></span>
-            <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-content/40">
-               <%= t('.label') %>
-            </span>
-         </div>
+<section
+  class="
+    grid grid-cols-1 lg:grid-cols-2 w-full max-w-7xl gap-8 p-4 md:px-28
+    md:py-4 mt-10
+  "
+>
+  <header class="space-y-16">
+    <div class="space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="h-2 w-2 rounded-full bg-success" aria-hidden="true"></span>
 
-         <h1 class="text-6xl md:text-8xl uppercase">
-            <%= t('.title') %>
-         </h1>
-
-         <p class="subheadline max-w-sm">
-            <%= t('.subtitle') %>
-         </p>
+        <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-content/40">
+          <%= t('.label') %>
+        </span>
       </div>
 
-      <div class="flex flex-col gap-1">
-         <span class="font-mono text-[9px] uppercase tracking-[0.2em] text-content/20">
-            <%= t('.local_time_label') %>
-         </span>
+      <h1 class="text-6xl md:text-8xl uppercase">
+        <%= t('.title') %>
+      </h1>
 
-         <time
-            class="font-mono text-xs font-bold text-content/60"
-            datetime="<%= Time.zone.now.iso8601 %>">
-            <%= l(Time.zone.now, format: '%I:%M %p') %>
-         </time>
-      </div>
-   </header>
+      <p class="subheadline max-w-sm">
+        <%= t('.subtitle') %>
+      </p>
+    </div>
 
-   <%= render 'contact/partials/form' %>
+    <div class="flex flex-col gap-1">
+      <span class="font-mono text-[9px] uppercase tracking-[0.2em] text-content/20">
+        <%= t('.local_time_label') %>
+      </span>
+
+      <time
+        class="font-mono text-xs font-bold text-content/60"
+        datetime="<%= Time.zone.now.iso8601 %>"
+      >
+        <%= l(Time.zone.now, format: '%I:%M %p') %>
+      </time>
+    </div>
+  </header>
+
+  <%= render 'contact/partials/form', message: @message %>
 </section>
