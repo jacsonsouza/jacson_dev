@@ -19,7 +19,7 @@ class Flash::MessageComponentTest < ViewComponent::TestCase
 
     assert_selector 'svg[data-icon="circle_check"]'
     assert_selector '.bg-success'
-    assert_selector '#flash-text', text: success_message
+    assert_selector '.flash-text', text: success_message
   end
 
   def test_renders_alert_message_with_correct_styling
@@ -28,7 +28,7 @@ class Flash::MessageComponentTest < ViewComponent::TestCase
 
     assert_selector 'svg[data-icon="circle_exclamation"]'
     assert_selector '.bg-danger'
-    assert_selector '#flash-text', text: error_message
+    assert_selector '.flash-text', text: error_message
   end
 
   def test_renders_warning_message_with_correct_styling
@@ -37,7 +37,7 @@ class Flash::MessageComponentTest < ViewComponent::TestCase
 
     assert_selector 'svg[data-icon="triangle_exclamation"]'
     assert_selector '.bg-yellow-500'
-    assert_selector '#flash-text', text: warning_message
+    assert_selector '.flash-text', text: warning_message
   end
 
   def test_renders_multiple_messages

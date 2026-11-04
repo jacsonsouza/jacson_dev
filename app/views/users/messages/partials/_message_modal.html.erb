@@ -38,7 +38,7 @@
       <%= button_to users_message_path(message), 
                method: :delete,
                id: "btn-delete",
-               data: { confirm: t('users.messages.confirm.delete') }, 
+               data: { turbo_confirm: t('users.messages.confirm.delete') }, 
                class: "btn-icon bg-danger/10 text-danger hover:bg-danger/20" do %>
         <%= icon(:trash, class: 'h-4 w-4') %>
       <% end %>

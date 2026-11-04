@@ -19,10 +19,8 @@
       "
     >
       <% 3.times do |i| %>
-        <span
-          data-mobile-menu-target="toggleIcon"
-          class="line-<%= i + 1 %> h-0.5 w-6 bg-content transition-all duration-300 group-hover:bg-primary"
-        ></span>
+        <% line_class = "line-#{i + 1} h-0.5 w-6 bg-content transition-all duration-300 group-hover:bg-primary" %>
+        <span data-mobile-menu-target="toggleIcon" class="<%= line_class %>"></span>
       <% end %>
     </button>
   </header>

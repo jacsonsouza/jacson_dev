@@ -13,7 +13,8 @@
       <% tech_stack = %w[ruby rails laravel react flutter] %>
 
       <% tech_stack.each do |tech| %>
-        <i class="devicon-<%= tech %>-plain text-xl transition-all duration-300 hover:-translate-y-0.5 hover:text-accent"></i>
+        <% icon_class = "devicon-#{tech}-plain text-xl transition-all duration-300 hover:-translate-y-0.5 hover:text-accent" %>
+        <i class="<%= icon_class %>"></i>
       <% end %>
     </div>
   </div>
