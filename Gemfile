@@ -62,6 +62,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'herb', '~> 0.11.1', require: false
   gem 'rubocop', require: false
   gem 'rubocop-capybara', require: false
   gem 'rubocop-factory_bot', require: false
@@ -79,5 +80,3 @@ group :test do
   gem 'shoulda-matchers', '~> 6.0'
   gem 'simplecov', require: false
 end
-
-gem 'herb', '~> 0.11.1'
