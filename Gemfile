@@ -45,7 +45,7 @@ gem 'mini_magick', '~> 5.0' # image_processing >= 2 treats it as a soft dependen
 
 gem 'active_link_to'
 gem 'ahoy_matey'
-gem 'aws-sdk-s3', '~> 1.237', require: false
+gem 'aws-sdk-s3', '~> 1.245', require: false
 gem 'chartkick'
 gem 'devise', '~> 5.0'
 gem 'groupdate'
@@ -63,7 +63,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'herb', '~> 0.11.1', require: false
+  gem 'herb', '~> 0.11.2', require: false
   gem 'rubocop', require: false
   gem 'rubocop-capybara', require: false
   gem 'rubocop-factory_bot', require: false
@@ -76,7 +76,7 @@ group :test do
   gem 'capybara'
   gem 'capybara-screenshot'
   gem 'rails-controller-testing'
-  gem 'selenium-webdriver', '4.52.0'
+  gem 'selenium-webdriver', '4.53.0'
   gem 'shoulda-context', '~> 3.0.0.rc1'
   gem 'shoulda-matchers', '~> 8.0'
   gem 'simplecov', require: false
